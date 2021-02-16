@@ -6,7 +6,8 @@ public class LifeCycleAddConfig : IInit
 {
     public void Init()
     {
-        LifeInitAdd(new InitCustomAttribute());
+        LifeInitAdd(AudioMgr.Single);
+        LifeInitAdd(SceneConfig.Single);
     }
 
     private void LifeInitAdd(object o)

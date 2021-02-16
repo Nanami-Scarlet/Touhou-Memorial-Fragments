@@ -1,12 +1,87 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[BindAttribute(Paths.PREFAB_START_VIEW, Const.BIND_PREFAB_PRIORITY_CONTROLLER)]
 public class StartController : ControllerBase
 {
+    public StartView _view;
+
+    private Dictionary<int, Action> _dicIndexAction = new Dictionary<int, Action>()
+    {
+        { 0, () => UIManager.Single.Show(Paths.PREFAB_DEGREE_VIEW) },
+        { 1, () => Debug.LogWarning("功能正在开发中...") },
+        { 2, () => Debug.LogWarning("功能正在开发中...") },
+        { 3, () => Debug.LogWarning("功能正在开发中...") },
+        { 4, () => Debug.LogWarning("功能正在开发中...") },
+        { 5, () => Application.Quit() },
+    };
+
     public override void InitChild()
     {
-        transform.Find("Option").Add<OptionController>();
+        InputMgr.Single.AddListener(KeyCode.UpArrow);
+        InputMgr.Single.AddListener(KeyCode.DownArrow);
+        InputMgr.Single.AddListener(KeyCode.X);
+        InputMgr.Single.AddListener(KeyCode.Z);
+
+        MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
+        MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
+        MessageMgr.Single.AddListener(KeyCode.X, MoveFinalIndex);
+        MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
+
+        _view.UpdateFun();
+    }
+
+    public override void Hide()
+    {
+        InputMgr.Single.RemoveListener(KeyCode.UpArrow);
+        InputMgr.Single.RemoveListener(KeyCode.DownArrow);
+        InputMgr.Single.RemoveListener(KeyCode.X);
+        InputMgr.Single.RemoveListener(KeyCode.Z);
+
+        MessageMgr.Single.RemoveListener(KeyCode.UpArrow, DecIndex);
+        MessageMgr.Single.RemoveListener(KeyCode.DownArrow, IncIndex);
+        MessageMgr.Single.RemoveListener(KeyCode.X, MoveFinalIndex);
+        MessageMgr.Single.RemoveListener(KeyCode.Z, OnSelect);
+    }
+
+    private void IncIndex(object[] args)
+    {
+        //todo:这里应该有个音效
+
+        if (GameStateModel.Single.SelectedOption < _view.MAX_INDEX - 1)
+        {
+            ++GameStateModel.Single.SelectedOption;
+            _view.UpdateFun();
+        }
+    }
+
+    private void DecIndex(object[] args)
+    {
+        //todo:这里应该有个音效
+
+        if(GameStateModel.Single.SelectedOption > 0)
+        {
+            --GameStateModel.Single.SelectedOption;
+            _view.UpdateFun();
+        }
+    }
+
+    private void MoveFinalIndex(object[] args)
+    {
+        //todo:这里应该有个音效
+
+        GameStateModel.Single.SelectedOption = _view.MAX_INDEX - 1;
+        _view.UpdateFun();
+    }
+
+    private void OnSelect(object[] args)
+    {
+        //todo:这里应该有个音效
+        int index = GameStateModel.Single.SelectedOption;
+
+        _view._options[index].DOFade(0, 0.07f).SetLoops(6, LoopType.Yoyo)
+            .OnComplete(() => _dicIndexAction[index]());
     }
 }

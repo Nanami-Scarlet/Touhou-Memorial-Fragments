@@ -79,4 +79,9 @@ public class UIData
     {
         return GO.AddComponent<T>();
     }
+
+    public Transform GetTrans()
+    {
+        return GO.transform;
+    }
 }

@@ -13,5 +13,7 @@ public class LaunchGame : MonoBehaviour
     {
         LifeCycleMgr.Single.Init();
         UIManager.Single.Show(Paths.PREFAB_START_VIEW);
+        AudioMgr.Single.PlayBGM(Const.TITLE_BGM);
+        GameStateModel.Single.CurrentScene = SceneName.Main;
     }
 }

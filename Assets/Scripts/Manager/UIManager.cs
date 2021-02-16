@@ -8,8 +8,8 @@ public class UIManager : NormalSingleton<UIManager>
 {
     private Canvas _canvas;
 
-    private Dictionary<string, IView> _dicNameOfView;
-    private Stack<IView> _stackView;
+    private Dictionary<string, GameObject> _dicNameOfView;
+    private Stack<GameObject> _stackView;
 
     public Canvas UICanvas
     {
@@ -31,79 +31,67 @@ public class UIManager : NormalSingleton<UIManager>
 
     public UIManager()
     {
-        _dicNameOfView = new Dictionary<string, IView>();
-        _stackView = new Stack<IView>();
+        _dicNameOfView = new Dictionary<string, GameObject>();
+        _stackView = new Stack<GameObject>();
     }
 
     public void Show(string path)
     {
         if(_stackView.Count > 0)
         {
-            _stackView.Peek().Hide();
+            HideAll(_stackView.Peek());
         }
 
-        IView view = GetView(path);
-        view.Show();
-        
-        _stackView.Push(view);
+        if (!_dicNameOfView.ContainsKey(path))
+        {
+            GameObject viewGo = LoadMgr.Single.LoadPrefabAndInstantiate(path, UICanvas.transform);
+            _dicNameOfView.Add(path, viewGo);
+        }
+        GameObject go = _dicNameOfView[path];
+
+        go.SetActive(true);
+        _stackView.Push(go);
+        InitComponent(go);
     }
 
-    public void Hide()
+    public void Hide(string path)
     {
-        IView view = _stackView.Peek();
-
-        view.Hide();
+        GameObject go = _dicNameOfView[path];
+        HideAll(go);
     }
 
     public void Back()
     {
-        IView viewTop = _stackView.Pop();
-        IView viewBottom = _stackView.Pop();
+        GameObject goTop = _stackView.Pop();
+        GameObject goBottom = _stackView.Pop();
 
-        _stackView.Push(viewTop);
-        _stackView.Push(viewBottom);
-        viewBottom.Show();
-    }
+        _stackView.Push(goTop);
+        _stackView.Push(goBottom);
 
-    private IView GetView(string path)
-    {
-        if (_dicNameOfView.ContainsKey(path))
-        {
-            return _dicNameOfView[path]; 
-        }
+        goTop.SetActive(false);
+        goBottom.SetActive(true);
 
-        return InitView(path);
-    }
-
-    private IView InitView(string path)
-    {
-        GameObject viewGo = LoadMgr.Single.LoadPrefabAndInstantiate(path, UICanvas.transform);
-
-        AddTypeComponet(viewGo, path);
-
-        InitComponent(viewGo);
-
-        IView view = viewGo.GetComponent<IView>();
-
-        _dicNameOfView.Add(path, view);
-
-        return view;
-    }
-
-    private void AddTypeComponet(GameObject viewGo, string path)
-    {
-        foreach(Type type in BindUtil.GetType(path))
-        {
-            viewGo.AddComponent(type);
-        }
+        HideAll(goTop);
+        InitComponent(goBottom);
     }
 
     private void InitComponent(GameObject go)
     {
         IInit[] inits = go.GetComponents<IInit>();
-        foreach (IInit init in inits)
+
+        foreach(IInit init in inits)
         {
             init.Init();
+        }
+    }
+
+    private void HideAll(GameObject go)
+    {
+        IHide[] hides = go.GetComponents<IHide>();
+
+        foreach(IHide hide in hides)
+        {
+            hide.Hide();
         }
     }
 }
