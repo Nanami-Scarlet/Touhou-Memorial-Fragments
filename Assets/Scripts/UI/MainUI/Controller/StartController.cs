@@ -20,6 +20,11 @@ public class StartController : ControllerBase
 
     public override void InitChild()
     {
+        
+    }
+
+    public override void Show()
+    {
         InputMgr.Single.AddListener(KeyCode.UpArrow);
         InputMgr.Single.AddListener(KeyCode.DownArrow);
         InputMgr.Single.AddListener(KeyCode.X);
@@ -48,7 +53,7 @@ public class StartController : ControllerBase
 
     private void IncIndex(object[] args)
     {
-        //todo:这里应该有个音效
+        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
 
         if (GameStateModel.Single.SelectedOption < _view.MAX_INDEX - 1)
         {
@@ -59,9 +64,9 @@ public class StartController : ControllerBase
 
     private void DecIndex(object[] args)
     {
-        //todo:这里应该有个音效
+        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
 
-        if(GameStateModel.Single.SelectedOption > 0)
+        if (GameStateModel.Single.SelectedOption > 0)
         {
             --GameStateModel.Single.SelectedOption;
             _view.UpdateFun();
@@ -70,7 +75,7 @@ public class StartController : ControllerBase
 
     private void MoveFinalIndex(object[] args)
     {
-        //todo:这里应该有个音效
+        AudioMgr.Single.PlayEff(Const.CANCAL_EFF);
 
         GameStateModel.Single.SelectedOption = _view.MAX_INDEX - 1;
         _view.UpdateFun();
@@ -78,7 +83,8 @@ public class StartController : ControllerBase
 
     private void OnSelect(object[] args)
     {
-        //todo:这里应该有个音效
+        AudioMgr.Single.PlayEff(Const.SURE_EFF);
+
         int index = GameStateModel.Single.SelectedOption;
 
         _view._options[index].DOFade(0, 0.07f).SetLoops(6, LoopType.Yoyo)

@@ -7,9 +7,10 @@ public class SceneConfig : NormalSingleton<SceneConfig>, IInit
 {
     public void Init()
     {
-        //SceneMgr.Single.AddSceneLoad(SceneName.Game, (Action callback) => 
-        //{
-        //    callback();
-        //});
+        SceneMgr.Single.AddSceneLoad(SceneName.Game, (Action callback) =>
+        {
+            GameRoot.Single.Init();
+            callback();
+        });
     }
 }

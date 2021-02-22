@@ -43,11 +43,22 @@ public class AudioMgr : MonoSingleton<AudioMgr>, IInit
         _bgmSource.Play();
     }
 
-    public void PlayEff(string name)
+    public void PlayEff(string name, float vol = 1)
     {
         AudioClip clip = GetClip(name);
 
         _effSource.clip = clip;
+        _effSource.volume = vol;
         _effSource.Play();
+    }
+
+    public void StopBGM()
+    {
+        _bgmSource.Pause();
+    }
+
+    public void ContinueBGM()
+    {
+        _bgmSource.UnPause();
     }
 }

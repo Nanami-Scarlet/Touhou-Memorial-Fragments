@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 2517113789
+    locked: 0
+  - name: Player
+    uniqueID: 2661370181
+    locked: 0
+  - name: PlayerEffect
+    uniqueID: 1705051563
+    locked: 0
+  - name: PlayerBullet
+    uniqueID: 3881025025
+    locked: 0
+  - name: Item
+    uniqueID: 2502315905
+    locked: 0
+  - name: EnemyBullet
+    uniqueID: 264633353
+    locked: 0

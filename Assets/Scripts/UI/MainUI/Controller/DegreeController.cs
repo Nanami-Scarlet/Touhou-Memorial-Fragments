@@ -25,6 +25,11 @@ public class DegreeController : ControllerBase
 
     public override void InitChild()
     {
+        
+    }
+
+    public override void Show()
+    {
         InputMgr.Single.AddListener(KeyCode.UpArrow);
         InputMgr.Single.AddListener(KeyCode.DownArrow);
         InputMgr.Single.AddListener(KeyCode.X);
@@ -51,7 +56,7 @@ public class DegreeController : ControllerBase
 
     private void IncIndex(object[] args)
     {
-        //todo:这里应该有个音效
+        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
 
         if (GameStateModel.Single.RankOption < _view.MAX_INDEX - 1)
         {
@@ -62,7 +67,7 @@ public class DegreeController : ControllerBase
 
     private void DecIndex(object[] args)
     {
-        //todo:这里应该有个音效
+        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
 
         if (GameStateModel.Single.RankOption > 0)
         {
@@ -73,14 +78,14 @@ public class DegreeController : ControllerBase
 
     private void Back(object[] args)
     {
-        //todo:这里应该有个音效
+        AudioMgr.Single.PlayEff(Const.CANCAL_EFF);
 
         UIManager.Single.Show(Paths.PREFAB_START_VIEW);
     }
 
     private void OnSelect(object[] args)
     {
-        //todo:这里应该有个音效
+        AudioMgr.Single.PlayEff(Const.SURE_EFF);
         int index = GameStateModel.Single.RankOption;
 
         _view._options[index].DOFade(0, 0.07f).SetLoops(6, LoopType.Yoyo)

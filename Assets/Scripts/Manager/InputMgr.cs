@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,17 @@ public class InputMgr : NormalSingleton<InputMgr>, IInput, IUpdate
         _input.RemoveListener(key);
     }
 
+    public void AddGameListener(KeyCode key)
+    {
+        _input.AddGameListener(key);
+        AddUpdate();
+    }
+
+    public void RemoveGameListener(KeyCode key)
+    {
+        _input.RemoveGameListener(key);
+    }
+
     public void UpdateFun()
     {
         _input.Execute();
@@ -32,5 +44,15 @@ public class InputMgr : NormalSingleton<InputMgr>, IInput, IUpdate
     private void AddUpdate()
     {
         LifeCycleMgr.Single.Add(LifeName.UPDATE, this);
+    }
+
+    public void AddUpdateListener(Action action)
+    {
+        _input.AddUpdateListener(action);
+    }
+
+    public void RemvoeUpdateListener(Action action)
+    {
+        _input.RemoveUpdateListener(action);
     }
 }

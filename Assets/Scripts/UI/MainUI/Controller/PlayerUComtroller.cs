@@ -1,12 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerUComtroller : ControllerBase
 {
-    public PlayerView _view;
+    public PlayerUView _view;
+
+    private Dictionary<int, Action> _dicIndexAction = null;
 
     public override void InitChild()
+    {
+        _dicIndexAction = new Dictionary<int, Action>()
+        {
+            { 0, () =>
+            {
+                _view._transLoad.gameObject.SetActive(true);
+                LifeCycleMgr.Single.Add(LifeName.UPDATE, this);
+                SceneMgr.Single.AsyncLoadScene(SceneName.Game);
+                GameStateModel.Single.Status = GameStatus.Gameing;
+            } },
+
+            { 1, null }
+        };
+    }
+
+    public override void Show()
     {
         GameStateModel.Single.PlayerOption = 0;
 
@@ -17,18 +36,22 @@ public class PlayerUComtroller : ControllerBase
 
         MessageMgr.Single.AddListener(KeyCode.RightArrow, IncIndex);
         MessageMgr.Single.AddListener(KeyCode.LeftArrow, DecIndex);
-        MessageMgr.Single.AddListener(KeyCode.Z, LoadScene);
+        MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
         MessageMgr.Single.AddListener(KeyCode.X, Back);
 
-        LifeCycleMgr.Single.Add(LifeName.UPDATE, this);
+        //LifeCycleMgr.Single.Add(LifeName.UPDATE, this);
     }
 
     public override void UpdateFun()
     {
         if(SceneMgr.Single.Process() == 1)
         {
-            //todo:加载主游戏UI
             UIManager.Single.Hide(Paths.PREFAB_PLAYER_VIEW);
+            UIManager.Single.Show(Paths.PREFAB_GAME_VIEW);
+
+            AudioMgr.Single.PlayBGM(Const.ONE_ONE_BGM);
+
+            SceneMgr.Single.ResetData();
         }
     }
 
@@ -41,7 +64,7 @@ public class PlayerUComtroller : ControllerBase
 
         MessageMgr.Single.RemoveListener(KeyCode.RightArrow, IncIndex);
         MessageMgr.Single.RemoveListener(KeyCode.LeftArrow, DecIndex);
-        MessageMgr.Single.RemoveListener(KeyCode.Z, LoadScene);
+        MessageMgr.Single.RemoveListener(KeyCode.Z, OnSelect);
         MessageMgr.Single.RemoveListener(KeyCode.X, Back);
 
         LifeCycleMgr.Single.Remove(LifeName.UPDATE, this);
@@ -49,29 +72,34 @@ public class PlayerUComtroller : ControllerBase
 
     private void IncIndex(object[] args)
     {
-        //todo:这里应该有个音效
+        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
         ++GameStateModel.Single.PlayerOption;
         _view.UpdateFun();
     }
 
     private void DecIndex(object[] args)
     {
-        //todo:这里应该有个音效
+        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
         --GameStateModel.Single.PlayerOption;
         _view.UpdateFun();
     }
 
     private void Back(object[] args)
     {
-        //todo:这里应该有个音效
+        AudioMgr.Single.PlayEff(Const.CANCAL_EFF);
 
         UIManager.Single.Show(Paths.PREFAB_DEGREE_VIEW);
     }
 
-    private void LoadScene(object[] args)
+    private void OnSelect(object[] args)
     {
-        //todo:这里应该有个音效
-        _view._transLoad.gameObject.SetActive(true);
-        SceneMgr.Single.AsyncLoadScene(SceneName.Game);
+        AudioMgr.Single.PlayEff(Const.SURE_EFF);
+
+        int index = GameStateModel.Single.PlayerOption;
+        if (_dicIndexAction[index] != null)
+        {
+            _dicIndexAction[index]();
+        }
+        AudioMgr.Single.StopBGM();
     }
 }

@@ -12,7 +12,7 @@ public class LoadMgr : NormalSingleton<LoadMgr>, ILoader
         _loader = new ResourceLoader();
     }
 
-    public GameObject LoadPrefabAndInstantiate(string path, Transform parent)
+    public GameObject LoadPrefabAndInstantiate(string path, Transform parent = null)
     {
         return _loader.LoadPrefabAndInstantiate(path, parent);
     }

@@ -17,9 +17,13 @@ public class DegreeView : ViewBase
 
     public override void InitChild()
     {
+        MAX_INDEX = 2;
+    }
+
+    public override void Show()
+    {
         ResetAnim();
         PlayAnim();
-        MAX_INDEX = 2;
     }
 
     public override void UpdateFun()

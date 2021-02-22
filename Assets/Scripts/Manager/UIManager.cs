@@ -35,9 +35,9 @@ public class UIManager : NormalSingleton<UIManager>
         _stackView = new Stack<GameObject>();
     }
 
-    public void Show(string path)
+    public void Show(string path, bool hideTop = true)
     {
-        if(_stackView.Count > 0)
+        if(_stackView.Count > 0 && hideTop)             //一个界面同时会存在多个UI
         {
             HideAll(_stackView.Peek());
         }
@@ -46,12 +46,13 @@ public class UIManager : NormalSingleton<UIManager>
         {
             GameObject viewGo = LoadMgr.Single.LoadPrefabAndInstantiate(path, UICanvas.transform);
             _dicNameOfView.Add(path, viewGo);
+            InitComponent(viewGo);
         }
         GameObject go = _dicNameOfView[path];
 
         go.SetActive(true);
         _stackView.Push(go);
-        InitComponent(go);
+        ShowAll(go);
     }
 
     public void Hide(string path)
@@ -75,6 +76,50 @@ public class UIManager : NormalSingleton<UIManager>
         InitComponent(goBottom);
     }
 
+    public GameObject PreLoad(string path)
+    {
+        if (_dicNameOfView.ContainsKey(path))
+        {
+            //Debug.LogError("该路径的预制体已经存在，路径为：" + path);
+            //return null;
+
+            return _dicNameOfView[path];
+        }
+
+        GameObject preGo = LoadMgr.Single.LoadPrefabAndInstantiate(path, UICanvas.transform);
+        InitComponent(preGo);
+        preGo.SetActive(false);
+        _dicNameOfView.Add(path, preGo);
+
+        return preGo;
+    }
+
+    public void ShowController(string path)         //该方法在多个UI同时存在下使用
+    {
+        if (!_dicNameOfView.ContainsKey(path))
+        {
+            Debug.LogError("该路径的预制件未被加载，路径为："  + path);
+            return;
+        }
+
+        GameObject go = _dicNameOfView[path];
+        IControllerShow show = go.GetComponent<IControllerShow>();
+        show.Show();
+    }
+
+    public void HideController(string path)         //上面的配套方法
+    {
+        if (!_dicNameOfView.ContainsKey(path))
+        {
+            Debug.LogError("该路径的预制件未被加载，路径为：" + path);
+            return;
+        }
+
+        GameObject go = _dicNameOfView[path];
+        IControllerHide hide = go.GetComponent<IControllerHide>();
+        hide.Hide();
+    }
+
     private void InitComponent(GameObject go)
     {
         IInit[] inits = go.GetComponents<IInit>();
@@ -82,6 +127,16 @@ public class UIManager : NormalSingleton<UIManager>
         foreach(IInit init in inits)
         {
             init.Init();
+        }
+    }
+
+    private void ShowAll(GameObject go)
+    {
+        IShow[] shows = go.GetComponents<IShow>();
+
+        foreach(IShow show in shows)
+        {
+            show.Show();
         }
     }
 
