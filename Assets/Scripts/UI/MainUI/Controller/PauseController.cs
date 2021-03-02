@@ -52,7 +52,7 @@ public class PauseController : ControllerBase
         {
             UIManager.Single.Hide(Paths.PREFAB_GAME_VIEW);
             UIManager.Single.Show(Paths.PREFAB_START_VIEW);
-            AudioMgr.Single.PlayBGM(Const.TITLE_BGM);
+            AudioMgr.Single.PlayBGM(Paths.AUDIO_TITLE_BGM);
 
             SceneMgr.Single.ResetData();
         }
@@ -73,7 +73,7 @@ public class PauseController : ControllerBase
 
     private void IncIndex(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SELECT_EFF);
 
         if (GameStateModel.Single.PauseOption < _view.MAX_INDEX - 1)
         {
@@ -84,7 +84,7 @@ public class PauseController : ControllerBase
 
     private void DecIndex(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SELECT_EFF);
 
         if (GameStateModel.Single.PauseOption > 0)
         {
@@ -96,7 +96,7 @@ public class PauseController : ControllerBase
     private void OnSelect(object[] args)
     {
         Time.timeScale = 1;
-        AudioMgr.Single.PlayEff(Const.SURE_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SURE_EFF);
         UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
 
         int index = GameStateModel.Single.PauseOption;

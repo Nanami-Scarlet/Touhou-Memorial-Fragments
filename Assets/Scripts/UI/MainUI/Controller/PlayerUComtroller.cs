@@ -49,7 +49,7 @@ public class PlayerUComtroller : ControllerBase
             UIManager.Single.Hide(Paths.PREFAB_PLAYER_VIEW);
             UIManager.Single.Show(Paths.PREFAB_GAME_VIEW);
 
-            AudioMgr.Single.PlayBGM(Const.ONE_ONE_BGM);
+            AudioMgr.Single.PlayBGM(Paths.AUDIO_ONE_ONE_BGM);
 
             SceneMgr.Single.ResetData();
         }
@@ -72,28 +72,28 @@ public class PlayerUComtroller : ControllerBase
 
     private void IncIndex(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SELECT_EFF);
         ++GameStateModel.Single.PlayerOption;
         _view.UpdateFun();
     }
 
     private void DecIndex(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SELECT_EFF);
         --GameStateModel.Single.PlayerOption;
         _view.UpdateFun();
     }
 
     private void Back(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.CANCAL_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_CANCAL_EFF);
 
         UIManager.Single.Show(Paths.PREFAB_DEGREE_VIEW);
     }
 
     private void OnSelect(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.SURE_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SURE_EFF);
 
         int index = GameStateModel.Single.PlayerOption;
         if (_dicIndexAction[index] != null)

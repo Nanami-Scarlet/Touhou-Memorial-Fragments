@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 public interface ILoader
 {
@@ -6,4 +8,5 @@ public interface ILoader
     GameObject LoadPrefabAndInstantiate(string path, Transform parent);
     T Load<T>(string path) where T : Object;
     T[] LoadAll<T>(string path) where T : Object;
+    void LoadConfig(string path, Action<string> callback);
 }

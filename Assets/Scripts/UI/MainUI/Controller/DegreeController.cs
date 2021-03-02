@@ -56,7 +56,7 @@ public class DegreeController : ControllerBase
 
     private void IncIndex(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SELECT_EFF);
 
         if (GameStateModel.Single.RankOption < _view.MAX_INDEX - 1)
         {
@@ -67,7 +67,7 @@ public class DegreeController : ControllerBase
 
     private void DecIndex(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SELECT_EFF);
 
         if (GameStateModel.Single.RankOption > 0)
         {
@@ -78,14 +78,14 @@ public class DegreeController : ControllerBase
 
     private void Back(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.CANCAL_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_CANCAL_EFF);
 
         UIManager.Single.Show(Paths.PREFAB_START_VIEW);
     }
 
     private void OnSelect(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.SURE_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SURE_EFF);
         int index = GameStateModel.Single.RankOption;
 
         _view._options[index].DOFade(0, 0.07f).SetLoops(6, LoopType.Yoyo)

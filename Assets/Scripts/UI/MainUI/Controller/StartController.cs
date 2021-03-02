@@ -53,7 +53,7 @@ public class StartController : ControllerBase
 
     private void IncIndex(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SELECT_EFF);
 
         if (GameStateModel.Single.SelectedOption < _view.MAX_INDEX - 1)
         {
@@ -64,7 +64,7 @@ public class StartController : ControllerBase
 
     private void DecIndex(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.SELECT_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SELECT_EFF);
 
         if (GameStateModel.Single.SelectedOption > 0)
         {
@@ -75,7 +75,7 @@ public class StartController : ControllerBase
 
     private void MoveFinalIndex(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.CANCAL_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_CANCAL_EFF);
 
         GameStateModel.Single.SelectedOption = _view.MAX_INDEX - 1;
         _view.UpdateFun();
@@ -83,7 +83,7 @@ public class StartController : ControllerBase
 
     private void OnSelect(object[] args)
     {
-        AudioMgr.Single.PlayEff(Const.SURE_EFF);
+        AudioMgr.Single.PlayEff(Paths.AUDIO_SURE_EFF);
 
         int index = GameStateModel.Single.SelectedOption;
 

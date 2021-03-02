@@ -70,6 +70,14 @@ public class GameView : ViewBase
     private Text _txtGrazeNum;
     #endregion
 
+    #region Stage
+    public Transform _transStage;
+    private Image _imgStageBG;
+    private Text _txtStateTitle;
+    private Text _txtStageName;
+    #endregion
+
+
     public Image _imgSacrifice;
 
 
@@ -286,5 +294,10 @@ public class GameView : ViewBase
         _txtGrazeLabel.color = new Color(t.r, t.g, t.b, 0);
         t = _txtGrazeNum.color;
         _txtGrazeNum.color = new Color(t.r, t.g, t.b, 0);
+    }
+
+    public void StageAnim()
+    {
+        //todo:stage动画
     }
 }

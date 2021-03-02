@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class LoadMgr : NormalSingleton<LoadMgr>, ILoader
 {
@@ -30,5 +32,10 @@ public class LoadMgr : NormalSingleton<LoadMgr>, ILoader
     public GameObject LoadPrefab(string path)
     {
         return _loader.LoadPrefab(path);
+    }
+
+    public void LoadConfig(string path, Action<string> callback)
+    {
+        _loader.LoadConfig(path, callback);
     }
 }

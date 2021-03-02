@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Object = UnityEngine.Object;
+using UnityEngine.Networking;
+using Object = UnityEngine.Object;
+
 
 public class ResourceLoader : ILoader
 {
@@ -24,5 +27,28 @@ public class ResourceLoader : ILoader
     public T[] LoadAll<T>(string path) where T : Object
     {
         return Resources.LoadAll<T>(path);   
+    }
+
+    public void LoadConfig(string path, Action<string> callback)
+    {
+        CoroutineMgr.Single.Execute(Config(path, callback));
+    }
+
+    private IEnumerator Config(string path, Action<string> callback)
+    {
+        if(Application.platform != RuntimePlatform.Android)
+        {
+            path = "file://" + path;
+        }
+
+        UnityWebRequest request = UnityWebRequest.Get(path);
+        yield return request.SendWebRequest();
+
+        if (request.error != null)
+        {
+            Debug.LogError("资源加载错误，资源路径为：" + path);
+        }
+
+        callback(request.downloadHandler.text);
     }
 }

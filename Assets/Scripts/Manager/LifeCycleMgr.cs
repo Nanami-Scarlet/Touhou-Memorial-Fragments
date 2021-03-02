@@ -25,7 +25,6 @@ public class LifeCycleMgr : MonoSingleton<LifeCycleMgr>, IInit
 
     private void Update()
     {
-        //todo:游戏暂停时，Update函数不应该执行
         LifeCycleConfig.LifeFun[LifeName.UPDATE]();
     }
 }

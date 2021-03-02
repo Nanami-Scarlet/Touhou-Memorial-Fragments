@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneMgr : MonoSingleton<SceneMgr>
+public class SceneMgr : NormalSingleton<SceneMgr>
 {
     private AsyncOperation _async;
     private Dictionary<SceneName, int> _dicSceneTask = new Dictionary<SceneName, int>();
@@ -26,7 +26,7 @@ public class SceneMgr : MonoSingleton<SceneMgr>
     {
         ResetData();
         _totalTask = _dicSceneTask[name];               //绑定任务数
-        StartCoroutine(AsyncLoad(name.ToString()));
+        CoroutineMgr.Single.Execute(AsyncLoad(name.ToString()));
     }
 
     private IEnumerator AsyncLoad(string name)

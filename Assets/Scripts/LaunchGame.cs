@@ -19,9 +19,15 @@ public class LaunchGame : MonoBehaviour
     {
         LifeCycleMgr.Single.Init();
         UIManager.Single.Show(Paths.PREFAB_START_VIEW);
-        AudioMgr.Single.PlayBGM(Const.TITLE_BGM);
+        AudioMgr.Single.PlayBGM(Paths.AUDIO_TITLE_BGM);
         GameStateModel.Single.CurrentScene = SceneName.Main;
         GameStateModel.Single.Status = GameStatus.Pause;
+
+        //IReader reader = ReaderMgr.Single.GetReader(Paths.CONFIG_ENEMY);
+        //reader["state1_1"].Count(num => 
+        //{
+        //    Debug.Log(num);
+        //});
 
         DontDestroyOnLoad(gameObject);
     }

@@ -9,8 +9,15 @@ public class SceneConfig : NormalSingleton<SceneConfig>, IInit
     {
         SceneMgr.Single.AddSceneLoad(SceneName.Game, (Action callback) =>
         {
-            GameRoot.Single.Init();
+            GameObject root = new GameObject("GameRoot");
+            root.AddComponent<GameRoot>().Init();
+
             callback();
+        });
+
+        SceneMgr.Single.AddSceneLoad(SceneName.Game, (Action callback) => 
+        {
+            PoolMgr.Single.Init(callback);
         });
     }
 }
