@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameController : ControllerBase
 {
+    public GameView _view;
+
     public override void InitChild()
     {
         

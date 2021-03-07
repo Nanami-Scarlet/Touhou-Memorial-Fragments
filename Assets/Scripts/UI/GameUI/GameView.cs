@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameView : ViewBase
+public class GameView : ViewBase, IUpdate
 {
     public float _animSpeed = 0.3f;
 
@@ -70,15 +70,15 @@ public class GameView : ViewBase
     private Text _txtGrazeNum;
     #endregion
 
-    #region Stage
-    public Transform _transStage;
-    private Image _imgStageBG;
-    private Text _txtStateTitle;
-    private Text _txtStageName;
+    #region BorderLine
+    public Transform _transBorderLine;
+    private Text _txtBorderTitle;
+    private Image _imgBorderLine;
     #endregion
 
-
     public Image _imgSacrifice;
+
+    private GameObject _objStageLabel;
 
 
     public override void InitChild()
@@ -119,12 +119,25 @@ public class GameView : ViewBase
         _imgGrazeLine = _transGraze.GetChild(0).GetComponent<Image>();
         _txtGrazeLabel = _transGraze.GetChild(1).GetComponent<Text>();
         _txtGrazeNum = _transGraze.GetChild(2).GetComponent<Text>();
+
+        _imgBorderLine = _transBorderLine.GetChild(0).GetComponent<Image>();
+        _txtBorderTitle = _transBorderLine.GetChild(1).GetComponent<Text>();
     }
 
     public override void Show()
     {
+        _objStageLabel = LoadMgr.Single.LoadPrefabAndInstantiate(Paths.PREFAB_STAGE_LABEL, transform);
         ResetAnim();
         PlayAnim();
+
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_STAGE, StageAnim);
+    }
+
+    public override void Hide()
+    {
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_STAGE, StageAnim);
+
+        Destroy(_objStageLabel);
     }
 
     private void PlayAnim()
@@ -218,6 +231,13 @@ public class GameView : ViewBase
 
         _imgSacrifice.transform.DOLocalRotate(Vector3.zero, 0.5f);
         _imgSacrifice.DOFade(1, 0.5f);
+
+        _transBorderLine.DOLocalRotate(Vector3.zero, 0.5f);
+        _txtBorderTitle.DOColor(new Color(0, 0.9f, 1), 0.2f).SetLoops(15, LoopType.Restart);
+        TimeMgr.Single.AddTimeTask(() => 
+        {
+            _transBorderLine.gameObject.SetActive(false);
+        }, 2.1f, TimeUnit.Second);
     }
 
     private void ResetAnim()
@@ -296,8 +316,32 @@ public class GameView : ViewBase
         _txtGrazeNum.color = new Color(t.r, t.g, t.b, 0);
     }
 
-    public void StageAnim()
+    private void StageAnim(object[] args)
     {
-        //todo:stage动画
+        _objStageLabel.SetActive(true);
+
+        Transform transStage = GameUtil.SetSubActive(_objStageLabel.transform, GameModel.Single.StageNum);
+        Image bg = transStage.GetChild(0).GetComponent<Image>();
+        Text label = transStage.GetChild(1).GetComponent<Text>();
+        Text title = transStage.GetChild(2).GetComponent<Text>();
+
+        Sequence sequence = DOTween.Sequence();
+        sequence.Join(bg.transform.DOLocalMoveX(120, 3));
+        sequence.Join(bg.DOFade(0.5f, 3));
+        sequence.Join(bg.transform.DOLocalRotate(Vector3.back * 1080, 3, RotateMode.FastBeyond360).SetEase(Ease.OutCirc));
+        sequence.Insert(1f, label.DOFade(1, 2));
+        sequence.Insert(2f, title.DOFade(1, 1));
+
+        sequence.OnComplete(() => 
+        {
+            bg.DOFade(0, 1);
+            label.DOFade(0, 1);
+            title.DOFade(0, 1);
+
+            TimeMgr.Single.AddTimeTask(() =>
+            {
+                _objStageLabel.SetActive(false);
+            }, 1.1f, TimeUnit.Second);
+        });
     }
 }

@@ -9,15 +9,17 @@ public class SceneConfig : NormalSingleton<SceneConfig>, IInit
     {
         SceneMgr.Single.AddSceneLoad(SceneName.Game, (Action callback) =>
         {
+            PoolMgr.Single.Init(callback);
+        });
+
+        SceneMgr.Single.AddSceneLoad(SceneName.Game, (Action callback) =>
+        {
+            UIManager.Single.Show(Paths.PREFAB_GAME_VIEW);
+
             GameObject root = new GameObject("GameRoot");
             root.AddComponent<GameRoot>().Init();
 
             callback();
-        });
-
-        SceneMgr.Single.AddSceneLoad(SceneName.Game, (Action callback) => 
-        {
-            PoolMgr.Single.Init(callback);
         });
     }
 }

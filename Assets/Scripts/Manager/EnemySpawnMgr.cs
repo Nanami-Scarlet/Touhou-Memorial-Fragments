@@ -39,14 +39,12 @@ public class EnemySpawnMgr : MonoBehaviour
         string enemyName = _dicIDEnemy[id];
         GameObject enemy = PoolMgr.Single.Spawn(enemyName);
 
-        //GameObject enemy = LoadMgr.Single.LoadPrefabAndInstantiate(Paths.PREFAB_ENEMY1);
-
-        enemy.GetComponent<EnemyController>().Init();
+        enemy.GetComponent<EnemyController>().Init(data);
 
         _listEnemy.Add(enemy);
     }
 
-    public void DeSpawn(GameObject enemy)       //todo:利用message系统
+    public void DeSpawn(GameObject enemy)
     {
         PoolMgr.Single.DeSpawn(enemy);
         _listEnemy.Remove(enemy);

@@ -29,26 +29,15 @@ public class ResourceLoader : ILoader
         return Resources.LoadAll<T>(path);   
     }
 
-    public void LoadConfig(string path, Action<string> callback)
+    public TextAsset LoadConfig(string path)
     {
-        CoroutineMgr.Single.Execute(Config(path, callback));
-    }
-
-    private IEnumerator Config(string path, Action<string> callback)
-    {
-        if(Application.platform != RuntimePlatform.Android)
+        TextAsset config = Resources.Load<TextAsset>(path);
+        if (!config)
         {
-            path = "file://" + path;
+            Debug.LogError("该文件路径不存在，路径为：" + path);
+            return null;
         }
 
-        UnityWebRequest request = UnityWebRequest.Get(path);
-        yield return request.SendWebRequest();
-
-        if (request.error != null)
-        {
-            Debug.LogError("资源加载错误，资源路径为：" + path);
-        }
-
-        callback(request.downloadHandler.text);
+        return config;
     }
 }

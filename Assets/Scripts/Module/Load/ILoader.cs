@@ -8,5 +8,5 @@ public interface ILoader
     GameObject LoadPrefabAndInstantiate(string path, Transform parent);
     T Load<T>(string path) where T : Object;
     T[] LoadAll<T>(string path) where T : Object;
-    void LoadConfig(string path, Action<string> callback);
+    TextAsset LoadConfig(string path);
 }

@@ -47,7 +47,7 @@ public class PlayerUComtroller : ControllerBase
         if(SceneMgr.Single.Process() == 1)
         {
             UIManager.Single.Hide(Paths.PREFAB_PLAYER_VIEW);
-            UIManager.Single.Show(Paths.PREFAB_GAME_VIEW);
+            //UIManager.Single.Show(Paths.PREFAB_GAME_VIEW);
 
             AudioMgr.Single.PlayBGM(Paths.AUDIO_ONE_ONE_BGM);
 

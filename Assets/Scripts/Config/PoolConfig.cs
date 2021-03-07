@@ -13,6 +13,30 @@ public class PoolConfig
             new PoolData
             {
                  Path = Paths.PREFAB_ENEMY1,
+                 Count = 15
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_ENEMY2,
+                 Count = 15
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_ENEMY3,
+                 Count = 15
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_ENEMY4,
+                 Count = 15
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_ENEMY9,
                  Count = 10
             },
 

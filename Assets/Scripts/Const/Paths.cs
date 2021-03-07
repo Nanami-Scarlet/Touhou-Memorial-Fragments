@@ -13,6 +13,7 @@ public class Paths
     public const string PREFAB_PLAYER_VIEW = PREFAB_UI_FOLDER + "PlayerView";
     public const string PREFAB_GAME_VIEW = PREFAB_UI_FOLDER + "GameView";
     public const string PREFAB_PAUSE_VIEW = PREFAB_UI_FOLDER + "PauseView";
+    public const string PREFAB_STAGE_LABEL = PREFAB_UI_FOLDER + "Stage";
 
     private const string PREFAB_GAME_FOLDER = PREFAB_FOLDER + "Game/";
     private const string PREFAB_PLAYER_FOLDER = PREFAB_GAME_FOLDER + "Player/";
@@ -47,6 +48,6 @@ public class Paths
     /// <summary>
     /// 配置文件路径
     /// </summary>
-    private static readonly string CONFIG_FOLDER = Application.streamingAssetsPath;
-    public static readonly string CONFIG_ENEMY = CONFIG_FOLDER + "/EnemyConfig.json";
+    private static readonly string CONFIG_FOLDER = "Config/";
+    public static readonly string CONFIG_ENEMY = CONFIG_FOLDER + "EnemyConfig";
 }

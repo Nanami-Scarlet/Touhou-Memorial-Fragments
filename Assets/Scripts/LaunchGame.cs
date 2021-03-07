@@ -22,12 +22,7 @@ public class LaunchGame : MonoBehaviour
         AudioMgr.Single.PlayBGM(Paths.AUDIO_TITLE_BGM);
         GameStateModel.Single.CurrentScene = SceneName.Main;
         GameStateModel.Single.Status = GameStatus.Pause;
-
-        //IReader reader = ReaderMgr.Single.GetReader(Paths.CONFIG_ENEMY);
-        //reader["state1_1"].Count(num => 
-        //{
-        //    Debug.Log(num);
-        //});
+        //LoadMgr.Single.LoadConfig(Paths.CONFIG_ENEMY);
 
         DontDestroyOnLoad(gameObject);
     }

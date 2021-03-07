@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class PoolMgr : MonoSingleton<PoolMgr>
@@ -9,7 +8,7 @@ public class PoolMgr : MonoSingleton<PoolMgr>
     private Dictionary<string, GameObjectPool> _dicPool = new Dictionary<string, GameObjectPool>();
     private bool _isInit = false;
 
-    public async void Init(Action sceneAction)
+    public void Init(Action sceneAction)
     {
         if (!_isInit)
         {
@@ -24,8 +23,6 @@ public class PoolMgr : MonoSingleton<PoolMgr>
                 prefab = LoadMgr.Single.LoadPrefab(data.Path);
                 pool = new GameObjectPool(prefab, gameObject, data.Count);
                 _dicPool.Add(data.Path, pool);
-
-                await Task.Delay(100);
             }
         }
         _isInit = true;
@@ -46,12 +43,13 @@ public class PoolMgr : MonoSingleton<PoolMgr>
 
     public bool DeSpawn(GameObject go)
     {
-        string name = go.name.Replace("Clone", "");
+        string name = go.name.Replace("(Clone)", "");
         foreach(var pair in _dicPool)
         {
             if (pair.Key.Contains(name))
             {
                 pair.Value.DeSpawn(go);
+                --GameModel.Single.EnemyCount;
                 return true;
             }
         }

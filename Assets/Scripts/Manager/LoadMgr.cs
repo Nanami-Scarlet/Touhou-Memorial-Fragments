@@ -34,8 +34,8 @@ public class LoadMgr : NormalSingleton<LoadMgr>, ILoader
         return _loader.LoadPrefab(path);
     }
 
-    public void LoadConfig(string path, Action<string> callback)
+    public TextAsset LoadConfig(string path)
     {
-        _loader.LoadConfig(path, callback);
+        return _loader.LoadConfig(path);
     }
 }

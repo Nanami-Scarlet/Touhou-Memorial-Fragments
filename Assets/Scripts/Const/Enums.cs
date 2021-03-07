@@ -29,8 +29,11 @@ public enum TimeUnit
     Second,
 }
 
-public enum StageState
+public enum Stage
 {
-    Start,
-
+    stage1_1,
+    //stage1_2,
+    //stage2_1,
+    //stage2_2,
+    COUNT
 }
