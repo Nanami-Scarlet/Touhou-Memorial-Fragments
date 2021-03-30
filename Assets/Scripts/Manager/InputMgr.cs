@@ -11,7 +11,8 @@ public class InputMgr : NormalSingleton<InputMgr>, IInput, IUpdate
     public InputMgr()
     {
         _input = new InputKey();
-        _input.AddKeyEvent((KeyCode key) => MessageMgr.Single.DispatchMsg(key.ToString()));
+        _input.AddKeyEvent((key) => MessageMgr.Single.DispatchMsg(key.ToString()));
+        _input.AddKeyGamingEvent((key, state) => MessageMgr.Single.DispatchMsg(GetKey(key, state)));
     }
 
     public void AddListener(KeyCode key)
@@ -46,13 +47,13 @@ public class InputMgr : NormalSingleton<InputMgr>, IInput, IUpdate
         LifeCycleMgr.Single.Add(LifeName.UPDATE, this);
     }
 
-    public void AddUpdateListener(Action action)
+    public string GetKey(KeyCode key, InputState state)
     {
-        _input.AddUpdateListener(action);
+        return key + state.ToString();
     }
 
-    public void RemvoeUpdateListener(Action action)
+    public void UpdateKeyState()
     {
-        _input.RemoveUpdateListener(action);
+        _input.UpdateKeyState();
     }
 }

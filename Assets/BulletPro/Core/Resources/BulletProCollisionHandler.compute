@@ -1,0 +1,278 @@
+﻿#pragma kernel ProcessBulletCollisions
+
+// Bullet and receiver data stored here.
+struct ColliderInfo
+{
+	int index; // 4 bytes, sign stores shape (positive = circle, negative = line)
+	float3 position; // 12 bytes, transform.position
+	float3 offset; // 12 bytes, the bullet collider's offset
+	float3 orientation; // 12 bytes, the bullet's transform.up
+	float3 extraVector; // 12 bytes, the receiver's lossy scale or the bullet's transform.right
+	float scale; // 4 bytes, the bullet's internal scale
+	float size; // 4 bytes
+	uint tags; // 4 bytes
+	// total 64B	
+};
+
+// When collision happens, we store relative data here.
+struct CollisionInfo
+{
+	int bulletIndex; // 4 bytes, index of emitter
+	int receiverIndex; // 4 bytes, index of receiver
+	float3 position; // 12 bytes, location of collision
+	// total 20B
+};
+
+// These ints are passed by BulletCollisionManager at every frame
+int numberOfBullets = 1; // number of elements in the bullets buffer
+int numberOfReceivers = 1; // number of elements in the receivers buffer
+int maxCollisions = 1; // max amount of collisions that can be processed
+
+// Buffers
+RWStructuredBuffer<ColliderInfo> bullets; // read-only
+RWStructuredBuffer<ColliderInfo> receivers; // read-only
+RWStructuredBuffer<CollisionInfo> collisions; // read-write, order is critical here! (shouldn't write twice to a same slot)
+RWStructuredBuffer<int> curNumberOfCollisions; // read-write, stores current number of processed collisions
+
+// courtesy of wiki.unity3d.com/index.php/3d_Math_functions
+int PointOnWhichSideOfLineSegment(half3 startPoint, half3 endPoint, half3 center)
+{
+	half3 lineVec = endPoint - startPoint;
+	half3 pointVec = center - startPoint;
+
+	half _dot = dot(pointVec, lineVec);
+
+	int result = 1;
+	if(_dot > 0)
+		result = 2*step(length(lineVec), length(pointVec));
+		// 0 means point is on the line segment
+
+	return result;
+}
+
+// courtesy of wiki.unity3d.com/index.php/3d_Math_functions
+half3 ProjectPointOnLine(half3 linePoint, half3 lineVec, half3 center)
+{
+	//get vector from point on line to point in space
+	half3 linePointToPoint = center - linePoint;
+
+	half t = dot(linePointToPoint, lineVec);
+
+	return linePoint + lineVec * t;
+}
+
+// courtesy of wiki.unity3d.com/index.php/3d_Math_functions
+bool ProjectPointOnLineSegment(half3 startPoint, half3 endPoint, half3 center, out half3 projection)
+{
+	half3 lineVec = endPoint - startPoint;
+
+	half3 projectedPoint = ProjectPointOnLine(startPoint, normalize(lineVec), center);
+
+	int side = PointOnWhichSideOfLineSegment(startPoint, endPoint, projectedPoint);
+
+	projection = half3(0,0,0);
+
+	if(side == 0) projection = projectedPoint;
+	if(side == 1) projection = startPoint;
+	if(side == 2) projection = endPoint;
+	return side == 0;
+}
+
+// check if a single point is within a circle
+bool IsPointInCircle(half3 pointCoords, half3 center, half radius)
+{
+	half dist = length(pointCoords - center);
+	return dist < radius;
+}
+
+// Compute collisions between a circle bullet and a circle receiver
+bool CircleCircle(ColliderInfo b, ColliderInfo r, out half3 collisionPoint)
+{
+	// determining positions accounting scale
+	half3 posB = b.position + b.scale * (b.extraVector * b.offset.x + b.orientation * b.offset.y);
+	half3 posR = r.position + (r.extraVector * r.offset.x * r.offset.z) + (r.orientation * r.offset.y * r.scale);
+
+	half scaledReceiverRadius = r.size * (r.offset.z + r.scale) * 0.5;
+
+	// Calculating collisions based on square distance
+	half x = posB.x - posR.x;
+	half y = posB.y - posR.y;
+	half z = posB.z - posR.z;
+	half dist2 = x * x + y * y + z * z;
+	half radius = (b.size * b.scale + scaledReceiverRadius);
+
+	collisionPoint = b.position * 0.5 + r.position * 0.5;
+
+	return (dist2 < (radius * radius));
+}
+
+// Compute collisions between a circle bullet and a line receiver (or the opposite)
+bool CircleLine(ColliderInfo b, ColliderInfo r, out half3 collisionPoint)
+{
+	half3 pos = b.position + b.scale * (b.extraVector * b.offset.x + b.orientation * b.offset.y);
+
+	half3 brPos = r.position + (r.extraVector * r.offset.x * r.offset.z) + (r.orientation * r.offset.y * r.scale);
+	half brScale = r.scale;
+	half3 brEnd = brPos + r.orientation * brScale * r.size;
+
+	collisionPoint = half3(0,0,0);
+
+	half3 proj = half3(0,0,0);
+	int canProj = (int)ProjectPointOnLineSegment(brPos, brEnd, pos, proj);
+	half rad = b.size * b.scale;
+	int startInCircle = (int)IsPointInCircle(brPos, pos, rad);
+	int endInCircle = (int)IsPointInCircle(brEnd, pos, rad);
+	
+	// explanation : if projection of center on segment exists, there's collision in this point, provided the point is close enough to our circle.
+	// if it doesn't exist, the only available way of colliding is that either extremity of the line is inside the circle
+	// which means said extremity is the collision point.
+	// if neither extremity is in circle and there's no projection point, there's no collision at all.
+
+	collisionPoint = proj;
+	int cannotProj = 1 - canProj;
+	collisionPoint = lerp(collisionPoint, brPos, cannotProj*startInCircle);
+	collisionPoint = lerp(collisionPoint, brEnd, cannotProj*endInCircle);
+	
+	half dist = length(pos - proj);
+	return (bool)((cannotProj * (startInCircle+endInCircle)) + (canProj*(int)(dist<rad)));
+}
+
+// Compute collisions between a line bullet and a circle receiver
+bool LineCircle(ColliderInfo b, ColliderInfo r, out half3 collisionPoint)
+{
+	collisionPoint = half3(0,0,0);
+
+	half3 bStart = half3(b.position.x, b.position.y, b.position.z);
+	// offset actually points to lineStart
+	bStart += b.scale * (b.extraVector * b.offset.x + b.orientation * b.offset.y);
+	//half3 bEnd = bStart + b.orientation * b.size * b.scale;
+	// offset.z and size actually point to lineEnd.x and .y
+	half3 bEnd = b.position + b.scale * (b.extraVector * b.offset.z + b.orientation * b.size);
+
+	half3 brPos = r.position + (r.extraVector * r.offset.x * r.offset.z) + (r.orientation * r.offset.y * r.scale);
+
+	half3 proj = half3(0,0,0);
+	int canProj = (int)ProjectPointOnLineSegment(bStart, bEnd, brPos, proj);
+	half rad = r.size * (r.offset.z + r.scale) * 0.5;	
+	int startInCircle = (int)IsPointInCircle(bStart, brPos, rad);
+	int endInCircle = (int)IsPointInCircle(bEnd, brPos, rad);
+
+	// same logic as Circle-Line, see above for explanation
+	
+	collisionPoint = proj;
+	int cannotProj = 1 - canProj;
+	collisionPoint = lerp(collisionPoint, bStart, cannotProj*startInCircle);
+	collisionPoint = lerp(collisionPoint, bEnd, cannotProj*endInCircle);
+	
+	half dist = length(brPos - proj);
+	return (bool)((cannotProj * (startInCircle+endInCircle)) + (canProj*(int)(dist<rad)));
+}
+
+// Maths for intersecting two lines
+bool LineLineIntersection(out half3 intersection, half3 linePoint1, half3 lineVec1, half3 linePoint2, half3 lineVec2)
+{
+	half3 lineVec3 = linePoint2 - linePoint1;
+	half3 crossVec1and2 = cross(lineVec1, lineVec2);
+	half3 crossVec3and2 = cross(lineVec3, lineVec2);
+
+	half planarFactor = dot(lineVec3, crossVec1and2);
+
+	// is coplanar, and not parallel
+	half sqrMagnitude = dot(crossVec1and2, crossVec1and2);
+	if ((abs(planarFactor) < 0.0001) && (sqrMagnitude > 0.0001))
+	{
+		half s = (dot(crossVec3and2, crossVec1and2)) / sqrMagnitude;
+		intersection = linePoint1 + (lineVec1 * s);
+		return true;
+	}
+	else
+	{
+		intersection = half3(0,0,0);
+		return false;
+	}
+}
+
+// Compute collisions between a line bullet and a line receiver
+bool LineLine(ColliderInfo b, ColliderInfo r, out half3 collisionPoint)
+{
+	// Calculating line starts
+	half3 colStart = half3(b.position.x, b.position.y, b.position.z);
+	// offset actually points to lineStart
+	colStart += b.scale * (b.extraVector * b.offset.x + b.orientation * b.offset.y);
+	half3 brStart = r.position + (r.extraVector * r.offset.x * r.offset.z) + (r.orientation * r.offset.y * r.scale);
+
+	// Getting actual intersection
+	half3 intersect = half3(30000, 30000, 30000);
+	collisionPoint = intersect;
+	// offset.z and size actually point to lineEnd.x and .y
+	half3 colEnd = b.position + b.scale * (b.extraVector * b.offset.z + b.orientation * b.size);
+	if (!LineLineIntersection(intersect, colStart, normalize(colEnd-colStart), brStart, r.orientation))
+		return false;
+	
+	// Calculating line ends
+	//half3 colEnd = colStart + b.orientation * b.size * b.scale;
+	half brScale = r.scale;
+	half3 brEnd = brStart + r.orientation * r.size * brScale;
+
+	// is the intersection on both segments? (this language lacks a Vector3.InverseLerpUnclamped.)
+	half colX = (intersect.x - colStart.x) / (colEnd.x - colStart.x); if (colX <= 0 || colX >= 1) return false;
+	half colY = (intersect.y - colStart.y) / (colEnd.y - colStart.y); if (colY <= 0 || colY >= 1) return false;
+	half colZ = (intersect.z - colStart.z) / (colEnd.z - colStart.z); if (colZ <= 0 || colZ >= 1) return false;
+	half brX = (intersect.x - brStart.x) / (brEnd.x - brStart.x); if (brX <= 0 || brX >= 1) return false;
+	half brY = (intersect.y - brStart.y) / (brEnd.y - brStart.y); if (brY <= 0 || brY >= 1) return false;
+	half brZ = (intersect.z - brStart.z) / (brEnd.z - brStart.z); if (brZ <= 0 || brZ >= 1) return false;
+
+	return true;
+}
+
+// XYZ can't map to the ever-changing amount of bullets and receivers. Instead we just go for the maximum available with SM4, which is 768.
+[numthreads(32,24,1)]
+void ProcessBulletCollisions(uint id : SV_GroupIndex, uint3 idg : SV_GroupID)
+{
+	// Finding the bullet and receiver indexes :
+	
+	// Get an absolute one-dimensional layout of SV_DispatchThreadID. (Reminder: this 768 is numthreads.x*numthreads.y, and shouldn't be changed)
+	uint layout = id + (768 * idg.x); // <- and this works because the dispatch is (numberOfThreads, 1, 1).
+	
+	// From this layout, retrieve bullet index and receiver index as passed in buffers.
+	// we assume the following : layout = bulletID + receiverID * numberOfBullets
+	uint bulletID = layout % numberOfBullets;
+	uint receiverID = (layout - bulletID) / numberOfBullets;
+
+	// Ensure we don't run into an OutOfRangeException
+	if (bulletID >= (uint)numberOfBullets) return;
+	if (receiverID >= (uint)numberOfReceivers) return;
+
+	ColliderInfo b = bullets[bulletID];
+	ColliderInfo r = receivers[receiverID];
+
+	half3 collisionPoint = half3(0,0,0);
+	half3 collisionPointCC = half3(0,0,0);
+	half3 collisionPointCL = half3(0,0,0);
+	half3 collisionPointLC = half3(0,0,0);
+	half3 collisionPointLL = half3(0,0,0);
+
+	// Fetching the right formula based on collider shapes
+	int cc = CircleCircle(b, r, collisionPointCC) * (int)(b.index > 0) * (int)(r.index > 0);
+	int cl = CircleLine(b, r, collisionPointCL)   * (int)(b.index > 0) * (int)(r.index < 0);
+	int lc = LineCircle(b, r, collisionPointLC)   * (int)(b.index < 0) * (int)(r.index > 0);
+	int ll = LineLine(b, r, collisionPointLL)	  * (int)(b.index < 0) * (int)(r.index < 0);
+	int thereIsCollision = cc + cl + lc + ll;
+	collisionPoint = (cc*collisionPointCC) + (cl*collisionPointCL) + (lc*collisionPointLC) + (ll*collisionPointLL);
+
+	//if ((bullets[bulletID].tags & receivers[receiverID].tags) == 0) thereIsCollision = false;
+	thereIsCollision *= (bullets[bulletID].tags & receivers[receiverID].tags);
+
+	// Storing collision data
+	if (thereIsCollision > 0)
+	{
+		int newColl = 0;
+		InterlockedAdd(curNumberOfCollisions[0], 1, newColl);
+		newColl = min(newColl, maxCollisions);
+		
+		// Actual buffer writing - index could be negative to store collider shape, so we restore it to the range "1 to n-1"
+		collisions[newColl].bulletIndex = (abs(bullets[bulletID].index))-1;
+		collisions[newColl].receiverIndex = (abs(receivers[receiverID].index))-1;
+		collisions[newColl].position = collisionPoint;
+	}
+}

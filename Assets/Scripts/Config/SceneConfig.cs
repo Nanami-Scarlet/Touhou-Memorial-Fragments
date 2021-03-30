@@ -7,19 +7,13 @@ public class SceneConfig : NormalSingleton<SceneConfig>, IInit
 {
     public void Init()
     {
-        SceneMgr.Single.AddSceneLoad(SceneName.Game, (Action callback) =>
+        SceneMgr.Single.AddSceneLoad(SceneName.Game, () =>
         {
-            PoolMgr.Single.Init(callback);
-        });
-
-        SceneMgr.Single.AddSceneLoad(SceneName.Game, (Action callback) =>
-        {
-            UIManager.Single.Show(Paths.PREFAB_GAME_VIEW);
+            //todo:预初始化两个UI--PauseView、CheatView
+            UIManager.Single.PreLoad(Paths.PREFAB_PAUSE_VIEW);
 
             GameObject root = new GameObject("GameRoot");
             root.AddComponent<GameRoot>().Init();
-
-            callback();
         });
     }
 }

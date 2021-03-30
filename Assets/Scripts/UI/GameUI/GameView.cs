@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameView : ViewBase, IUpdate
+public class GameView : ViewBase
 {
     public float _animSpeed = 0.3f;
 
@@ -13,14 +13,14 @@ public class GameView : ViewBase, IUpdate
     #region HighScore
     public Transform _transHighScore;
     private Text _txtHighLabel;
-    private Text _txtHighNum;
+    private Text _txtHighScore;
     private Image _imgHighLine;
     #endregion
 
     #region CurrentScore
     public Transform _transCurScore;
     private Text _txtCurLabel;
-    private Text _txtCurNum;
+    private Text _txtCurScore;
     private Image _imgCurLine;
     #endregion
 
@@ -33,6 +33,7 @@ public class GameView : ViewBase, IUpdate
     private Text _txtLifeFragment;
     private Text _txtLifeNum;
     private Text _txtLifeTotal;
+    private Transform _transLifeDisable;
     #endregion
 
     #region Bomb
@@ -76,6 +77,16 @@ public class GameView : ViewBase, IUpdate
     private Image _imgBorderLine;
     #endregion
 
+    #region Memory
+    public Transform _transMemory;
+    public Transform[] _memoryYins;
+    private Image _imgBarBg;
+    private Image _imgBarFg;
+    private Image _imgBarPoint;
+    private Text _txtBarProcess;
+    private float _imgBarFgWidth;
+    #endregion
+
     public Image _imgSacrifice;
 
     private GameObject _objStageLabel;
@@ -84,11 +95,11 @@ public class GameView : ViewBase, IUpdate
     public override void InitChild()
     {
         _txtHighLabel = _transHighScore.GetChild(1).GetComponent<Text>();
-        _txtHighNum = _transHighScore.GetChild(2).GetComponent<Text>();
+        _txtHighScore = _transHighScore.GetChild(2).GetComponent<Text>();
         _imgHighLine = _transHighScore.GetChild(0).GetComponent<Image>();
 
         _txtCurLabel = _transCurScore.GetChild(1).GetComponent<Text>();
-        _txtCurNum = _transCurScore.GetChild(2).GetComponent<Text>();
+        _txtCurScore = _transCurScore.GetChild(2).GetComponent<Text>();
         _imgCurLine = _transCurScore.GetChild(0).GetComponent<Image>();
 
         _txtLifeLabel = _transLife.GetChild(1).GetComponent<Text>();
@@ -97,6 +108,7 @@ public class GameView : ViewBase, IUpdate
         _txtLifeFragment = _transLife.GetChild(3).GetComponent<Text>();
         _txtLifeNum = _transLife.GetChild(4).GetComponent<Text>();
         _txtLifeTotal = _transLife.GetChild(5).GetComponent<Text>();
+        _transLifeDisable = _transLife.GetChild(6);
 
         _txtBombLabel = _transBomb.GetChild(1).GetComponent<Text>();
         _transBombItem = _transBomb.GetChild(2);
@@ -120,6 +132,12 @@ public class GameView : ViewBase, IUpdate
         _txtGrazeLabel = _transGraze.GetChild(1).GetComponent<Text>();
         _txtGrazeNum = _transGraze.GetChild(2).GetComponent<Text>();
 
+        _imgBarBg = _transMemory.GetChild(1).GetComponent<Image>();
+        _imgBarFg = _transMemory.GetChild(2).GetComponent<Image>();
+        _imgBarPoint = _transMemory.GetChild(2).GetChild(0).GetComponent<Image>();
+        _txtBarProcess = _transMemory.GetChild(3).GetComponent<Text>();
+        _imgBarFgWidth = _imgBarFg.GetComponent<RectTransform>().sizeDelta.x;
+
         _imgBorderLine = _transBorderLine.GetChild(0).GetComponent<Image>();
         _txtBorderTitle = _transBorderLine.GetChild(1).GetComponent<Text>();
     }
@@ -127,15 +145,35 @@ public class GameView : ViewBase, IUpdate
     public override void Show()
     {
         _objStageLabel = LoadMgr.Single.LoadPrefabAndInstantiate(Paths.PREFAB_STAGE_LABEL, transform);
+        ResetData();
         ResetAnim();
         PlayAnim();
 
         MessageMgr.Single.AddListener(MsgEvent.EVENT_STAGE, StageAnim);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_SCORE, UpdateScore);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_MANA, UpdateMana);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_LIFT, UpdateLife);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_BOMB, UpdateBomb);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_GRAZE, UpdateGraze);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_POINT, UpdatePoint);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_MEMORY, UpdateMemory);
     }
 
     public override void Hide()
     {
+        base.Hide();
+
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_STAGE, StageAnim);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_SCORE, UpdateScore);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_MANA, UpdateMana);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_LIFT, UpdateLife);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_BOMB, UpdateBomb);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_GRAZE, UpdateGraze);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_POINT, UpdatePoint);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_MEMORY, UpdateMemory);
+
+
+        DOTween.KillAll();
 
         Destroy(_objStageLabel);
     }
@@ -155,7 +193,7 @@ public class GameView : ViewBase, IUpdate
         #region HighScore动画
         Sequence high = DOTween.Sequence();
         high.Join(_txtHighLabel.DOFade(1, _animSpeed));
-        high.Join(_txtHighNum.DOFade(1, _animSpeed));
+        high.Join(_txtHighScore.DOFade(1, _animSpeed));
         high.Join(_imgHighLine.DOFade(0.5f, _animSpeed));
         high.Pause();
         #endregion
@@ -163,7 +201,7 @@ public class GameView : ViewBase, IUpdate
         #region CurrentScore动画
         Sequence cur = DOTween.Sequence();
         cur.Join(_txtCurLabel.DOFade(1, _animSpeed));
-        cur.Join(_txtCurNum.DOFade(1, _animSpeed));
+        cur.Join(_txtCurScore.DOFade(1, _animSpeed));
         cur.Join(_imgCurLine.DOFade(0.5f, _animSpeed));
         cur.Pause();
         #endregion
@@ -202,6 +240,15 @@ public class GameView : ViewBase, IUpdate
         mana.Pause();
         #endregion
 
+        #region Memory动画
+        Sequence memory = DOTween.Sequence();
+        memory.Join(_imgBarBg.DOFade(1, 0.5f));
+        memory.Join(_imgBarFg.DOFade(1, 0.5f));
+        memory.Join(_imgBarPoint.DOFade(1, 0.5f));
+        memory.Join(_txtBarProcess.DOFade(1, 0.5f));
+        memory.Pause();
+        #endregion
+
         #region Point动画
         Sequence point = DOTween.Sequence();
         point.Join(_imgPointLine.DOFade(0.5f, _animSpeed));
@@ -227,6 +274,11 @@ public class GameView : ViewBase, IUpdate
         bomb.onComplete += () => mana.Play();
         mana.onComplete += () => point.Play();
         point.onComplete += () => graze.Play();
+        graze.onComplete += () => memory.Play();
+        if(GameStateModel.Single.SelectedDegree == Degree.NORMAL)
+        {
+            memory.onComplete += () => _transLifeDisable.gameObject.SetActive(true);
+        }
         #endregion
 
         _imgSacrifice.transform.DOLocalRotate(Vector3.zero, 0.5f);
@@ -248,15 +300,15 @@ public class GameView : ViewBase, IUpdate
 
         Color t = _txtHighLabel.color;
         _txtHighLabel.color = new Color(t.r, t.g, t.b, 0);
-        t = _txtHighNum.color;
-        _txtHighNum.color = new Color(t.r, t.g, t.b, 0);
+        t = _txtHighScore.color;
+        _txtHighScore.color = new Color(t.r, t.g, t.b, 0);
         t = _imgHighLine.color;
         _imgHighLine.color = new Color(t.r, t.g, t.b, 0);
 
         t = _txtCurLabel.color;
         _txtCurLabel.color = new Color(t.r, t.g, t.b, 0);
-        t = _txtCurNum.color;
-        _txtCurNum.color = new Color(t.r, t.g, t.b, 0);
+        t = _txtCurScore.color;
+        _txtCurScore.color = new Color(t.r, t.g, t.b, 0);
         t = _imgCurLine.color;
         _imgCurLine.color = new Color(t.r, t.g, t.b, 0);
 
@@ -314,6 +366,54 @@ public class GameView : ViewBase, IUpdate
         _txtGrazeLabel.color = new Color(t.r, t.g, t.b, 0);
         t = _txtGrazeNum.color;
         _txtGrazeNum.color = new Color(t.r, t.g, t.b, 0);
+
+        for(int i = 0; i < _memoryYins.Length; ++i)
+        {
+            _memoryYins[i].GetComponent<Image>().enabled = false;
+        }
+        t = _imgBarBg.color;
+        _imgBarBg.color = new Color(t.r, t.g, t.b, 0);
+        t = _imgBarFg.color;
+        _imgBarFg.color = new Color(t.r, t.g, t.b, 0);
+        t = _imgBarPoint.color;
+        _imgBarPoint.color = new Color(t.r, t.g, t.b, 0);
+        t = _txtBarProcess.color;
+        _txtBarProcess.color = new Color(t.r, t.g, t.b, 0);
+
+        _transBorderLine.gameObject.SetActive(true);
+        _transBorderLine.rotation = new Quaternion(0.7071068f, 0, 0, 0.7071068f);
+
+        _transLifeDisable.gameObject.SetActive(false);
+    }
+
+    private void ResetData()
+    {
+        _txtManaNum.text = "1.00";
+        _txtGrazeNum.text = "0";
+
+        _txtCurScore.text = "0";
+        _txtPointNum.text = PlayerModel.Single.Init_Point.ToString();
+        _txtBarProcess.text = "0%";
+        _imgBarFg.fillAmount = 0;
+        _imgBarPoint.transform.localPosition = new Vector3(-170, 0, 0);
+
+        ResetItem(_transLifeItems, PlayerModel.Single.Life);
+        ResetItem(_transBombItems, PlayerModel.Single.Bomb);
+    }
+
+    private void ResetItem(Transform[] transItems, int num)
+    {
+        for(int i = 0; i < 8; ++i)
+        {
+            if (i < num)
+            {
+                transItems[i].GetChild(1).GetComponent<Image>().fillAmount = 1;
+            }
+            else
+            {
+                transItems[i].GetChild(1).GetComponent<Image>().fillAmount = 0;
+            }
+        }
     }
 
     private void StageAnim(object[] args)
@@ -343,5 +443,96 @@ public class GameView : ViewBase, IUpdate
                 _objStageLabel.SetActive(false);
             }, 1.1f, TimeUnit.Second);
         });
+    }
+
+    private void UpdateScore(object[] args)          //这里的参数应该是int
+    {
+        int score = (int)args[0];
+
+        _txtCurScore.text = string.Format("{0:N0}", score);
+        if(score > GameModel.Single.HighScore)
+        {
+            GameModel.Single.HighScore = score;
+            _txtHighScore.text = string.Format("{0:N0}", score);
+        }
+    }
+
+    private void UpdateMana(object[] args)
+    {
+        int mana = (int)args[0];
+
+        int level = mana / 100;
+        int process = mana % 100;
+
+        _txtManaNum.text = level + "." + string.Format("{0:D2}", process);
+    }
+
+    private void UpdateLife(object[] args)
+    {
+        if(GameStateModel.Single.SelectedDegree == Degree.LUNATIC)
+        {
+            int life = PlayerModel.Single.Life;
+
+            ResetItem(_transLifeItems, life);
+            _transLifeItems[life].GetChild(1).GetComponent<Image>().fillAmount
+                = (float)PlayerModel.Single.LifeFragment / Const.FULL_FRAGMENT;
+
+            if (PlayerModel.Single.LifeFragment == Const.FULL_FRAGMENT)
+            {
+                PlayerModel.Single.LifeFragment = 0;
+                ++PlayerModel.Single.Life;
+
+                AudioMgr.Single.PlayGameEff(AudioType.Extend);
+            }
+            _txtLifeNum.text = PlayerModel.Single.LifeFragment.ToString();
+        }
+    }
+
+    private void UpdateBomb(object[] args)
+    {
+        int bomb = PlayerModel.Single.Bomb;
+
+        ResetItem(_transBombItems, bomb);
+        _transBombItems[bomb].GetChild(1).GetComponent<Image>().fillAmount
+            = (float)PlayerModel.Single.BombFragment / Const.FULL_FRAGMENT;
+
+        if (PlayerModel.Single.BombFragment == Const.FULL_FRAGMENT)
+        {
+            PlayerModel.Single.BombFragment = 0;
+            ++PlayerModel.Single.Bomb;
+
+            AudioMgr.Single.PlayGameEff(AudioType.GetBomb);
+        }
+        _txtBombNum.text = PlayerModel.Single.BombFragment.ToString();
+    }
+
+    private void UpdateGraze(object[] args)
+    {
+        int graze = (int)args[0];
+
+        _txtGrazeNum.text = graze.ToString();
+    }
+
+    private void UpdatePoint(object[] args)
+    {
+        //todo:最大得点要更新，不仅仅这么简单
+        int num = PlayerModel.Single.Init_Point + (PlayerModel.Single.Graze / 10) * 10;
+
+        _txtPointNum.text = num.ToString();
+    }
+
+    private void UpdateMemory(object[] args)
+    {
+        for(int i = 0; i < PlayerModel.Single.MemoryFragment; ++i)
+        {
+            _memoryYins[i].GetComponent<Image>().enabled = true;
+        }
+
+        int process = PlayerModel.Single.MemoryProcess;
+        _txtBarProcess.text = process + "%";
+        _imgBarFg.fillAmount = (float)process / 100;
+
+        float posX = (float)process / 100 * _imgBarFgWidth - 170;
+        _imgBarPoint.transform.localPosition = new Vector3(posX, 0, 0);
     }
 }

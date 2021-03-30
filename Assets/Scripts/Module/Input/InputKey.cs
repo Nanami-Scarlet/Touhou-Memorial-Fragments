@@ -8,13 +8,14 @@ public class InputKey : IInput
     private List<KeyCode> _listKeyCode;
     private List<KeyCode> _listGameKeyCode;
     private Action<KeyCode> _keyEvent;
-    private Action _update;
+    private Action<KeyCode, InputState> _keyGamingEvent;
 
     public InputKey()
     {
         _listKeyCode = new List<KeyCode>();
         _listGameKeyCode = new List<KeyCode>();
         _keyEvent = null;
+        _keyGamingEvent = null;
     }
 
     public void AddListener(KeyCode key)
@@ -49,19 +50,14 @@ public class InputKey : IInput
         }
     }
 
-    public void AddUpdateListener(Action action)
-    {
-        _update += action;
-    }
-
-    public void RemoveUpdateListener(Action action)
-    {
-        _update -= action;
-    }
-
     public void AddKeyEvent(Action<KeyCode> keyEvent)
     {
         _keyEvent = keyEvent;
+    }
+
+    public void AddKeyGamingEvent(Action<KeyCode, InputState> keyGamingEvent)
+    {
+        _keyGamingEvent = keyGamingEvent;
     }
 
     public void Execute()
@@ -80,14 +76,27 @@ public class InputKey : IInput
             {
                 if (Input.GetKey(_listGameKeyCode[i]))
                 {
-                    _keyEvent(_listGameKeyCode[i]);
+                    _keyGamingEvent(_listGameKeyCode[i], InputState.PRESS);
                 }
 
                 if (Input.GetKeyUp(_listGameKeyCode[i]))
                 {
-                    _update();
+                    _keyGamingEvent(_listGameKeyCode[i], InputState.UP);
+                }
+
+                if (Input.GetKeyDown(_listGameKeyCode[i]))
+                {
+                    _keyGamingEvent(_listGameKeyCode[i], InputState.DOWN);
                 }
             }
+        }
+    }
+
+    public void UpdateKeyState()
+    {
+        for (int i = 0; i < _listGameKeyCode.Count; ++i)
+        {
+            _keyGamingEvent(_listGameKeyCode[i], InputState.UP);
         }
     }
 }

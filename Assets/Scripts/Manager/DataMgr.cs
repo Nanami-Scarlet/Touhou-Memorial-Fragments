@@ -1,20 +1,27 @@
-﻿using LitJson;
+﻿using BulletPro;
+using LitJson;
 using System.Collections;
 using System.ComponentModel;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class DataMgr : NormalSingleton<DataMgr>
+public class DataMgr : NormalSingleton<DataMgr>, IInit
 {
     private Dictionary<string, StageData> _dicNameStageData = new Dictionary<string, StageData>();
+    private Dictionary<string, Dictionary<string, EmitterProfile>> _dicSceneBullet = new Dictionary<string, Dictionary<string, EmitterProfile>>();
+    private Dictionary<AudioType, AudioData> _dicTypeAudio = new Dictionary<AudioType, AudioData>();
 
     public void Init()
     {
-        InitEnemyConfig(Paths.CONFIG_ENEMY);
+        InitEmitData();
+        InitAudioData();
+
+        InitStageConfig(Paths.CONFIG_ENEMY);
     }
 
-    #region EnemyData
-    private void InitEnemyConfig(string path)
+    #region EnemyConfig
+    private void InitStageConfig(string path)
     {
         TextAsset config = LoadMgr.Single.LoadConfig(path);
 
@@ -26,7 +33,6 @@ public class DataMgr : NormalSingleton<DataMgr>
             StageData stageData = new StageData()
             {
                 Name = i.ToString(),
-                WaveCount = stage.Count,
                 ListWaveEnemy = new List<WaveData>()
             };
 
@@ -49,10 +55,16 @@ public class DataMgr : NormalSingleton<DataMgr>
                     float pauseTime = GetValue<float>(enemy["pauseTime"]);
                     float pathDurUP = GetValue<float>(enemy["pathDurUP"]);
                     float pathDurDown = GetValue<float>(enemy["pathDurDown"]);
+                    int hp = GetValue<int>(enemy["hp"]);
+                    int pCount = GetValue<int>(enemy["pCount"]);
+                    int pointCount = GetValue<int>(enemy["pointCount"]);
+
+                    string emitterName = GetValue<string>(enemy["emitterName"]).Trim('"');
+                    EmitterProfile emitter = GetEmit(i.ToString(), j + "_" + emitterName);
 
                     EnemyData enemyData = new EnemyData(
                         enemyType, delay, GetVector3(strPos), GetPath(strPath), pauseTime,
-                        pathDurUP, pathDurDown);
+                        pathDurUP, pathDurDown, emitter, hp, pCount, pointCount);
 
                     waveData.ListEnemy.Add(enemyData);
                 }
@@ -75,6 +87,69 @@ public class DataMgr : NormalSingleton<DataMgr>
     }
     #endregion
 
+    #region EmitData
+    private void InitEmitData()
+    {
+        for (Stage i = Stage.stage1_1; i < Stage.COUNT; ++i)
+        {
+            _dicSceneBullet[i.ToString()] = new Dictionary<string, EmitterProfile>();
+
+            EmitterProfile[] emitters = LoadMgr.Single.LoadAll<EmitterProfile>(Paths.ASSET_BULLET_FOLDER + i.ToString());
+            for (int j = 0; j < emitters.Length; ++j)
+            {
+                _dicSceneBullet[i.ToString()].Add(emitters[j].name, emitters[j]);
+            }
+        }
+    }
+
+    private EmitterProfile GetEmit(string stageName, string name)
+    {
+        if (!_dicSceneBullet[stageName].ContainsKey(name))
+        {
+            Debug.LogError("在面" + stageName + "不存在该弹幕，弹幕名为：" + name);
+            return null;
+        }
+
+        return _dicSceneBullet[stageName][name];
+    }
+    #endregion
+
+    private void InitAudioData()
+    {
+        TextAsset config = LoadMgr.Single.LoadConfig(Paths.CONFIG_AUDIO);
+
+        JsonData json = JsonMapper.ToObject(config.text);
+
+        for(int i = 0; i < json.Count; ++i)
+        {
+            JsonData audio = json[i];
+            string typeName = GetValue<string>(audio["type"]).Trim('"');
+            string name = GetValue<string>(audio["name"]).Trim('"');
+            float vol = GetValue<float>(audio["vol"]);
+
+            AudioType type = (AudioType)Enum.Parse(typeof(AudioType), typeName);
+            AudioData data = new AudioData()
+            {
+                Name = name,
+                Volume = vol
+            };
+
+            _dicTypeAudio.Add(type, data);
+        }
+    }
+
+    public AudioData GetAudioData(AudioType type)
+    {
+        if (!_dicTypeAudio.ContainsKey(type))
+        {
+            Debug.LogError("不存在的音频枚举，名字为：" + type);
+            return null;
+        }
+
+        return _dicTypeAudio[type];
+    }
+
+    #region Tools
     private T GetValue<T>(JsonData json)
     {
         var converter = TypeDescriptor.GetConverter(typeof(T));
@@ -112,4 +187,5 @@ public class DataMgr : NormalSingleton<DataMgr>
 
         return ret;
     }
+    #endregion
 }

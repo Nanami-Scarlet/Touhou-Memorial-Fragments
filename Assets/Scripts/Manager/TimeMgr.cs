@@ -3,11 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeMgr : MonoSingleton<TimeMgr>, IInit, IUpdate
+public class TimeMgr : NormalSingleton<TimeMgr>, IInit, IUpdate
 {
     private int _tid;
-    private double _nowTime;
-    private DateTime _startTime = new DateTime(2020, 1, 1, 0, 0, 0);
 
     private List<TimeTask> _listTask;
     private List<int> _listID;
@@ -23,8 +21,7 @@ public class TimeMgr : MonoSingleton<TimeMgr>, IInit, IUpdate
         for(int i = 0; i < _listTask.Count; ++i)
         {
             TimeTask task = _listTask[i];
-            _nowTime = GetNowTime();
-            if(_nowTime - task.DestTime > 0)
+            if(Time.time - task.DestTime > 0)
             {
                 Action cb = task.CallBack;
                 if(cb != null)
@@ -36,14 +33,14 @@ public class TimeMgr : MonoSingleton<TimeMgr>, IInit, IUpdate
         }
     }
 
-    public int AddTimeTask(Action callback, double delay, TimeUnit unit = TimeUnit.MilliSecond)
+    public int AddTimeTask(Action callback, double delay, TimeUnit unit = TimeUnit.Second)
     {
-        if(unit != TimeUnit.MilliSecond)
+        if(unit != TimeUnit.Second)
         {
             switch (unit)       //这里用switch以后方便拓展
             {
-                case TimeUnit.Second:
-                    delay *= 1000;
+                case TimeUnit.MilliSecond:
+                    delay /= 1000;
                     break;
 
                 default:
@@ -53,8 +50,7 @@ public class TimeMgr : MonoSingleton<TimeMgr>, IInit, IUpdate
         }
 
         int tid = GetTid();
-        _nowTime = GetNowTime();
-        _listTask.Add(new TimeTask(tid, _nowTime + delay, delay, callback));
+        _listTask.Add(new TimeTask(tid, Time.time + delay, delay, callback));
         _listID.Add(tid);
 
         if(_listTask.Count > 0)
@@ -67,6 +63,11 @@ public class TimeMgr : MonoSingleton<TimeMgr>, IInit, IUpdate
 
     public bool RemoveTimeTask(int tid)
     {
+        if (!_listID.Contains(tid))
+        {
+            return false;
+        }
+
         for(int i = 0; i < _listTask.Count; ++i)
         {
             TimeTask task = _listTask[i];
@@ -89,7 +90,10 @@ public class TimeMgr : MonoSingleton<TimeMgr>, IInit, IUpdate
     public void ClearAllTask()
     {
         _listTask.Clear();
+        _listID.Clear();
         _tid = 0;
+
+        //LifeCycleMgr.Single.Remove(LifeName.UPDATE, this);
     }
 
     private int GetTid()
@@ -106,11 +110,6 @@ public class TimeMgr : MonoSingleton<TimeMgr>, IInit, IUpdate
         }
 
         return _tid;
-    }
-
-    private double GetNowTime()
-    {
-        return (DateTime.Now - _startTime).TotalMilliseconds;
     }
 }
 

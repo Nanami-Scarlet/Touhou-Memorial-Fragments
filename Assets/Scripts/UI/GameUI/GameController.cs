@@ -28,7 +28,7 @@ public class GameController : ControllerBase
     private void OnPause(object[] args)
     {
         Time.timeScale = 0;
-        AudioMgr.Single.PlayEff(Paths.AUDIO_PAUSE_EFF, 0.2f);
+        AudioMgr.Single.PlayUIEff(Paths.AUDIO_PAUSE_EFF, 0.2f);
         UIManager.Single.Show(Paths.PREFAB_PAUSE_VIEW, false);
         UIManager.Single.HideController(Paths.PREFAB_GAME_VIEW);
         AudioMgr.Single.StopBGM();

@@ -43,13 +43,27 @@ public class MessageMgr : NormalSingleton<MessageMgr>, IMessage
         _msg.RemoveListener(key, callback);
     }
 
-    public void AddListener(KeyCode code, Action<object[]> callback)
+    public void AddListener(KeyCode code, Action<object[]> callback, InputState state = InputState.NONE)        //默认为UI按键
     {
-        _msg.AddListener(code.ToString(), callback);
+        string key = code.ToString();
+
+        if (state != InputState.NONE)
+        {
+            key = InputMgr.Single.GetKey(code, state);
+        }
+
+        _msg.AddListener(key, callback);
     }
 
-    public void RemoveListener(KeyCode code, Action<object[]> callback)
+    public void RemoveListener(KeyCode code, Action<object[]> callback, InputState state = InputState.NONE)
     {
-        _msg.RemoveListener(code.ToString(), callback);
+        string key = code.ToString();
+
+        if (state != InputState.NONE)
+        {
+            key = InputMgr.Single.GetKey(code, state);
+        }
+
+        _msg.RemoveListener(key, callback);
     }
 }

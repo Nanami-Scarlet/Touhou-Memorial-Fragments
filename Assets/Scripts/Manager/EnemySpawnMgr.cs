@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//普通妖精生成器
 public class EnemySpawnMgr : MonoBehaviour
 {
-    private List<GameObject> _listEnemy;
+    private static List<GameObject> _listEnemy;
     private Dictionary<string, string> _dicIDEnemy = null;
 
     public void Init()
@@ -24,6 +25,13 @@ public class EnemySpawnMgr : MonoBehaviour
             { "9", Paths.PREFAB_ENEMY9 },
             //todo:Boss的编号记得加上
         };
+
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_RELEASE_CARD, ReleaseCard);
+    }
+
+    private void OnDestroy()
+    {
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_RELEASE_CARD, ReleaseCard);
     }
 
     public void Spawn(EnemyData data)
@@ -37,21 +45,34 @@ public class EnemySpawnMgr : MonoBehaviour
         }
 
         string enemyName = _dicIDEnemy[id];
-        GameObject enemy = PoolMgr.Single.Spawn(enemyName);
+        GameObject enemy = LoadMgr.Single.LoadPrefabAndInstantiate(enemyName);
 
+        //enemy.GetComponent<EnemyView>().Init();
         enemy.GetComponent<EnemyController>().Init(data);
+        enemy.GetComponent<BehaviourBase>().Init(data.HP, data.PCount, data.PointCount);
 
         _listEnemy.Add(enemy);
     }
 
-    public void DeSpawn(GameObject enemy)
+    public static void DeSpawn(GameObject enemy)
     {
-        PoolMgr.Single.DeSpawn(enemy);
+        Destroy(enemy);
+        --GameModel.Single.EnemyCount;
         _listEnemy.Remove(enemy);
     }
 
     public int GetEnemyCount()
     {
         return _listEnemy.Count;
+    }
+
+    private void ReleaseCard(object[] args)
+    {
+        foreach(var enemy in _listEnemy)
+        {
+            enemy.GetComponent<EnemyBehaviour>().Dead();
+        }
+
+        _listEnemy.Clear();
     }
 }

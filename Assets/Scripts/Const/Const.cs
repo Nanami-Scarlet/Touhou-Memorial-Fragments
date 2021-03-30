@@ -22,4 +22,11 @@ public class Const
             return Color.black;
         }
     }
+
+    public const int MANA_SCORE = 50;
+    public const int MAX_MANA_SCORE = 100;
+    public const int POINT_SCORE = 100;
+    public const int BULLET_SCORE = 10;
+
+    public const int FULL_FRAGMENT = 3;
 }

@@ -17,6 +17,8 @@ public class PlayerUComtroller : ControllerBase
             {
                 _view._transLoad.gameObject.SetActive(true);
                 LifeCycleMgr.Single.Add(LifeName.UPDATE, this);
+                GameStateModel.Single.TargetScene = SceneName.Game;
+                RemoveKeyCode();
                 SceneMgr.Single.AsyncLoadScene(SceneName.Game);
                 GameStateModel.Single.Status = GameStatus.Gameing;
             } },
@@ -44,23 +46,15 @@ public class PlayerUComtroller : ControllerBase
 
     public override void UpdateFun()
     {
-        if(SceneMgr.Single.Process() == 1)
+        if (SceneMgr.Single.IsDone())
         {
-            UIManager.Single.Hide(Paths.PREFAB_PLAYER_VIEW);
-            //UIManager.Single.Show(Paths.PREFAB_GAME_VIEW);
 
-            AudioMgr.Single.PlayBGM(Paths.AUDIO_ONE_ONE_BGM);
-
-            SceneMgr.Single.ResetData();
         }
     }
 
     public override void Hide()
     {
-        InputMgr.Single.RemoveListener(KeyCode.RightArrow);
-        InputMgr.Single.RemoveListener(KeyCode.LeftArrow);
-        InputMgr.Single.RemoveListener(KeyCode.Z);
-        InputMgr.Single.RemoveListener(KeyCode.X);
+        RemoveKeyCode();
 
         MessageMgr.Single.RemoveListener(KeyCode.RightArrow, IncIndex);
         MessageMgr.Single.RemoveListener(KeyCode.LeftArrow, DecIndex);
@@ -72,28 +66,28 @@ public class PlayerUComtroller : ControllerBase
 
     private void IncIndex(object[] args)
     {
-        AudioMgr.Single.PlayEff(Paths.AUDIO_SELECT_EFF);
+        AudioMgr.Single.PlayUIEff(Paths.AUDIO_SELECT_EFF);
         ++GameStateModel.Single.PlayerOption;
         _view.UpdateFun();
     }
 
     private void DecIndex(object[] args)
     {
-        AudioMgr.Single.PlayEff(Paths.AUDIO_SELECT_EFF);
+        AudioMgr.Single.PlayUIEff(Paths.AUDIO_SELECT_EFF);
         --GameStateModel.Single.PlayerOption;
         _view.UpdateFun();
     }
 
     private void Back(object[] args)
     {
-        AudioMgr.Single.PlayEff(Paths.AUDIO_CANCAL_EFF);
+        AudioMgr.Single.PlayUIEff(Paths.AUDIO_CANCAL_EFF);
 
         UIManager.Single.Show(Paths.PREFAB_DEGREE_VIEW);
     }
 
     private void OnSelect(object[] args)
     {
-        AudioMgr.Single.PlayEff(Paths.AUDIO_SURE_EFF);
+        AudioMgr.Single.PlayUIEff(Paths.AUDIO_SURE_EFF);
 
         int index = GameStateModel.Single.PlayerOption;
         if (_dicIndexAction[index] != null)
@@ -101,5 +95,13 @@ public class PlayerUComtroller : ControllerBase
             _dicIndexAction[index]();
         }
         AudioMgr.Single.StopBGM();
+    }
+
+    private void RemoveKeyCode()
+    {
+        InputMgr.Single.RemoveListener(KeyCode.RightArrow);
+        InputMgr.Single.RemoveListener(KeyCode.LeftArrow);
+        InputMgr.Single.RemoveListener(KeyCode.Z);
+        InputMgr.Single.RemoveListener(KeyCode.X);
     }
 }

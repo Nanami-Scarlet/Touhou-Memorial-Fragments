@@ -22,6 +22,21 @@ public class GameUtil
         return trans.GetChild(index);
     }
 
+    public static Transform SetSubActive(List<Transform> trans, int index)
+    {
+        for (int i = 0; i < trans.Count; ++i)
+        {
+            if (i == index)
+            {
+                trans[i].gameObject.SetActive(true);
+                continue;
+            }
+            trans[i].gameObject.SetActive(false);
+        }
+
+        return trans[index];
+    }
+
     /// <summary>
     /// 判断边界
     /// </summary>
@@ -44,5 +59,24 @@ public class GameUtil
     public static bool JudgeBorderRight(Vector3 pos)
     {
         return pos.x <= 3.2f;
+    }
+
+    /// <summary>
+    /// 仅供数组专用
+    /// </summary>
+    /// <returns></returns>
+    public static int GetManaLevel()
+    {
+        return PlayerModel.Single.Mana / 100 - 1;
+    }
+
+    public static float GetDistance(Vector3 pos1, Vector3 pos2)
+    {
+        return (pos1 - pos2).magnitude;
+    }
+
+    public static float GetDistance(Transform trans1, Transform trans2)
+    {
+        return GetDistance(trans1.position, trans2.position);
     }
 }

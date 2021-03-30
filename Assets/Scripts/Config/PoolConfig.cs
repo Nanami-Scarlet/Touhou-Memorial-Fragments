@@ -41,6 +41,18 @@ public class PoolConfig
             },
 
             //todo:添加其他的Data
+
+            new PoolData
+            {
+                Path = Paths.PREFAB_ITEM_P,
+                Count = 100
+            },
+
+            new PoolData
+            {
+                Path = Paths.PREFAB_ITEM_POINT,
+                Count = 100
+            }
         };
     }
 }

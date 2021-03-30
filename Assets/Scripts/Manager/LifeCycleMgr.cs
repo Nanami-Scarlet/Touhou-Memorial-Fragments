@@ -60,7 +60,14 @@ public class LifeCycle<T> : ILifeCycle
     {
         for(int i = 0; i < _listClass.Count; ++i)
         {
-            execute((T1)_listClass[i]);
+            if (_listClass[i] != null)
+            {
+                execute((T1)_listClass[i]);
+            }
+            else
+            {
+                _listClass.RemoveAt(i);
+            }
         }
     }
 }

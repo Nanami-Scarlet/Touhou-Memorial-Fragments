@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using BulletPro;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,13 +12,20 @@ public class GameProcessMgr : MonoBehaviour, IUpdate
         _spawnMgr = gameObject.AddComponent<EnemySpawnMgr>();
         _spawnMgr.Init();
 
-        CoroutineMgr.Single.Execute(OnState("stage1_1"));
-        GameModel.Single.StageNum = 0;      //todo:暂时这么处理，不可能总是从一面进游戏
+        //CoroutineMgr.Single.Execute(OnState("stage1_1"));
+        StartCoroutine(OnState("stage1_1"));
     }
 
     public void UpdateFun()
     {
 
+    }
+
+    private void OnDestroy()
+    {
+        GameModel.Single.EnemyCount = 0;
+
+        //TimeMgr.Single.ClearAllTask();
     }
 
     private IEnumerator OnState(string stateName)
@@ -39,7 +47,10 @@ public class GameProcessMgr : MonoBehaviour, IUpdate
 
                 TimeMgr.Single.AddTimeTask(() =>
                 {
-                    _spawnMgr.Spawn(enemyData);
+                    if (GameStateModel.Single.CurrentScene == SceneName.Game)
+                    {
+                        _spawnMgr.Spawn(enemyData);
+                    }
                 }, delay, TimeUnit.Second);
 
                 ++GameModel.Single.EnemyCount;
@@ -53,5 +64,4 @@ public class GameProcessMgr : MonoBehaviour, IUpdate
             }
         }
     }
-
 }

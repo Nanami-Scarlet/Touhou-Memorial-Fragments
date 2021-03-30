@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d558b63dc6f3b8843b732be77db336fc, type: 3}
+  m_Name: BulletProSettings
+  m_EditorClassIdentifier: 
+  collisionTags:
+    tags:
+    - Player
+    - Enemy
+    - Wall
+    - Item
+    - Obstacle
+    - Helpers
+    - Tag 6
+    - Tag 7
+    - Tag 8
+    - Tag 9
+    - Tag 10
+    - Tag 11
+    - Tag 12
+    - Tag 13
+    - Tag 14
+    - Tag 15
+    - Tag 16
+    - Tag 17
+    - Tag 18
+    - Tag 19
+    - Tag 20
+    - Tag 21
+    - Tag 22
+    - Tag 23
+    - Tag 24
+    - Tag 25
+    - Tag 26
+    - Tag 27
+    - Tag 28
+    - Tag 29
+    - Tag 30
+    - Tag 31
+  defaultEmitterProfile: {fileID: 11400000, guid: b514c5bd39475b945aded1b23a6e7727,
+    type: 2}
+  collisionHandler: {fileID: 7200000, guid: 723032a6362955b478e26af3d2a97a9a, type: 3}
+  computeShaders: 0
+  maxAmountOfCollisionsPerFrame: 32
+  maxAmountOfBullets: 4000
+  maxAmountOfReceivers: 200

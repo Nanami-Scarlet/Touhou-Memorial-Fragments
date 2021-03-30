@@ -7,25 +7,15 @@ using UnityEngine.SceneManagement;
 public class SceneMgr : NormalSingleton<SceneMgr>
 {
     private AsyncOperation _async;
-    private Dictionary<SceneName, int> _dicSceneTask = new Dictionary<SceneName, int>();
-    private Dictionary<SceneName, Action<Action>> _dicOnSceneAction = new Dictionary<SceneName, Action<Action>>();
-
-    private int _finishedTask = 0;
-    private int _totalTask = 0;
+    private Dictionary<SceneName, Action> _dicOnSceneAction = new Dictionary<SceneName, Action>();
 
     public SceneMgr()
     {
         SceneManager.sceneLoaded += OnSceneLoad;
-        for (SceneName i = SceneName.Main; i < SceneName.COUNT; ++i)
-        {
-            _dicSceneTask[i] = 1;
-        }
     }
 
     public void AsyncLoadScene(SceneName name)
     {
-        ResetData();
-        _totalTask = _dicSceneTask[name];               //绑定任务数
         CoroutineMgr.Single.Execute(AsyncLoad(name.ToString()));
     }
 
@@ -37,7 +27,7 @@ public class SceneMgr : NormalSingleton<SceneMgr>
         yield return _async;
     }
 
-    public void AddSceneLoad(SceneName name, Action<Action> action)
+    public void AddSceneLoad(SceneName name, Action action)
     {
         if (_dicOnSceneAction.ContainsKey(name))
         {
@@ -47,27 +37,18 @@ public class SceneMgr : NormalSingleton<SceneMgr>
         {
             _dicOnSceneAction[name] = action;
         }
-
-        ++_dicSceneTask[name];
     }
 
-    public float Process()
+    public bool IsDone()
     {
-        //float ratio = (float)_finishedTask / _totalTask;
-        if(_async != null && _async.progress >= 0.9f)                     //场景本身加载完成，完成任务数+1，且其他东西也加载完成
+        if(_async != null && _async.progress >= 0.9f)
         {
-            FinishTask();
             _async.allowSceneActivation = true;         //允许切换场景
             GameStateModel.Single.CurrentScene = GameStateModel.Single.TargetScene;
             _async = null;
         }
 
-        return (float)_finishedTask / _totalTask;
-    }
-
-    public void ResetData()                             //每次在调用完Process时，后面必须调用该方法
-    {
-        _finishedTask = 0;
+        return _async == null;
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode)
@@ -75,12 +56,7 @@ public class SceneMgr : NormalSingleton<SceneMgr>
         SceneName name = (SceneName)Enum.Parse(typeof(SceneName), scene.name);
         if(_dicOnSceneAction.ContainsKey(name) && _dicOnSceneAction[name] != null)
         {
-            _dicOnSceneAction[name](FinishTask);        //加载场景时，除加载场景还会加载其他东西，加载完成任务完成
+            _dicOnSceneAction[name]();        //加载场景时，除加载场景还会加载其他东西，加载完成任务完成
         }
-    }
-
-    private void FinishTask()
-    {
-        ++_finishedTask;
     }
 }
