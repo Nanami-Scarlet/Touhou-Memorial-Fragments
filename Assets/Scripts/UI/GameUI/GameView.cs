@@ -149,7 +149,7 @@ public class GameView : ViewBase
         ResetAnim();
         PlayAnim();
 
-        MessageMgr.Single.AddListener(MsgEvent.EVENT_STAGE, StageAnim);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_STAGE_ANIM, StageAnim);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_SCORE, UpdateScore);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_MANA, UpdateMana);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_LIFT, UpdateLife);
@@ -163,7 +163,7 @@ public class GameView : ViewBase
     {
         base.Hide();
 
-        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_STAGE, StageAnim);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_STAGE_ANIM, StageAnim);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_SCORE, UpdateScore);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_MANA, UpdateMana);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_LIFT, UpdateLife);

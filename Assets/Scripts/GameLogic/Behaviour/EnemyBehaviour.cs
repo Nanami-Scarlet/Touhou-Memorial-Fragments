@@ -21,8 +21,6 @@ public class EnemyBehaviour : BehaviourBase
     {
         if (!_isDead)
         {
-            LifeCycleMgr.Single.Remove(LifeName.UPDATE, gameObject.GetComponent<EnemyController>());
-
             _controller.DieController();
             _view.DieView();
 
@@ -39,10 +37,19 @@ public class EnemyBehaviour : BehaviourBase
             //等待粒子系统播放完毕
             TimeMgr.Single.AddTimeTask(() =>
             {
-                EnemySpawnMgr.DeSpawn(gameObject);
+                if (!_isDead)             //有的妖精被符卡击破，所以这里需要判一下
+                {
+                    EnemySpawnMgr.DeSpawn(gameObject);
+                    _isDead = true;
+                }
             }, 0.7f, TimeUnit.Second);
 
-            _isDead = true;
+            //_isDead = true;
         }
+    }
+
+    public void SetDead()       //当妖精自动越界时设置死亡
+    {
+        _isDead = true;
     }
 }

@@ -15,7 +15,7 @@ public class PlayerView : MonoBehaviour
 
     public List<Transform> _listTransYin;
     private Dictionary<int, List<YinMove>> _dicIndexYinMove;
-    private Dictionary<int, List<YinRoate>> _dicIndexYinRoate;
+    //private Dictionary<int, List<YinRoate>> _dicIndexYinRoate;
 
     public void Init()
     {
@@ -37,19 +37,19 @@ public class PlayerView : MonoBehaviour
             }
         }
 
-        _dicIndexYinRoate = new Dictionary<int, List<YinRoate>>();
+        //_dicIndexYinRoate = new Dictionary<int, List<YinRoate>>();
 
-        for (int i = 0; i < 4; ++i)
-        {
-            _dicIndexYinRoate[i] = new List<YinRoate>();
+        //for (int i = 0; i < 4; ++i)
+        //{
+        //    _dicIndexYinRoate[i] = new List<YinRoate>();
 
-            for (int j = 0; j < i + 1; ++j)
-            {
-                YinRoate yin = _listTransYin[i].GetChild(j).GetChild(0).GetComponent<YinRoate>();
+        //    for (int j = 0; j < i + 1; ++j)
+        //    {
+        //        YinRoate yin = _listTransYin[i].GetChild(j).GetChild(0).GetComponent<YinRoate>();
 
-                _dicIndexYinRoate[i].Add(yin);
-            }
-        }
+        //        _dicIndexYinRoate[i].Add(yin);
+        //    }
+        //}
 
         transform.DOMoveY(Const.BORN_POS.y, 1);
 
@@ -71,13 +71,13 @@ public class PlayerView : MonoBehaviour
         MessageMgr.Single.RemoveListener(KeyCode.LeftShift, OnNormal, InputState.UP);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CHECK_MANA, CheckMana);
 
-        foreach (var pair in _dicIndexYinRoate)
-        {
-            foreach (var yin in pair.Value)
-            {
-                yin.RemoveUpdate();
-            }
-        }
+        //foreach (var pair in _dicIndexYinRoate)
+        //{
+        //    foreach (var yin in pair.Value)
+        //    {
+        //        yin.RemoveUpdate();
+        //    }
+        //}
     }
 
     private void OnShift(object[] args)

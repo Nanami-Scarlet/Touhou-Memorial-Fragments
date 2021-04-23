@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour, IUpdate
+public class Item : MonoBehaviour
 {
     private GameObject _player;
 
@@ -17,8 +17,6 @@ public class Item : MonoBehaviour, IUpdate
 
     public void Init(Transform bornTrans)
     {
-        LifeCycleMgr.Single.Add(LifeName.UPDATE, this);
-
         _player = GameObject.FindGameObjectWithTag("Player");
 
         transform.localPosition = bornTrans.localPosition;
@@ -32,7 +30,7 @@ public class Item : MonoBehaviour, IUpdate
         });
     }
 
-    public void UpdateFun()
+    private void Update()
     {
         if(!_isMoveToPlayer && PlayerModel.Single.IsGetItem)
         {
@@ -51,12 +49,10 @@ public class Item : MonoBehaviour, IUpdate
         if(_isMoveToPlayer)
         {
             transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * 12f);
-            //transform.DOMove(_player.transform.position, GameUtil.GetDistance(transform, _player.transform) / 2.5f);
         }
         else if(GameUtil.GetDistance(transform, _player.transform) < 0.75f)
         {
             transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * 3f);
-            //transform.DOMove(_player.transform.position, 0.5f);
         }
 
         if(transform.position.y < -5f)
@@ -67,7 +63,6 @@ public class Item : MonoBehaviour, IUpdate
 
     private void OnDestroy()
     {
-        LifeCycleMgr.Single.Remove(LifeName.UPDATE, this);
         transform.DOKill();
     }
 }

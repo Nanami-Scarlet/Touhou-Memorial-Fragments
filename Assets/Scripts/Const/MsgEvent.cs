@@ -1,6 +1,6 @@
 ﻿public class MsgEvent
 {
-    public const int EVENT_STAGE = 0;
+    public const int EVENT_STAGE_ANIM = 0;
 
     public const int EVENT_UPDATE_SCORE = 1;
     public const int EVENT_UPDATE_MANA = 2;

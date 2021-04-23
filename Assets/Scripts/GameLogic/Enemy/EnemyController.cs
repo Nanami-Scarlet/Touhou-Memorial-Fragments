@@ -4,13 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IUpdate
+public class EnemyController : MonoBehaviour
 {
     private Animator _anim;
     private Vector3 _lastPos;
     private BulletEmitter _emitter;
     private EnemyData _enemyData;
     private List<int> _listTimeID = new List<int>();
+
+    private EnemyBehaviour _behaviour;
 
     public void Init(EnemyData enemyData)
     {
@@ -24,6 +26,8 @@ public class EnemyController : MonoBehaviour, IUpdate
         transform.localPosition = _enemyData.BornPos;
         _lastPos = transform.position;
 
+        _behaviour = GetComponent<EnemyBehaviour>();
+
         List<List<Vector3>> path = _enemyData.Path;
 
         MessageMgr.Single.AddListener(MsgEvent.EVENT_CLEAR_BULLET, OnPlayerDeath);
@@ -36,11 +40,9 @@ public class EnemyController : MonoBehaviour, IUpdate
         {
             DoPathB(path, _enemyData);                  //B方法：一遍做路径动画，且不会暂停，在动画开始的一定时间后发射弹幕
         }
-
-        LifeCycleMgr.Single.Add(LifeName.UPDATE, this);
     }
 
-    public void UpdateFun()
+    private void Update()
     {
         if (GameStateModel.Single.Status == GameStatus.Gameing)
         {
@@ -78,6 +80,7 @@ public class EnemyController : MonoBehaviour, IUpdate
                 _emitter.Stop();
                 transform.DOPath(path[1].ToArray(), enemyData.PathDurDown).SetEase(Ease.Linear).OnComplete(() =>
                 {
+                    _behaviour.SetDead();
                     EnemySpawnMgr.DeSpawn(gameObject);
                 });
 
@@ -93,6 +96,7 @@ public class EnemyController : MonoBehaviour, IUpdate
         transform.DOPath(path[0].ToArray(), enemyData.PathDurUP + enemyData.PathDurDown).SetEase(Ease.Linear).OnComplete(() =>
         {
             EnemySpawnMgr.DeSpawn(gameObject);
+            _behaviour.SetDead();
         });
 
         int tid3 = TimeMgr.Single.AddTimeTask(() =>

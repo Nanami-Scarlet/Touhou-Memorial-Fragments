@@ -292,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 8276875961019705508}
   colliderType: 0
-  hitboxSize: 0.1
+  hitboxSize: 0.2
   hitboxOffset: {x: 0, y: 0}
   killBulletOnCollision: 1
   maxSimultaneousCollisionsPerFrame: 1
