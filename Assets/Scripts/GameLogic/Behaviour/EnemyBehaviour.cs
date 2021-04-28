@@ -9,9 +9,18 @@ public class EnemyBehaviour : BehaviourBase
     public EnemyController _controller;
     private bool _isDead = false;
 
+    private bool _isSpawnItem = false;
+
     public override void Hurt(Bullet bullet, Vector3 hitPoint)
     {
         base.Hurt(bullet, hitPoint);
+
+        if (HP <= 0 && !_isSpawnItem)
+        {
+            //SpawnItems();
+            Dead();
+            _isSpawnItem = true;
+        }
 
         GameModel.Single.Score += Const.BULLET_SCORE;
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE, GameModel.Single.Score);
@@ -26,14 +35,18 @@ public class EnemyBehaviour : BehaviourBase
 
             SpawnItems();
 
-            PlayerModel.Single.MemoryProcess += Random.Range(1, 4);
-            if (PlayerModel.Single.MemoryProcess >= 100)
+            if (PlayerModel.Single.MemoryFragment < 3)
             {
-                PlayerModel.Single.MemoryProcess -= 100;
-                ++PlayerModel.Single.MemoryFragment;
+                PlayerModel.Single.MemoryProcess += Random.Range(1, 4);
+                if (PlayerModel.Single.MemoryProcess >= 100)
+                {
+                    PlayerModel.Single.MemoryProcess -= 100;
+                    ++PlayerModel.Single.MemoryFragment;
+                }
+                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
             }
-            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
 
+            GetComponent<BulletReceiver>().enabled = false;
             //等待粒子系统播放完毕
             TimeMgr.Single.AddTimeTask(() =>
             {
@@ -51,5 +64,10 @@ public class EnemyBehaviour : BehaviourBase
     public void SetDead()       //当妖精自动越界时设置死亡
     {
         _isDead = true;
+    }
+
+    public void SetAlive()
+    {
+        _isDead = false;
     }
 }

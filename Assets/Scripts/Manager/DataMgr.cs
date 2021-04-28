@@ -11,11 +11,13 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
     private Dictionary<string, StageData> _dicNameStageData = new Dictionary<string, StageData>();
     private Dictionary<string, Dictionary<string, EmitterProfile>> _dicSceneBullet = new Dictionary<string, Dictionary<string, EmitterProfile>>();
     private Dictionary<AudioType, AudioData> _dicTypeAudio = new Dictionary<AudioType, AudioData>();
+    private Dictionary<string, string> _dicBGMName = new Dictionary<string, string>();
 
     public void Init()
     {
         InitEmitData();
         InitAudioData();
+        InitBGMData();
 
         InitStageConfig(Paths.CONFIG_ENEMY);
     }
@@ -114,13 +116,14 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
     }
     #endregion
 
+    #region AudioData
     private void InitAudioData()
     {
-        TextAsset config = LoadMgr.Single.LoadConfig(Paths.CONFIG_AUDIO);
+        TextAsset config = LoadMgr.Single.LoadConfig(Paths.CONFIG_VOLUME);
 
         JsonData json = JsonMapper.ToObject(config.text);
 
-        for(int i = 0; i < json.Count; ++i)
+        for (int i = 0; i < json.Count; ++i)
         {
             JsonData audio = json[i];
             string typeName = GetValue<string>(audio["type"]).Trim('"');
@@ -148,6 +151,36 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
 
         return _dicTypeAudio[type];
     }
+    #endregion
+
+    #region BGMData
+    private void InitBGMData()
+    {
+        TextAsset config = LoadMgr.Single.LoadConfig(Paths.CONFIG_BGM);
+
+        JsonData json = JsonMapper.ToObject(config.text);
+
+        for(int i = 0; i < json.Count; ++i)
+        {
+            JsonData bgm = json[i];
+            string gameName = GetValue<string>(bgm["stateName"]).Trim('"');
+            string trueName = bgm["trueName"].ToString();
+
+            _dicBGMName.Add(gameName, trueName);
+        }
+    }
+
+    public string GetTrueBGMName(string gameName)
+    {
+        if(!_dicBGMName.ContainsKey(gameName))
+        {
+            Debug.LogError("不存在该游戏BGM，游戏名字为：" + gameName);
+            return null;
+        }
+
+        return _dicBGMName[gameName];
+    }
+    #endregion
 
     #region Tools
     private T GetValue<T>(JsonData json)

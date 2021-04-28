@@ -57,12 +57,14 @@ public class Item : MonoBehaviour
 
         if(transform.position.y < -5f)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            PoolMgr.Single.Despawn(gameObject);
         }
     }
 
-    private void OnDestroy()
+    public void ResetItem()
     {
-        transform.DOKill();
+        _isFall = false;
+        _isMoveToPlayer = false;
     }
 }

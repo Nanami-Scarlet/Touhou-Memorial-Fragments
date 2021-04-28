@@ -10,6 +10,7 @@ public class LifeCycleAddConfig : IInit
         LifeInitAdd(TimeMgr.Single);
         LifeInitAdd(AudioMgr.Single);
         LifeInitAdd(SceneConfig.Single);
+        //LifeInitAdd(PoolMgr.Single);
     }
 
     private void LifeInitAdd(object o)

@@ -11,10 +11,11 @@ public class GameRoot : MonoBehaviour
         GameModel.Single.Score = 0;
         PlayerModel.Single.Mana = 100;       //todo:这里也不是总是从100开始
         PlayerModel.Single.State = PlayerState.NORMAL;
+        PlayerModel.Single.MemoryProcess = 0;
+        PlayerModel.Single.MemoryFragment = 0;
 
         if (GameStateModel.Single.SelectedDegree == Degree.NORMAL)
         {
-           
             PlayerModel.Single.Life = 2;
             PlayerModel.Single.Bomb = 3;
             PlayerModel.Single.Init_Point = 10000;
@@ -28,11 +29,12 @@ public class GameRoot : MonoBehaviour
 
         UIManager.Single.Hide(Paths.PREFAB_PLAYER_VIEW);
         UIManager.Single.Show(Paths.PREFAB_GAME_VIEW);
+        UIManager.Single.Show(Paths.PREFAB_DYNAMIC_VIEW);
 
         gameObject.AddComponent<GameProcessMgr>().Init();
 
-
         GameObject player = LoadMgr.Single.LoadPrefabAndInstantiate(Paths.PREFAB_PLAYER);
+        LoadMgr.Single.LoadPrefabAndInstantiate(Paths.PREFAB_BULLET_SETTING);
         player.GetComponent<PlayerView>().Init();
         player.GetComponent<PlayerController>().Init();
         player.GetComponent<PlayerBehaviour>().Init();

@@ -13,31 +13,55 @@ public class PoolConfig
             new PoolData
             {
                  Path = Paths.PREFAB_ENEMY1,
-                 Count = 15
+                 Count = 30
             },
 
             new PoolData
             {
                  Path = Paths.PREFAB_ENEMY2,
-                 Count = 15
+                 Count = 30
             },
 
             new PoolData
             {
                  Path = Paths.PREFAB_ENEMY3,
-                 Count = 15
+                 Count = 30
             },
 
             new PoolData
             {
                  Path = Paths.PREFAB_ENEMY4,
-                 Count = 15
+                 Count = 30
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_ENEMY5,
+                 Count = 30
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_ENEMY6,
+                 Count = 30
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_ENEMY7,
+                 Count = 30
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_ENEMY8,
+                 Count = 30
             },
 
             new PoolData
             {
                  Path = Paths.PREFAB_ENEMY9,
-                 Count = 10
+                 Count = 15
             },
 
             //todo:添加其他的Data
@@ -45,13 +69,13 @@ public class PoolConfig
             new PoolData
             {
                 Path = Paths.PREFAB_ITEM_P,
-                Count = 100
+                Count = 200
             },
 
             new PoolData
             {
                 Path = Paths.PREFAB_ITEM_POINT,
-                Count = 100
+                Count = 200
             }
         };
     }

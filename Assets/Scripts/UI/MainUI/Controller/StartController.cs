@@ -10,7 +10,12 @@ public class StartController : ControllerBase
 
     private Dictionary<int, Action> _dicIndexAction = new Dictionary<int, Action>()
     {
-        { 0, () => UIManager.Single.Show(Paths.PREFAB_DEGREE_VIEW) },
+        { 0, () => 
+        {
+            UIManager.Single.Hide(Paths.PREFAB_START_VIEW);
+            UIManager.Single.Show(Paths.PREFAB_DEGREE_VIEW);
+        } },
+
         { 1, () => Debug.LogWarning("功能正在开发中...") },
         { 2, () => Debug.LogWarning("功能正在开发中...") },
         { 3, () => Debug.LogWarning("功能正在开发中...") },

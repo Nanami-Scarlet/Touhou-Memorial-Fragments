@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1666857720387934583}
   m_Layer: 0
   m_Name: B1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2056880943
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -5912800498141821623, guid: a17355115b44d594e80bdae0d499da63,
     type: 3}
@@ -129,9 +129,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0604d3f87a7c14897c31661130d425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _view: {fileID: 0}
   _inchSpeed: 1.5
   _normalSpeed: 6
+  _listManaLevelTrans: []
+  _listMainShot: []
+  _cardShot: {fileID: 0}
+  _cardEff: {fileID: 0}
 --- !u!114 &1666857720387934583
 MonoBehaviour:
   m_ObjectHideFlags: 0

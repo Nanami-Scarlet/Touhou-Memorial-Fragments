@@ -12,13 +12,11 @@ public class DegreeController : ControllerBase
     {
         { 0, () => 
         {
-            UIManager.Single.Show(Paths.PREFAB_PLAYER_VIEW);
             GameStateModel.Single.SelectedDegree = Degree.NORMAL;
         } },
 
         { 1, () => 
         {
-            UIManager.Single.Show(Paths.PREFAB_PLAYER_VIEW);
             GameStateModel.Single.SelectedDegree = Degree.LUNATIC;
         } }
     };
@@ -87,6 +85,9 @@ public class DegreeController : ControllerBase
     {
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_SURE_EFF);
         int index = GameStateModel.Single.RankOption;
+
+        UIManager.Single.Hide(Paths.PREFAB_DEGREE_VIEW);
+        UIManager.Single.Show(Paths.PREFAB_PLAYER_VIEW);
 
         _view._options[index].DOFade(0, 0.07f).SetLoops(6, LoopType.Yoyo)
             .OnComplete(() => _dicIndexAction[index]());

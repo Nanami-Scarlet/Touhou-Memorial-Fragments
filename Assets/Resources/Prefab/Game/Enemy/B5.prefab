@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6775529482227725484}
   m_Layer: 0
   m_Name: B5
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2056880943
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 8258591092888496119, guid: 4aae47a7476b70044ba57a5725f8c843,
     type: 3}

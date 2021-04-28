@@ -15,6 +15,7 @@ public class PauseController : ControllerBase
         {
             { 0, () =>
             {
+                UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
                 AudioMgr.Single.ContinueBGM();
                 UIManager.Single.ShowController(Paths.PREFAB_GAME_VIEW);
             } },
@@ -51,9 +52,11 @@ public class PauseController : ControllerBase
     {
         if(SceneMgr.Single.IsDone())
         {
-            TimeMgr.Single.ClearAllTask();
+            //TimeMgr.Single.ClearAllTask();
 
+            UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
             UIManager.Single.Hide(Paths.PREFAB_GAME_VIEW);
+            UIManager.Single.Hide(Paths.PREFAB_DYNAMIC_VIEW);
             UIManager.Single.Show(Paths.PREFAB_START_VIEW);
             AudioMgr.Single.PlayBGM(Paths.AUDIO_TITLE_BGM);
         }
@@ -96,7 +99,7 @@ public class PauseController : ControllerBase
     {
         Time.timeScale = 1;
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_SURE_EFF);
-        UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
+        //UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
         InputMgr.Single.UpdateKeyState();
 
         int index = GameStateModel.Single.PauseOption;

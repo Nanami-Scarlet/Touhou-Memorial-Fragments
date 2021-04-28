@@ -49,8 +49,6 @@ public abstract class BehaviourBase : MonoBehaviour
         }
     }
 
-    private bool _isSpawn = false;
-
     public void Init(int hp = 1, int pCount = 0, int pointCount = 0)
     {
         HP = hp;
@@ -61,28 +59,21 @@ public abstract class BehaviourBase : MonoBehaviour
     public virtual void Hurt(Bullet bullet, Vector3 hitPoint)
     {
         HP -= bullet.moduleParameters.GetInt("_PowerLevel");
-
-        if(HP <= 0 && !_isSpawn)
-        {
-            //SpawnItems();
-            Dead();
-            _isSpawn = true;
-        }
     }
 
     public abstract void Dead();
 
     protected virtual void SpawnItems()
     {
-        GetItems(Paths.PREFAB_ITEM_P, PCount);
-        GetItems(Paths.PREFAB_ITEM_POINT, PointCount);
+        GetItems("P", PCount);
+        GetItems("Point", PointCount);
     }
 
-    private void GetItems(string path, int count)
+    private void GetItems(string name, int count)
     {
-        for(int i = 0; i < count; ++i)
+        for (int i = 0; i < count; ++i)
         {
-            GameObject item = LoadMgr.Single.LoadPrefabAndInstantiate(path);
+            GameObject item = PoolMgr.Single.Spawn(name);
             item.GetComponent<Item>().Init(transform);
             item.transform.localPosition = GetRandom();
         }

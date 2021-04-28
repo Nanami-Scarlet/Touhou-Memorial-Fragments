@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameProcessMgr : MonoBehaviour, IUpdate
+public class GameProcessMgr : MonoBehaviour
 {
     private EnemySpawnMgr _spawnMgr;
 
@@ -12,20 +12,16 @@ public class GameProcessMgr : MonoBehaviour, IUpdate
         _spawnMgr = gameObject.AddComponent<EnemySpawnMgr>();
         _spawnMgr.Init();
 
-        CoroutineMgr.Single.Execute(OnState("stage1_1"));
-        //StartCoroutine(OnState("stage1_1"));
-    }
-
-    public void UpdateFun()
-    {
-
+        //CoroutineMgr.Single.Execute(OnState("stage1_1"));
+        StartCoroutine(OnState("stage1_1"));
     }
 
     private void OnDestroy()
     {
         GameModel.Single.EnemyCount = 0;
 
-        //TimeMgr.Single.ClearAllTask();
+        PoolMgr.Single.ClearPool();
+        TimeMgr.Single.ClearAllTask();
     }
 
     private IEnumerator OnState(string stateName)
@@ -33,6 +29,7 @@ public class GameProcessMgr : MonoBehaviour, IUpdate
         StageData stageData = DataMgr.Single.GetStageData(stateName);
 
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_STAGE_ANIM);
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SHOW_BGM_NAME, stateName);
 
         yield return new WaitForSeconds(4f);
 
@@ -48,7 +45,7 @@ public class GameProcessMgr : MonoBehaviour, IUpdate
 
                 TimeMgr.Single.AddTimeTask(() =>
                 {
-                    //if (GameStateModel.Single.CurrentScene == SceneName.Game)
+                    if (GameStateModel.Single.CurrentScene == SceneName.Game)
                     {
                         _spawnMgr.Spawn(enemyData);
                     }

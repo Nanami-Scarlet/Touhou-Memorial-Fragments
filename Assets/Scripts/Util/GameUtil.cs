@@ -38,7 +38,7 @@ public class GameUtil
     }
 
     /// <summary>
-    /// 判断边界
+    /// 玩家可移动判断边界
     /// </summary>
     /// <returns></returns>
     public static bool JudgeBorderUp(Vector3 pos)
@@ -78,5 +78,10 @@ public class GameUtil
     public static float GetDistance(Transform trans1, Transform trans2)
     {
         return GetDistance(trans1.position, trans2.position);
+    }
+
+    public static bool JudgeEnemyShot(Vector3 pos)
+    {
+        return pos.x > -4.3f && pos.x < 2.7f && pos.y > -3.5f && pos.y < 4f;
     }
 }

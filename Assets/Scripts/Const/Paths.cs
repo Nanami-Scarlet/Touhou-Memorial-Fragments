@@ -8,12 +8,14 @@ public class Paths
     private const string PREFAB_FOLDER = "Prefab/";
     private const string PREFAB_UI_FOLDER = PREFAB_FOLDER + "UI/";
     private const string PREFAB_ITEM_FOLDER = PREFAB_FOLDER + "Item/";
+    private const string PREFAB_BULLET_SETTING_FOLDER = PREFAB_FOLDER + "BulletSetting/";
 
     public const string PREFAB_START_VIEW = PREFAB_UI_FOLDER + "StartView";
     public const string PREFAB_DEGREE_VIEW = PREFAB_UI_FOLDER + "DegreeView";
     public const string PREFAB_PLAYER_VIEW = PREFAB_UI_FOLDER + "PlayerView";
     public const string PREFAB_GAME_VIEW = PREFAB_UI_FOLDER + "GameView";
     public const string PREFAB_PAUSE_VIEW = PREFAB_UI_FOLDER + "PauseView";
+    public const string PREFAB_DYNAMIC_VIEW = PREFAB_UI_FOLDER + "DynamicView";
     public const string PREFAB_STAGE_LABEL = PREFAB_UI_FOLDER + "Stage";
 
     public const string PREFAB_ITEM_P = PREFAB_ITEM_FOLDER + "P";
@@ -23,6 +25,8 @@ public class Paths
     private const string PREFAB_PLAYER_FOLDER = PREFAB_GAME_FOLDER + "Player/";
     private const string PREFAB_ENEMY_FOLDER = PREFAB_GAME_FOLDER + "Enemy/";
     public const string PREFAB_PLAYER = PREFAB_PLAYER_FOLDER + "Player";
+
+    public const string PREFAB_BULLET_SETTING = PREFAB_BULLET_SETTING_FOLDER + "BulletSetting";
 
     public const string ASSET_BULLET_FOLDER = "Bullet/";
 
@@ -63,5 +67,6 @@ public class Paths
     /// </summary>
     private static readonly string CONFIG_FOLDER = "Config/";
     public static readonly string CONFIG_ENEMY = CONFIG_FOLDER + "EnemyConfig";
-    public static readonly string CONFIG_AUDIO = CONFIG_FOLDER + "AudioConfig";
+    public static readonly string CONFIG_VOLUME = CONFIG_FOLDER + "VolumeConfig";
+    public static readonly string CONFIG_BGM = CONFIG_FOLDER + "BGMConfig";
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BulletPro;
 
 //普通妖精生成器
 public class EnemySpawnMgr : MonoBehaviour
@@ -45,19 +46,25 @@ public class EnemySpawnMgr : MonoBehaviour
         }
 
         string enemyName = _dicIDEnemy[id];
-        GameObject enemy = LoadMgr.Single.LoadPrefabAndInstantiate(enemyName);
+        //GameObject enemy = LoadMgr.Single.LoadPrefabAndInstantiate(enemyName);
+        GameObject enemy = PoolMgr.Single.Spawn(id);
 
         //enemy.GetComponent<EnemyView>().Init();
         enemy.GetComponent<EnemyController>().Init(data);
         enemy.GetComponent<BehaviourBase>().Init(data.HP, data.PCount, data.PointCount);
+        enemy.GetComponent<BulletReceiver>().enabled = true;
+        enemy.GetComponent<SpriteRenderer>().enabled = true;
+        enemy.GetComponent<EnemyBehaviour>().SetAlive();
 
         _listEnemy.Add(enemy);
     }
 
     public static void DeSpawn(GameObject enemy)
     {
-        Destroy(enemy);
+        //Destroy(enemy);
+        PoolMgr.Single.Despawn(enemy);
         --GameModel.Single.EnemyCount;
+        //Debug.Log(GameModel.Single.EnemyCount);
         _listEnemy.Remove(enemy);
     }
 

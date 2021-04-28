@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shot2
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 1067032
+  uniqueIndex: 9813654
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -2371,7 +2371,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 1619459
+  uniqueIndex: 13144519
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -8910,7 +8910,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 15420820
+  uniqueIndex: 12022410
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -11480,7 +11480,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 1965246
+  uniqueIndex: 11061280
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -17759,7 +17759,7 @@ MonoBehaviour:
   m_Name: Pattern1
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 12319465
+  uniqueIndex: 11121407
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -37259,7 +37259,7 @@ MonoBehaviour:
   m_Name: Pattern2
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 12263959
+  uniqueIndex: 2869216
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -57167,7 +57167,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 14702959
+  uniqueIndex: 6038731
   profile: {fileID: 11400000}
   parent: {fileID: 5674294257159593944}
   children:
@@ -59481,7 +59481,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4936150
+  uniqueIndex: 5325112
   profile: {fileID: 11400000}
   parent: {fileID: 7202942958202779319}
   children: []
@@ -65702,7 +65702,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3773940
+  uniqueIndex: 13160977
   profile: {fileID: 11400000}
   parent: {fileID: -2785519249946443100}
   children: []

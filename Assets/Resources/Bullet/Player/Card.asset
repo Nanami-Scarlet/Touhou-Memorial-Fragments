@@ -30,7 +30,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114342346830913606}
+  currentParamsSelected: {fileID: 114300363739621142}
   numberOfSubAssets: 0
 --- !u!114 &114179803937929816
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 11244979
+  uniqueIndex: 15345737
   profile: {fileID: 11400000}
   parent: {fileID: 114190031269497074}
   children:
@@ -2391,7 +2391,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 1270959
+  uniqueIndex: 13623180
   profile: {fileID: 11400000}
   parent: {fileID: 114776344989347026}
   children:
@@ -5157,7 +5157,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 6404981
+  uniqueIndex: 10680304
   profile: {fileID: 11400000}
   parent: {fileID: 114179803937929816}
   children:
@@ -6998,7 +6998,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 1
   hideSpriteList: 0
-  currentlyDisplayedModule: 7
+  currentlyDisplayedModule: 3
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -7871,7 +7871,7 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 4
+      defaultValue: 1
     enumTypeName: BulletPro.PreferredTarget, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
     enumOptions:
@@ -11900,7 +11900,7 @@ MonoBehaviour:
   m_Name: Turn To Player
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 16015533
+  uniqueIndex: 1799008
   profile: {fileID: 11400000}
   parent: {fileID: 114300363739621142}
   children: []
@@ -28967,7 +28967,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 7602612
+  uniqueIndex: 9226472
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:

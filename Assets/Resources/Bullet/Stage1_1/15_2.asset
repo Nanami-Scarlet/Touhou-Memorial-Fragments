@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3280407
+  uniqueIndex: 5097271
   profile: {fileID: 11400000}
   parent: {fileID: 8384796783488315558}
   children: []
-  isInRecycleBin: 0
+  isInRecycleBin: 1
   index: 6
   foldout: 1
   hasBeenSerializedOnce: 1
@@ -6688,7 +6688,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 13234527
+  uniqueIndex: 15225030
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -8529,7 +8529,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 1
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -8974,7 +8974,7 @@ MonoBehaviour:
   dieOnCollision: 1
   shapeFoldout: 0
   collisionTagsFoldout: 1
-  homing: 0
+  homing: 1
   homingTags:
     tagList: 1
   useSameTagsAsCollision: 1
@@ -9081,7 +9081,7 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 1
     sliderMin: -1
     sliderMax: 1
@@ -9188,7 +9188,7 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 90
+      defaultValue: 0
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -13329,7 +13329,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 7717095
+  uniqueIndex: 10286073
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -17607,27 +17607,27 @@ MonoBehaviour:
     selectionRectsVisible: 1
     postEffectBulletSpawns:
     - index: 0
-      bulletOrigin: {x: 0, y: 0, z: 357.5}
+      bulletOrigin: {x: 0, y: 0, z: 7.5}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 1
-      bulletOrigin: {x: 0, y: 0, z: 352.5}
+      bulletOrigin: {x: 0, y: 0, z: 2.5}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 2
-      bulletOrigin: {x: 0, y: 0, z: 347.5}
+      bulletOrigin: {x: 0, y: 0, z: -2.5}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 3
-      bulletOrigin: {x: 0, y: 0, z: 342.5}
+      bulletOrigin: {x: 0, y: 0, z: -7.5}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
-    enabled: 1
+    enabled: 0
   bulletParamsRandom: 0
   listOfPossibleBulletParams: []
   possibleBulletParams: 0
-  highestValues: {x: 0, y: 0, z: 357.5}
-  lowestValues: {x: 0, y: 0, z: 342.5}
+  highestValues: {x: 0, y: 0, z: 7.5}
+  lowestValues: {x: 0, y: 0, z: -7.5}
   hasBeenSerializedOnce: 1
   foldout0: 0
   foldout1: 0
@@ -17671,12 +17671,11 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 6639451
+  uniqueIndex: 6867786
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
   - {fileID: 114917193883442684}
-  - {fileID: 4179987305417389827}
   isInRecycleBin: 0
   index: 0
   foldout: 1
@@ -23608,7 +23607,7 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: {fileID: 4179987305417389827}
+      defaultValue: {fileID: 0}
   dieWhenAllPatternsAreDone: 1
   behaviourPrefabs: []
   delaySpawn: 0
@@ -23950,7 +23949,7 @@ MonoBehaviour:
   m_Name: PatternUp
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 11625066
+  uniqueIndex: 3205395
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -37654,7 +37653,7 @@ MonoBehaviour:
       displayName: End Loop
   hasBeenSerializedOnce: 1
   focusedInstruction: -1
-  safetyForPlaymode: 7
+  safetyForPlaymode: 8
 --- !u!114 &4179987305417389827
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -37668,12 +37667,12 @@ MonoBehaviour:
   m_Name: PatternDown
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 7160572
+  uniqueIndex: 1500362
   profile: {fileID: 11400000}
-  parent: {fileID: 114671512830859702}
+  parent: {fileID: 0}
   children:
   - {fileID: 8384796783488315558}
-  isInRecycleBin: 0
+  isInRecycleBin: 1
   index: 4
   foldout: 1
   patternTags: []
@@ -51896,12 +51895,12 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 5228137
+  uniqueIndex: 16574954
   profile: {fileID: 11400000}
   parent: {fileID: 4179987305417389827}
   children:
   - {fileID: -8793025806429168605}
-  isInRecycleBin: 0
+  isInRecycleBin: 1
   index: 5
   foldout: 1
   bulletParams:

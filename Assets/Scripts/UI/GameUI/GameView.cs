@@ -157,6 +157,8 @@ public class GameView : ViewBase
         MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_GRAZE, UpdateGraze);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_POINT, UpdatePoint);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_MEMORY, UpdateMemory);
+
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
     }
 
     public override void Hide()

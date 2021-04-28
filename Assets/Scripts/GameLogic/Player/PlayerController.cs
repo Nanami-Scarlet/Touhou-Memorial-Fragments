@@ -92,10 +92,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE, GameModel.Single.Score);
+        if (other.CompareTag("ItemPoint") || other.CompareTag("ItemP"))     //防止和妖精的可发送弹幕冲突
+        {
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE, GameModel.Single.Score);
 
-        AudioMgr.Single.PlayGameEff(AudioType.Items);
-        Destroy(other.gameObject);
+            AudioMgr.Single.PlayGameEff(AudioType.Items);
+            //Destroy(other.gameObject);
+            other.gameObject.GetComponent<Item>().ResetItem();
+            PoolMgr.Single.Despawn(other.gameObject);
+        }
     }
 
     private void OnDestroy()
@@ -275,7 +280,7 @@ public class PlayerController : MonoBehaviour
             TimeMgr.Single.AddTimeTask(() => 
             {
                 AudioMgr.Single.StopGameEff(AudioType.ReleaseBomb);
-                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_BULLET);
+                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ENEMY_BULLET);
                 MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_RELEASE_CARD);
                 MessageMgr.Single.AddListener(KeyCode.X, ReleaseCard, InputState.DOWN);
             }, 2f, TimeUnit.Second);

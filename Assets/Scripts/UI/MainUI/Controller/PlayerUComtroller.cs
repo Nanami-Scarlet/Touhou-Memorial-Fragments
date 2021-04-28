@@ -21,6 +21,7 @@ public class PlayerUComtroller : ControllerBase
                 RemoveKeyCode();
                 SceneMgr.Single.AsyncLoadScene(SceneName.Game);
                 GameStateModel.Single.Status = GameStatus.Gameing;
+                AudioMgr.Single.StopBGM();
             } },
 
             { 1, null }
@@ -94,7 +95,6 @@ public class PlayerUComtroller : ControllerBase
         {
             _dicIndexAction[index]();
         }
-        AudioMgr.Single.StopBGM();
     }
 
     private void RemoveKeyCode()

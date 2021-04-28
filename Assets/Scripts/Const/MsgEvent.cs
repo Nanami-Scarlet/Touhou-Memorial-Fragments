@@ -10,8 +10,11 @@
     public const int EVENT_UPDATE_POINT = 6;
     public const int EVENT_UPDATE_MEMORY = 7;
 
-    public const int EVENT_CLEAR_BULLET = 8;
+    public const int EVENT_CLEAR_ENEMY_BULLET = 8;
     public const int EVENT_CHECK_MANA = 9;
     public const int EVENT_TWINKLE_SELF = 10;
     public const int EVENT_RELEASE_CARD = 11;
+
+    public const int EVENT_SHOW_BGM_NAME = 12;
+    public const int EVENT_CLEAR_PLAYER_BULLET = 13;
 }

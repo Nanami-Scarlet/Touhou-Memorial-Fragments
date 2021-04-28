@@ -31,7 +31,7 @@ public class PlayerBehaviour : BehaviourBase
     public override void Dead()
     {
         AudioMgr.Single.PlayGameEff(AudioType.PlayerDead);
-        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_BULLET);
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ENEMY_BULLET);
 
         if (GameStateModel.Single.SelectedDegree == Degree.LUNATIC)
         {

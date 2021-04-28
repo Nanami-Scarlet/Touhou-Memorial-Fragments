@@ -37,10 +37,10 @@ public class UIManager : NormalSingleton<UIManager>
 
     public void Show(string path, bool hideTop = true)
     {
-        if(_stackView.Count > 0 && hideTop)             //一个界面同时会存在多个UI
-        {
-            HideAll(_stackView.Peek());
-        }
+        //if(_stackView.Count > 0 && hideTop)             //一个界面同时会存在多个UI
+        //{
+        //    HideAll(_stackView.Peek());
+        //}
 
         if (!_dicNameOfView.ContainsKey(path))
         {
@@ -80,9 +80,6 @@ public class UIManager : NormalSingleton<UIManager>
     {
         if (_dicNameOfView.ContainsKey(path))
         {
-            //Debug.LogError("该路径的预制体已经存在，路径为：" + path);
-            //return null;
-
             return _dicNameOfView[path];
         }
 

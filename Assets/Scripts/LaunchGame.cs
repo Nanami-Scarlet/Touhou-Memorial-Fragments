@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class LaunchGame : MonoBehaviour
 
     private void Init()
     {
+        DOTween.SetTweensCapacity(1000, 50);
         LifeCycleMgr.Single.Init();
         UIManager.Single.Show(Paths.PREFAB_START_VIEW);
         AudioMgr.Single.PlayBGM(Paths.AUDIO_TITLE_BGM);

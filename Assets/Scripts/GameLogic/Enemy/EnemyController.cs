@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
 
         List<List<Vector3>> path = _enemyData.Path;
 
-        MessageMgr.Single.AddListener(MsgEvent.EVENT_CLEAR_BULLET, OnPlayerDeath);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_CLEAR_ENEMY_BULLET, KillBullet);
 
         if(path.Count > 1)                              //这么写为了能够提高代码的可读性
         {
@@ -49,13 +49,18 @@ public class EnemyController : MonoBehaviour
             _anim.SetInteger("Speed", GetOffsetX());
             _lastPos = transform.position;
         }
+
+        if(!GameUtil.JudgeEnemyShot(_lastPos))
+        {
+            _emitter.Pause();
+        }
     }
 
     private void OnDestroy()
     {
         transform.DOKill();
 
-        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CLEAR_BULLET, OnPlayerDeath);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CLEAR_ENEMY_BULLET, KillBullet);
     }
 
     private int GetOffsetX()
@@ -71,7 +76,7 @@ public class EnemyController : MonoBehaviour
     private void DoPathA(List<List<Vector3>> path, EnemyData enemyData)
     {
         transform.DOPath(path[0].ToArray(), enemyData.PathDurUP).SetEase(Ease.Linear);
-        int tid1 =  TimeMgr.Single.AddTimeTask(() => 
+        int tid1 =  TimeMgr.Single.AddTimeTask(() =>
         {
             _emitter.Play();
 
@@ -107,7 +112,7 @@ public class EnemyController : MonoBehaviour
         _listTimeID.Add(tid3);
     }
 
-    private void OnPlayerDeath(object[] args)
+    private void KillBullet(object[] args)
     {
         _emitter.Kill(KillOptions.AllBulletsButRoot);
     }
