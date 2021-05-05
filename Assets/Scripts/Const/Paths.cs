@@ -39,6 +39,8 @@ public class Paths
     public const string PREFAB_ENEMY7 = PREFAB_ENEMY_FOLDER + "7";
     public const string PREFAB_ENEMY8 = PREFAB_ENEMY_FOLDER + "8";
     public const string PREFAB_ENEMY9 = PREFAB_ENEMY_FOLDER + "9";
+    public const string PREFAB_ENEMY10 = PREFAB_ENEMY_FOLDER + "10";
+    public const string PREFAB_ENEMY11 = PREFAB_ENEMY_FOLDER + "11";
 
     /// <summary>
     /// 音频路径
@@ -49,7 +51,6 @@ public class Paths
     /// 一些音频的名称
     /// </summary>
     public const string AUDIO_TITLE_BGM = "Title_BGM";
-    public const string AUDIO_ONE_ONE_BGM = "One_One_BGM";
     public const string AUDIO_SELECT_EFF = "Select_Eff";
     public const string AUDIO_SURE_EFF = "Sure_Eff";
     public const string AUDIO_CANCAL_EFF = "Cancal_Eff";

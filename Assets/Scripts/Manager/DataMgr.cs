@@ -11,7 +11,7 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
     private Dictionary<string, StageData> _dicNameStageData = new Dictionary<string, StageData>();
     private Dictionary<string, Dictionary<string, EmitterProfile>> _dicSceneBullet = new Dictionary<string, Dictionary<string, EmitterProfile>>();
     private Dictionary<AudioType, AudioData> _dicTypeAudio = new Dictionary<AudioType, AudioData>();
-    private Dictionary<string, string> _dicBGMName = new Dictionary<string, string>();
+    private Dictionary<string, AudioData> _dicBGMName = new Dictionary<string, AudioData>();
 
     public void Init()
     {
@@ -163,23 +163,31 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
         for(int i = 0; i < json.Count; ++i)
         {
             JsonData bgm = json[i];
-            string gameName = GetValue<string>(bgm["stateName"]).Trim('"');
+            string stageName = GetValue<string>(bgm["stageName"]).Trim('"');
             string trueName = bgm["trueName"].ToString();
+            float vol = GetValue<float>(bgm["volume"]);
 
-            _dicBGMName.Add(gameName, trueName);
+            AudioData audioData = new AudioData()
+            {
+                Name = trueName,
+                Volume = vol
+            };
+
+            _dicBGMName.Add(stageName, audioData);
         }
     }
 
-    public string GetTrueBGMName(string gameName)
+    public AudioData GetBGMData(string stageName)
     {
-        if(!_dicBGMName.ContainsKey(gameName))
+        if(!_dicBGMName.ContainsKey(stageName))
         {
-            Debug.LogError("不存在该游戏BGM，游戏名字为：" + gameName);
+            Debug.LogError("不存在该面的BGM，面数为：" + stageName);
             return null;
         }
 
-        return _dicBGMName[gameName];
+        return _dicBGMName[stageName];
     }
+
     #endregion
 
     #region Tools

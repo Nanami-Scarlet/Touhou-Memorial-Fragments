@@ -7,7 +7,7 @@ public class EnemyView : MonoBehaviour
     public ParticleSystem _deadParticle;
     public SpriteRenderer _selfSpriteRenderer;
 
-    public void DieView()
+    public virtual void DieView()
     {
         _selfSpriteRenderer.enabled = false;
         _deadParticle.Play();

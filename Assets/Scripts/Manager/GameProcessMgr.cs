@@ -13,7 +13,7 @@ public class GameProcessMgr : MonoBehaviour
         _spawnMgr.Init();
 
         //CoroutineMgr.Single.Execute(OnState("stage1_1"));
-        StartCoroutine(OnState("stage1_1"));
+        StartCoroutine(OnState("stage1_2"));
     }
 
     private void OnDestroy()
@@ -28,15 +28,15 @@ public class GameProcessMgr : MonoBehaviour
     {
         StageData stageData = DataMgr.Single.GetStageData(stateName);
 
-        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_STAGE_ANIM);
-        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SHOW_BGM_NAME, stateName);
+        //MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_STAGE_ANIM);
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_BGM_SETTING, stateName);
 
-        yield return new WaitForSeconds(4f);
+        //yield return new WaitForSeconds(4f);
 
         for (int i = 0; i < stageData.ListWaveEnemy.Count; ++i)
         {
-            WaveData waveData = stageData.ListWaveEnemy[i];
-            //WaveData waveData = stageData.ListWaveEnemy[17];
+            //WaveData waveData = stageData.ListWaveEnemy[i];
+            WaveData waveData = stageData.ListWaveEnemy[3];
             float delay = 0;            //累加的延迟
 
             for (int j = 0; j < waveData.ListEnemy.Count; ++j)
@@ -45,7 +45,7 @@ public class GameProcessMgr : MonoBehaviour
 
                 TimeMgr.Single.AddTimeTask(() =>
                 {
-                    if (GameStateModel.Single.CurrentScene == SceneName.Game)
+                    //if (GameStateModel.Single.CurrentScene == SceneName.Game)
                     {
                         _spawnMgr.Spawn(enemyData);
                     }

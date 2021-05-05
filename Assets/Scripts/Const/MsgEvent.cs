@@ -15,6 +15,6 @@
     public const int EVENT_TWINKLE_SELF = 10;
     public const int EVENT_RELEASE_CARD = 11;
 
-    public const int EVENT_SHOW_BGM_NAME = 12;
+    public const int EVENT_BGM_SETTING = 12;
     public const int EVENT_CLEAR_PLAYER_BULLET = 13;
 }

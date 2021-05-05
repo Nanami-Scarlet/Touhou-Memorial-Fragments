@@ -1,5 +1,5 @@
 {
-  //面数（对象）->敌机波数（数组）->每波的敌机（数组）->具体敌机配置（对象）
+  //面数（对象）->每面的敌机（数组）->每波的敌机（数组）->具体敌机配置（对象）
   "stage1_1": [
     [
       {
@@ -2385,12 +2385,598 @@
         "pointCount": 3
       }
     ]
+  ],
+
+
+  "stage1_2": [
+    //0
+    [
+      {
+        "enemyType": "1",
+        "delay": 0.5,
+        "bornPos": "-4.27,5.1",
+        "path": "-2.54,2.57#0.16,-0.26#2.87,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "2",
+        "delay": 0.5,
+        "bornPos": "2.41,5.1",
+        "path": "0.35,2.46#0.34,0.26#2.51,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1.5,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "1",
+        "delay": 0.5,
+        "bornPos": "-3.5,5.1",
+        "path": "-2,2.57#-0.6,-0.56#2,-5.1",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "2",
+        "delay": 0.5,
+        "bornPos": "1.6,5.1",
+        "path": "-0.61,2.46#-0.67,0.73#1.79,-5.14",
+        "pauseTime": 0,
+        "pathDurUP": 1.5,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "1",
+        "delay": 0.5,
+        "bornPos": "-2.6,5.1",
+        "path": "-0.76,2.77#0.53,-0.6#3.11,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "2",
+        "delay": 0.5,
+        "bornPos": "0.87,5.1",
+        "path": "-0.5,2.8#-0.6,0.92#2.6,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "1",
+        "delay": 0.5,
+        "bornPos": "-1.54,5.1",
+        "path": "-0.18,3#-1,1#-2.8,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "2",
+        "delay": 0.5,
+        "bornPos": "0.18,5.1",
+        "path": "-1.6,2.65#0.94,0.1#1.9,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "1",
+        "delay": 0.5,
+        "bornPos": "-1.54,5.1",
+        "path": "1.27,2.69#-0.15,-1#-3.64,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "2",
+        "delay": 0.5,
+        "bornPos": "0.18,5.1",
+        "path": "-3.3,2.8#-2.4,-0.87#0.13,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "1",
+        "delay": 0.5,
+        "bornPos": "-1.54,5.1",
+        "path": "2,2.54#1.11,-0.9#-0.5,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "2",
+        "delay": 0.5,
+        "bornPos": "0.18,5.1",
+        "path": "-4.26,2.34#-2.93,-1.5#-1.35,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1.5,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "1",
+        "delay": 0.5,
+        "bornPos": "-3.1,5.1",
+        "path": "-1.94,0.7#0.88,-1.94#2.11,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "2",
+        "delay": 0.5,
+        "bornPos": "1.38,5.1",
+        "path": "0.26,1.54#-2.05,-2.03#-3.6,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "1",
+        "delay": 0.5,
+        "bornPos": "-3.61,5.1",
+        "path": "-1.17,1.07#0.17,-2.38#2.63,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "2",
+        "delay": 0.5,
+        "bornPos": "2.06,5.1",
+        "path": "1,1.3#-0.3,-2#-2.8,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "1",
+        "delay": 0.5,
+        "bornPos": "-3.61,5.1",
+        "path": "-1.17,1.07#0.17,-2.37#2.63,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "2",
+        "delay": 0.5,
+        "bornPos": "3,5.1",
+        "path": "1.6,1.28#-1.9,-1.7#-4.5,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "1",
+        "delay": 0.5,
+        "bornPos": "-2.53,5.1",
+        "path": "1.2,2.37#-3.18,-1.94#2.63,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "2",
+        "delay": 0.5,
+        "bornPos": "3,5.1",
+        "path": "-3,0.82#2.25,-2#-4.3,-5",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 8,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 1
+      }
+    ],
+
+    //1
+    [
+      {
+        "enemyType": "3",
+        "delay": 0.3,
+        "bornPos": "-5.3,5",
+        "path": "-4.9,3.7#-4.5,2.84#-3.6,2.12#3.72,2.12",
+        "pauseTime": 0,
+        "pathDurUP": 1.5,
+        "pathDurDown": 4,
+        "emitterName": "0",
+        "hp": 40,
+        "pCount": 1,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "3",
+        "delay": 0.3,
+        "bornPos": "-5.3,5",
+        "path": "-4.9,3.7#-4.5,2.84#-3.6,2.12#3.72,2.12",
+        "pauseTime": 0,
+        "pathDurUP": 1.5,
+        "pathDurDown": 4,
+        "emitterName": "0",
+        "hp": 40,
+        "pCount": 1,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "5",
+        "delay": 0,
+        "bornPos": "0.8,5.1",
+        "path": "0.8,1.7|3.72,0",
+        "pauseTime": 4,
+        "pathDurUP": 1.5,
+        "pathDurDown": 1,
+        "emitterName": "1",
+        "hp": 200,
+        "pCount": 2,
+        "pointCount": 2
+      },
+
+      {
+        "enemyType": "3",
+        "delay": 0.3,
+        "bornPos": "-5.3,5",
+        "path": "-4.9,3.7#-4.5,2.84#-3.6,2.12#3.72,2.12",
+        "pauseTime": 0,
+        "pathDurUP": 1.5,
+        "pathDurDown": 4,
+        "emitterName": "0",
+        "hp": 40,
+        "pCount": 1,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "3",
+        "delay": 0.3,
+        "bornPos": "-5.3,5",
+        "path": "-4.9,3.7#-4.5,2.84#-3.6,2.12#3.72,2.12",
+        "pauseTime": 0,
+        "pathDurUP": 1.5,
+        "pathDurDown": 4,
+        "emitterName": "0",
+        "hp": 40,
+        "pCount": 1,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "3",
+        "delay": 0.3,
+        "bornPos": "-5.3,5",
+        "path": "-4.9,3.7#-4.5,2.84#-3.6,2.12#3.72,2.12",
+        "pauseTime": 0,
+        "pathDurUP": 1.5,
+        "pathDurDown": 4,
+        "emitterName": "0",
+        "hp": 40,
+        "pCount": 1,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "3",
+        "delay": 0.3,
+        "bornPos": "-5.3,5",
+        "path": "-4.9,3.7#-4.5,2.84#-3.6,2.12#3.72,2.12",
+        "pauseTime": 0,
+        "pathDurUP": 1.5,
+        "pathDurDown": 4,
+        "emitterName": "0",
+        "hp": 40,
+        "pCount": 1,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "3",
+        "delay": 0.3,
+        "bornPos": "-5.3,5",
+        "path": "-4.9,3.7#-4.5,2.84#-3.6,2.12#3.72,2.12",
+        "pauseTime": 0,
+        "pathDurUP": 1.5,
+        "pathDurDown": 4,
+        "emitterName": "0",
+        "hp": 40,
+        "pCount": 1,
+        "pointCount": 1
+      },
+
+      {
+        "enemyType": "3",
+        "delay": 1,
+        "bornPos": "-5.3,5",
+        "path": "-4.9,3.7#-4.5,2.84#-3.6,2.12#3.72,2.12",
+        "pauseTime": 0,
+        "pathDurUP": 1.5,
+        "pathDurDown": 4,
+        "emitterName": "0",
+        "hp": 40,
+        "pCount": 1,
+        "pointCount": 1
+      }
+    ],
+
+    //2
+    [
+      {
+        "enemyType": "10",
+        "delay": 0,
+        "bornPos": "-5.2,5",
+        "path": "3.7,0.85",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 5,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 0
+      },
+
+      {
+        "enemyType": "10",
+        "delay": 0,
+        "bornPos": "-3.8,5",
+        "path": "5.1,0.85",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 5,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 0
+      },
+
+      {
+        "enemyType": "10",
+        "delay": 0,
+        "bornPos": "-2.4,5",
+        "path": "6.5,0.85",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 5,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 0
+      },
+
+      {
+        "enemyType": "10",
+        "delay": 0,
+        "bornPos": "-1,5",
+        "path": "7.9,0.85",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 5,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 0
+      },
+
+      {
+        "enemyType": "10",
+        "delay": 4.5,
+        "bornPos": "0.6,5",
+        "path": "9.3,0.85",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 5,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 0,
+        "pointCount": 0
+      },
+
+      {
+        "enemyType": "11",
+        "delay": 0,
+        "bornPos": "3.6,5",
+        "path": "-5.4,0.85",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 5,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 1,
+        "pointCount": 0
+      },
+
+      {
+        "enemyType": "11",
+        "delay": 0,
+        "bornPos": "2,5",
+        "path": "-6.8,0.85",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 5,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 1,
+        "pointCount": 0
+      },
+
+      {
+        "enemyType": "11",
+        "delay": 0,
+        "bornPos": "0.4,5",
+        "path": "-8.2,0.85",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 5,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 1,
+        "pointCount": 0
+      },
+
+      {
+        "enemyType": "11",
+        "delay": 0,
+        "bornPos": "-1.2,5",
+        "path": "-9.6,0.85",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 5,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 1,
+        "pointCount": 0
+      },
+
+      {
+        "enemyType": "11",
+        "delay": 0,
+        "bornPos": "-2.6,5",
+        "path": "-11,0.85",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 5,
+        "emitterName": "0",
+        "hp": 50,
+        "pCount": 1,
+        "pointCount": 0
+      }
+    ],
+
+    //3
+    [
+      //{
+      //  "enemyType": "6",
+      //  "delay": 0,
+      //  "bornPos": "-2.7,5",
+      //  "path": "-2.7,1.9|-5.4,0.2",
+      //  "pauseTime": 5,
+      //  "pathDurUP": 1.5,
+      //  "pathDurDown": 1.5,
+      //  "emitterName": "0",
+      //  "hp": 100,
+      //  "pCount": 2,
+      //  "pointCount": 1
+      //},
+
+      {
+        "enemyType": "5",
+        "delay": 0,
+        //"bornPos": "-5.6,2.8",
+        "bornPos": "4,2.8",
+        "path": "2.25,1.6#0.1,0.8#-2.15,0.4#-5.3,0.15",
+        //"path": "-3.8,1.25#-1,0.4#3.86,-0.15",
+        "pauseTime": 0,
+        "pathDurUP": 1,
+        "pathDurDown": 4,
+        "emitterName": "1",
+        "hp": 100,
+        "pCount": 1,
+        "pointCount": 1
+      }
+    ]
   ]
-
-
-  //"stage1_2": [
-    //神灵庙L一开始的弹幕
-  //],
 
 
 

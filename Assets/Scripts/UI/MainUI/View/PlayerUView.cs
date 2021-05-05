@@ -63,7 +63,7 @@ public class PlayerUView : ViewBase
         _transDes.localRotation = new Quaternion(0, -1, 0, 0);
 
         _transRank.DOScale(1, 0.5f);
-        _transRank.DOLocalMove(new Vector3(0, -430, 0), 0.5f);
+        _transRank.DOLocalMove(Vector3.down * 430, 0.5f);
         _transTitle.DOLocalMoveY(370, 0.7f);
         _transPic.DOLocalMoveX(-380, 0.9f);
         _transDes.DOLocalMoveX(233, 0.9f);

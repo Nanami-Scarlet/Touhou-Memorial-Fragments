@@ -85,7 +85,7 @@ public class EnemyController : MonoBehaviour
                 _emitter.Stop();
                 transform.DOPath(path[1].ToArray(), enemyData.PathDurDown).SetEase(Ease.Linear).OnComplete(() =>
                 {
-                    _behaviour.SetDead();
+                    _behaviour.IsDead = true;
                     EnemySpawnMgr.DeSpawn(gameObject);
                 });
 
@@ -101,7 +101,7 @@ public class EnemyController : MonoBehaviour
         transform.DOPath(path[0].ToArray(), enemyData.PathDurUP + enemyData.PathDurDown).SetEase(Ease.Linear).OnComplete(() =>
         {
             EnemySpawnMgr.DeSpawn(gameObject);
-            _behaviour.SetDead();
+            _behaviour.IsDead = true;
         });
 
         int tid3 = TimeMgr.Single.AddTimeTask(() =>

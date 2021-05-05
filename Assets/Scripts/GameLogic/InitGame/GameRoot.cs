@@ -39,6 +39,6 @@ public class GameRoot : MonoBehaviour
         player.GetComponent<PlayerController>().Init();
         player.GetComponent<PlayerBehaviour>().Init();
 
-        AudioMgr.Single.PlayBGM(Paths.AUDIO_ONE_ONE_BGM);
+        //AudioMgr.Single.PlayBGM(Paths.AUDIO_ONE_ONE_BGM);
     }
 }

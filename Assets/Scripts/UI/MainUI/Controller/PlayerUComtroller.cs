@@ -37,11 +37,15 @@ public class PlayerUComtroller : ControllerBase
         InputMgr.Single.AddListener(KeyCode.Z);
         InputMgr.Single.AddListener(KeyCode.X);
 
-        MessageMgr.Single.AddListener(KeyCode.RightArrow, IncIndex);
-        MessageMgr.Single.AddListener(KeyCode.LeftArrow, DecIndex);
-        MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
-        MessageMgr.Single.AddListener(KeyCode.X, Back);
-
+        //等待动画加载完成才可以操作
+        TimeMgr.Single.AddTimeTask(() => 
+        {
+            MessageMgr.Single.AddListener(KeyCode.RightArrow, IncIndex);
+            MessageMgr.Single.AddListener(KeyCode.LeftArrow, DecIndex);
+            MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
+            MessageMgr.Single.AddListener(KeyCode.X, Back);
+        }, 0.9f, TimeUnit.Second);
+       
         //LifeCycleMgr.Single.Add(LifeName.UPDATE, this);
     }
 
@@ -68,7 +72,7 @@ public class PlayerUComtroller : ControllerBase
     private void IncIndex(object[] args)
     {
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_SELECT_EFF);
-        ++GameStateModel.Single.PlayerOption;
+        GameStateModel.Single.PlayerOption = (GameStateModel.Single.PlayerOption + 1) % 2;
         _view.UpdateFun();
     }
 
@@ -76,6 +80,10 @@ public class PlayerUComtroller : ControllerBase
     {
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_SELECT_EFF);
         --GameStateModel.Single.PlayerOption;
+        if(GameStateModel.Single.PlayerOption == -1)
+        {
+            GameStateModel.Single.PlayerOption = 1;
+        }
         _view.UpdateFun();
     }
 
@@ -83,6 +91,7 @@ public class PlayerUComtroller : ControllerBase
     {
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_CANCAL_EFF);
 
+        UIManager.Single.Hide(Paths.PREFAB_PLAYER_VIEW);
         UIManager.Single.Show(Paths.PREFAB_DEGREE_VIEW);
     }
 

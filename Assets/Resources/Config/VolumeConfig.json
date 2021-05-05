@@ -1,0 +1,43 @@
+[
+  {
+    "type": "Graze",
+    "name": "Graze_Eff",
+    "vol": 0.4
+  },
+
+  {
+    "type": "Items",
+    "name": "Item_Eff",
+    "vol": 0.3
+  },
+
+  {
+    "type": "PlayerDead",
+    "name": "Death_Eff",
+    "vol": 0.5
+  },
+
+  {
+    "type": "EnemyDead",
+    "name": "EDeath_Eff",
+    "vol": 0.3
+  },
+
+  {
+    "type": "GetBomb",
+    "name": "GetBomb_Eff",
+    "vol": 0.5
+  },
+
+  {
+    "type": "ReleaseBomb",
+    "name": "ReleaseBomb_Eff",
+    "vol": 0.5
+  },
+
+  {
+    "type": "Extend",
+    "name": "Extend_Eff",
+    "vol": 0.5
+  }
+]

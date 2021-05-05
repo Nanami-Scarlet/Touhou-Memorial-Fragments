@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PatternRight
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 5468287
+  uniqueIndex: 10299177
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -17101,7 +17101,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114027673760526898}
+  currentParamsSelected: {fileID: 114201774248674550}
   numberOfSubAssets: 0
 --- !u!114 &114027673760526898
 MonoBehaviour:
@@ -17116,7 +17116,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15786734
+  uniqueIndex: 182667
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -23757,7 +23757,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 11551038
+  uniqueIndex: 5973532
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -23972,7 +23972,7 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 8
+      defaultValue: 17
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -24007,6 +24007,42 @@ MonoBehaviour:
     useDifferentBullet: 0
     bulletParams: {fileID: 0}
   - index: 7
+    bulletOrigin: {x: 0, y: 0, z: 0}
+    useDifferentBullet: 0
+    bulletParams: {fileID: 0}
+  - index: 8
+    bulletOrigin: {x: 0, y: 0, z: 0}
+    useDifferentBullet: 0
+    bulletParams: {fileID: 0}
+  - index: 9
+    bulletOrigin: {x: 0, y: 0, z: 0}
+    useDifferentBullet: 0
+    bulletParams: {fileID: 0}
+  - index: 10
+    bulletOrigin: {x: 0, y: 0, z: 0}
+    useDifferentBullet: 0
+    bulletParams: {fileID: 0}
+  - index: 11
+    bulletOrigin: {x: 0, y: 0, z: 0}
+    useDifferentBullet: 0
+    bulletParams: {fileID: 0}
+  - index: 12
+    bulletOrigin: {x: 0, y: 0, z: 0}
+    useDifferentBullet: 0
+    bulletParams: {fileID: 0}
+  - index: 13
+    bulletOrigin: {x: 0, y: 0, z: 0}
+    useDifferentBullet: 0
+    bulletParams: {fileID: 0}
+  - index: 14
+    bulletOrigin: {x: 0, y: 0, z: 0}
+    useDifferentBullet: 0
+    bulletParams: {fileID: 0}
+  - index: 15
+    bulletOrigin: {x: 0, y: 0, z: 0}
+    useDifferentBullet: 0
+    bulletParams: {fileID: 0}
+  - index: 16
     bulletOrigin: {x: 0, y: 0, z: 0}
     useDifferentBullet: 0
     bulletParams: {fileID: 0}
@@ -26023,43 +26059,79 @@ MonoBehaviour:
     selectionRectsVisible: 0
     postEffectBulletSpawns:
     - index: 0
-      bulletOrigin: {x: 0, y: 0, z: 157.5}
+      bulletOrigin: {x: 0, y: 0, z: 169.41176}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 1
-      bulletOrigin: {x: 0, y: 0, z: 112.5}
+      bulletOrigin: {x: 0, y: 0, z: 148.23529}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 2
-      bulletOrigin: {x: 0, y: 0, z: 67.5}
+      bulletOrigin: {x: 0, y: 0, z: 127.05882}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 3
-      bulletOrigin: {x: 0, y: 0, z: 22.5}
+      bulletOrigin: {x: 0, y: 0, z: 105.88235}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 4
-      bulletOrigin: {x: 0, y: 0, z: -22.5}
+      bulletOrigin: {x: 0, y: 0, z: 84.70588}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 5
-      bulletOrigin: {x: 0, y: 0, z: -67.5}
+      bulletOrigin: {x: 0, y: 0, z: 63.52941}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 6
-      bulletOrigin: {x: 0, y: 0, z: -112.5}
+      bulletOrigin: {x: 0, y: 0, z: 42.35294}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 7
-      bulletOrigin: {x: 0, y: 0, z: -157.5}
+      bulletOrigin: {x: 0, y: 0, z: 21.17647}
+      useDifferentBullet: 0
+      bulletParams: {fileID: 0}
+    - index: 8
+      bulletOrigin: {x: 0, y: 0, z: 0}
+      useDifferentBullet: 0
+      bulletParams: {fileID: 0}
+    - index: 9
+      bulletOrigin: {x: 0, y: 0, z: -21.17647}
+      useDifferentBullet: 0
+      bulletParams: {fileID: 0}
+    - index: 10
+      bulletOrigin: {x: 0, y: 0, z: -42.35294}
+      useDifferentBullet: 0
+      bulletParams: {fileID: 0}
+    - index: 11
+      bulletOrigin: {x: 0, y: 0, z: -63.52941}
+      useDifferentBullet: 0
+      bulletParams: {fileID: 0}
+    - index: 12
+      bulletOrigin: {x: 0, y: 0, z: -84.70588}
+      useDifferentBullet: 0
+      bulletParams: {fileID: 0}
+    - index: 13
+      bulletOrigin: {x: 0, y: 0, z: -105.88235}
+      useDifferentBullet: 0
+      bulletParams: {fileID: 0}
+    - index: 14
+      bulletOrigin: {x: 0, y: 0, z: -127.05882}
+      useDifferentBullet: 0
+      bulletParams: {fileID: 0}
+    - index: 15
+      bulletOrigin: {x: 0, y: 0, z: -148.23529}
+      useDifferentBullet: 0
+      bulletParams: {fileID: 0}
+    - index: 16
+      bulletOrigin: {x: 0, y: 0, z: -169.41176}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     enabled: 1
   bulletParamsRandom: 0
   listOfPossibleBulletParams: []
   possibleBulletParams: 0
-  highestValues: {x: 0, y: 0, z: 157.5}
-  lowestValues: {x: 0, y: 0, z: -157.5}
+  highestValues: {x: 0, y: 0, z: 169.41176}
+  lowestValues: {x: 0, y: 0, z: -169.41176}
   hasBeenSerializedOnce: 1
   foldout0: 0
   foldout1: 0
@@ -26103,7 +26175,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 12921668
+  uniqueIndex: 9848532
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -32278,7 +32350,7 @@ MonoBehaviour:
   m_Name: PatternLeft
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 3438564
+  uniqueIndex: 16465510
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -48837,7 +48909,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 8564102
+  uniqueIndex: 8545411
   profile: {fileID: 11400000}
   parent: {fileID: -959385193180099737}
   children:
@@ -51183,7 +51255,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 12955417
+  uniqueIndex: 5859818
   profile: {fileID: 11400000}
   parent: {fileID: 1965506232519168468}
   children: []

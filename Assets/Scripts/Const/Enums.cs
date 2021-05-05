@@ -40,7 +40,7 @@ public enum InputState
 public enum Stage
 {
     stage1_1,
-    //stage1_2,
+    stage1_2,
     //stage2_1,
     //stage2_2,
     COUNT

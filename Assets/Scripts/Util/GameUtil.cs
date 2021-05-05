@@ -82,6 +82,6 @@ public class GameUtil
 
     public static bool JudgeEnemyShot(Vector3 pos)
     {
-        return pos.x > -4.3f && pos.x < 2.7f && pos.y > -3.5f && pos.y < 4f;
+        return pos.x > -4.3f && pos.x < 2.7f && pos.y > -3.5f && pos.y < 4.3f;
     }
 }

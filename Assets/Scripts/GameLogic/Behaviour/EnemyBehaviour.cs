@@ -7,7 +7,7 @@ public class EnemyBehaviour : BehaviourBase
 {
     public EnemyView _view;
     public EnemyController _controller;
-    private bool _isDead = false;
+    public bool IsDead { get; set; }
 
     private bool _isSpawnItem = false;
 
@@ -28,7 +28,7 @@ public class EnemyBehaviour : BehaviourBase
 
     public override void Dead()
     {
-        if (!_isDead)
+        if (!IsDead)
         {
             _controller.DieController();
             _view.DieView();
@@ -50,24 +50,14 @@ public class EnemyBehaviour : BehaviourBase
             //等待粒子系统播放完毕
             TimeMgr.Single.AddTimeTask(() =>
             {
-                if (!_isDead)             //有的妖精被符卡击破，所以这里需要判一下
+                if (!IsDead)             //有的妖精被符卡击破，所以这里需要判一下
                 {
                     EnemySpawnMgr.DeSpawn(gameObject);
-                    _isDead = true;
+                    IsDead = true;
                 }
             }, 0.7f, TimeUnit.Second);
 
             //_isDead = true;
         }
-    }
-
-    public void SetDead()       //当妖精自动越界时设置死亡
-    {
-        _isDead = true;
-    }
-
-    public void SetAlive()
-    {
-        _isDead = false;
     }
 }

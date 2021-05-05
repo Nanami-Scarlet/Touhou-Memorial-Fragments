@@ -64,6 +64,18 @@ public class PoolConfig
                  Count = 15
             },
 
+            new PoolData
+            {
+                 Path = Paths.PREFAB_ENEMY10,
+                 Count = 15
+            },
+
+             new PoolData
+            {
+                 Path = Paths.PREFAB_ENEMY11,
+                 Count = 15
+            },
+
             //todo:添加其他的Data
 
             new PoolData

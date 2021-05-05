@@ -24,6 +24,8 @@ public class EnemySpawnMgr : MonoBehaviour
             { "7", Paths.PREFAB_ENEMY7 },
             { "8", Paths.PREFAB_ENEMY8 },
             { "9", Paths.PREFAB_ENEMY9 },
+            { "10", Paths.PREFAB_ENEMY10 },
+            { "11", Paths.PREFAB_ENEMY11 },
             //todo:Boss的编号记得加上
         };
 
@@ -54,7 +56,7 @@ public class EnemySpawnMgr : MonoBehaviour
         enemy.GetComponent<BehaviourBase>().Init(data.HP, data.PCount, data.PointCount);
         enemy.GetComponent<BulletReceiver>().enabled = true;
         enemy.GetComponent<SpriteRenderer>().enabled = true;
-        enemy.GetComponent<EnemyBehaviour>().SetAlive();
+        enemy.GetComponent<EnemyBehaviour>().IsDead = false;
 
         _listEnemy.Add(enemy);
     }

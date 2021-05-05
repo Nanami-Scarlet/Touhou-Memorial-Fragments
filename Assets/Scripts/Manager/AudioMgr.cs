@@ -47,11 +47,12 @@ public class AudioMgr : MonoSingleton<AudioMgr>, IInit
         return _dicStrClips[name];
     }
 
-    public void PlayBGM(string name, bool loop = false)
+    public void PlayBGM(string name, float vol = 1, bool loop = false)
     {
         AudioClip clip = GetClip(name);
         _bgmSource.loop = loop;
         _bgmSource.clip = clip;
+        _bgmSource.volume = vol;
 
         _bgmSource.Play();
     }
