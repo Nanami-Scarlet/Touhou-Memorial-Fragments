@@ -16,7 +16,7 @@ public class PlayerUView : ViewBase
 
     private int MAX_INDEX { get; set; }
 
-    public override void InitChild()
+    public override void InitAndChild()
     {
        
     }
@@ -65,15 +65,15 @@ public class PlayerUView : ViewBase
         _transRank.DOScale(1, 0.5f);
         _transRank.DOLocalMove(Vector3.down * 430, 0.5f);
         _transTitle.DOLocalMoveY(370, 0.7f);
-        _transPic.DOLocalMoveX(-380, 0.9f);
-        _transDes.DOLocalMoveX(233, 0.9f);
+        _transPic.DOLocalMoveX(-400f, 0.9f);
+        _transDes.DOLocalMoveX(350f, 0.9f);
         _transDes.DOLocalRotate(Vector3.zero, 0.3f).SetLoops(3, LoopType.Incremental);
     }
 
     private void ResetAnim()
     {
-        _transPic.localPosition = new Vector3(-1000, 0, 0);
-        _transDes.localPosition = new Vector3(1060, 0, 0);
+        _transPic.localPosition = new Vector3(-900, -70, 0);
+        _transDes.localPosition = new Vector3(1000, -70, 0);
         _transDes.localRotation = new Quaternion(0, -1, 0, 0);
         _transRank.localScale = Vector3.one * 1.5f;
         _transRank.localPosition = Vector3.zero;

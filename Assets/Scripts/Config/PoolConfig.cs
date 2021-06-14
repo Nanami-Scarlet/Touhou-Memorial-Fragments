@@ -67,16 +67,44 @@ public class PoolConfig
             new PoolData
             {
                  Path = Paths.PREFAB_ENEMY10,
-                 Count = 15
+                 Count = 30
             },
 
-             new PoolData
+            new PoolData
             {
                  Path = Paths.PREFAB_ENEMY11,
-                 Count = 15
+                 Count = 30
             },
 
-            //todo:添加其他的Data
+            new PoolData
+            {
+                 Path = Paths.PREFAB_BOSS1,
+                 Count = 1
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_BOSS2,
+                 Count = 1
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_BOSS3,
+                 Count = 1
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_BOSS4,
+                 Count = 1
+            },
+
+            new PoolData
+            {
+                 Path = Paths.PREFAB_BOSS5,
+                 Count = 4
+            },
 
             new PoolData
             {
@@ -88,6 +116,18 @@ public class PoolConfig
             {
                 Path = Paths.PREFAB_ITEM_POINT,
                 Count = 200
+            },
+
+            new PoolData
+            {
+                Path = Paths.PREFAB_ITEM_LIFE_FRAGMENT,
+                Count = 3
+            },
+
+            new PoolData
+            {
+                Path = Paths.PREFAB_ITEM_BOMB_FRAGMENT,
+                Count = 3
             }
         };
     }

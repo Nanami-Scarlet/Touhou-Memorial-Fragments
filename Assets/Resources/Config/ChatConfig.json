@@ -1,0 +1,107 @@
+{
+  "stage_B1": [
+    {
+      "chaterName": "蓬莱山辉夜",
+      "DialogTxt": "稀客呢，今晚也要来赏月吗？",
+      "picName": "2_0",
+      "count": 13,
+      "callback": 0         //这里和MessageMgr类分开，机制不一样，但表面还是MessageMgr
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "不了，我来找永琳。",
+      "picName": "1_0",
+      "count": 9,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "最近有很多「记忆光团」，不过还好破坏不了。",
+      "picName": "1_1",
+      "count": 21,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "蓬莱山辉夜",
+      "DialogTxt": "找她？她最近忙得厉害呢，我已经好一阵子没有看到她了。",
+      "picName": "2_0",
+      "count": 26,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "蓬莱山辉夜",
+      "DialogTxt": "要不还是和我一起赏月吧~",
+      "picName": "2_0",
+      "count": 12,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "唉，我话还没说完呢！我要生气了哦！",
+      "picName": "1_2",
+      "count": 17,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "我说，「记忆光团」在外面那么多，你没感到？",
+      "picName": "1_1",
+      "count": 21,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "蓬莱山辉夜",
+      "DialogTxt": "我是什么性格你不知道？",
+      "picName": "2_0",
+      "count": 13,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "蓬莱山辉夜",
+      "DialogTxt": "不过你说的「记忆光团」...嗯，我的确不知。",
+      "picName": "2_1",
+      "count": 21,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "嗯？你看起来很闲的样子。就算这样那就改天吧。不过难怪你也经常见不到永琳呢。",
+      "picName": "1_1",
+      "count": 37,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "我先走一步，等有时间再来赏月。再见，月之公主。",
+      "picName": "1_0",
+      "count": 23,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "蓬莱山辉夜",
+      "DialogTxt": "唉唉，你先打败我再去见她吧。",
+      "picName": "2_1",
+      "count": 14,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "蓬莱山辉夜",
+      "DialogTxt": "今天的满月可是格外的美哦~",
+      "picName": "2_0",
+      "count": 13,
+      "callback": -1
+    }
+  ]
+}

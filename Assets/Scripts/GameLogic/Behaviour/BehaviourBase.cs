@@ -9,6 +9,8 @@ public abstract class BehaviourBase : MonoBehaviour
     private int _hp;
     private int _pCount;
     private int _pointCount;
+    private int _lifeFragmentCount;
+    private int _bombFragmentCount;
 
     public int HP 
     {
@@ -49,16 +51,48 @@ public abstract class BehaviourBase : MonoBehaviour
         }
     }
 
-    public void Init(int hp = 1, int pCount = 0, int pointCount = 0)
+    public int LifeFragmentCount
+    {
+        get
+        {
+            return _lifeFragmentCount;
+        }
+
+        set
+        {
+            _lifeFragmentCount = value;
+        }
+    }
+
+    public int BombFragmentCount
+    {
+        get
+        {
+            return _bombFragmentCount;
+        }
+
+        set
+        {
+            _bombFragmentCount = value;
+        }
+    }
+
+    public void SetBehaviour(int hp = 1, int pCount = 0, int pointCount = 0, 
+        int lifeFragmentCount = 0, int bombFragmentCount = 0)
     {
         HP = hp;
         PCount = pCount;
         PointCount = pointCount;
+        LifeFragmentCount = lifeFragmentCount;
+        BombFragmentCount = bombFragmentCount;
     }
 
     public virtual void Hurt(Bullet bullet, Vector3 hitPoint)
     {
         HP -= bullet.moduleParameters.GetInt("_PowerLevel");
+
+        GameModel.Single.Score += Const.BULLET_SCORE;
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE, GameModel.Single.Score);
     }
 
     public abstract void Dead();
@@ -67,6 +101,8 @@ public abstract class BehaviourBase : MonoBehaviour
     {
         GetItems("P", PCount);
         GetItems("Point", PointCount);
+        GetItems("LifeFragment", LifeFragmentCount);
+        GetItems("BombFragment", BombFragmentCount);
     }
 
     private void GetItems(string name, int count)

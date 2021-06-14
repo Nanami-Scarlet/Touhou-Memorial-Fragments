@@ -22,10 +22,10 @@ public abstract class ViewBase : MonoBehaviour, IView
 
     public void Init()
     {
-        InitChild();
+        InitAndChild();
     }
 
-    public abstract void InitChild();
+    public abstract void InitAndChild();
 
     public virtual void Show()
     {

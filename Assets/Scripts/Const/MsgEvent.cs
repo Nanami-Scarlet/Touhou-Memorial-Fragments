@@ -17,4 +17,23 @@
 
     public const int EVENT_BGM_SETTING = 12;
     public const int EVENT_CLEAR_PLAYER_BULLET = 13;
+    public const int EVENT_SHOW_DIALOG = 14;
+    public const int EVENT_ADD_HPBAR = 15;
+    public const int EVENT_SET_HPBAR = 16;
+    public const int EVENT_SET_HPBAR_VIEW = 17;
+    public const int EVENT_SHOW_BOSS_NAME_CARD = 18;
+    public const int EVENT_CHAT_CALLBACK = 19;
+
+    public const int EVENT_SET_TIMER = 20;
+    public const int EVENT_SET_TIMEUP = 21;
+    public const int EVENT_HIDE_TIMER = 22;
+    public const int EVENT_CLEAR_ALL_HPBAR = 23;
+    public const int EVENT_MOVE_TIMER = 24;
+    public const int EVENT_PLAY_CARD_INFO_ANIM = 25;
+    public const int EVENT_SET_CARD_PIC = 26;
+    public const int EVENT_PLAY_CARD_PIC_ANIM = 27;
+    public const int EVENT_MOVE_CARD_INFO_RIGHT = 28;
+    public const int EVENT_HIDE_HP_VIEW = 29;
+    public const int EVENT_HIDE_BOSS_NAME_CARD = 30;
+    public const int EVENT_COMPLETE_TIMER = 31;
 }

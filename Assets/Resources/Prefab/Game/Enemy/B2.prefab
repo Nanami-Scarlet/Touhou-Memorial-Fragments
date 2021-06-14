@@ -12,6 +12,11 @@ GameObject:
   - component: {fileID: 5945474202576197826}
   - component: {fileID: 5945474202576197825}
   - component: {fileID: -6546361818936919774}
+  - component: {fileID: 4926522263509294065}
+  - component: {fileID: 4953270684589190680}
+  - component: {fileID: -7120198745278537065}
+  - component: {fileID: 5157522565384794738}
+  - component: {fileID: -7942433515967993291}
   m_Layer: 0
   m_Name: B2
   m_TagString: Enemy
@@ -217,3 +222,90 @@ MonoBehaviour:
   lastSrcRotation: {x: 0, y: 0, z: 0, w: 0}
   wpsDropdown: 0
   dropToFloorOffset: 0
+--- !u!114 &4926522263509294065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945474202576197854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b489dbcf9bf514542942d61b6ccad736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4953270684589190680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945474202576197854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf816d4bace44454eb298221e1d8acd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _centerPos: {x: -5.8, y: 3.6, z: 0}
+--- !u!114 &-7120198745278537065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945474202576197854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitterProfile: {fileID: 0}
+  patternOrigin: {fileID: 0}
+  playAtStart: 0
+--- !u!114 &5157522565384794738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945474202576197854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50e756f139e8884f93ef2eca2eef78d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 5945474202576197827}
+  colliderType: 0
+  hitboxSize: 0.1
+  hitboxOffset: {x: 0, y: 0}
+  killBulletOnCollision: 1
+  maxSimultaneousCollisionsPerFrame: 1
+  collisionTags:
+    tagList: 2
+  collisionTagsFoldout: 1
+  OnHitByBullet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletExit:
+    m_PersistentCalls:
+      m_Calls: []
+  gizmoColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &-7942433515967993291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945474202576197854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf816d4bace44454eb298221e1d8acd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _centerPos: {x: -5.8, y: 3.6, z: 0}

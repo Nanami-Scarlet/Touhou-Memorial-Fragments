@@ -1,0 +1,38 @@
+{
+  "views": [
+    {
+      "name": "ChatView",
+      "layer": 1
+    },
+
+    {
+      "name": "DegreeView",
+      "layer": 1
+    },
+
+    {
+      "name": "DynamicView",
+      "layer": 0
+    },
+
+    {
+      "name": "GameView",
+      "layer": 1
+    },
+
+    {
+      "name": "PauseView",
+      "layer": 0
+    },
+
+    {
+      "name": "PlayerView",
+      "layer": 1
+    },
+
+    {
+      "name": "StartView",
+      "layer": 1
+    }
+  ]
+}

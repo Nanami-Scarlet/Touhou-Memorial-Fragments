@@ -39,5 +39,35 @@
     "type": "Extend",
     "name": "Extend_Eff",
     "vol": 0.5
+  },
+
+  {
+    "type": "TimeOut",
+    "name": "TimeOut_Eff",
+    "vol": 0.5
+  },
+
+  {
+    "type": "Card",
+    "name": "Card_Eff",
+    "vol": 0.5
+  },
+
+  {
+    "type": "GetCard",
+    "name": "GetCard_Eff",
+    "vol": 0.5
+  },
+
+  {
+    "type": "TimeUP",
+    "name": "TimeUP_Eff",
+    "vol": 0.5
+  },
+
+  {
+    "type": "GetFinalCard",
+    "name": "GetFinalCard_Eff",
+    "vol": 0.4
   }
 ]

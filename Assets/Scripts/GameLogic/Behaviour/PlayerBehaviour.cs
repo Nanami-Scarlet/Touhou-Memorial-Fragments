@@ -33,7 +33,7 @@ public class PlayerBehaviour : BehaviourBase
         AudioMgr.Single.PlayGameEff(AudioType.PlayerDead);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ENEMY_BULLET);
 
-        if (GameStateModel.Single.SelectedDegree == Degree.LUNATIC)
+        if (GameStateModel.Single.GameDegree == Degree.LUNATIC)
         {
             if(PlayerModel.Single.Life > 0)
             {
@@ -49,7 +49,7 @@ public class PlayerBehaviour : BehaviourBase
 
     public void OnGraze(Bullet bullet, Vector3 hitPoint)
     {
-        if (GameStateModel.Single.Status == GameStatus.Gameing && !bullet.IsGrazed)
+        if(!GameStateModel.Single.IsPause && !GameStateModel.Single.IsChating && !bullet.IsGrazed)
         {
             ++PlayerModel.Single.Graze;
             AudioMgr.Single.PlayGameEff(AudioType.Graze);

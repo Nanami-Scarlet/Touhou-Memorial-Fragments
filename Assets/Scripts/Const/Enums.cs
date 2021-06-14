@@ -20,7 +20,8 @@ public enum Degree
 public enum GameStatus
 {
     Gameing,
-    Pause           //为了方便，UI界面统称Pause
+    Pause,          //为了方便，UI界面统称Pause
+    Chating
 }
 
 public enum TimeUnit
@@ -46,6 +47,15 @@ public enum Stage
     COUNT
 }
 
+public enum BossStage
+{
+    stage_B1,
+    //stage_B2,
+    //stage_B3,
+    //stage_B4,
+    COUNT
+}
+
 public enum PlayerState
 {
     NORMAL,
@@ -61,5 +71,17 @@ public enum AudioType
     GetBomb,
     ReleaseBomb,
     Extend,
+    TimeOut,
+    Card,
+    GetCard,
+    TimeUP,
+    GetFinalCard,
     COUNT
+}
+
+public enum Mode
+{
+    NORMAL,
+    PRACTICE,
+    SPELL
 }

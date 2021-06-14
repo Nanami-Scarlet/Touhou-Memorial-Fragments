@@ -70,7 +70,7 @@ public class InputKey : IInput
             }
         }
 
-        if (GameStateModel.Single.Status == GameStatus.Gameing)
+        if (!GameStateModel.Single.IsChating && !GameStateModel.Single.IsPause)
         {
             for (int i = 0; i < _listGameKeyCode.Count; ++i)
             {

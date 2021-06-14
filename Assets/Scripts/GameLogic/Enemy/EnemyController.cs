@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (GameStateModel.Single.Status == GameStatus.Gameing)
+        if (!GameStateModel.Single.IsPause)
         {
             _anim.SetInteger("Speed", GetOffsetX());
             _lastPos = transform.position;
@@ -56,12 +56,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        transform.DOKill();
+    //private void OnDestroy()
+    //{
+    //    transform.DOKill();
 
-        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CLEAR_ENEMY_BULLET, KillBullet);
-    }
+    //    MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CLEAR_ENEMY_BULLET, KillBullet);
+    //}
 
     private int GetOffsetX()
     {

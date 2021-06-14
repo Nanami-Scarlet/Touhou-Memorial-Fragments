@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameUtil
@@ -80,6 +79,9 @@ public class GameUtil
         return GetDistance(trans1.position, trans2.position);
     }
 
+    /// <summary>
+    /// 妖精可发射弹幕的范围
+    /// </summary>
     public static bool JudgeEnemyShot(Vector3 pos)
     {
         return pos.x > -4.3f && pos.x < 2.7f && pos.y > -3.5f && pos.y < 4.3f;

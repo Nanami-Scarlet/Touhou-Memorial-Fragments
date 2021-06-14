@@ -12,16 +12,16 @@ public class DegreeController : ControllerBase
     {
         { 0, () => 
         {
-            GameStateModel.Single.SelectedDegree = Degree.NORMAL;
+            GameStateModel.Single.GameDegree = Degree.NORMAL;
         } },
 
         { 1, () => 
         {
-            GameStateModel.Single.SelectedDegree = Degree.LUNATIC;
+            GameStateModel.Single.GameDegree = Degree.LUNATIC;
         } }
     };
 
-    public override void InitChild()
+    public override void InitAndChild()
     {
         
     }
@@ -33,18 +33,22 @@ public class DegreeController : ControllerBase
         InputMgr.Single.AddListener(KeyCode.X);
         InputMgr.Single.AddListener(KeyCode.Z);
 
-        MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
-        MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
-        MessageMgr.Single.AddListener(KeyCode.X, Back);
-        MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
+        TimeMgr.Single.AddTimeTask(() =>
+        {
+            MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
+            MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
+            MessageMgr.Single.AddListener(KeyCode.X, Back);
+            MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
+        }, 0.5f, TimeUnit.Second);
+        
     }
 
     public override void Hide()
     {
-        InputMgr.Single.RemoveListener(KeyCode.UpArrow);
-        InputMgr.Single.RemoveListener(KeyCode.DownArrow);
-        InputMgr.Single.RemoveListener(KeyCode.X);
-        InputMgr.Single.RemoveListener(KeyCode.Z);
+        //InputMgr.Single.RemoveListener(KeyCode.UpArrow);
+        //InputMgr.Single.RemoveListener(KeyCode.DownArrow);
+        //InputMgr.Single.RemoveListener(KeyCode.X);
+        //InputMgr.Single.RemoveListener(KeyCode.Z);
 
         MessageMgr.Single.RemoveListener(KeyCode.UpArrow, DecIndex);
         MessageMgr.Single.RemoveListener(KeyCode.DownArrow, IncIndex);
@@ -87,10 +91,15 @@ public class DegreeController : ControllerBase
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_SURE_EFF);
         int index = GameStateModel.Single.RankOption;
 
+        InputMgr.Single.RemoveListener(KeyCode.UpArrow);
+        InputMgr.Single.RemoveListener(KeyCode.DownArrow);
+        InputMgr.Single.RemoveListener(KeyCode.X);
+        InputMgr.Single.RemoveListener(KeyCode.Z);
+
         UIManager.Single.Hide(Paths.PREFAB_DEGREE_VIEW);
         UIManager.Single.Show(Paths.PREFAB_PLAYER_VIEW);
 
-        _view._options[index].DOFade(0, 0.07f).SetLoops(6, LoopType.Yoyo)
+        _view._txtOptions[index].DOFade(0, 0.07f).SetLoops(6, LoopType.Yoyo)
             .OnComplete(() => _dicIndexAction[index]());
     }
 }

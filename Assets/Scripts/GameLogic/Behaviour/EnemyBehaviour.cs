@@ -7,9 +7,22 @@ public class EnemyBehaviour : BehaviourBase
 {
     public EnemyView _view;
     public EnemyController _controller;
-    public bool IsDead { get; set; }
+    public bool _isDead = false;
 
     private bool _isSpawnItem = false;
+
+    public bool IsDead
+    {
+        get
+        {
+            return _isDead;
+        }
+
+        set
+        {
+            _isDead = value;
+        }
+    }
 
     public override void Hurt(Bullet bullet, Vector3 hitPoint)
     {
@@ -21,14 +34,11 @@ public class EnemyBehaviour : BehaviourBase
             Dead();
             _isSpawnItem = true;
         }
-
-        GameModel.Single.Score += Const.BULLET_SCORE;
-        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE, GameModel.Single.Score);
     }
 
     public override void Dead()
     {
-        if (!IsDead)
+        if (!_isDead)
         {
             _controller.DieController();
             _view.DieView();
@@ -50,14 +60,20 @@ public class EnemyBehaviour : BehaviourBase
             //等待粒子系统播放完毕
             TimeMgr.Single.AddTimeTask(() =>
             {
-                if (!IsDead)             //有的妖精被符卡击破，所以这里需要判一下
+                if (!_isDead)             //有的妖精被符卡击破，所以这里需要判一下
                 {
                     EnemySpawnMgr.DeSpawn(gameObject);
-                    IsDead = true;
+                    _isDead = true;
                 }
             }, 0.7f, TimeUnit.Second);
 
             //_isDead = true;
         }
+    }
+
+    public void ResetBehaiour()
+    {
+        _isSpawnItem = false;
+        _isDead = false;
     }
 }

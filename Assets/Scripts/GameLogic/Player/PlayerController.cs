@@ -97,7 +97,6 @@ public class PlayerController : MonoBehaviour
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE, GameModel.Single.Score);
 
             AudioMgr.Single.PlayGameEff(AudioType.Items);
-            //Destroy(other.gameObject);
             other.gameObject.GetComponent<Item>().ResetItem();
             PoolMgr.Single.Despawn(other.gameObject);
         }

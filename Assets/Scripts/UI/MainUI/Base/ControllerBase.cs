@@ -6,10 +6,10 @@ public abstract class ControllerBase : MonoBehaviour, IController
 {
     public virtual void Init()
     {
-        InitChild();
+        InitAndChild();
     }
 
-    public abstract void InitChild();
+    public abstract void InitAndChild();
 
     public virtual void Show()
     {

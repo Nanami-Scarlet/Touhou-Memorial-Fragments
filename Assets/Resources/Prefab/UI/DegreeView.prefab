@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transTitle: {fileID: 3897825173411040301}
   _imgChoice: {fileID: 3897825172812787692}
-  _options:
+  _txtOptions:
   - {fileID: 3897825173462359455}
   - {fileID: 3897825172213059818}
 --- !u!114 &7918197805463384452

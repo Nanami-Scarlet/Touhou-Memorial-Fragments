@@ -10,7 +10,7 @@ public class PauseView : ViewBase
 
     public int MAX_INDEX { get; set; }
 
-    public override void InitChild()
+    public override void InitAndChild()
     {
         MAX_INDEX = 3;
     }

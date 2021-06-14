@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LaunchGame : MonoBehaviour
 {
@@ -23,8 +24,7 @@ public class LaunchGame : MonoBehaviour
         UIManager.Single.Show(Paths.PREFAB_START_VIEW);
         AudioMgr.Single.PlayBGM(Paths.AUDIO_TITLE_BGM);
         GameStateModel.Single.CurrentScene = SceneName.Main;
-        GameStateModel.Single.Status = GameStatus.Pause;
-        //LoadMgr.Single.LoadConfig(Paths.CONFIG_ENEMY);
+        GameStateModel.Single.IsPause = true;               //在UI界面中游戏是默认暂停的
 
         DontDestroyOnLoad(gameObject);
     }

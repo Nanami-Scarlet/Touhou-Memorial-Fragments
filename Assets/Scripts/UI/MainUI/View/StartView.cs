@@ -12,7 +12,7 @@ public class StartView : ViewBase
     
     public int MAX_INDEX { get; private set; }
 
-    public override void InitChild()
+    public override void InitAndChild()
     {
         MAX_INDEX = _options.Length;
     }
@@ -38,9 +38,9 @@ public class StartView : ViewBase
         _imgSacrifice.transform.DOLocalRotate(Vector3.zero, 1f);
         _imgSacrifice.DOFade(1, 1);
 
-        _transTitle.DOLocalMove(new Vector3(-295, 302.16f, 0), 1);
+        _transTitle.DOLocalMoveX(0, 1);
 
-        foreach(Text text in _options)
+        foreach (Text text in _options)
         {
             text.DOFade(1, 1.5f);
         }

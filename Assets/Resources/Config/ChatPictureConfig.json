@@ -1,0 +1,15 @@
+{
+  "pic":[
+    {
+      "character": 1,
+      "size": "360,630",
+      "index": 0
+    },
+
+    {
+      "character": 2,
+      "size": "440,648",
+      "index": 1
+    }
+  ]
+}

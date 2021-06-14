@@ -23,7 +23,7 @@ public class StartController : ControllerBase
         { 5, () => Application.Quit() },
     };
 
-    public override void InitChild()
+    public override void InitAndChild()
     {
         
     }
@@ -35,11 +35,14 @@ public class StartController : ControllerBase
         InputMgr.Single.AddListener(KeyCode.X);
         InputMgr.Single.AddListener(KeyCode.Z);
 
-        MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
-        MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
-        MessageMgr.Single.AddListener(KeyCode.X, MoveFinalIndex);
-        MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
-
+        //TimeMgr.Single.AddTimeTask(() => 
+        //{
+            MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
+            MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
+            MessageMgr.Single.AddListener(KeyCode.X, MoveFinalIndex);
+            MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
+        //}, 1, TimeUnit.Second);
+        
         _view.UpdateFun();
     }
 
@@ -50,10 +53,10 @@ public class StartController : ControllerBase
         MessageMgr.Single.RemoveListener(KeyCode.X, MoveFinalIndex);
         MessageMgr.Single.RemoveListener(KeyCode.Z, OnSelect);
 
-        InputMgr.Single.RemoveListener(KeyCode.UpArrow);
-        InputMgr.Single.RemoveListener(KeyCode.DownArrow);
-        InputMgr.Single.RemoveListener(KeyCode.X);
-        InputMgr.Single.RemoveListener(KeyCode.Z);
+        //InputMgr.Single.RemoveListener(KeyCode.UpArrow);
+        //InputMgr.Single.RemoveListener(KeyCode.DownArrow);
+        //InputMgr.Single.RemoveListener(KeyCode.X);
+        //InputMgr.Single.RemoveListener(KeyCode.Z);
     }
 
     private void IncIndex(object[] args)
@@ -88,6 +91,11 @@ public class StartController : ControllerBase
 
     private void OnSelect(object[] args)
     {
+        InputMgr.Single.RemoveListener(KeyCode.UpArrow);
+        InputMgr.Single.RemoveListener(KeyCode.DownArrow);
+        InputMgr.Single.RemoveListener(KeyCode.X);
+        InputMgr.Single.RemoveListener(KeyCode.Z);
+
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_SURE_EFF);
 
         int index = GameStateModel.Single.SelectedOption;

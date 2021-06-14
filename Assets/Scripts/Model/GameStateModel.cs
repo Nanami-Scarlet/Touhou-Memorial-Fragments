@@ -4,12 +4,41 @@ using UnityEngine;
 
 public class GameStateModel : NormalSingleton<GameStateModel>
 {
+    private bool _isChating = false;
+    private bool _isPause = false;
+
     public int SelectedOption { get; set; }
     public int RankOption { get; set; }
     public int PlayerOption { get; set; }
     public int PauseOption { get; set; }
-    public Degree SelectedDegree { get; set; }
+    public bool IsChating 
+    {
+        get
+        {
+            return _isChating;
+        }
+
+        set
+        {
+            InputMgr.Single.UpdateKeyState();
+            _isChating = value;
+        }
+    }
+    public bool IsPause 
+    {
+        get
+        {
+            return _isPause;
+        }
+
+        set
+        {
+            InputMgr.Single.UpdateKeyState();
+            _isPause = value;
+        }
+    }
+    public Degree GameDegree { get; set; }      //游戏难度
     public SceneName CurrentScene { get; set; }
     public SceneName TargetScene { get; set; }
-    public GameStatus Status { get; set; }
+    public Mode GameMode { get; set; }
 }

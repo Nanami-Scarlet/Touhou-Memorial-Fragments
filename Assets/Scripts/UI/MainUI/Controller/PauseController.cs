@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class PauseController : ControllerBase
 
     private Dictionary<int, Action> _dicIndexAction;
 
-    public override void InitChild()
+    public override void InitAndChild()
     {
         _dicIndexAction = new Dictionary<int, Action>()
         {
@@ -24,17 +25,22 @@ public class PauseController : ControllerBase
             {
                 RemoveKeyCode();
                 GameStateModel.Single.TargetScene = SceneName.Main;
-                GameStateModel.Single.Status = GameStatus.Pause;
+                GameStateModel.Single.IsChating = false;                            //这几行修改GameScene配置以至于在MainScene正常运行
+                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ALL_HPBAR);
                 LifeCycleMgr.Single.Add(LifeName.UPDATE, this);     //加载场景时，重新注册update，这也是为什么字典在一个方法初始化的原因
+                UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
                 SceneMgr.Single.AsyncLoadScene(SceneName.Main);
             } },
 
+            //todo:所有组件都重新加载一遍(Show、 Controller)
             { 2, ()=> Debug.LogWarning("功能开发中") },
         };
     }
 
     public override void Show()
     {
+        UIManager.Single.SimpleHide(Paths.PREFAB_CHAT_VIEW);      //如果Chat显示，则暂时隐藏
+
         GameStateModel.Single.PauseOption = 0;
 
         InputMgr.Single.AddListener(KeyCode.UpArrow);
@@ -44,21 +50,26 @@ public class PauseController : ControllerBase
         MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
         MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
         MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
-
-        //LifeCycleMgr.Single.Add(LifeName.UPDATE, this);
     }
 
     public override void UpdateFun()
     {
         if(SceneMgr.Single.IsDone())
         {
+            LifeCycleMgr.Single.Remove(LifeName.UPDATE, this);
+
             //TimeMgr.Single.ClearAllTask();
 
-            UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
             UIManager.Single.Hide(Paths.PREFAB_GAME_VIEW);
             UIManager.Single.Hide(Paths.PREFAB_DYNAMIC_VIEW);
+            //UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
+
+            DOTween.CompleteAll();
+
             UIManager.Single.Show(Paths.PREFAB_START_VIEW);
             AudioMgr.Single.PlayBGM(Paths.AUDIO_TITLE_BGM);
+
+            GameStateModel.Single.IsPause = true;
         }
     }
 
@@ -70,7 +81,12 @@ public class PauseController : ControllerBase
         MessageMgr.Single.RemoveListener(KeyCode.DownArrow, IncIndex);
         MessageMgr.Single.RemoveListener(KeyCode.Z, OnSelect);
 
-        LifeCycleMgr.Single.Remove(LifeName.UPDATE, this);
+        //LifeCycleMgr.Single.Remove(LifeName.UPDATE, this);
+
+        if (GameStateModel.Single.IsChating)
+        {
+            UIManager.Single.SimpleShow(Paths.PREFAB_CHAT_VIEW);
+        }
     }
 
     private void IncIndex(object[] args)
@@ -100,10 +116,9 @@ public class PauseController : ControllerBase
         Time.timeScale = 1;
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_SURE_EFF);
         //UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
-        InputMgr.Single.UpdateKeyState();
 
         int index = GameStateModel.Single.PauseOption;
-        GameStateModel.Single.Status = GameStatus.Gameing;
+        GameStateModel.Single.IsPause = false;
         _dicIndexAction[index]();
     }
 

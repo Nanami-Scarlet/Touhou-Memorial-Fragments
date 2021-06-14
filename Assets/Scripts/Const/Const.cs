@@ -29,4 +29,6 @@ public class Const
     public const int BULLET_SCORE = 10;
 
     public const int FULL_FRAGMENT = 3;
+    public const int CARD_RATIO = 15;
+    public const int NORMAL_RATIO = 85;
 }

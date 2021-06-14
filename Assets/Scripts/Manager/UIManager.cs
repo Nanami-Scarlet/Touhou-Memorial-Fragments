@@ -9,50 +9,47 @@ public class UIManager : NormalSingleton<UIManager>
     private Canvas _canvas;
 
     private Dictionary<string, GameObject> _dicNameOfView;
+    private Dictionary<string, int> _dicViewData;
     private Stack<GameObject> _stackView;
 
-    public Canvas UICanvas
-    {
-        get
-        {
-            if(_canvas == null)
-            {
-                _canvas = Object.FindObjectOfType<Canvas>();
-            }
-
-            if(_canvas == null)
-            {
-                Debug.LogError("场景中没有Canvas");
-            }
-
-            return _canvas;
-        }
-    }
+    private Transform[] _layers = new Transform[3];
 
     public UIManager()
     {
+        _canvas = Object.FindObjectOfType<Canvas>();
+        for (int i = 0; i < 3; ++i)
+        {
+            _layers[i] = _canvas.transform.GetChild(i);
+        }
+
         _dicNameOfView = new Dictionary<string, GameObject>();
+        _dicViewData = DataMgr.Single.GetViewData();
         _stackView = new Stack<GameObject>();
     }
 
-    public void Show(string path, bool hideTop = true)
+    public void Show(string path, bool isShow = true)
     {
-        //if(_stackView.Count > 0 && hideTop)             //一个界面同时会存在多个UI
-        //{
-        //    HideAll(_stackView.Peek());
-        //}
-
         if (!_dicNameOfView.ContainsKey(path))
         {
-            GameObject viewGo = LoadMgr.Single.LoadPrefabAndInstantiate(path, UICanvas.transform);
+            string[] temp = path.Split('/');
+            string name = temp[temp.Length - 1];
+            if (!name.Contains("View"))
+            {
+                Debug.LogError("传入了错误的UI地址，地址为：" + path);
+                return;
+            }
+
+            int layer = _dicViewData[name];
+            GameObject viewGo = LoadMgr.Single.LoadPrefabAndInstantiate(path, _layers[layer]);
             _dicNameOfView.Add(path, viewGo);
             InitComponent(viewGo);
         }
         GameObject go = _dicNameOfView[path];
 
-        go.SetActive(true);
+        //go.SetActive(isShow);
         _stackView.Push(go);
         ShowAll(go);
+        go.SetActive(isShow);
     }
 
     public void Hide(string path)
@@ -74,21 +71,6 @@ public class UIManager : NormalSingleton<UIManager>
 
         HideAll(goTop);
         InitComponent(goBottom);
-    }
-
-    public GameObject PreLoad(string path)
-    {
-        if (_dicNameOfView.ContainsKey(path))
-        {
-            return _dicNameOfView[path];
-        }
-
-        GameObject preGo = LoadMgr.Single.LoadPrefabAndInstantiate(path, UICanvas.transform);
-        InitComponent(preGo);
-        preGo.SetActive(false);
-        _dicNameOfView.Add(path, preGo);
-
-        return preGo;
     }
 
     public void ShowController(string path)         //该方法在多个UI同时存在下使用
@@ -115,6 +97,24 @@ public class UIManager : NormalSingleton<UIManager>
         GameObject go = _dicNameOfView[path];
         IControllerHide hide = go.GetComponent<IControllerHide>();
         hide.Hide();
+    }
+
+    public void SimpleShow(string path)         //为了解决Chat面板和Pause面板的冲突
+    {
+        if(_dicNameOfView.ContainsKey(path))
+        {
+            _dicNameOfView[path].SetActive(true);
+            ShowController(path);
+        }
+    }
+
+    public void SimpleHide(string path)
+    {
+        if (_dicNameOfView.ContainsKey(path))
+        {
+            _dicNameOfView[path].SetActive(false);
+            HideController(path);
+        }
     }
 
     private void InitComponent(GameObject go)

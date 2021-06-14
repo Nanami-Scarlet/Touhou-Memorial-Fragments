@@ -263,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _view: {fileID: -7264695897372760591}
   _controller: {fileID: 4705392936046841266}
+  _isDead: 0
 --- !u!114 &-2660485233487455175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emitterProfile: {fileID: 0}
-  patternOrigin: {fileID: 6146766911709735172}
+  patternOrigin: {fileID: 0}
   playAtStart: 0
 --- !u!114 &1110101150111152866
 MonoBehaviour:
