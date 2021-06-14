@@ -35,8 +35,9 @@ public class GameProcessMgr : MonoBehaviour
 
         for (int i = 0; i < stageData.ListWaveEnemy.Count; ++i)
         {
-            //WaveData waveData = stageData.ListWaveEnemy[i];
-            WaveData waveData = stageData.ListWaveEnemy[3];
+            Debug.Log(i);
+            WaveData waveData = stageData.ListWaveEnemy[i];
+            //WaveData waveData = stageData.ListWaveEnemy[3];
             float delay = 0;            //累加的延迟
 
             for (int j = 0; j < waveData.ListEnemy.Count; ++j)
@@ -61,7 +62,7 @@ public class GameProcessMgr : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 }

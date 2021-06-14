@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 13257290
+  uniqueIndex: 2093846
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -2444,7 +2444,7 @@ MonoBehaviour:
         indexOfTo: 0
         indexOfBlendedChildren: 
         weight: 0
-        headerTitle: 
+        headerTitle: Look At Target At Spawn
         blendColor: {r: 0, g: 0, b: 0, a: 0}
       defaultValue: 0.5
     useSlider: 1
@@ -6753,7 +6753,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 3184289
+  uniqueIndex: 4406400
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -9043,7 +9043,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 7141401
+  uniqueIndex: 16223026
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -15218,7 +15218,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 8100079
+  uniqueIndex: 14099542
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:

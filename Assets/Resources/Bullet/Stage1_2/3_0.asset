@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 10251281
+  uniqueIndex: 1801256
   profile: {fileID: 11400000}
   parent: {fileID: -349954883358499483}
   children:
@@ -2335,7 +2335,7 @@ MonoBehaviour:
   m_Name: Bullet 0
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 11637493
+  uniqueIndex: 14093524
   profile: {fileID: 11400000}
   parent: {fileID: 5310224240024084518}
   children: []
@@ -8554,7 +8554,7 @@ MonoBehaviour:
   m_Name: Pattern2
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 285207
+  uniqueIndex: 15449076
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -20031,7 +20031,7 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
-          defaultValue: 0.3
+          defaultValue: 0.2
         useSlider: 0
         sliderMin: 0
         sliderMax: 0
@@ -25711,7 +25711,7 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
-          defaultValue: 1
+          defaultValue: 0.5
         useSlider: 0
         sliderMin: 0
         sliderMax: 0
@@ -31288,7 +31288,7 @@ MonoBehaviour:
       displayName: End Loop
   hasBeenSerializedOnce: 1
   focusedInstruction: -1
-  safetyForPlaymode: 31
+  safetyForPlaymode: 36
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31327,7 +31327,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: -349954883358499483}
+  currentParamsSelected: {fileID: 7667048482140871546}
   numberOfSubAssets: 9
 --- !u!114 &114027673760526898
 MonoBehaviour:
@@ -31342,7 +31342,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 5139365
+  uniqueIndex: 7494608
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -38207,7 +38207,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 582513
+  uniqueIndex: 13662664
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -40585,7 +40585,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 681096
+  uniqueIndex: 3261627
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -46864,7 +46864,7 @@ MonoBehaviour:
   m_Name: Pattern1
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 14657100
+  uniqueIndex: 12430505
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -69103,7 +69103,7 @@ MonoBehaviour:
   m_Name: Pattern2
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 7502528
+  uniqueIndex: 16146009
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -83331,7 +83331,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 16599236
+  uniqueIndex: 752938
   profile: {fileID: 11400000}
   parent: {fileID: 2611712832377450082}
   children:
@@ -85637,7 +85637,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 2214246
+  uniqueIndex: 16276068
   profile: {fileID: 11400000}
   parent: {fileID: -6535814031967814885}
   children: []
@@ -91858,7 +91858,7 @@ MonoBehaviour:
   m_Name: Shot 0
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 4744528
+  uniqueIndex: 9332142
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -94164,7 +94164,7 @@ MonoBehaviour:
   m_Name: Slow Down
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 5006265
+  uniqueIndex: 2490240
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children: []
@@ -97031,7 +97031,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15869185
+  uniqueIndex: 15941978
   profile: {fileID: 11400000}
   parent: {fileID: 3882948896066739487}
   children: []

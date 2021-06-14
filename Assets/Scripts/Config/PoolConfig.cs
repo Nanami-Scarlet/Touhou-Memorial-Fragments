@@ -67,13 +67,13 @@ public class PoolConfig
             new PoolData
             {
                  Path = Paths.PREFAB_ENEMY10,
-                 Count = 15
+                 Count = 30
             },
 
              new PoolData
             {
                  Path = Paths.PREFAB_ENEMY11,
-                 Count = 15
+                 Count = 30
             },
 
             //todo:添加其他的Data

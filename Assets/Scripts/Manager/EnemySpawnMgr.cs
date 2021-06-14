@@ -56,7 +56,12 @@ public class EnemySpawnMgr : MonoBehaviour
         enemy.GetComponent<BehaviourBase>().Init(data.HP, data.PCount, data.PointCount);
         enemy.GetComponent<BulletReceiver>().enabled = true;
         enemy.GetComponent<SpriteRenderer>().enabled = true;
-        enemy.GetComponent<EnemyBehaviour>().IsDead = false;
+        enemy.GetComponent<EnemyBehaviour>().ResetBehaiour();
+        YinEnemyView yin = enemy.GetComponent<YinEnemyView>();
+        if(yin != null)
+        {
+            yin._ringSpriteRenderer.enabled = true;
+        }
 
         _listEnemy.Add(enemy);
     }
