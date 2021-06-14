@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 11879448
+  uniqueIndex: 8328265
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -1554,7 +1554,7 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 1
+      defaultValue: 0
   vfxParticleSize:
     valueTree:
     - settings:
@@ -1658,12 +1658,12 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 0.5
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
   useCustomBirthVFX: 0
-  useCustomDeathVFX: 0
+  useCustomDeathVFX: 1
   customBirthVFX:
     valueTree:
     - settings:
@@ -1882,9 +1882,9 @@ MonoBehaviour:
     typeName: UnityEngine.ParticleSystem, UnityEngine.ParticleSystemModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     requiredComponentName: 
-  foldoutVFX: 1
+  foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 3
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -1992,7 +1992,7 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 7
+      defaultValue: 5
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -2319,23 +2319,18 @@ MonoBehaviour:
   animationMovementSpace: 0
   animationTexture: {fileID: 0}
   collisionTags:
-    tagList: 2
+    tagList: 1
   colliders:
   - colliderType: 1
     size: 1.71
     offset: {x: 0, y: 0, z: 0}
-    lineStart: {x: 0, y: 0.16}
+    lineStart: {x: 0, y: 1}
     lineEnd: {x: 0, y: 0}
   - colliderType: 1
     size: 1.71
     offset: {x: 0, y: 0, z: 0}
-    lineStart: {x: 0.04, y: 0.16}
-    lineEnd: {x: 0.04, y: 0}
-  - colliderType: 1
-    size: 1.71
-    offset: {x: 0, y: 0, z: 0}
-    lineStart: {x: -0.04, y: 0.16}
-    lineEnd: {x: -0.04, y: 0}
+    lineStart: {x: -0.35, y: 0}
+    lineEnd: {x: 0, y: 0}
   dieOnCollision: 1
   shapeFoldout: 1
   collisionTagsFoldout: 1
@@ -2444,7 +2439,7 @@ MonoBehaviour:
         indexOfTo: 0
         indexOfBlendedChildren: 
         weight: 0
-        headerTitle: Look At Target At Spawn
+        headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
       defaultValue: 1
     useSlider: 1
@@ -2553,7 +2548,7 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 1000
+      defaultValue: 90
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -2656,71 +2651,11 @@ MonoBehaviour:
         indexOfParent: 0
         indexOfFrom: 0
         indexOfTo: 0
-        indexOfBlendedChildren: 02000000
+        indexOfBlendedChildren: 
         weight: 0
-        headerTitle: Target Refresh Interval
+        headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
       defaultValue: 0
-    - settings:
-        valueType: 0
-        interpolationValue:
-          interpolationFactor: 0
-          repartitionCurve:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 0
-              outSlope: 1
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: 1
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-          shareValueBetweenInstances: 0
-          rerollFrequency: 0
-          interpolationFactorFromShot: 0
-          interpolationFactorFromPattern: 0
-          interpolationFactorFromBullet: 0
-          relativeTo: 0
-          parameterName: 
-          loopDepth: 0
-          useComplexRerollSequence: 0
-          checkEveryNLoops: 0
-          loopSequence: 0
-          period: 0
-          wrapMode: 0
-          sortMode: 0
-          sortDirection: 0
-          repartitionTexture: {fileID: 0}
-          centerX: 0
-          centerY: 0
-          radius: 0
-          wrapPoint: 0
-          countClockwise: 0
-          differentValuesPerShot: 0
-        combinedInterpolationFactors: 0
-        index: 2
-        indexOfParent: 1
-        indexOfFrom: 0
-        indexOfTo: 0
-        indexOfBlendedChildren: 
-        weight: 1
-        headerTitle: 'Target Refresh Interval : Value 0'
-        blendColor: {r: 0.14507276, g: 0.9332926, b: 0.6466284, a: 1}
-      defaultValue: 0.1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -2825,7 +2760,7 @@ MonoBehaviour:
         indexOfTo: 0
         indexOfBlendedChildren: 
         weight: 0
-        headerTitle: Preferred Target
+        headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
       defaultValue: 4
     enumTypeName: BulletPro.PreferredTarget, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
@@ -2939,7 +2874,7 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 6
+      defaultValue: 0
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -3047,12 +2982,12 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 2.5
+      defaultValue: 5
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
   speedOverLifetime:
-    enabled: 1
+    enabled: 0
     wrapMode:
       valueTree:
       - settings:
@@ -3372,7 +3307,7 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
-        defaultValue: 0.02
+        defaultValue: 1
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -3968,7 +3903,7 @@ MonoBehaviour:
           m_RotationOrder: 4
       forceZeroToOne: 1
   scaleOverLifetime:
-    enabled: 1
+    enabled: 0
     wrapMode:
       valueTree:
       - settings:
@@ -4288,7 +4223,7 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
-        defaultValue: 0.02
+        defaultValue: 1
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -4405,7 +4340,7 @@ MonoBehaviour:
           m_Curve:
           - serializedVersion: 3
             time: 0
-            value: 0.060958862
+            value: 2.999878
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -4414,9 +4349,9 @@ MonoBehaviour:
             outWeight: 0
           - serializedVersion: 3
             time: 1
-            value: 0.9538765
-            inSlope: 3.2921815
-            outSlope: 3.2921815
+            value: 3.0000916
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
@@ -5342,7 +5277,7 @@ MonoBehaviour:
           m_RotationOrder: 4
       forceZeroToOne: 1
   homingOverLifetime:
-    enabled: 1
+    enabled: 0
     wrapMode:
       valueTree:
       - settings:
@@ -5662,7 +5597,7 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
-        defaultValue: 0.6
+        defaultValue: 1
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -7321,7 +7256,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 9808122
+  uniqueIndex: 4426774
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -9611,7 +9546,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 8678629
+  uniqueIndex: 12688576
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -15786,7 +15721,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 10918810
+  uniqueIndex: 2601639
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -24117,7 +24052,7 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
-          defaultValue: 0.15
+          defaultValue: 1
         useSlider: 0
         sliderMin: 0
         sliderMax: 0
@@ -29490,4 +29425,4 @@ MonoBehaviour:
       displayName: End Loop
   hasBeenSerializedOnce: 1
   focusedInstruction: -1
-  safetyForPlaymode: 9
+  safetyForPlaymode: 0
