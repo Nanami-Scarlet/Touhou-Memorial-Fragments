@@ -27,6 +27,7 @@ public class EnemyBehaviour : BehaviourBase
     public override void Hurt(Bullet bullet, Vector3 hitPoint)
     {
         base.Hurt(bullet, hitPoint);
+        HP -= bullet.moduleParameters.GetInt("_CardPower");
 
         if (HP <= 0 && !_isSpawnItem)
         {

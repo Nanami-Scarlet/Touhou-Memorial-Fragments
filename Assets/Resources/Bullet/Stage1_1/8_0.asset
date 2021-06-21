@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 5189717
+  uniqueIndex: 5932836
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -1885,7 +1885,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 0
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -6669,7 +6669,7 @@ MonoBehaviour:
       requiredComponentName: 
   preview:
     collidersTex: {fileID: 0}
-    sprite: {fileID: 6261204194188010130, guid: e61ebdda3a0dab443b5349a054615e75,
+    sprite: {fileID: 8595619721042719074, guid: e61ebdda3a0dab443b5349a054615e75,
       type: 3}
     gizmoColor: {r: 0, g: 0, b: 0.5, a: 1}
 --- !u!114 &114201774248674550
@@ -6685,7 +6685,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 12380218
+  uniqueIndex: 7649641
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -9063,7 +9063,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 7917372
+  uniqueIndex: 11595697
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -15238,7 +15238,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 1163646
+  uniqueIndex: 15560032
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:

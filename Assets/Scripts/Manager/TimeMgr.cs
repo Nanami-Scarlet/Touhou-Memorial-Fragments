@@ -50,7 +50,7 @@ public class TimeMgr : NormalSingleton<TimeMgr>, IInit, IUpdate
         }
 
         int tid = GetTid();
-        _listTask.Add(new TimeTask(tid, Time.time + delay, delay, callback));
+        _listTask.Add(new TimeTask(tid, Time.time + delay, callback));
         _listID.Add(tid);
 
         if(_listTask.Count > 0)
@@ -59,6 +59,19 @@ public class TimeMgr : NormalSingleton<TimeMgr>, IInit, IUpdate
         }
 
         return tid;
+    }
+
+    public int AddTimeTask(TimeTask timeTask)           //这里时间单位只能是秒，Enemy配置限定
+    {
+        _listTask.Add(timeTask);
+        _listID.Add(timeTask.Tid);
+
+        if (_listTask.Count > 0)
+        {
+            LifeCycleMgr.Single.Add(LifeName.UPDATE, this);
+        }
+
+        return timeTask.Tid;
     }
 
     public bool RemoveTimeTask(int tid)
@@ -96,7 +109,7 @@ public class TimeMgr : NormalSingleton<TimeMgr>, IInit, IUpdate
         //LifeCycleMgr.Single.Remove(LifeName.UPDATE, this);
     }
 
-    private int GetTid()
+    public int GetTid()
     {
         ++_tid;
 
@@ -113,18 +126,16 @@ public class TimeMgr : NormalSingleton<TimeMgr>, IInit, IUpdate
     }
 }
 
-class TimeTask
+public class TimeTask
 {
     public int Tid { get; set; }
     public double DestTime { get; set; }
-    public double Delay { get; set; }
     public Action CallBack { get; set; }
 
-    public TimeTask(int tid, double destTime, double delay, Action callback)
+    public TimeTask(int tid, double destTime, Action callback)
     {
         Tid = tid;
         DestTime = destTime;
-        Delay = delay;
         CallBack = callback;
     }
 }

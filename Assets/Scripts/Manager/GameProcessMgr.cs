@@ -13,8 +13,11 @@ public class GameProcessMgr : MonoBehaviour
     private Dictionary<string, BossController> _dicTypeBossCtl = new Dictionary<string, BossController>();
     private Dictionary<string, BossBehaviour> _dicTypeBossBH = new Dictionary<string, BossBehaviour>();
     private Dictionary<int, Action<Action>> _dicIDAction;
+    private Queue<TimeTask> _queTimeTask = new Queue<TimeTask>();
 
     private bool _isTimeUP = false;
+    private TimeTask _curTimeTask;
+    private int _tid;
 
     public void Init()
     {
@@ -95,37 +98,50 @@ public class GameProcessMgr : MonoBehaviour
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_STAGE_ANIM);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_BGM_SETTING, stageName);
 
-        yield return new WaitForSeconds(4f);
-
         for (int i = 0; i < stageData.ListWaveEnemy.Count; ++i)
         {
             WaveData waveData = stageData.ListWaveEnemy[i];
-            //WaveData waveData = stageData.ListWaveEnemy[3];
-            float delay = 0;            //累加的延迟
 
             for (int j = 0; j < waveData.ListEnemy.Count; ++j)
             {
                 EnemyData enemyData = waveData.ListEnemy[j];
 
-                TimeMgr.Single.AddTimeTask(() =>
+                int tid = TimeMgr.Single.GetTid();
+                TimeTask timeTask = new TimeTask(tid, Time.time + enemyData.Delay, () =>
                 {
-                    //if (GameStateModel.Single.CurrentScene == SceneName.Game)
+                    _enemyspawnMgr.Spawn(enemyData);
+                    ++GameModel.Single.EnemyCount;
+
+                    _queTimeTask.Dequeue();
+                    if (_queTimeTask.Count > 0)
                     {
-                        _enemyspawnMgr.Spawn(enemyData);
+                        _curTimeTask = _queTimeTask.Peek();
+
+                        _tid = TimeMgr.Single.AddTimeTask(() =>
+                        {
+                            TimeMgr.Single.AddTimeTask(_curTimeTask);
+                        }, enemyData.Delay, TimeUnit.Second);       //间隔之后才产生下一只妖精
                     }
-                }, delay, TimeUnit.Second);
+                    else
+                    {
+                        CancelInvoke(nameof(CheckEnemyCount));
+                    }
+                });
 
-                ++GameModel.Single.EnemyCount;
-
-                delay += enemyData.Delay;
+                _queTimeTask.Enqueue(timeTask);
             }
+        }
 
-            while (GameModel.Single.EnemyCount > 0)
-            {
-                yield return new WaitForEndOfFrame();
-            }
+        yield return new WaitForSeconds(4f);
 
-            yield return new WaitForSeconds(0.2f);
+        _curTimeTask = _queTimeTask.Peek();
+        TimeMgr.Single.AddTimeTask(_curTimeTask);
+
+        InvokeRepeating(nameof(CheckEnemyCount), 0.5f, 0.1f);
+
+        while (_queTimeTask.Count > 0 || GameModel.Single.EnemyCount > 0)
+        {
+            yield return new WaitForEndOfFrame();
         }
     }
 
@@ -135,35 +151,48 @@ public class GameProcessMgr : MonoBehaviour
 
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_BGM_SETTING, stageName);
 
-        for (int i = 0; i < stageData.ListWaveEnemy.Count; ++i)
+        for (int i = 1; i < stageData.ListWaveEnemy.Count; ++i)
         {
             WaveData waveData = stageData.ListWaveEnemy[i];
-            //WaveData waveData = stageData.ListWaveEnemy[3];
-            float delay = 0;
 
             for (int j = 0; j < waveData.ListEnemy.Count; ++j)
             {
                 EnemyData enemyData = waveData.ListEnemy[j];
 
-                TimeMgr.Single.AddTimeTask(() =>
+                int tid = TimeMgr.Single.GetTid();
+                TimeTask timeTask = new TimeTask(tid, Time.time + enemyData.Delay, () =>
                 {
-                    //if (GameStateModel.Single.CurrentScene == SceneName.Game)
+                    _enemyspawnMgr.Spawn(enemyData);
+                    ++GameModel.Single.EnemyCount;
+
+                    _queTimeTask.Dequeue();
+                    if (_queTimeTask.Count > 0)
                     {
-                        _enemyspawnMgr.Spawn(enemyData);
+                        _curTimeTask = _queTimeTask.Peek();
+
+                        _tid = TimeMgr.Single.AddTimeTask(() =>
+                        {
+                            TimeMgr.Single.AddTimeTask(_curTimeTask);
+                        }, enemyData.Delay, TimeUnit.Second);       //间隔之后才产生下一只妖精
                     }
-                }, delay, TimeUnit.Second);
+                    else
+                    {
+                        CancelInvoke(nameof(CheckEnemyCount));
+                    }
+                });
 
-                ++GameModel.Single.EnemyCount;
-
-                delay += enemyData.Delay;
+                _queTimeTask.Enqueue(timeTask);
             }
+        }
 
-            while (GameModel.Single.EnemyCount > 0)
-            {
-                yield return new WaitForEndOfFrame();
-            }
+        _curTimeTask = _queTimeTask.Peek();
+        TimeMgr.Single.AddTimeTask(_curTimeTask);
 
-            yield return new WaitForSeconds(0.2f);
+        InvokeRepeating(nameof(CheckEnemyCount), 0.5f, 0.1f);
+
+        while (_queTimeTask.Count > 0 || GameModel.Single.EnemyCount > 0)
+        {
+            yield return new WaitForEndOfFrame();
         }
     }
 
@@ -403,5 +432,16 @@ public class GameProcessMgr : MonoBehaviour
     private void SetTimeUP(object[] args)
     {
         _isTimeUP = (bool)args[0];
+    }
+
+    private void CheckEnemyCount()
+    {
+        if(GameModel.Single.EnemyCount <= 0)
+        {
+            _curTimeTask = _queTimeTask.Peek();
+            //TimeMgr.Single.AddTimeTask(_curTimeTask);
+            TimeMgr.Single.RemoveTimeTask(_tid);            //这里必须要去掉上次的tid，可以用多线程冲突来理解
+            _curTimeTask.CallBack();
+        }
     }
 }
