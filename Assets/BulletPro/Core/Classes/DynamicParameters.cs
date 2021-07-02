@@ -26,7 +26,10 @@ namespace BulletPro
     public enum BulletPositionSortMode { Horizontal, Vertical, Radial, Texture }
 
     // How is a value chosen?
-    public enum DynamicParameterSorting { Fixed, FromAToB, Blend, FromGradient }
+    public enum DynamicParameterSorting { Fixed, FromAToB, Blend, FromGradient, EqualToParameter }
+
+    // If EqualToParameter : from a custom param of Bullet Hierarchy, or Global Parameter?
+    public enum UserMadeParameterType { BulletHierarchy, GlobalParameter }
 
     // Every dynamic parameter contains this struct. It says how the value is chosen from A to B.
     [System.Serializable]
@@ -53,6 +56,12 @@ namespace BulletPro
         public string headerTitle;
         public Color blendColor;
         #endif
+
+        // Finding out which parameter to fetch if valueType is "equal to parameter"
+        public UserMadeParameterType parameterType;
+        public int relativeTo; // How many parents do we go through while browsing the bullet hierarchy upwards?
+        // ^ For bullets, 0 is "this one". For Shots and Patterns, 0 is "this one's direct sub-emitter"
+        public string parameterName;
     }
 
     // Every parameter driving/deciding an interpolation value (from 0 to 1) is stored in this struct

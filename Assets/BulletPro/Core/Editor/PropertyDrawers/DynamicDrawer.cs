@@ -180,6 +180,11 @@ namespace BulletPro.EditorScripts
                 //EditorGUI.LabelField(mainRect, label.text + capstr+ "icked from a gradient. Click for more.");
                 DrawFromGradient(currentValue.FindPropertyRelative("gradientValue"), label);
             }
+            else if (valueType.enumValueIndex == (int)DynamicParameterSorting.EqualToParameter) // if equal to Custom or Global parameter
+            {
+                string capstr = string.IsNullOrEmpty(label.text) ? "E" : " : e";
+                EditorGUI.LabelField(mainRect, label.text + capstr+ "qual to another parameter. Click for more.");
+            }
             else if (fromIndex.intValue == 0 || toIndex.intValue == 0) // if "from" and "to" values don't exist yet
             {
                 EditorGUI.LabelField(mainRect, label.text + " : dynamic value. Click for more.");

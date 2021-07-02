@@ -11,6 +11,7 @@ namespace BulletPro
     public struct DynamicParameterSettingsResult
     {
         public DynamicParameterSorting sorting;
+        // for from-to or blend
         public int indexOfFrom, indexOfTo, indexOfChosenBlendElement;
         public float interpolationValue;
     }
@@ -409,6 +410,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetFloat(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetFloat(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -435,6 +458,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetSlider01(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetSlider01(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -461,6 +506,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetInt(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetInt(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -487,6 +554,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetColor(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetColor(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -517,6 +606,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetVector2(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetVector2(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -543,6 +654,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetVector3(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetVector3(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -569,6 +702,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetVector4(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetVector4(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -599,6 +754,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetBool(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetBool(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -617,6 +794,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetInt(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetInt(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -635,6 +834,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetString(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetString(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -653,6 +874,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetAnimationCurve(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetAnimationCurve(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -671,6 +914,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetGradient(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetGradient(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -689,6 +954,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetRect(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetRect(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -707,6 +994,28 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // equal to param
+            if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
+            {
+                UserMadeParameterType paramType = val.settings.parameterType;
+
+                // global param
+                if (paramType == UserMadeParameterType.GlobalParameter)
+                    return BulletGlobalParamManager.instance.GetObjectReference(val.settings.parameterName);
+
+                // bullet hierarchy
+                Bullet paramHolder = bullet;
+                int parents = val.settings.relativeTo;
+                while (parents > 0)
+                {
+                    paramHolder = paramHolder.subEmitter;
+                    // in case of an error (hierarchy element missing), fallback to fixed value
+                    if (paramHolder == null) return val.defaultValue;
+                    parents--;
+                }
+                return paramHolder.moduleParameters.GetObjectReference(val.settings.parameterName);
+            }
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -725,6 +1034,8 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // can't be equal to param
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -743,6 +1054,8 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // can't be equal to param
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 
@@ -761,6 +1074,8 @@ namespace BulletPro
             // fixed
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
+
+            // can't be equal to param
             
             DynamicParameterSettingsResult settingsSolved = SolveSettings(dynParameter, val.settings, operationID, owner);
 

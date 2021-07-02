@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: "\u6771\u65B9\u5E7B\u60F3\u796D ~ Memorial Fragments"
+  productName: "\u4E1C\u65B9\u5E7B\u60F3\u796D ~ Memorial Fragments    v0.70b"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -123,7 +123,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1
+  bundleVersion: v0.70b
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0

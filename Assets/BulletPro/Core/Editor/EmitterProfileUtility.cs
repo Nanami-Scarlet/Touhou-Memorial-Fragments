@@ -705,11 +705,19 @@ namespace BulletPro.EditorScripts
                     EditorUtility.SetDirty(pp);
                 }
             }
-            // to be continued (when V10 comes out)
 
-            // from V9 to V10
-            /* *
+            // from V9 to V10 : DynamicParameters can now be "Equal to a parameter" instead of Fixed/FromTo/Blend.
             if (profile.buildNumber == 9)
+            {
+                profile.buildNumber++;
+                // nothing to do here, just incrementing build number to avoid seeing enumValue==4 in old versions
+                // for (int i = 0; i < profile.subAssets.Length; i++) { }
+            }
+            // to be continued (when V11 comes out)
+
+            // from V10 to V11
+            /* *
+            if (profile.buildNumber == 10)
             {
                 profile.buildNumber++;
                 for (int i = 0; i < profile.subAssets.Length; i++)
@@ -718,7 +726,7 @@ namespace BulletPro.EditorScripts
                 }
             }
             /* */
-            // to be continued (when V11 comes out)
+            // to be continued (when V12 comes out)
 
             // in the end, validate everything
             EditorUtility.SetDirty(profile);

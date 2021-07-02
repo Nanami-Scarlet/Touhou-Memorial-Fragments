@@ -20,6 +20,7 @@ namespace BulletPro.EditorScripts
         public SerializedProperty dynamicParameter, valueTree;
         public SerializedProperty currentValue, gradientValue, settings, interpolationValue;
         public SerializedProperty index, indexOfFrom, indexOfTo, indexOfParent, indexOfBlendedChildren;
+        public SerializedProperty equalParameterType, equalParameterName, equalParameterParentingLevel;
         public SerializedProperty valueType, interpolationFactor, repartitionCurve;
         public SerializedProperty shareValueBetweenInstances, parameterName, relativeTo, rerollFrequency;
         public SerializedProperty loopDepth, useComplexRerollSequence, checkEveryNLoops, loopSequence;
@@ -28,11 +29,11 @@ namespace BulletPro.EditorScripts
         public SerializedProperty sortMode, sortDirection, repartitionTexture, centerX, centerY, radius;
         public SerializedProperty differentValuesPerShot;
         public string tabTitle, headerTitle;
-        public bool justOpenedAnotherWindow;
+        public bool justOpenedAnotherWindow, hasChangedSelection;
         public string[] enumHierarchyChoices, randomShareHierarchyChoices;
         public GUIContent[] loopChoices;
         
-        public bool isEditingBulletHierarchy; // handles ALL exceptions related to DynamicBullet/ShotPattern objects
+        public bool isEditingBulletHierarchy; // handles ALL exceptions related to DynamicBullet/Shot/Pattern objects
         public BulletHierarchyFieldHandler fieldHandler; // draws DynamicBullet/Shot/Pattern objects
         public BulletHierarchyObject currentHierarchyObject; // chooses between DynamicBullet, Shot or Pattern
 
@@ -94,15 +95,17 @@ namespace BulletPro.EditorScripts
         void OnDestroy()
         {
             // upon closing window, if we were editing something in a Pattern during playmode, restart the pattern
-            if (serObj != null)
-                if (serObj.targetObject != null)
-                    if (serObj.targetObject is PatternParams)
-                    {
-                        serObj.ApplyModifiedProperties();
-                        serObj.Update();
-                        serObj.FindProperty("safetyForPlaymode").intValue++;
-                        serObj.ApplyModifiedProperties();
-                    }
+            // note : this cannot be done if the cause of window closing is a selection change.
+            if (!hasChangedSelection)
+                if (serObj != null)
+                    if (serObj.targetObject != null)
+                        if (serObj.targetObject is PatternParams)
+                        {
+                            serObj.ApplyModifiedProperties();
+                            serObj.Update();
+                            serObj.FindProperty("safetyForPlaymode").intValue++;
+                            serObj.ApplyModifiedProperties();
+                        }
 
             Undo.undoRedoPerformed -= OnUndo;
             Selection.selectionChanged -= OnSelectionChanged;
@@ -112,8 +115,14 @@ namespace BulletPro.EditorScripts
         }
 
         void OnUndo() { Repaint(); hasBeenReloaded = true; }
-        void OnSelectionChanged() { if (this != null) this.Close(); }
         void OnPlayModeStateChange(PlayModeStateChange pmsc) { if (this != null) this.Close(); }
+        void OnSelectionChanged()
+        {
+            if (this == null) return;
+
+            hasChangedSelection = true;
+            this.Close();
+        }
 
         #endregion
 
@@ -152,6 +161,10 @@ namespace BulletPro.EditorScripts
             indexOfBlendedChildren = settings.FindPropertyRelative("indexOfBlendedChildren");
             interpolationValue = settings.FindPropertyRelative("interpolationValue");
             valueType = settings.FindPropertyRelative("valueType");
+
+            equalParameterName = settings.FindPropertyRelative("parameterName");
+            equalParameterType = settings.FindPropertyRelative("parameterType");
+            equalParameterParentingLevel = settings.FindPropertyRelative("relativeTo");
             
             interpolationFactor = interpolationValue.FindPropertyRelative("interpolationFactor");
             repartitionCurve = interpolationValue.FindPropertyRelative("repartitionCurve");
@@ -221,6 +234,7 @@ namespace BulletPro.EditorScripts
             };
             
             hasBeenReloaded = true;
+            hasChangedSelection = false;
 
             BlendListSetup();
 
@@ -316,15 +330,30 @@ namespace BulletPro.EditorScripts
             if (admitsFromTo) optionsList.Add(new GUIContent("From-to"));
             optionsList.Add(new GUIContent("List of possible values"));
             if (vType.Contains("Color")) optionsList.Add(new GUIContent("From Gradient"));
-            if (!admitsFromTo) // cancels skipping one value for incompatible types
+            if (!isEditingBulletHierarchy) optionsList.Add(new GUIContent("Equal to another parameter"));
+            // cancels skipping one value for incompatible types
+            if (!admitsFromTo)
             {
                 int displayed = valueType.enumValueIndex;
                 if (displayed == 2) displayed = 1;
+                else if (displayed == 4) displayed = 2;
                 int result = EditorGUILayout.Popup(new GUIContent("Select Value"), displayed, optionsList.ToArray());
-                if (result == 1) result = 2;
+                if (result == 1) result = 2; // blend from list
+                else if (result == 2) result = 4; // equal to parameter
                 valueType.enumValueIndex = result;
             }
-            else valueType.enumValueIndex = EditorGUILayout.Popup(new GUIContent("Select Value"), valueType.enumValueIndex, optionsList.ToArray());
+            else if (!vType.Contains("Color"))
+            {
+                int displayed = valueType.enumValueIndex;
+                if (displayed == 4) displayed = 3;
+                int result = EditorGUILayout.Popup(new GUIContent("Select Value"), displayed, optionsList.ToArray());
+                if (result == 3) result = 4; // equal to parameter
+                valueType.enumValueIndex = result;
+            }
+            else // Colors only
+            {
+                valueType.enumValueIndex = EditorGUILayout.Popup(new GUIContent("Select Value"), valueType.enumValueIndex, optionsList.ToArray());
+            }
             if (EditorGUI.EndChangeCheck())
             {
                 //RepaintParentWindows();
@@ -562,6 +591,107 @@ namespace BulletPro.EditorScripts
                 EditorGUILayout.PropertyField(gradientValue, gc);
             }
 
+            // Equal-to-parameter GUI
+            else if (valueType.enumValueIndex == (int)DynamicParameterSorting.EqualToParameter)
+            {
+                if (vType.Contains("Enum"))
+                    EditorGUILayout.HelpBox("Since the value you're editing is an Enum, your chosen parameter must be of Int type.", MessageType.Info);
+                GUIContent gc = new GUIContent("Parameter Type");
+                EditorGUILayout.PropertyField(equalParameterType, gc);
+
+                if (equalParameterType.enumValueIndex == (int)UserMadeParameterType.BulletHierarchy)
+                {
+                    EditorGUILayout.LabelField("A Custom Parameter will be picked from the following Bullet:");
+
+                    // helpers
+                    float buttonWidth = 24f;
+                    float space = 5f;
+                    float indent = 32f;
+                    bool typeError = false;
+                    bool amountError = false;
+                    bool isBehaviour = false;
+
+                    // string builder's base
+                    string targetName = "";
+                    string str = "This bullet";
+                    if (serObj.targetObject is ShotParams || serObj.targetObject is PatternParams)
+                        str = "Direct bullet parent";
+                    if (equalParameterParentingLevel.intValue > 0)
+                        str = equalParameterParentingLevel.intValue.ToString() + (equalParameterParentingLevel.intValue>1?" bullets above":" bullet above");
+
+                    // getting ancestor's name if applicable
+                    if (serObj.targetObject is EmissionParams)
+                    {
+                        int counter = equalParameterParentingLevel.intValue;
+
+                        // only consider Bullets. For Shots and Params, go the the closest Bullet parent.
+                        EmissionParams curObj = serObj.targetObject as EmissionParams;
+                        if (curObj is ShotParams)
+                        {
+                            curObj = curObj.parent;
+                            if (curObj == null) amountError = true;
+                        }
+                        if (!amountError)
+                        {
+                            if (curObj is PatternParams)
+                            {
+                                curObj = curObj.parent;
+                                if (curObj == null) amountError = true;
+                            }
+                        }
+
+                        if (!amountError) targetName = curObj.name;
+
+                        // go upwards from bullet to bullet
+                        while (counter > 0 && !amountError)
+                        {
+                            for (int i = 0; i < 3; i++)
+                            {
+                                curObj = curObj.parent;
+                                if (curObj == null)
+                                {
+                                    amountError = true;
+                                    break;
+                                }
+                            }
+                            if (amountError) break;
+
+                            targetName = curObj.name;
+                            counter--;
+                        }
+                    }
+                    else if (serObj.targetObject is BaseBulletBehaviour) isBehaviour = true;
+                    else typeError = true;
+
+                    // string building
+                    if (!isBehaviour && !amountError && !typeError) str += " (\""+targetName+"\")";
+                    
+                    // actual controls
+                    int oldIndent = EditorGUI.indentLevel;
+                    EditorGUI.indentLevel = 0;
+                    EditorGUILayout.BeginHorizontal();
+                    GUILayout.Space(indent);
+                    EditorGUI.BeginDisabledGroup(equalParameterParentingLevel.intValue == 0);
+                    if (GUILayout.Button("-1", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(buttonWidth))) equalParameterParentingLevel.intValue--;
+                    EditorGUI.EndDisabledGroup();
+                    if (GUILayout.Button("+1", EditorStyles.miniButtonRight, GUILayout.MaxWidth(buttonWidth))) equalParameterParentingLevel.intValue++;
+                    GUILayout.Space(space);
+                    EditorGUILayout.LabelField(str);
+                    EditorGUILayout.EndHorizontal();
+                    EditorGUI.indentLevel = oldIndent;
+
+                    // displaying errors, if any
+                    string errorStr = "";
+                    if (typeError) errorStr = "This feature is meant for Emitter Profiles and Bullet Behaviours. It's likely your parameter will not have a Bullet Hierarchy.";
+                    else if (amountError) errorStr = "\""+equalParameterParentingLevel.intValue.ToString()+" bullet"+(equalParameterParentingLevel.intValue > 1 ? "s":"")+" above\" goes beyond the root of this Bullet Hierarchy. It's likely an error.";
+                    if (!string.IsNullOrEmpty(errorStr)) EditorGUILayout.HelpBox(errorStr, MessageType.Warning);
+
+                }
+                EditorGUILayout.PropertyField(equalParameterName);
+                // In Patterns only : prompt user for "when to reroll the parameter"
+                RerollFrequencyField();
+            }
+
             EditorGUILayout.EndVertical();
             GUILayout.Space(hasScrolling ? rightMargin : rightMarginWithoutScroll);
             EditorGUILayout.EndHorizontal();
@@ -572,7 +702,7 @@ namespace BulletPro.EditorScripts
 
             GUILayout.Space(16);
 
-            EditorGUI.BeginDisabledGroup(valueType.enumValueIndex == 0);
+            EditorGUI.BeginDisabledGroup(valueType.enumValueIndex == 0 || valueType.enumValueIndex == 4);
 
             GUIContent interpolationValueGC = new GUIContent("Interpolation Value (between 0 and 1)", "Select how this number will be calculated. It will then be used to choose the value of your Dynamic Parameter.");
             EditorGUILayout.LabelField(interpolationValueGC, headerStyle, GUILayout.Height(headerHeight));
@@ -792,105 +922,115 @@ namespace BulletPro.EditorScripts
             EditorGUILayout.PropertyField(val, gc);
         }
 
-        void DoInterpolationValueGUILayout(bool allowCombining)
+        // Draws the "Reroll Frequency" field if necessary, ie. for top-level parameters belonging to a Pattern
+        void RerollFrequencyField()
         {
-            GUIContent calcMethodGC = new GUIContent("Calculation Method", "How is the interpolation chosen from 0 to 1?");
-
-            if ((serObj.targetObject is PatternParams) && (index.intValue == 1) && (!isFromPatternBaseCurve)) // only appears at root because this doesn't support nesting
+            if (!(serObj.targetObject is PatternParams)) return;
+            if (index.intValue != 1) return; // only appears at root because this doesn't support nesting (and it would be pointless)
+            if (isFromPatternBaseCurve) return; // not supported either for "Over Lifetime" curve parameters
+            
+            GUIContent gcRerollFreq = new GUIContent("Reroll Frequency", "Should we reroll for a value everytime the related Pattern Instruction is called, or keep the same value across a same instance of Pattern?");
+            EditorGUILayout.PropertyField(rerollFrequency, gcRerollFreq);
+            if (rerollFrequency.enumValueIndex == (int)RerollFrequency.AtCertainLoops)
             {
-                GUIContent gcRerollFreq = new GUIContent("Reroll Frequency", "Should we reroll for a value everytime the related Pattern Instruction is called, or keep the same value across a same instance of Pattern?");
-                EditorGUILayout.PropertyField(rerollFrequency, gcRerollFreq);
-                if (rerollFrequency.enumValueIndex == (int)RerollFrequency.AtCertainLoops)
-                {
-                    float fakeIndent = 34;
-                    float buttonWidth = 24;
-                    float space = 5;
+                float fakeIndent = 34;
+                float buttonWidth = 24;
+                float space = 5;
 
+                EditorGUI.indentLevel += 2;
+                EditorGUILayout.LabelField("Relevant loop to check:");
+                // Loop depth field
+                int oldIndent = EditorGUI.indentLevel;
+                EditorGUI.indentLevel = 0;
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Space(fakeIndent);
+                EditorGUI.BeginDisabledGroup(loopDepth.intValue < 1);
+                if (GUILayout.Button("-1", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(buttonWidth))) loopDepth.intValue--;
+                EditorGUI.EndDisabledGroup();
+                EditorGUI.BeginDisabledGroup(loopDepth.intValue > 10);
+                if (GUILayout.Button("+1", EditorStyles.miniButtonRight, GUILayout.MaxWidth(buttonWidth))) loopDepth.intValue++;
+                EditorGUI.EndDisabledGroup();
+                GUILayout.Space(space);
+                string str = "0 (Innermost loop).";
+                if (loopDepth.intValue > 0)
+                {
+                    string plural = loopDepth.intValue>1?"s":"";
+                    str = loopDepth.intValue.ToString() + " loop"+plural+" above innermost loop.";
+                }
+                EditorGUILayout.LabelField(str);
+                EditorGUILayout.EndHorizontal();
+                EditorGUI.indentLevel = oldIndent;
+
+                useComplexRerollSequence.boolValue = EditorGUILayout.Popup(GUIContent.none, useComplexRerollSequence.boolValue?1:0, loopChoices, GUILayout.MaxWidth(250)) == 1;
+                if (useComplexRerollSequence.boolValue)
+                {
                     EditorGUI.indentLevel += 2;
-                    EditorGUILayout.LabelField("Relevant loop to check:");
-                    // Loop depth field
-                    int oldIndent = EditorGUI.indentLevel;
+                    // sequence size field
+                    EditorGUILayout.LabelField("Manually choose for the first X loops:");
+                    oldIndent = EditorGUI.indentLevel;
                     EditorGUI.indentLevel = 0;
                     EditorGUILayout.BeginHorizontal();
-                    GUILayout.Space(fakeIndent);
-                    EditorGUI.BeginDisabledGroup(loopDepth.intValue < 1);
-                    if (GUILayout.Button("-1", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(buttonWidth))) loopDepth.intValue--;
+                    GUILayout.Space(fakeIndent * 2);
+                    EditorGUI.BeginDisabledGroup(checkEveryNLoops.intValue < 1);
+                    if (GUILayout.Button("-1", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(buttonWidth))) checkEveryNLoops.intValue--;
                     EditorGUI.EndDisabledGroup();
-                    EditorGUI.BeginDisabledGroup(loopDepth.intValue > 10);
-                    if (GUILayout.Button("+1", EditorStyles.miniButtonRight, GUILayout.MaxWidth(buttonWidth))) loopDepth.intValue++;
+                    EditorGUI.BeginDisabledGroup(checkEveryNLoops.intValue > 30);
+                    if (GUILayout.Button("+1", EditorStyles.miniButtonRight, GUILayout.MaxWidth(buttonWidth))) checkEveryNLoops.intValue++;
                     EditorGUI.EndDisabledGroup();
                     GUILayout.Space(space);
-                    string str = "0 (Innermost loop).";
-                    if (loopDepth.intValue > 0)
+                    str = checkEveryNLoops.intValue.ToString()+" (Reroll every loop).";
+                    if (checkEveryNLoops.intValue > 1)
                     {
-                        string plural = loopDepth.intValue>1?"s":"";
-                        str = loopDepth.intValue.ToString() + " loop"+plural+" above innermost loop.";
+                        str = "First "+checkEveryNLoops.intValue.ToString() + " loop iterations.";
                     }
                     EditorGUILayout.LabelField(str);
                     EditorGUILayout.EndHorizontal();
                     EditorGUI.indentLevel = oldIndent;
 
-                    useComplexRerollSequence.boolValue = EditorGUILayout.Popup(GUIContent.none, useComplexRerollSequence.boolValue?1:0, loopChoices, GUILayout.MaxWidth(250)) == 1;
-                    if (useComplexRerollSequence.boolValue)
+                    if (checkEveryNLoops.intValue > 1)
                     {
-                        EditorGUI.indentLevel += 2;
-                        // sequence size field
-                        EditorGUILayout.LabelField("Manually choose for the first X loops:");
-                        oldIndent = EditorGUI.indentLevel;
-                        EditorGUI.indentLevel = 0;
+                        EditorGUILayout.HelpBox("Click on the buttons below to select iterations that trigger a reroll.\nAfter the last iteration, the sequence will repeat.", MessageType.Info);
+                        int initSequence = loopSequence.intValue;
                         EditorGUILayout.BeginHorizontal();
-                        GUILayout.Space(fakeIndent * 2);
-                        EditorGUI.BeginDisabledGroup(checkEveryNLoops.intValue < 1);
-                        if (GUILayout.Button("-1", EditorStyles.miniButtonLeft, GUILayout.MaxWidth(buttonWidth))) checkEveryNLoops.intValue--;
-                        EditorGUI.EndDisabledGroup();
-                        EditorGUI.BeginDisabledGroup(checkEveryNLoops.intValue > 30);
-                        if (GUILayout.Button("+1", EditorStyles.miniButtonRight, GUILayout.MaxWidth(buttonWidth))) checkEveryNLoops.intValue++;
-                        EditorGUI.EndDisabledGroup();
-                        GUILayout.Space(space);
-                        str = checkEveryNLoops.intValue.ToString()+" (Reroll every loop).";
-                        if (checkEveryNLoops.intValue > 1)
+                        GUILayout.Space(2*fakeIndent);
+                        bool changed = false;
+                        for (int i = 0; i < checkEveryNLoops.intValue; i++)
                         {
-                            str = "First "+checkEveryNLoops.intValue.ToString() + " loop iterations.";
-                        }
-                        EditorGUILayout.LabelField(str);
-                        EditorGUILayout.EndHorizontal();
-                        EditorGUI.indentLevel = oldIndent;
-
-                        if (checkEveryNLoops.intValue > 1)
-                        {
-                            EditorGUILayout.HelpBox("Click on the buttons below to select iterations that trigger a reroll.\nAfter the last iteration, the sequence will repeat.", MessageType.Info);
-                            int initSequence = loopSequence.intValue;
-                            EditorGUILayout.BeginHorizontal();
-                            GUILayout.Space(2*fakeIndent);
-                            bool changed = false;
-                            for (int i = 0; i < checkEveryNLoops.intValue; i++)
+                            bool isBitOn = (initSequence & (1 << i)) != 0;
+                            if (GUILayout.Button(isBitOn?"R":"", EditorStyles.miniButton, GUILayout.MaxWidth(20)))
                             {
-                                bool isBitOn = (initSequence & (1 << i)) != 0;
-                                if (GUILayout.Button(isBitOn?"R":"", EditorStyles.miniButton, GUILayout.MaxWidth(20)))
-                                {
-                                    changed = true;
-                                    if (isBitOn) initSequence &= ~(1 << i);
-                                    else initSequence |= (1 << i);
-                                }
-                                if (i % 8 == 7)
-                                {
-                                    EditorGUILayout.EndHorizontal();
-                                    EditorGUILayout.BeginHorizontal();
-                                    GUILayout.Space(2*fakeIndent);
-                                }
+                                changed = true;
+                                if (isBitOn) initSequence &= ~(1 << i);
+                                else initSequence |= (1 << i);
                             }
-                            EditorGUILayout.EndHorizontal();
-                            if (changed) loopSequence.intValue = initSequence;
+                            if (i % 8 == 7)
+                            {
+                                EditorGUILayout.EndHorizontal();
+                                EditorGUILayout.BeginHorizontal();
+                                GUILayout.Space(2*fakeIndent);
+                            }
                         }
-    
-                        EditorGUI.indentLevel -= 2;
+                        EditorGUILayout.EndHorizontal();
+                        if (changed) loopSequence.intValue = initSequence;
                     }
 
-
                     EditorGUI.indentLevel -= 2;
-                    GUILayout.Space(8);
                 }
+
+
+                EditorGUI.indentLevel -= 2;
+                GUILayout.Space(8);
             }
+        }
+
+        void DoInterpolationValueGUILayout(bool allowCombining)
+        {
+            GUIContent calcMethodGC = new GUIContent("Calculation Method", "How is the interpolation chosen from 0 to 1?");
+
+            // In Patterns only : prompt user for "when to reroll the parameter".
+            // Not drawn in "equal to parameter" cases, because it's already displayed in the upper part of the window.
+            if (valueType.enumValueIndex != (int)DynamicParameterSorting.EqualToParameter)
+                RerollFrequencyField();
 
             if (allowCombining)
                 EditorGUILayout.PropertyField(interpolationFactor, calcMethodGC);
@@ -929,7 +1069,7 @@ namespace BulletPro.EditorScripts
                     EditorGUILayout.PropertyField(interpolationFactorFromBullet, tempGC);
                     if (interpolationFactorFromBullet.enumValueIndex == (int)BulletInterpolationFactor.CustomParameter)
                     {
-                        GUIContent paramNameGC = new GUIContent("Parameter Name", "Name of the custom float or slider parameter, as set in Emission Profile.");
+                        GUIContent paramNameGC = new GUIContent("Parameter Name", "Name of the custom float or slider parameter, as set in Emitter Profile.");
                         EditorGUILayout.PropertyField(parameterName, paramNameGC);                    
                         // Commented out : delayed field returns null if window gets closed earlier
                         //EditorGUILayout.DelayedTextField(parameterName, paramNameGC);                    
@@ -1124,7 +1264,7 @@ namespace BulletPro.EditorScripts
 
             // displaying errors, if any
             string errorStr = "";
-            if (typeError) errorStr = "This feature is meant for Emission Profiles and Bullet Behaviours. It's likely your parameter will not have a Bullet Hierarchy.";
+            if (typeError) errorStr = "This feature is meant for Emitter Profiles and Bullet Behaviours. It's likely your parameter will not have a Bullet Hierarchy.";
             else if (amountError) errorStr = "\""+relativeTo.intValue.ToString()+" object"+(relativeTo.intValue > 1 ? "s":"")+" above\" goes beyond the root of this Bullet Hierarchy. It's likely an error.";
             if (!string.IsNullOrEmpty(errorStr)) EditorGUILayout.HelpBox(errorStr, MessageType.Warning);
 

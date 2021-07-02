@@ -72,6 +72,8 @@ public class GameProcessMgr : MonoBehaviour
         GameObject bg = GameObject.Find("BG");
         _bgAnim = bg.GetComponent<Animator>();
 
+        _bgAnim.SetInteger("Stage", GameModel.Single.StageNum);
+
         //CoroutineMgr.Single.Execute(OnState("stage1_1"));
         _coroutine = StartCoroutine(GameProcess());
     }
@@ -86,6 +88,8 @@ public class GameProcessMgr : MonoBehaviour
 
     private void OnDestroy()
     {
+        _queTimeTask.Clear();
+
         GameModel.Single.EnemyCount = 0;
 
         PoolMgr.Single.ClearPool();
@@ -101,16 +105,11 @@ public class GameProcessMgr : MonoBehaviour
         switch (GameStateModel.Single.GameMode)
         {
             case Mode.NORMAL:
-                _bgAnim.SetInteger("Stage", GameModel.Single.StageNum);
                 yield return OnStageUp("stage1_1");
                 yield return OnStageBoss("stage_B1");
                 yield return OnStageDown("stage1_2");
                 yield return OnStageBoss("stage_B2");
-                yield return ShowStageClearLabel();
-
-                ++GameModel.Single.StageNum;
-                _bgAnim.SetInteger("Stage", GameModel.Single.StageNum);
-                yield return new WaitForSeconds(2f);
+                yield return PrepareNextStage();
                 yield return OnStageUp("stage2_1");
                 break;
 
@@ -551,13 +550,16 @@ public class GameProcessMgr : MonoBehaviour
         AudioMgr.Single.StopBGM();
     }
 
-    private IEnumerator ShowStageClearLabel()
+    private IEnumerator PrepareNextStage()
     {
         yield return new WaitForSeconds(4.5f);
 
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAY_STAGE_CLEAR_ANIM);
         GameModel.Single.Score += Const.CLEAR_BOUNS;
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE);
+
+        ++GameModel.Single.StageNum;
+        _bgAnim.SetInteger("Stage", GameModel.Single.StageNum);
     }
 
     private void OnChatCallBack(object[] args)

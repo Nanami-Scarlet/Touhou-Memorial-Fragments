@@ -22,9 +22,12 @@ namespace BulletPro.EditorScripts
 			EditorGUILayout.Space();
 
 			BulletEmitter be = target as BulletEmitter;
-
+			Bullet rb = be.rootBullet;
+			
 			EditorGUILayout.LabelField("Shortcuts for Play Mode:");
 			
+			EditorGUILayout.ObjectField("Current Root Bullet", rb, typeof(Bullet), true);
+
 			EditorGUILayout.BeginHorizontal();
 
 			if (GUILayout.Button("Play", EditorStyles.miniButton))

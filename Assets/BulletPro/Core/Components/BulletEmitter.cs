@@ -44,6 +44,17 @@ namespace BulletPro
 		[System.NonSerialized]
 		public List<Bullet> subEmitters, bullets;
 
+		// a fast access to this emitter's Root Bullet
+		public Bullet rootBullet
+		{
+			get
+			{
+				if (subEmitters == null) return null;
+				if (subEmitters.Count == 0) return null;
+				return subEmitters[0];
+			}
+		}
+
 		void Awake()
 		{
 			subEmitters = new List<Bullet>();
@@ -236,7 +247,14 @@ namespace BulletPro
 
 		public void Play(PlayOptions range = PlayOptions.RootAndSubEmitters)
 		{
-			if (!isInitialized) return;
+			// Emitter being not initialized means we are calling Play() from Start or Awake.
+			// In this case, the script must wait one frame so it gets all the managers.
+			if (!isInitialized)
+			{
+				StartCoroutine(PlayAfterOneFrame());
+				return;
+			}
+
 			if (emitterProfile == null) return;
 			if (emitterProfile.rootBullet != firstBulletParams) { Kill(); Launch(); return; }
 			
@@ -251,7 +269,11 @@ namespace BulletPro
 
 		public void Pause(PlayOptions range = PlayOptions.RootAndSubEmitters)
 		{
-			if (!isInitialized) return;
+			if (!isInitialized)
+			{
+				Debug.LogWarning("BulletPro Warning: BulletEmitter \"" + name + "\" is trying to call Pause() during its Start frame. This is not allowed - please wait one more frame before your call!");
+				return;
+			}
 			if (range == PlayOptions.RootOnly) PauseSingle();
 			else
 			{
@@ -263,7 +285,11 @@ namespace BulletPro
 
 		public void Reinitialize(PlayOptions range = PlayOptions.RootAndSubEmitters)
 		{
-			if (!isInitialized) return;
+			if (!isInitialized)
+			{
+				Debug.LogWarning("BulletPro Warning: BulletEmitter \"" + name + "\" is trying to call Reinitialize() during its Start frame. This is not allowed - please wait one more frame before your call!");
+				return;
+			}
 			if (range == PlayOptions.RootOnly) ResetSingle();
 			else
 			{
@@ -275,7 +301,11 @@ namespace BulletPro
 
 		public void Boot(PlayOptions range = PlayOptions.RootAndSubEmitters)
 		{
-			if (!isInitialized) return;
+			if (!isInitialized)
+			{
+				Debug.LogWarning("BulletPro Warning: BulletEmitter \"" + name + "\" is trying to call Boot() during its Start frame. This is not allowed - please wait one more frame before your call!");
+				return;
+			}
 			if (range == PlayOptions.RootOnly) BootSingle();
 			else
 			{
@@ -287,7 +317,11 @@ namespace BulletPro
 
 		public void Stop(PlayOptions range = PlayOptions.RootAndSubEmitters)
 		{
-			if (!isInitialized) return;
+			if (!isInitialized)
+			{
+				Debug.LogWarning("BulletPro Warning: BulletEmitter \"" + name + "\" is trying to call Stop() during its Start frame. This is not allowed - please wait one more frame before your call!");
+				return;
+			}
 			if (range == PlayOptions.RootOnly) StopSingle();
 			else
 			{
@@ -454,12 +488,12 @@ namespace BulletPro
 		void KillAllBulletsButRoot()
 		{
 			if (bullets.Count < 2) return;
-			Bullet rootBullet = null;
-			if (subEmitters.Count > 0) rootBullet = subEmitters[0];
+			Bullet curRootBullet = null;
+			if (subEmitters.Count > 0) curRootBullet = subEmitters[0];
 
 			List<Bullet> all = new List<Bullet>();
 			for (int i = 0; i < bullets.Count; i++)
-				if (bullets[i] != rootBullet)
+				if (bullets[i] != curRootBullet)
 					all.Add(bullets[i]);
 			for (int i = 0; i < all.Count; i++)
 				all[i].Die(true);

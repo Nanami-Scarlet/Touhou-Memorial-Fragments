@@ -14,7 +14,7 @@
   {
     "type": "PlayerDead",
     "name": "Death_Eff",
-    "vol": 0.3
+    "vol": 0.25
   },
 
   {

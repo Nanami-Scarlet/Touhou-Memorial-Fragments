@@ -599,9 +599,17 @@ namespace BulletPro
 			//m.maxColliderCount = m2.maxColliderCount; // is read only
 			m.radiusScale = m2.radiusScale;
 
+			#if UNITY_2021_1_OR_NEWER
+			if (m.colliderCount > 0)
+			#else
 			if (m.maxColliderCount > 0)
+			#endif
 			{
+				#if UNITY_2021_1_OR_NEWER
+				int max = m.colliderCount;
+				#else
 				int max = m.maxColliderCount;
+				#endif
 				for (int i = 0; i < max; i++) m.SetCollider(i, null);
 				// This line may cause a nullref exception. If so, commenting it can fix the issue,
 				// but this VFX's trigger module wouldn't be usable again,
@@ -609,9 +617,17 @@ namespace BulletPro
 				// (We're talking about a rare, deep edge case here)
 			}
 
+			#if UNITY_2021_1_OR_NEWER
+			if (m2.colliderCount > 0)
+			#else
 			if (m2.maxColliderCount > 0)
+			#endif
 			{
+				#if UNITY_2021_1_OR_NEWER
+				int max = m2.colliderCount;
+				#else
 				int max = m2.maxColliderCount;
+				#endif
 				for (int i = 0; i < max; i++)
 					m.SetCollider(i, m2.GetCollider(i));
 			}

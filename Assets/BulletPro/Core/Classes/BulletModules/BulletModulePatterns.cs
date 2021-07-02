@@ -275,6 +275,9 @@ namespace BulletPro
 			emittedBullets.Add(b);
 			bullet.emitter.bullets.Add(b);
 
+			// Apply BulletParams (it's done before handling parenting so isChildOfEmitter can depend on custom params)
+			b.ApplyBulletParams(bp);
+
 			// Handle bullet parenting
 			if (b.dynamicSolver.SolveDynamicBool(bp.isChildOfEmitter, 1743405, ParameterOwner.Bullet))
 				b.self.SetParent(self);
@@ -284,10 +287,7 @@ namespace BulletPro
 					b.self.SetParent(bullet.poolManager.regularPoolRoot);
 				else
 					b.self.SetParent(bullet.poolManager.meshPoolRoot);
-			}
-
-			// Apply BulletParams
-			b.ApplyBulletParams(bp);
+			}			
 
 			// If delayed spawn from homing bullets, rotation from ShotParams will only be applied at Prepare().
 			bool dontApplyRotationNow = false;
@@ -350,9 +350,10 @@ namespace BulletPro
 
 		public void Play(string patternTag)
 		{
-			for (int i=0; i<patternRuntimeInfo.Length; i++)
-				if (patternRuntimeInfo[i].HasTag(patternTag))
-					Play(i);
+			if (patternRuntimeInfo != null)
+				for (int i=0; i<patternRuntimeInfo.Length; i++)
+					if (patternRuntimeInfo[i].HasTag(patternTag))
+						Play(i);
 
 			if (emittedBullets != null)
 				if (emittedBullets.Count > 0)
@@ -362,9 +363,10 @@ namespace BulletPro
 
 		public void Pause(string patternTag)
 		{
-			for (int i=0; i<patternRuntimeInfo.Length; i++)
-				if (patternRuntimeInfo[i].HasTag(patternTag))
-					Pause(i);
+			if (patternRuntimeInfo != null)
+				for (int i=0; i<patternRuntimeInfo.Length; i++)
+					if (patternRuntimeInfo[i].HasTag(patternTag))
+						Pause(i);
 
 			if (emittedBullets != null)
 				if (emittedBullets.Count > 0)
@@ -374,9 +376,10 @@ namespace BulletPro
 
 		public void ResetPattern(string patternTag)
 		{
-			for (int i=0; i<patternRuntimeInfo.Length; i++)
-				if (patternRuntimeInfo[i].HasTag(patternTag))
-					ResetPattern(i);
+			if (patternRuntimeInfo != null)
+				for (int i=0; i<patternRuntimeInfo.Length; i++)
+					if (patternRuntimeInfo[i].HasTag(patternTag))
+						ResetPattern(i);
 
 			if (emittedBullets != null)
 				if (emittedBullets.Count > 0)
@@ -386,9 +389,10 @@ namespace BulletPro
 
 		public void Stop(string patternTag)
 		{
-			for (int i=0; i<patternRuntimeInfo.Length; i++)
-				if (patternRuntimeInfo[i].HasTag(patternTag))
-					Stop(i);
+			if (patternRuntimeInfo != null)
+				for (int i=0; i<patternRuntimeInfo.Length; i++)
+					if (patternRuntimeInfo[i].HasTag(patternTag))
+						Stop(i);
 
 			if (emittedBullets != null)
 				if (emittedBullets.Count > 0)
@@ -398,9 +402,10 @@ namespace BulletPro
 
 		public void Boot(string patternTag)
 		{
-			for (int i=0; i<patternRuntimeInfo.Length; i++)
-				if (patternRuntimeInfo[i].HasTag(patternTag))
-					Boot(i);
+			if (patternRuntimeInfo != null)
+				for (int i=0; i<patternRuntimeInfo.Length; i++)
+					if (patternRuntimeInfo[i].HasTag(patternTag))
+						Boot(i);
 
 			if (emittedBullets != null)
 				if (emittedBullets.Count > 0)

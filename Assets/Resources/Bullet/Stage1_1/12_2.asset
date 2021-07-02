@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 114917193883442684}
   - {fileID: 114201774248674550}
   - {fileID: 114027673760526898}
-  buildNumber: 9
+  buildNumber: 10
   compactMode: 0
   hasBeenProcessed: 1
   hasBeenInitialized: 1
@@ -95,6 +95,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -155,6 +158,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 9090763247254987088, guid: 257a066a9c5f84843b00796348628404,
         type: 3}
     narrowType: 1
@@ -206,6 +212,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -266,6 +275,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     narrowType: 1
     requireComponent: 0
@@ -315,6 +327,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -375,6 +390,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
   material:
     valueTree:
@@ -419,6 +437,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -479,6 +500,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 2100000, guid: f834cba8a7908814692c7a4f9afc4b45, type: 2}
     narrowType: 1
     requireComponent: 0
@@ -528,6 +552,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -588,6 +615,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 12
     useSlider: 0
     sliderMin: 0
@@ -636,6 +666,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -696,6 +729,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 21300000, guid: 963a799468bc9f94ba06627a3fe70fb9, type: 3}
     narrowType: 1
     requireComponent: 0
@@ -745,6 +781,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -805,6 +844,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 1
     useSlider: 0
     sliderMin: 0
@@ -853,6 +895,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 
     - settings:
         valueType: 0
@@ -913,6 +958,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 
   color:
     valueTree:
@@ -957,6 +1005,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {r: 0, g: 0, b: 0, a: 0}
       gradientValue:
         serializedVersion: 2
@@ -1046,6 +1097,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {r: 1, g: 1, b: 1, a: 1}
       gradientValue:
         serializedVersion: 2
@@ -1119,6 +1173,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -1179,6 +1236,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     enumTypeName: BulletPro.ColorBlend, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
@@ -1231,6 +1291,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1319,6 +1382,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue:
         serializedVersion: 2
         key0: {r: 0, g: 0, b: 0, a: 1}
@@ -1391,6 +1457,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -1451,6 +1520,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
   playVFXOnDeath:
     valueTree:
@@ -1495,6 +1567,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -1555,6 +1630,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
   vfxParticleSize:
     valueTree:
@@ -1599,6 +1677,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -1659,6 +1740,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 1
     useSlider: 0
     sliderMin: 0
@@ -1708,6 +1792,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -1768,6 +1855,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     narrowType: 1
     requireComponent: 0
@@ -1817,6 +1907,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -1877,6 +1970,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     narrowType: 1
     requireComponent: 0
@@ -1933,6 +2029,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -1993,6 +2092,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 6
     useSlider: 0
     sliderMin: 0
@@ -2040,6 +2142,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -2100,6 +2205,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 50
     useSlider: 0
     sliderMin: 0
@@ -2147,6 +2255,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -2207,6 +2318,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 2
     useSlider: 0
     sliderMin: 0
@@ -2254,6 +2368,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -2314,6 +2431,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
   animFoldout: 0
   animationClip: {fileID: 0}
@@ -2377,6 +2497,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -2437,6 +2560,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 1
     useSlider: 1
     sliderMin: -1
@@ -2484,6 +2610,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -2544,6 +2673,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     useSlider: 0
     sliderMin: 0
@@ -2591,6 +2723,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -2651,6 +2786,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     useSlider: 0
     sliderMin: 0
@@ -2698,6 +2836,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -2758,6 +2899,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     enumTypeName: BulletPro.PreferredTarget, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
@@ -2810,6 +2954,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -2870,6 +3017,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     useSlider: 0
     sliderMin: 0
@@ -2918,6 +3068,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -2978,6 +3131,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 5
     useSlider: 0
     sliderMin: 0
@@ -3027,6 +3183,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -3087,6 +3246,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -3139,6 +3301,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -3199,6 +3364,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -3243,6 +3411,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -3303,6 +3474,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -3350,6 +3524,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -3415,6 +3592,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -3485,6 +3665,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -3545,6 +3728,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -3597,6 +3783,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -3657,6 +3846,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -3701,6 +3893,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -3761,6 +3956,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -3808,6 +4006,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -3873,6 +4074,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -3943,6 +4147,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -4003,6 +4210,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -4055,6 +4265,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -4115,6 +4328,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -4159,6 +4375,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -4219,6 +4438,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -4266,6 +4488,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -4331,6 +4556,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -4401,6 +4629,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -4461,6 +4692,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -4513,6 +4747,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -4573,6 +4810,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -4617,6 +4857,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -4677,6 +4920,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -4724,6 +4970,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -4789,6 +5038,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -4859,6 +5111,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -4919,6 +5174,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -4971,6 +5229,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -5031,6 +5292,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -5075,6 +5339,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -5135,6 +5402,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -5182,6 +5452,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -5247,6 +5520,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -5317,6 +5593,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -5377,6 +5656,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -5429,6 +5711,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -5489,6 +5774,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -5533,6 +5821,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -5593,6 +5884,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -5640,6 +5934,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -5705,6 +6002,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -5821,6 +6121,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -5881,6 +6184,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     useSlider: 0
     sliderMin: 0
@@ -5928,6 +6234,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -5988,6 +6297,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
   audioClip:
     valueTree:
@@ -6032,6 +6344,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -6092,6 +6407,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     narrowType: 1
     requireComponent: 0
@@ -6144,6 +6462,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -6204,6 +6525,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: Int Value
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       useSlider: 0
       sliderMin: 0
@@ -6252,6 +6576,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -6312,6 +6639,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -6367,6 +6697,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {r: 0, g: 0, b: 0, a: 0}
         gradientValue:
           serializedVersion: 2
@@ -6456,6 +6789,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {r: 0, g: 0, b: 0, a: 1}
         gradientValue:
           serializedVersion: 2
@@ -6529,6 +6865,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6617,6 +6956,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           key0: {r: 0, g: 0, b: 0, a: 1}
@@ -6736,6 +7078,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -6796,6 +7141,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 114027673760526898}
   simultaneousBulletsPerFrame:
     valueTree:
@@ -6840,6 +7188,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -6900,6 +7251,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 14
     useSlider: 0
     sliderMin: 0
@@ -7007,6 +7361,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 0, y: 0}
       - settings:
           valueType: 0
@@ -7067,6 +7424,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 0, y: 0}
     localMovement:
       valueTree:
@@ -7111,6 +7471,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 0, y: 0}
       - settings:
           valueType: 0
@@ -7171,6 +7534,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 0, y: 0}
     pointToLookAt:
       valueTree:
@@ -7215,6 +7581,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 0, y: 0}
       - settings:
           valueType: 0
@@ -7275,6 +7644,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 0, y: 0}
     pointToFleeFrom:
       valueTree:
@@ -7319,6 +7691,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 0, y: 0}
       - settings:
           valueType: 0
@@ -7379,6 +7754,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 0, y: 0}
     pivot:
       valueTree:
@@ -7423,6 +7801,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 0, y: 0}
       - settings:
           valueType: 0
@@ -7483,6 +7864,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 0, y: 0}
     scale:
       valueTree:
@@ -7527,6 +7911,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 0, y: 0}
       - settings:
           valueType: 0
@@ -7587,6 +7974,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {x: 1, y: 1}
     resetX:
       valueTree:
@@ -7631,6 +8021,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -7691,6 +8084,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     resetY:
       valueTree:
@@ -7735,6 +8131,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -7795,6 +8194,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     resetZ:
       valueTree:
@@ -7839,6 +8241,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -7899,6 +8304,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     flipX:
       valueTree:
@@ -7943,6 +8351,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -8003,6 +8414,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     flipY:
       valueTree:
@@ -8047,6 +8461,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -8107,6 +8524,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     degrees:
       valueTree:
@@ -8151,6 +8571,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -8211,6 +8634,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 240
       useSlider: 0
       sliderMin: 0
@@ -8258,6 +8684,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -8318,6 +8747,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 360
       useSlider: 0
       sliderMin: 0
@@ -8365,6 +8797,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -8425,6 +8860,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       useSlider: 0
       sliderMin: 0
@@ -8472,6 +8910,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -8532,6 +8973,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       useSlider: 0
       sliderMin: 0
@@ -8579,6 +9023,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -8639,6 +9086,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       useSlider: 0
       sliderMin: 0
@@ -8686,6 +9136,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -8746,6 +9199,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       useSlider: 0
       sliderMin: 0
@@ -8793,6 +9249,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -8853,6 +9312,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       useSlider: 0
       sliderMin: 0
@@ -8905,6 +9367,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {fileID: 0}
       - settings:
           valueType: 0
@@ -8965,6 +9430,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: {fileID: 0}
     numberOfModifiersAffected: 0
     selectionRects: []
@@ -9131,6 +9599,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -9191,6 +9662,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 21300000, guid: 963a799468bc9f94ba06627a3fe70fb9, type: 3}
     narrowType: 1
     requireComponent: 0
@@ -9241,6 +9715,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -9301,6 +9778,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     narrowType: 1
     requireComponent: 0
@@ -9350,6 +9830,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -9410,6 +9893,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
   material:
     valueTree:
@@ -9454,6 +9940,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -9514,6 +10003,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 2100000, guid: f834cba8a7908814692c7a4f9afc4b45, type: 2}
     narrowType: 1
     requireComponent: 0
@@ -9563,6 +10055,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -9623,6 +10118,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 12
     useSlider: 0
     sliderMin: 0
@@ -9671,6 +10169,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -9731,6 +10232,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 21300000, guid: 963a799468bc9f94ba06627a3fe70fb9, type: 3}
     narrowType: 1
     requireComponent: 0
@@ -9780,6 +10284,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -9840,6 +10347,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     useSlider: 0
     sliderMin: 0
@@ -9888,6 +10398,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 
     - settings:
         valueType: 0
@@ -9948,6 +10461,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 
   color:
     valueTree:
@@ -9992,6 +10508,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {r: 0, g: 0, b: 0, a: 0}
       gradientValue:
         serializedVersion: 2
@@ -10081,6 +10600,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {r: 0, g: 0, b: 0, a: 1}
       gradientValue:
         serializedVersion: 2
@@ -10154,6 +10676,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -10214,6 +10739,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     enumTypeName: BulletPro.ColorBlend, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
@@ -10266,6 +10794,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10354,6 +10885,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue:
         serializedVersion: 2
         key0: {r: 0, g: 0, b: 0, a: 1}
@@ -10426,6 +10960,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -10486,6 +11023,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
   playVFXOnDeath:
     valueTree:
@@ -10530,6 +11070,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -10590,6 +11133,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 1
   vfxParticleSize:
     valueTree:
@@ -10634,6 +11180,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -10694,6 +11243,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0.5
     useSlider: 0
     sliderMin: 0
@@ -10743,6 +11295,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -10803,6 +11358,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     narrowType: 1
     requireComponent: 0
@@ -10852,6 +11410,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -10912,6 +11473,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     narrowType: 1
     requireComponent: 0
@@ -10968,6 +11532,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -11028,6 +11595,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 5
     useSlider: 0
     sliderMin: 0
@@ -11075,6 +11645,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -11135,6 +11708,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     useSlider: 0
     sliderMin: 0
@@ -11182,6 +11758,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -11242,6 +11821,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 1
     useSlider: 0
     sliderMin: 0
@@ -11289,6 +11871,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -11349,6 +11934,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 1
   animFoldout: 0
   animationClip: {fileID: 0}
@@ -11412,6 +12000,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -11472,6 +12063,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     useSlider: 1
     sliderMin: -1
@@ -11519,6 +12113,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -11579,6 +12176,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 90
     useSlider: 0
     sliderMin: 0
@@ -11626,6 +12226,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -11686,6 +12289,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     useSlider: 0
     sliderMin: 0
@@ -11733,6 +12339,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -11793,6 +12402,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     enumTypeName: BulletPro.PreferredTarget, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
@@ -11845,6 +12457,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -11905,6 +12520,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     useSlider: 0
     sliderMin: 0
@@ -11953,6 +12571,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -12013,6 +12634,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 5
     useSlider: 0
     sliderMin: 0
@@ -12062,6 +12686,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -12122,6 +12749,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -12174,6 +12804,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -12234,6 +12867,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -12278,6 +12914,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -12338,6 +12977,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -12385,6 +13027,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -12450,6 +13095,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -12520,6 +13168,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -12580,6 +13231,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -12632,6 +13286,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -12692,6 +13349,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -12736,6 +13396,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -12796,6 +13459,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -12843,6 +13509,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -12908,6 +13577,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -12978,6 +13650,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -13038,6 +13713,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -13090,6 +13768,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -13150,6 +13831,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -13194,6 +13878,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -13254,6 +13941,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -13301,6 +13991,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -13366,6 +14059,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -13436,6 +14132,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -13496,6 +14195,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -13548,6 +14250,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -13608,6 +14313,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -13652,6 +14360,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -13712,6 +14423,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -13759,6 +14473,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -13824,6 +14541,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -13894,6 +14614,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -13954,6 +14677,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -14006,6 +14732,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -14066,6 +14795,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -14110,6 +14842,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -14170,6 +14905,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -14217,6 +14955,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -14282,6 +15023,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -14352,6 +15096,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -14412,6 +15159,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -14464,6 +15214,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -14524,6 +15277,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
     period:
       valueTree:
@@ -14568,6 +15324,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 0
       - settings:
           valueType: 0
@@ -14628,6 +15387,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue: 1
       useSlider: 0
       sliderMin: 0
@@ -14675,6 +15437,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve: []
@@ -14740,6 +15505,9 @@ MonoBehaviour:
           weight: 0
           headerTitle: 
           blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
         defaultValue:
           serializedVersion: 2
           m_Curve:
@@ -14852,6 +15620,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -14912,6 +15683,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 114917193883442684}
   dieWhenAllPatternsAreDone: 1
   behaviourPrefabs: []
@@ -14959,6 +15733,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -15019,6 +15796,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     useSlider: 0
     sliderMin: 0
@@ -15066,6 +15846,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
     - settings:
         valueType: 0
@@ -15126,6 +15909,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: 0
   audioClip:
     valueTree:
@@ -15170,6 +15956,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     - settings:
         valueType: 0
@@ -15230,6 +16019,9 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
       defaultValue: {fileID: 0}
     narrowType: 1
     requireComponent: 0
@@ -15311,6 +16103,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -15371,6 +16166,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -15418,6 +16216,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -15478,6 +16279,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
       endless: 1
       iterations:
@@ -15523,6 +16327,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -15583,6 +16390,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -15631,6 +16441,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
         - settings:
             valueType: 0
@@ -15691,6 +16504,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
       localMovement:
         valueTree:
@@ -15735,6 +16551,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
         - settings:
             valueType: 0
@@ -15795,6 +16614,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
       rotation:
         valueTree:
@@ -15839,6 +16661,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -15899,6 +16724,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -15946,6 +16774,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -16006,6 +16837,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -16053,6 +16887,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -16113,6 +16950,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -16160,6 +17000,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -16220,6 +17063,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -16268,6 +17114,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -16328,6 +17177,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         narrowType: 1
         requireComponent: 0
@@ -16377,6 +17229,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -16437,6 +17292,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         narrowType: 1
         requireComponent: 0
@@ -16486,6 +17344,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -16546,6 +17407,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 1
         sliderMin: -1
@@ -16593,6 +17457,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -16653,6 +17520,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         enumTypeName: BulletPro.PreferredTarget, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -16706,6 +17576,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
         - settings:
             valueType: 0
@@ -16766,6 +17639,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: Player
       patternControlTarget: 0
       patternTag:
@@ -16811,6 +17687,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
         - settings:
             valueType: 0
@@ -16871,6 +17750,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
       newCurveValue:
         valueTree:
@@ -16915,6 +17797,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve: []
@@ -16980,6 +17865,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve:
@@ -17048,6 +17936,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -17108,6 +17999,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -17156,6 +18050,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -17216,6 +18113,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -17268,6 +18168,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -17328,6 +18231,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -17377,6 +18283,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {r: 0, g: 0, b: 0, a: 0}
           gradientValue:
             serializedVersion: 2
@@ -17466,6 +18375,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {r: 0, g: 0, b: 0, a: 1}
           gradientValue:
             serializedVersion: 2
@@ -17539,6 +18451,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -17599,6 +18514,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
       gradient:
         valueTree:
@@ -17643,6 +18561,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             key0: {r: 1, g: 1, b: 1, a: 1}
@@ -17731,6 +18652,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             key0: {r: 0, g: 0, b: 0, a: 1}
@@ -17806,6 +18730,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -17866,6 +18793,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -17913,6 +18843,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve: []
@@ -17978,6 +18911,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve:
@@ -18049,6 +18985,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -18109,6 +19048,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -18156,6 +19098,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -18216,6 +19161,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 114201774248674550}
       endless: 1
       iterations:
@@ -18261,6 +19209,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -18321,6 +19272,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -18369,6 +19323,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
         - settings:
             valueType: 0
@@ -18429,6 +19386,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
       localMovement:
         valueTree:
@@ -18473,6 +19433,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
         - settings:
             valueType: 0
@@ -18533,6 +19496,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
       rotation:
         valueTree:
@@ -18577,6 +19543,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -18637,6 +19606,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -18684,6 +19656,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -18744,6 +19719,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -18791,6 +19769,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -18851,6 +19832,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -18898,6 +19882,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -18958,6 +19945,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -19006,6 +19996,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -19066,6 +20059,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         narrowType: 1
         requireComponent: 0
@@ -19115,6 +20111,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -19175,6 +20174,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         narrowType: 1
         requireComponent: 0
@@ -19224,6 +20226,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -19284,6 +20289,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 1
         sliderMin: -1
@@ -19331,6 +20339,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -19391,6 +20402,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         enumTypeName: BulletPro.PreferredTarget, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -19444,6 +20458,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
         - settings:
             valueType: 0
@@ -19504,6 +20521,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: Player
       patternControlTarget: 0
       patternTag:
@@ -19549,6 +20569,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
         - settings:
             valueType: 0
@@ -19609,6 +20632,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
       newCurveValue:
         valueTree:
@@ -19653,6 +20679,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve: []
@@ -19718,6 +20747,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve:
@@ -19786,6 +20818,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -19846,6 +20881,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -19894,6 +20932,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -19954,6 +20995,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -20006,6 +21050,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -20066,6 +21113,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -20115,6 +21165,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {r: 0, g: 0, b: 0, a: 0}
           gradientValue:
             serializedVersion: 2
@@ -20204,6 +21257,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {r: 0, g: 0, b: 0, a: 1}
           gradientValue:
             serializedVersion: 2
@@ -20277,6 +21333,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -20337,6 +21396,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
       gradient:
         valueTree:
@@ -20381,6 +21443,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             key0: {r: 1, g: 1, b: 1, a: 1}
@@ -20469,6 +21534,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             key0: {r: 0, g: 0, b: 0, a: 1}
@@ -20544,6 +21612,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -20604,6 +21675,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -20651,6 +21725,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve: []
@@ -20716,6 +21793,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve:
@@ -20787,6 +21867,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -20847,6 +21930,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -20894,6 +21980,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -20954,6 +22043,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
       endless: 1
       iterations:
@@ -20999,6 +22091,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -21059,6 +22154,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -21107,6 +22205,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
         - settings:
             valueType: 0
@@ -21167,6 +22268,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
       localMovement:
         valueTree:
@@ -21211,6 +22315,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
         - settings:
             valueType: 0
@@ -21271,6 +22378,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
       rotation:
         valueTree:
@@ -21315,6 +22425,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -21375,6 +22488,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -21422,6 +22538,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -21482,6 +22601,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -21529,6 +22651,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -21589,6 +22714,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -21636,6 +22764,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -21696,6 +22827,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -21744,6 +22878,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -21804,6 +22941,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         narrowType: 1
         requireComponent: 0
@@ -21853,6 +22993,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -21913,6 +23056,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         narrowType: 1
         requireComponent: 0
@@ -21962,6 +23108,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -22022,6 +23171,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 1
         sliderMin: -1
@@ -22069,6 +23221,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -22129,6 +23284,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         enumTypeName: BulletPro.PreferredTarget, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -22182,6 +23340,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
         - settings:
             valueType: 0
@@ -22242,6 +23403,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: Player
       patternControlTarget: 0
       patternTag:
@@ -22287,6 +23451,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
         - settings:
             valueType: 0
@@ -22347,6 +23514,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
       newCurveValue:
         valueTree:
@@ -22391,6 +23561,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve: []
@@ -22456,6 +23629,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve:
@@ -22524,6 +23700,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -22584,6 +23763,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -22632,6 +23814,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -22692,6 +23877,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -22744,6 +23932,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -22804,6 +23995,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -22853,6 +24047,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {r: 0, g: 0, b: 0, a: 0}
           gradientValue:
             serializedVersion: 2
@@ -22942,6 +24139,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {r: 0, g: 0, b: 0, a: 1}
           gradientValue:
             serializedVersion: 2
@@ -23015,6 +24215,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -23075,6 +24278,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
       gradient:
         valueTree:
@@ -23119,6 +24325,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             key0: {r: 1, g: 1, b: 1, a: 1}
@@ -23207,6 +24416,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             key0: {r: 0, g: 0, b: 0, a: 1}
@@ -23282,6 +24494,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -23342,6 +24557,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -23389,6 +24607,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve: []
@@ -23454,6 +24675,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve:
@@ -23525,6 +24749,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -23585,6 +24812,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0.05
         useSlider: 0
         sliderMin: 0
@@ -23632,6 +24862,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -23692,6 +24925,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
       endless: 1
       iterations:
@@ -23737,6 +24973,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -23797,6 +25036,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -23845,6 +25087,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
         - settings:
             valueType: 0
@@ -23905,6 +25150,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
       localMovement:
         valueTree:
@@ -23949,6 +25197,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
         - settings:
             valueType: 0
@@ -24009,6 +25260,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
       rotation:
         valueTree:
@@ -24053,6 +25307,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -24113,6 +25370,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -24160,6 +25420,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -24220,6 +25483,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -24267,6 +25533,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -24327,6 +25596,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -24374,6 +25646,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -24434,6 +25709,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -24482,6 +25760,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -24542,6 +25823,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         narrowType: 1
         requireComponent: 0
@@ -24591,6 +25875,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -24651,6 +25938,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         narrowType: 1
         requireComponent: 0
@@ -24700,6 +25990,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -24760,6 +26053,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 1
         sliderMin: -1
@@ -24807,6 +26103,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -24867,6 +26166,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         enumTypeName: BulletPro.PreferredTarget, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -24920,6 +26222,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
         - settings:
             valueType: 0
@@ -24980,6 +26285,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: Player
       patternControlTarget: 0
       patternTag:
@@ -25025,6 +26333,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
         - settings:
             valueType: 0
@@ -25085,6 +26396,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
       newCurveValue:
         valueTree:
@@ -25129,6 +26443,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve: []
@@ -25194,6 +26511,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve:
@@ -25262,6 +26582,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -25322,6 +26645,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -25370,6 +26696,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -25430,6 +26759,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -25482,6 +26814,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -25542,6 +26877,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -25591,6 +26929,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {r: 0, g: 0, b: 0, a: 0}
           gradientValue:
             serializedVersion: 2
@@ -25680,6 +27021,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {r: 0, g: 0, b: 0, a: 1}
           gradientValue:
             serializedVersion: 2
@@ -25753,6 +27097,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -25813,6 +27160,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
       gradient:
         valueTree:
@@ -25857,6 +27207,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             key0: {r: 1, g: 1, b: 1, a: 1}
@@ -25945,6 +27298,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             key0: {r: 0, g: 0, b: 0, a: 1}
@@ -26020,6 +27376,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -26080,6 +27439,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -26127,6 +27489,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve: []
@@ -26192,6 +27557,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve:
@@ -26263,6 +27631,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -26323,6 +27694,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -26370,6 +27744,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -26430,6 +27807,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
       endless: 1
       iterations:
@@ -26475,6 +27855,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -26535,6 +27918,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -26583,6 +27969,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
         - settings:
             valueType: 0
@@ -26643,6 +28032,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
       localMovement:
         valueTree:
@@ -26687,6 +28079,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
         - settings:
             valueType: 0
@@ -26747,6 +28142,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {x: 0, y: 0}
       rotation:
         valueTree:
@@ -26791,6 +28189,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -26851,6 +28252,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -26898,6 +28302,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -26958,6 +28365,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -27005,6 +28415,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -27065,6 +28478,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -27112,6 +28528,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -27172,6 +28591,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -27220,6 +28642,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -27280,6 +28705,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         narrowType: 1
         requireComponent: 0
@@ -27329,6 +28757,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         - settings:
             valueType: 0
@@ -27389,6 +28820,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {fileID: 0}
         narrowType: 1
         requireComponent: 0
@@ -27438,6 +28872,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -27498,6 +28935,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 1
         sliderMin: -1
@@ -27545,6 +28985,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -27605,6 +29048,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         enumTypeName: BulletPro.PreferredTarget, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -27658,6 +29104,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
         - settings:
             valueType: 0
@@ -27718,6 +29167,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: Player
       patternControlTarget: 0
       patternTag:
@@ -27763,6 +29215,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
         - settings:
             valueType: 0
@@ -27823,6 +29278,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 
       newCurveValue:
         valueTree:
@@ -27867,6 +29325,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve: []
@@ -27932,6 +29393,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve:
@@ -28000,6 +29464,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -28060,6 +29527,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -28108,6 +29578,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -28168,6 +29641,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         enumTypeName: UnityEngine.WrapMode, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -28220,6 +29696,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -28280,6 +29759,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         useSlider: 0
         sliderMin: 0
@@ -28329,6 +29811,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {r: 0, g: 0, b: 0, a: 0}
           gradientValue:
             serializedVersion: 2
@@ -28418,6 +29903,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: {r: 0, g: 0, b: 0, a: 1}
           gradientValue:
             serializedVersion: 2
@@ -28491,6 +29979,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -28551,6 +30042,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
       gradient:
         valueTree:
@@ -28595,6 +30089,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             key0: {r: 1, g: 1, b: 1, a: 1}
@@ -28683,6 +30180,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             key0: {r: 0, g: 0, b: 0, a: 1}
@@ -28758,6 +30258,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 0
         - settings:
             valueType: 0
@@ -28818,6 +30321,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -28865,6 +30371,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve: []
@@ -28930,6 +30439,9 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
           defaultValue:
             serializedVersion: 2
             m_Curve:

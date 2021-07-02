@@ -16,6 +16,7 @@ namespace BulletPro.EditorScripts
 		SerializedProperty colliderType, hitboxSize, hitboxOffset;
 		SerializedProperty killBulletOnCollision, maxSimultaneousCollisionsPerFrame;
 		SerializedProperty collisionTags, collisionTagsFoldout, OnHitByBullet, gizmoColor;
+		SerializedProperty advancedEventsFoldout, OnHitByBulletEnter, OnHitByBulletStay, OnHitByBulletExit;
 
 		void OnEnable()
 		{
@@ -34,6 +35,11 @@ namespace BulletPro.EditorScripts
 			collisionTagsFoldout = serializedObject.FindProperty("collisionTagsFoldout");
 			OnHitByBullet = serializedObject.FindProperty("OnHitByBullet");
 			gizmoColor = serializedObject.FindProperty("gizmoColor");
+
+			advancedEventsFoldout = serializedObject.FindProperty("advancedEventsFoldout");
+			OnHitByBulletEnter = serializedObject.FindProperty("OnHitByBulletEnter");
+			OnHitByBulletStay = serializedObject.FindProperty("OnHitByBulletStay");
+			OnHitByBulletExit = serializedObject.FindProperty("OnHitByBulletExit");
 		}
 
 		public override void OnInspectorGUI()
@@ -117,6 +123,14 @@ namespace BulletPro.EditorScripts
 
 			//EditorGUILayout.LabelField("Events", EditorStyles.boldLabel); // (ugly UI, commented out)
 			EditorGUILayout.PropertyField(OnHitByBullet);
+
+			advancedEventsFoldout.boolValue = EditorGUILayout.Foldout(advancedEventsFoldout.boolValue, "Advanced Events (Enter, Stay, Exit)", true);
+			if (advancedEventsFoldout.boolValue)
+			{
+				EditorGUILayout.PropertyField(OnHitByBulletEnter);
+				EditorGUILayout.PropertyField(OnHitByBulletStay);
+				EditorGUILayout.PropertyField(OnHitByBulletExit);
+			}
 
 			EditorGUILayout.Space();
 			EditorGUILayout.LabelField("Editor", EditorStyles.boldLabel);

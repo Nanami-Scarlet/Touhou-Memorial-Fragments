@@ -121,7 +121,9 @@ namespace BulletPro.EditorScripts
                 if (indexOfChild > -1)
                 {
 					childrenProp.DeleteArrayElementAtIndex(indexOfChild); // first time sets it to null
+					#if !UNITY_2021_1_OR_NEWER
                     childrenProp.DeleteArrayElementAtIndex(indexOfChild); // second time empties it
+					#endif
 					oldParentSO.ApplyModifiedProperties();
                 }
             }

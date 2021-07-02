@@ -380,6 +380,10 @@ public class GameView : ViewBase
         t = _txtClearBonusValue.color;
         _txtClearBonusValue.color = new Color(t.r, t.g, t.b, 0);
 
+        _imgSacrifice.transform.localRotation = new Quaternion(0, 0, 0.7071068f, 0.7071068f);
+        t = _imgSacrifice.color;
+        _imgSacrifice.color = new Color(t.r, t.g, t.b, 0);
+
         _transBorderLine.gameObject.SetActive(true);
         _transBorderLine.rotation = new Quaternion(0.7071068f, 0, 0, 0.7071068f);
 

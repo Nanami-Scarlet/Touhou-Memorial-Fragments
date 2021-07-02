@@ -15,6 +15,8 @@ namespace BulletPro.EditorScripts
 		int indexOfFieldBeingRenamed, indexOfFieldBeingClicked, currentParamFieldIndex;
 		Rect renamingRect;
         SerializedProperty propertyBeingClicked;
+		string nameOfPropertyBeingClicked;
+		UnityEngine.Object targetOfPropertyBeingClicked;
 		bool focusText;
 		int indexOfSelectedSubAsset;
 		EmissionParams oldValueOfField;
@@ -159,6 +161,10 @@ namespace BulletPro.EditorScripts
 				{
 					indexOfFieldBeingClicked = currentParamFieldIndex;
 					propertyBeingClicked = property;
+					// Since 2020.2.6, property must be manually retrieved:
+					targetOfPropertyBeingClicked = property.serializedObject.targetObject;
+					nameOfPropertyBeingClicked = property.propertyPath;
+
 					oldValueOfField = property.objectReferenceValue as EmissionParams;
 					ContextMenuForParams<T>();
 				}
@@ -269,6 +275,9 @@ namespace BulletPro.EditorScripts
 					{
 						indexOfFieldBeingClicked = currentParamFieldIndex;
 						propertyBeingClicked = fixedValue;
+						// Since 2020.2.6, property must be manually retrieved:
+						targetOfPropertyBeingClicked = fixedValue.serializedObject.targetObject;
+						nameOfPropertyBeingClicked = fixedValue.propertyPath;
 						oldValueOfField = fixedValue.objectReferenceValue as EmissionParams;
 						ContextMenuForParams<T>();
 					}
@@ -374,9 +383,16 @@ namespace BulletPro.EditorScripts
 
 			// sets parent property to null and isInRecycleBin to true
 			SetParent(oldValueOfField, null);
+			
+			// Since 2020.2.6, serializedObject gets reset after an import...
+            #if UNITY_2020_2_OR_NEWER
+			serializedObject = new SerializedObject(targetOfPropertyBeingClicked);
+			propertyBeingClicked = serializedObject.FindProperty(nameOfPropertyBeingClicked);
+            #endif
+			
 			propertyBeingClicked.objectReferenceValue = null;
 			
-			serializedObject.ApplyModifiedProperties();
+            serializedObject.ApplyModifiedProperties();
 			profileInspector.serializedObject.ApplyModifiedProperties();
 		}
 
@@ -389,6 +405,12 @@ namespace BulletPro.EditorScripts
 			if (ep is ShotParams) newChild = profileInspector.AddNewParams<BulletParams>(ep, false, true);
 			if (ep is PatternParams) newChild = profileInspector.AddNewParams<ShotParams>(ep, false, true);
 
+			// Since 2020.2.6, serializedObject gets reset after an import...
+            #if UNITY_2020_2_OR_NEWER
+			serializedObject = new SerializedObject(targetOfPropertyBeingClicked);
+			propertyBeingClicked = serializedObject.FindProperty(nameOfPropertyBeingClicked);
+            #endif
+			
 			propertyBeingClicked.objectReferenceValue = newChild;
 			newChild.isInRecycleBin = ep.isInRecycleBin;
 
@@ -413,7 +435,14 @@ namespace BulletPro.EditorScripts
 			profileInspector.serializedObject.ApplyModifiedProperties();
 
 			SetParent(newClone, ep);
+			
+			// Since 2020.2.6, serializedObject gets reset after an import...
+            #if UNITY_2020_2_OR_NEWER
+			serializedObject = new SerializedObject(targetOfPropertyBeingClicked);
+			propertyBeingClicked = serializedObject.FindProperty(nameOfPropertyBeingClicked);
+            #endif
 			propertyBeingClicked.objectReferenceValue = newClone;
+			
 			serializedObject.ApplyModifiedProperties();
 
 			StartRenaming();
@@ -428,6 +457,11 @@ namespace BulletPro.EditorScripts
 			EmissionParams ep = serializedObject.targetObject as EmissionParams;
 			
 			SetParent(newEp, ep);
+			
+			#if UNITY_2020_2_OR_NEWER
+			serializedObject = new SerializedObject(targetOfPropertyBeingClicked);
+			propertyBeingClicked = serializedObject.FindProperty(nameOfPropertyBeingClicked);
+            #endif
 			propertyBeingClicked.objectReferenceValue = newEp;
 
 			serializedObject.ApplyModifiedProperties();
@@ -453,6 +487,11 @@ namespace BulletPro.EditorScripts
             // manage hierarchy
             newEp.profile = profile;
             newEp.isInRecycleBin = true;
+
+			// Since 2020.2.6, serializedObject gets reset after an import...
+            #if UNITY_2020_2_OR_NEWER
+            profileInspector.subAssets = profileInspector.serializedObject.FindProperty("subAssets");
+            #endif
             profileInspector.subAssets.arraySize++;
 			profile.numberOfSubAssets++;
             profileInspector.subAssets.GetArrayElementAtIndex(profileInspector.subAssets.arraySize-1).objectReferenceValue = newEp;
@@ -490,6 +529,10 @@ namespace BulletPro.EditorScripts
             {
                 // delete the ".children" reference
                 SerializedObject oldParentSO = new SerializedObject(elem.parent);
+				// Since 2020.2.6, serializedObject gets reset after an import...
+				#if UNITY_2020_2_OR_NEWER
+				serializedObject = new SerializedObject(targetOfPropertyBeingClicked);
+				#endif
 				// avoid conflict with existing instance
 				if (elem.parent == serializedObject.targetObject)
 					oldParentSO = serializedObject;
@@ -508,7 +551,9 @@ namespace BulletPro.EditorScripts
                 if (indexOfChild > -1)
                 {
 					childrenProp.DeleteArrayElementAtIndex(indexOfChild); // first time sets it to null
+					#if !UNITY_2021_1_OR_NEWER
                     childrenProp.DeleteArrayElementAtIndex(indexOfChild); // second time empties it
+					#endif
 					oldParentSO.ApplyModifiedProperties();
                 }
             }
@@ -523,6 +568,10 @@ namespace BulletPro.EditorScripts
 			if (newParent != null)
 			{
 				SerializedObject newParentSO = new SerializedObject(newParent);
+				// Since 2020.2.6, serializedObject gets reset after an import...
+				#if UNITY_2020_2_OR_NEWER
+				serializedObject = new SerializedObject(targetOfPropertyBeingClicked);
+				#endif
 				if (newParent == serializedObject.targetObject)
 					newParentSO = serializedObject;
 				newParentSO.Update();

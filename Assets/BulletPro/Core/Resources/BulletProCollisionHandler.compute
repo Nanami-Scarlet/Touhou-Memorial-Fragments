@@ -203,11 +203,15 @@ bool LineLine(ColliderInfo b, ColliderInfo r, out half3 collisionPoint)
 
 	// Getting actual intersection
 	half3 intersect = half3(30000, 30000, 30000);
+	// dummy assignation to avoid warnings if LineLineInteraction() returns false
 	collisionPoint = intersect;
 	// offset.z and size actually point to lineEnd.x and .y
 	half3 colEnd = b.position + b.scale * (b.extraVector * b.offset.z + b.orientation * b.size);
 	if (!LineLineIntersection(intersect, colStart, normalize(colEnd-colStart), brStart, r.orientation))
 		return false;
+
+	// actual collisionPoint assignation, once intersect has been calculated
+	collisionPoint = intersect;
 	
 	// Calculating line ends
 	//half3 colEnd = colStart + b.orientation * b.size * b.scale;

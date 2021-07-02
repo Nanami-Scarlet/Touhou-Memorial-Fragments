@@ -56,12 +56,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    //private void OnDestroy()
-    //{
-    //    transform.DOKill();
+    private void OnDestroy()
+    {
+        transform.DOKill();
 
-    //    MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CLEAR_ENEMY_BULLET, KillBullet);
-    //}
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CLEAR_ENEMY_BULLET, KillBullet);
+    }
 
     private int GetOffsetX()
     {
@@ -114,21 +114,18 @@ public class EnemyController : MonoBehaviour
 
     private void KillBullet(object[] args)
     {
-        //_emitter.Kill(KillOptions.AllBulletsButRoot);
-        List<Bullet> bullets = _emitter.bullets;
-
-        for(int i = 0; i < bullets.Count; ++i)
-        {
-            bullets[i].Die();
-        }
+        _emitter.Kill(KillOptions.AllBulletsButRoot);
     }
 
-    public void DieController()
+    public IEnumerator DieController()
     {
         foreach (int tid in _listTimeID)
         {
             TimeMgr.Single.RemoveTimeTask(tid);
         }
+
+        yield return new WaitForEndOfFrame();
+
         _emitter.Stop();
     }
 }

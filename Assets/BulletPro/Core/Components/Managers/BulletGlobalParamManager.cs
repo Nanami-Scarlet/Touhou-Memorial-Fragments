@@ -102,6 +102,7 @@ namespace BulletPro
         public bool GetBool(string paramName) { return GetParam(paramName).boolValue; }
         public string GetString(string paramName) { return GetParam(paramName).stringValue; }
         public Color GetColor(string paramName) { return GetParam(paramName).colorValue; }
+        public Gradient GetGradient(string paramName) { return GetParam(paramName).gradientValue; }
         public AnimationCurve GetAnimationCurve(string paramName) { return GetParam(paramName).animationCurveValue; }
         public Vector2 GetVector2(string paramName) { return GetParam(paramName).vector2Value; }
         public Vector3 GetVector3(string paramName) { return GetParam(paramName).vector3Value; }
@@ -228,6 +229,21 @@ namespace BulletPro
                     {
                         CustomParameter cgp = parameters[i];
                         cgp.colorValue = newValue;
+                        parameters[i] = cgp;
+                        return;
+                    }
+
+            Debug.LogError("BulletPro Error: trying to set value for Global Parameter \""+paramName+"\" but it does not exist.");
+        }
+
+        public void SetGradient (string paramName, Gradient newValue)
+        {
+            if (parameters.Count > 0)
+                for (int i = 0; i < parameters.Count; i++)
+                    if (parameters[i].name == paramName)
+                    {
+                        CustomParameter cgp = parameters[i];
+                        cgp.gradientValue = newValue;
                         parameters[i] = cgp;
                         return;
                     }

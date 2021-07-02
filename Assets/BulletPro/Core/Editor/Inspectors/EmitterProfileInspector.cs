@@ -216,6 +216,8 @@ namespace BulletPro.EditorScripts
             
             PatternParams pattern = AddNewParams<PatternParams>(root, true);
             pattern.name = "Pattern";
+            if (root.patternsShot == null) root.patternsShot = new DynamicPattern[1];
+            if (root.patternsShot.Length == 0) root.patternsShot = new DynamicPattern[1];
             root.patternsShot[0] = new DynamicPattern(pattern);
             root.children = new EmissionParams[] { pattern };
             
@@ -232,9 +234,6 @@ namespace BulletPro.EditorScripts
             bullet.children = new EmissionParams[0];
 
             serializedObject.ApplyModifiedProperties();
-
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
 
             Repaint();
         }
@@ -1030,13 +1029,18 @@ namespace BulletPro.EditorScripts
             // manage assets and sub-assets
             AssetDatabase.AddObjectToAsset(newParams, profile);
             string path = AssetDatabase.GetAssetPath(newParams);
-            AssetDatabase.ImportAsset(path);
             if (!skipSavingAssets)
             {
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
-            // update hierarchy
+
+            // Since 2020.2.6, serializedObject gets reset after an import...
+            #if UNITY_2020_2_OR_NEWER
+            subAssets = serializedObject.FindProperty("subAssets");
+            #endif
+
+            // update hierarchy.
             subAssets.arraySize++;
             profile.numberOfSubAssets++;
             subAssets.GetArrayElementAtIndex(subAssets.arraySize-1).objectReferenceValue = newParams;

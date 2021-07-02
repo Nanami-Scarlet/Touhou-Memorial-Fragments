@@ -23,7 +23,7 @@ namespace BulletPro
         public EmissionParams[] subAssets;
 
         #if UNITY_EDITOR
-        public int buildNumber = 9; // the version of BulletPro this has been created in. Used for automatic updates.
+        public int buildNumber = 10; // the version of BulletPro this has been created in. Used for automatic updates.
         public bool compactMode; // if true, the sidebar doesn't show up
         public bool hasBeenProcessed; // immediately set to true via AssetPostProcessor. Helps tell CREATED assets from DUPLICATED assets.
         public bool hasBeenInitialized; // immediately set to true in inspector, then creates the whole basic hierarchy.

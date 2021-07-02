@@ -44,21 +44,15 @@ namespace BulletPro
 				if (bullet.timeSinceAlive % targetRefreshInterval < Time.deltaTime)
 					RefreshTarget();
 
-            if (!currentTarget) return;
-			EnemyBehaviour enemyBehaviour = currentTarget.GetComponent<EnemyBehaviour>();
-			if (enemyBehaviour != null && enemyBehaviour.IsDead == true && possibleTargets.Count > 0)
-            {
-                RefreshTarget();
-            }
+			if (!currentTarget) return;
 
-            if (homingOverLifetime.enabled)
+			if (homingOverLifetime.enabled)
 			{
 				homingOverLifetime.Update();
 				currentHomingSpeed = homingAngularSpeed * homingOverLifetime.GetCurveResult();
 			}
 			else currentHomingSpeed = homingAngularSpeed;
 
-			if (!currentTarget) return;
 			Vector3 diff = currentTarget.position - self.position;
 			if (Vector3.Angle(self.up, diff) > homingAngleThreshold)
 			{

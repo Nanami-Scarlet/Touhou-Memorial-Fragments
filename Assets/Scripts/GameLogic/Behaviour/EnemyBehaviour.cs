@@ -41,7 +41,7 @@ public class EnemyBehaviour : BehaviourBase
     {
         if (!_isDead)
         {
-            _controller.DieController();
+            StartCoroutine(_controller.DieController());
             _view.DieView();
 
             SpawnItems();

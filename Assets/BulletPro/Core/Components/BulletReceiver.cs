@@ -26,19 +26,19 @@ namespace BulletPro
 		[Tooltip("If more bullets strike this Receiver at once, excess collisions will be negated. 0 means Infinity.")]
 		public uint maxSimultaneousCollisionsPerFrame = 1;
 		public List<Bullet> bulletsHitThisFrame { get; private set; }
+		public List<Bullet> bulletsHitLastFrame { get; private set; }
 		public CollisionTags collisionTags;
 		public bool collisionTagsFoldout; // editor only
 
 		public HitByBulletEvent OnHitByBullet;
 
 		// Yes, they do exist, and are usable, but they're most likely confusing and rarely useful - yet might be needed in some cases.
-		[HideInInspector]
 		public HitByBulletEvent OnHitByBulletEnter, OnHitByBulletStay, OnHitByBulletExit;
+		#if UNITY_EDITOR
+		public bool advancedEventsFoldout;
+		#endif
 
 		public Color gizmoColor = Color.black;
-
-		// Reference used for Enter/Stay/Exit events
-		private Bullet hitFromLastFrame, hitThisFrame;
 
 		bool collisionEnabled; // helps avoiding bullets to hit this if we just disabled collisions
 
@@ -68,6 +68,7 @@ namespace BulletPro
 		{
 			if (self == null) self = transform;
 			bulletsHitThisFrame = new List<Bullet>();
+			bulletsHitLastFrame = new List<Bullet>();
 
 			// wait one frame so that the managers exist. Start is unreliable since it can be disabled
 			StartCoroutine(PostAwake());
@@ -80,8 +81,6 @@ namespace BulletPro
 			if (enabled) EnableCollisions();
 			else collisionEnabled = false;
 
-			hitFromLastFrame = null;
-			hitThisFrame = null;
 			collisionManager = BulletCollisionManager.instance;
 		}
 
@@ -122,15 +121,21 @@ namespace BulletPro
 		// Called at either Update or LateUpdate
 		void BulletMemoryUpdate()
 		{
+			// Process Exit event
+			if (OnHitByBulletExit != null)
+				if (bulletsHitLastFrame.Count > 0)
+					for (int i = 0; i < bulletsHitLastFrame.Count; i++)
+						if (!bulletsHitThisFrame.Contains(bulletsHitLastFrame[i]))
+							OnHitByBulletExit.Invoke(bulletsHitLastFrame[i], bulletsHitLastFrame[i].self.position);
+
+			// Flush lists
+			bulletsHitLastFrame.Clear();
+			bulletsHitLastFrame.TrimExcess();
+			if (bulletsHitThisFrame.Count > 0)
+				for (int i = 0; i < bulletsHitThisFrame.Count; i++)
+					bulletsHitLastFrame.Add(bulletsHitThisFrame[i]);
 			bulletsHitThisFrame.Clear();
-			bulletsHitThisFrame = new List<Bullet>();
-
-			if (hitFromLastFrame != null && hitThisFrame == null)
-				if (OnHitByBulletExit != null)
-					OnHitByBulletExit.Invoke(hitFromLastFrame, hitFromLastFrame.self.position);
-
-			hitFromLastFrame = hitThisFrame;
-			hitThisFrame = null;
+			bulletsHitThisFrame.TrimExcess();
 		}
 
 		// Called on collision : OnEnter and OnStay are handled if needed, but it will rarely be the case.
@@ -138,19 +143,12 @@ namespace BulletPro
 		public void GetHit(Vector3 collisionPoint, Bullet bullet)
 		{
 			bulletsHitThisFrame.Add(bullet);
-
-			if (OnHitByBullet != null) OnHitByBullet.Invoke(bullet, collisionPoint);
+			OnHitByBullet?.Invoke(bullet, collisionPoint);
 
 			// Compute Enter/Stay events here
-
-			hitThisFrame = bullet;
-			if (hitFromLastFrame == null)
-			{
-				if (OnHitByBulletEnter != null)
-					OnHitByBulletEnter.Invoke(bullet, collisionPoint);
-			}
-			else if (OnHitByBulletStay != null)
-				OnHitByBulletStay.Invoke(bullet, collisionPoint);
+			if (!bulletsHitLastFrame.Contains(bullet))
+				OnHitByBulletEnter?.Invoke(bullet, collisionPoint);
+			else OnHitByBulletStay?.Invoke(bullet, collisionPoint);
 
 			// Kill bullet if needed
 			if (killBulletOnCollision && bullet.moduleCollision.dieOnCollision)
@@ -214,9 +212,14 @@ namespace BulletPro
 			if (BulletCollisionManager.instance == null) return;
 			SetCollisions(false);
 
-			// One last call to BulletMemoryUpdate to trigger OnCollisionExit if needed
-			hitThisFrame = null;
-			BulletMemoryUpdate();
+			// Uncomment this to trigger OnCollisionExit if needed
+			//BulletMemoryUpdate();
+
+			// Flush lists
+			bulletsHitLastFrame.Clear();
+			bulletsHitLastFrame.TrimExcess();
+			bulletsHitThisFrame.Clear();
+			bulletsHitThisFrame.TrimExcess();
 		}
 
 		// Not recommended, but we can't leave it into the manager if it gets destroyed
