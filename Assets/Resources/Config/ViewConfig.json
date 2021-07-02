@@ -33,6 +33,11 @@
     {
       "name": "StartView",
       "layer": 1
+    },
+
+    {
+      "name": "ManualView",
+      "layer": 1
     }
   ]
 }

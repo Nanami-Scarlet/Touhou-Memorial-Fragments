@@ -46,16 +46,8 @@ public class EnemyBehaviour : BehaviourBase
 
             SpawnItems();
 
-            if (PlayerModel.Single.MemoryFragment < 3)
-            {
-                PlayerModel.Single.MemoryProcess += Random.Range(1, 4);
-                if (PlayerModel.Single.MemoryProcess >= 100)
-                {
-                    PlayerModel.Single.MemoryProcess -= 100;
-                    ++PlayerModel.Single.MemoryFragment;
-                }
-                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
-            }
+            PlayerModel.Single.MemoryProcess += Random.Range(1, 4);
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
 
             GetComponent<BulletReceiver>().enabled = false;
             //等待粒子系统播放完毕

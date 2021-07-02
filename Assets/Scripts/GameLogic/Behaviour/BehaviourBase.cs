@@ -97,7 +97,7 @@ public abstract class BehaviourBase : MonoBehaviour
 
     public abstract void Dead();
 
-    protected virtual void SpawnItems()
+    public virtual void SpawnItems()
     {
         GetItems("P", PCount);
         GetItems("Point", PointCount);
@@ -110,7 +110,7 @@ public abstract class BehaviourBase : MonoBehaviour
         for (int i = 0; i < count; ++i)
         {
             GameObject item = PoolMgr.Single.Spawn(name);
-            item.GetComponent<Item>().Init(transform);
+            item.GetComponent<Item>().InitFall(transform);
             item.transform.localPosition = GetRandom();
         }
     }

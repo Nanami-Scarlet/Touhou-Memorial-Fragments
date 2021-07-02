@@ -15,7 +15,7 @@ public class Item : MonoBehaviour
 
     private bool _isMoveToPlayer = false;           //以免出现掉落物移动到玩家然后不移动了
 
-    public void Init(Transform bornTrans)
+    public void InitFall(Transform bornTrans)
     {
         _player = GameObject.FindGameObjectWithTag("Player");
 
@@ -28,6 +28,13 @@ public class Item : MonoBehaviour
             transform.localRotation = new Quaternion(0, 0, 0, 1);
             _isFall = true;
         });
+    }
+
+    public void Summon(Vector3 bornPos)
+    {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        transform.localPosition = bornPos;
+        _isFall = true;
     }
 
     private void Update()

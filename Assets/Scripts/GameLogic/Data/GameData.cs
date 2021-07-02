@@ -190,11 +190,16 @@ public class CardData
     public int CardHP { get; set; }
     public int BarIndex { get; set; }
     public string CardName { get; set; }
+    public Vector3 NormalInitPos { get; set; }
     public List<List<List<Vector3>>> NormalPath { get; set; }   //[哪个boss][路径编号][具体路径]
     public List<List<float>> NormalDuration { get; set; }
     public List<List<float>> NormalDelay { get; set; }
     public List<List<EmitterProfile>> NormalEmitter { get; set; }
     public float NormalTime { get; set; }
+    public int NormalP { get; set; }
+    public int NormalPoint { get; set; }
+    public int NormalLife { get; set; }
+    public int NormalBomb { get; set; }
 
     public Vector3 CardInitPos { get; set; }
     public List<List<List<Vector3>>> CardPath { get; set; }   //[哪个boss][路径编号][具体路径]
@@ -202,21 +207,35 @@ public class CardData
     public List<List<float>> CardDelay { get; set; }
     public List<List<EmitterProfile>> CardEmitter { get; set; }
     public float CardTime { get; set; }
+    public int CardP { get; set; }
+    public int CardPoint { get; set; }
+    public int CardLife { get; set; }
+    public int CardBomb { get; set; }
+    public int CardBonus { get; set; }
+    public int MaxPoint { get; set; }
 
     public CardData(List<string> curBoss, int normalHP, int cardHP, int barIndex, string cardName,
-        List<List<List<Vector3>>> normalPath, List<List<float>> normalDuration, List<List<float>> normalDelay, List<List<EmitterProfile>> normalEmitter, float normalTime,
-        Vector3 cardInitPos, List<List<List<Vector3>>> cardPath, List<List<float>> cardDuration, List<List<float>> cardDelay, List<List<EmitterProfile>> cardEmitter, float cardTime)
+        Vector3 normalInitPos, List<List<List<Vector3>>> normalPath, List<List<float>> normalDuration, List<List<float>> normalDelay, List<List<EmitterProfile>> normalEmitter, float normalTime,
+        int normalP, int normalPoint, int normalLife, int normalBomb, 
+        Vector3 cardInitPos, List<List<List<Vector3>>> cardPath, List<List<float>> cardDuration, List<List<float>> cardDelay, List<List<EmitterProfile>> cardEmitter, float cardTime,
+        int cardP, int cardPoint, int cardLife, int cardBomb, int cardBonus, 
+        int maxPoint)
     {
         CurBoss = curBoss;
         NormalHP = normalHP;
         CardHP = cardHP;
         BarIndex = barIndex;
         CardName = cardName;
+        NormalInitPos = normalInitPos;
         NormalPath = normalPath;
         NormalDuration = normalDuration;
         NormalDelay = normalDelay;
         NormalEmitter = normalEmitter;
         NormalTime = normalTime;
+        NormalP = normalP;
+        NormalPoint = normalPoint;
+        NormalLife = normalLife;
+        NormalBomb = normalBomb;
 
         CardInitPos = cardInitPos;
         CardPath = cardPath;
@@ -224,6 +243,13 @@ public class CardData
         CardDelay = cardDelay;
         CardEmitter = cardEmitter;
         CardTime = cardTime;
+        CardTime = cardTime;
+        CardP = cardP;
+        CardPoint = cardPoint;
+        CardLife = cardLife;
+        CardBomb = cardBomb;
+        CardBonus = cardBonus;
+        MaxPoint = maxPoint;
     }
 }
 
@@ -269,5 +295,19 @@ public class HPData
     {
         BossGO = bossGO;
         CurHP = curHP;
+    }
+}
+
+public class GetCardInfo
+{
+    public int LabelIndex { get; set; }
+    public int Score { get; set; }
+    public float TimeValue { get; set; }
+
+    public GetCardInfo(int labelIndex, int score, float timeValue)
+    {
+        LabelIndex = labelIndex;
+        Score = score;
+        TimeValue = timeValue;
     }
 }

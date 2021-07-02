@@ -4,8 +4,8 @@
 
     public const int EVENT_UPDATE_SCORE = 1;
     public const int EVENT_UPDATE_MANA = 2;
-    public const int EVENT_UPDATE_LIFT = 3;
-    public const int EVENT_UPDATE_BOMB = 4;
+    public const int EVENT_GET_LIFT = 3;
+    public const int EVENT_GET_BOMB = 4;
     public const int EVENT_UPDATE_GRAZE = 5;
     public const int EVENT_UPDATE_POINT = 6;
     public const int EVENT_UPDATE_MEMORY = 7;
@@ -36,4 +36,12 @@
     public const int EVENT_HIDE_HP_VIEW = 29;
     public const int EVENT_HIDE_BOSS_NAME_CARD = 30;
     public const int EVENT_COMPLETE_TIMER = 31;
+    public const int EVENT_PLAY_CARD_ANIM = 32;
+    public const int EVENT_PLAYER_USE_LIFE = 33;
+    public const int EVENT_PLAYER_USE_BOMB = 34;
+    public const int EVENT_PLAY_GET_CARD_INFO_ANIM = 35;
+    public const int EVENT_PLAY_STAGE_CLEAR_ANIM = 36;
+
+    public const int EVENT_ON_WOLF_SHOOT = 37;
+    public const int EVENT_RESTART_GAME = 38;
 }

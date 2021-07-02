@@ -30,6 +30,52 @@ Transform:
   m_Father: {fileID: 6617582358312618594}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &421145526044460143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1164471061986682732}
+  - component: {fileID: 3801381654058004510}
+  m_Layer: 0
+  m_Name: Otter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1164471061986682732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421145526044460143}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5098545778277153536}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3801381654058004510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421145526044460143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitterProfile: {fileID: 11400000, guid: c3c27ec2551e3fe47b195466ef5173e6, type: 2}
+  patternOrigin: {fileID: 0}
+  playAtStart: 0
 --- !u!1 &1072471347896435816
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +306,52 @@ Transform:
   m_Father: {fileID: 6617582358312618594}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1683707757582586216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8607879769457924597}
+  - component: {fileID: 941311794899611170}
+  m_Layer: 0
+  m_Name: Wolf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8607879769457924597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683707757582586216}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5098545778277153536}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &941311794899611170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683707757582586216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitterProfile: {fileID: 11400000, guid: c8e8f959afc53bf4d93f5ed29338562b, type: 2}
+  patternOrigin: {fileID: 0}
+  playAtStart: 0
 --- !u!1 &2090485828988036863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,6 +1198,8 @@ Transform:
   - {fileID: 707940591810180855}
   - {fileID: 6617582358312618594}
   - {fileID: 1112500525992616003}
+  - {fileID: 8607879769457924597}
+  - {fileID: 1164471061986682732}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1295,6 +1389,8 @@ MonoBehaviour:
   - {fileID: 991306256}
   _cardShot: {fileID: 283426819177928691}
   _cardEff: {fileID: 3355999118958154087}
+  _wolfEmitter: {fileID: 941311794899611170}
+  _otterEmitter: {fileID: 3801381654058004510}
 --- !u!114 &1351752530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,7 +1405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 5098545778277153536}
   colliderType: 0
-  hitboxSize: 0.03
+  hitboxSize: 0.015
   hitboxOffset: {x: 0, y: 0}
   killBulletOnCollision: 1
   maxSimultaneousCollisionsPerFrame: 1

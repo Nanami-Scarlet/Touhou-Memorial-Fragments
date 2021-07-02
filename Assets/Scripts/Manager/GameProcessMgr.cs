@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using BulletPro;
 
 public class GameProcessMgr : MonoBehaviour
 {
     private EnemySpawnMgr _enemyspawnMgr;
     private BossSpawner _bossSpawner;
+    private Coroutine _coroutine;
+
+    private Animator _bgAnim;
 
     private Dictionary<string, GameObject> _dicTypeBoss = new Dictionary<string, GameObject>();
     private Dictionary<string, BossController> _dicTypeBossCtl = new Dictionary<string, BossController>();
@@ -19,10 +23,13 @@ public class GameProcessMgr : MonoBehaviour
     private TimeTask _curTimeTask;
     private int _tid;
 
+    private float _cardTimeSpan;
+
     public void Init()
     {
         MessageMgr.Single.AddListener(MsgEvent.EVENT_CHAT_CALLBACK, OnChatCallBack);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_SET_TIMEUP, SetTimeUP);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_RESTART_GAME, RestartGame);
 
         _dicIDAction = new Dictionary<int, Action<Action>>()
         {
@@ -62,8 +69,19 @@ public class GameProcessMgr : MonoBehaviour
         _bossSpawner = gameObject.AddComponent<BossSpawner>();
         _bossSpawner.Init();
 
+        GameObject bg = GameObject.Find("BG");
+        _bgAnim = bg.GetComponent<Animator>();
+
         //CoroutineMgr.Single.Execute(OnState("stage1_1"));
-        StartCoroutine(GameProcess());
+        _coroutine = StartCoroutine(GameProcess());
+    }
+
+    private void Update()
+    {
+        if(GameStateModel.Single.IsCard)
+        {
+            _cardTimeSpan += Time.deltaTime;
+        }
     }
 
     private void OnDestroy()
@@ -75,6 +93,7 @@ public class GameProcessMgr : MonoBehaviour
 
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CHAT_CALLBACK, OnChatCallBack);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_SET_TIMEUP, SetTimeUP);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_RESTART_GAME, RestartGame);
     }
 
     private IEnumerator GameProcess()
@@ -82,9 +101,17 @@ public class GameProcessMgr : MonoBehaviour
         switch (GameStateModel.Single.GameMode)
         {
             case Mode.NORMAL:
+                _bgAnim.SetInteger("Stage", GameModel.Single.StageNum);
                 yield return OnStageUp("stage1_1");
                 yield return OnStageBoss("stage_B1");
                 yield return OnStageDown("stage1_2");
+                yield return OnStageBoss("stage_B2");
+                yield return ShowStageClearLabel();
+
+                ++GameModel.Single.StageNum;
+                _bgAnim.SetInteger("Stage", GameModel.Single.StageNum);
+                yield return new WaitForSeconds(2f);
+                yield return OnStageUp("stage2_1");
                 break;
 
             //todo:要加上其他的模式
@@ -143,6 +170,10 @@ public class GameProcessMgr : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
+
+        _queTimeTask.Clear();
+
+        yield return new WaitForSeconds(2);
     }
 
     private IEnumerator OnStageDown(string stageName)
@@ -151,7 +182,7 @@ public class GameProcessMgr : MonoBehaviour
 
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_BGM_SETTING, stageName);
 
-        for (int i = 1; i < stageData.ListWaveEnemy.Count; ++i)
+        for (int i = 0; i < stageData.ListWaveEnemy.Count; ++i)
         {
             WaveData waveData = stageData.ListWaveEnemy[i];
 
@@ -160,7 +191,7 @@ public class GameProcessMgr : MonoBehaviour
                 EnemyData enemyData = waveData.ListEnemy[j];
 
                 int tid = TimeMgr.Single.GetTid();
-                TimeTask timeTask = new TimeTask(tid, Time.time + enemyData.Delay, () =>
+                TimeTask timeTask = new TimeTask(tid, enemyData.Delay, () =>
                 {
                     _enemyspawnMgr.Spawn(enemyData);
                     ++GameModel.Single.EnemyCount;
@@ -194,6 +225,10 @@ public class GameProcessMgr : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
+
+        _queTimeTask.Clear();
+
+        yield return new WaitForSeconds(2);
     }
 
     private IEnumerator OnStageBoss(string stageName)
@@ -222,7 +257,7 @@ public class GameProcessMgr : MonoBehaviour
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_BGM_SETTING, stageName);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SHOW_BOSS_NAME_CARD, new BossNameCard(bossData.Name, bossData.Cards.Count));
 
-        for(int i = 0/**/; i < bossData.Cards.Count - 1; ++i)
+        for (int i = 0; i < bossData.Cards.Count - 1; ++i)
         {
             CardData cardData = bossData.Cards[i];
 
@@ -244,19 +279,28 @@ public class GameProcessMgr : MonoBehaviour
 
     private IEnumerator OnBossNormalCard(BossData bossData, CardData cardData)
     {
-        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_TIMER, cardData.NormalTime);       //非符
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_TIMER, cardData.NormalTime);                           //非符
 
         for (int j = 0; j < bossData.BossType.Count; ++j)
         {
             string type = bossData.BossType[j];
 
-            BaseCardHPData singleCardData = new BaseCardHPData(cardData.NormalHP, cardData.CardHP, cardData.BarIndex,
+            _dicTypeBossCtl[type].Move(cardData.NormalInitPos);
+
+            BaseCardHPData baseCardHPData = new BaseCardHPData(cardData.NormalHP, cardData.CardHP, cardData.BarIndex,
                 _dicTypeBoss[type].transform);
-            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_HPBAR, singleCardData);
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_HPBAR, baseCardHPData);
 
-            _dicTypeBossBH[type].SetBehaviour(cardData.NormalHP + cardData.CardHP);               //非符
+            _dicTypeBossBH[type].SetBehaviour(cardData.NormalHP + cardData.CardHP,
+                cardData.NormalP, cardData.NormalPoint, cardData.NormalLife, cardData.NormalBomb);
+        }
 
-            yield return new WaitForSeconds(2f);        //等待血条动画
+        yield return new WaitForSeconds(2f);
+
+        for (int j = 0; j < bossData.BossType.Count; ++j)
+        {
+            string type = bossData.BossType[j];
+
             _dicTypeBossCtl[type].SetReceiver(true);
 
             _dicTypeBossCtl[type].ResetCard(new SingleBossCardData(cardData.NormalPath[j], cardData.NormalDuration[j], cardData.NormalDelay[j], cardData.NormalEmitter[j]));
@@ -274,8 +318,26 @@ public class GameProcessMgr : MonoBehaviour
                 }
             }
 
-            return _isTimeUP;                                   //是否超时
+            return _isTimeUP;                                       //是否超时
         });
+
+        for (int j = 0; j < cardData.CurBoss.Count; ++j)
+        {
+            string type = bossData.BossType[j];
+
+            _dicTypeBossCtl[type].StopCard();
+        }
+
+        if (!_isTimeUP)                                             //如果是击破，会有掉落物
+        {
+            AudioMgr.Single.PlayGameEff(AudioType.Bonus);
+            for (int j = 0; j < bossData.BossType.Count; ++j)
+            {
+                string type = bossData.BossType[j];
+
+                _dicTypeBossBH[type].SpawnItems();
+            }
+        }
 
         _isTimeUP = false;
     }
@@ -297,15 +359,22 @@ public class GameProcessMgr : MonoBehaviour
             string type = bossData.BossType[j];
             
             _dicTypeBossCtl[type].Move(cardData.CardInitPos);
+            _dicTypeBossCtl[type].SetReceiver(false);
         }
+
+        yield return new WaitForSeconds(2f);
+        GameStateModel.Single.IsCard = true;
+        _cardTimeSpan = 0;
+        GameModel.Single.CardBonus = cardData.CardBonus;
 
         for (int j = 0; j < cardData.CurBoss.Count; ++j)
         {
             string type = cardData.CurBoss[j];
 
-            _dicTypeBossBH[type].SetBehaviour(cardData.CardHP);         //符卡
+            _dicTypeBossBH[type].SetBehaviour(cardData.CardHP, cardData.CardP, cardData.CardPoint, cardData.CardLife, cardData.CardBomb);
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_HPBAR_VIEW, new HPData(_dicTypeBoss[type], cardData.CardHP));
             _dicTypeBossCtl[type].ResetCard(new SingleBossCardData(cardData.CardPath[j], cardData.CardDuration[j], cardData.CardDelay[j], cardData.CardEmitter[j]));
+            _dicTypeBossCtl[type].SetReceiver(true);
         }
 
         yield return new WaitUntil(() =>
@@ -320,16 +389,49 @@ public class GameProcessMgr : MonoBehaviour
                 }
             }
 
-            if (_isTimeUP)
-            {
-                _isTimeUP = false;
-                return true;
-            }
-
-            return false;
+            return _isTimeUP;
         });
 
-        //todo:显示收卡数据UI
+        GameStateModel.Single.IsCard = false;
+        GetCardInfo getCardInfo = null;
+
+        for (int j = 0; j < cardData.CurBoss.Count; ++j)
+        {
+            string type = bossData.BossType[j];
+
+            _dicTypeBossCtl[type].StopCard();
+        }
+
+        if (!_isTimeUP)
+        {
+            AudioMgr.Single.PlayGameEff(AudioType.GetBomb);
+            getCardInfo = new GetCardInfo(0, GameModel.Single.CardBonus, _cardTimeSpan);
+
+            PlayerModel.Single.MemoryProcess += UnityEngine.Random.Range(20, 30);
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
+
+            PlayerModel.Single.MAX_GET_POINT += cardData.MaxPoint;
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_POINT);
+
+            for (int j = 0; j < cardData.CurBoss.Count; ++j)
+            {
+                string type = bossData.BossType[j];
+
+                _dicTypeBossBH[type].SpawnItems();
+            }
+        }
+        else
+        {
+            getCardInfo = new GetCardInfo(1, 0, _cardTimeSpan);
+
+            AudioMgr.Single.PlayGameEff(AudioType.TimeUP);
+        }
+
+        GameModel.Single.Score += GameModel.Single.CardBonus;
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE);
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAY_GET_CARD_INFO_ANIM, getCardInfo);
+        _isTimeUP = false;
+
         for (int j = 0; j < bossData.BossType.Count; ++j)
         {
             string type = bossData.BossType[j];
@@ -337,7 +439,6 @@ public class GameProcessMgr : MonoBehaviour
             _dicTypeBossCtl[type].SetReceiver(false);
         }
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_MOVE_CARD_INFO_RIGHT);
-        yield return new WaitForSeconds(1);             //等待动画完成
     }
 
     private IEnumerator OnBossFinalCard(BossData bossData, CardData cardData)
@@ -368,7 +469,11 @@ public class GameProcessMgr : MonoBehaviour
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_HPBAR, new BaseCardHPData(cardData.NormalHP, cardData.CardHP, cardData.BarIndex, _dicTypeBoss[type].transform));
         }
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2);
+        GameStateModel.Single.IsCard = true;
+        _cardTimeSpan = 0;
+        GameModel.Single.CardBonus = cardData.CardBonus;
+
         for (int j = 0; j < cardData.CurBoss.Count; ++j)
         {
             string type = cardData.CurBoss[j];
@@ -389,15 +494,43 @@ public class GameProcessMgr : MonoBehaviour
                 }
             }
 
-            if (_isTimeUP)
-            {
-                return true;
-            }
-
-            return false;
+            return _isTimeUP;
         });
 
-        //todo:显示收卡数据UI
+        GameStateModel.Single.IsCard = false;
+        GetCardInfo getCardInfo;
+
+        if (!_isTimeUP)
+        {
+            AudioMgr.Single.PlayGameEff(AudioType.GetBomb);
+
+            getCardInfo = new GetCardInfo(0, GameModel.Single.CardBonus, _cardTimeSpan);
+
+            PlayerModel.Single.MemoryProcess += UnityEngine.Random.Range(30, 40);
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
+
+            PlayerModel.Single.MAX_GET_POINT += cardData.MaxPoint;
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_POINT);
+
+            for (int j = 0; j < cardData.CurBoss.Count; ++j)
+            {
+                string type = bossData.BossType[j];
+
+                _dicTypeBossBH[type].SpawnItems();
+            }
+        }
+        else
+        {
+            getCardInfo = new GetCardInfo(1, 0, _cardTimeSpan);
+
+            AudioMgr.Single.PlayGameEff(AudioType.TimeUP);
+        }
+
+        GameModel.Single.Score += GameModel.Single.CardBonus;
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE);
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAY_GET_CARD_INFO_ANIM, getCardInfo);
+        _isTimeUP = false;
+
         Camera.main.DOShakePosition(2, 1);
         AudioMgr.Single.PlayGameEff(AudioType.GetFinalCard);
         for (int j = 0; j < bossData.BossType.Count; ++j)
@@ -416,7 +549,15 @@ public class GameProcessMgr : MonoBehaviour
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_HIDE_BOSS_NAME_CARD);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_COMPLETE_TIMER);
         AudioMgr.Single.StopBGM();
-        yield return new WaitForSeconds(3);
+    }
+
+    private IEnumerator ShowStageClearLabel()
+    {
+        yield return new WaitForSeconds(4.5f);
+
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAY_STAGE_CLEAR_ANIM);
+        GameModel.Single.Score += Const.CLEAR_BOUNS;
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE);
     }
 
     private void OnChatCallBack(object[] args)
@@ -432,6 +573,13 @@ public class GameProcessMgr : MonoBehaviour
     private void SetTimeUP(object[] args)
     {
         _isTimeUP = (bool)args[0];
+    }
+
+    private void RestartGame(object[] args)
+    {
+        StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(GameProcess());
     }
 
     private void CheckEnemyCount()

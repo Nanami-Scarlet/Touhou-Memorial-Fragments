@@ -34,6 +34,10 @@ public class PauseController : ControllerBase
 
             //todo:所有组件都重新加载一遍(Show、 Controller)
             { 2, ()=> Debug.LogWarning("功能开发中") },
+            //{  2, () => 
+            //{
+            //    MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_RESTART_GAME);
+            //} }
         };
     }
 

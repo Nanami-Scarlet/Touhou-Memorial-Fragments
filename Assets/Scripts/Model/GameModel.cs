@@ -11,4 +11,6 @@ public class GameModel : NormalSingleton<GameModel>
     public int Score { get; set; }
 
     public int HighScore { get; set; }
+
+    public int CardBonus { get; set; }
 }

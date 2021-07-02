@@ -19,24 +19,24 @@ public class GameRoot : MonoBehaviour
         if (GameStateModel.Single.GameDegree == Degree.NORMAL)
         {
             PlayerModel.Single.Life = 2;
-            PlayerModel.Single.Bomb = 8;
-            PlayerModel.Single.Init_Point = 10000;
+            PlayerModel.Single.Bomb = 7;
+            PlayerModel.Single.MAX_GET_POINT = 10000;
         }
         else
         {
             PlayerModel.Single.Life = 7;
             PlayerModel.Single.Bomb = 2;
-            PlayerModel.Single.Init_Point = 20000;
+            PlayerModel.Single.MAX_GET_POINT = 20000;
         }
 
         UIManager.Single.Hide(Paths.PREFAB_PLAYER_VIEW);
         UIManager.Single.Show(Paths.PREFAB_GAME_VIEW);
         UIManager.Single.Show(Paths.PREFAB_DYNAMIC_VIEW);
 
+        //LoadMgr.Single.LoadPrefabAndInstantiate(Paths.PREFAB_BULLET_SETTING);
         gameObject.AddComponent<GameProcessMgr>().Init();
 
         GameObject player = LoadMgr.Single.LoadPrefabAndInstantiate(Paths.PREFAB_PLAYER);
-        //LoadMgr.Single.LoadPrefabAndInstantiate(Paths.PREFAB_BULLET_SETTING);
         player.GetComponent<PlayerView>().Init();
         player.GetComponent<PlayerController>().Init();
         player.GetComponent<PlayerBehaviour>().Init();

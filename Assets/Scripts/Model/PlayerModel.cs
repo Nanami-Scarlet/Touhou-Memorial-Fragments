@@ -16,7 +16,7 @@ public class PlayerModel : NormalSingleton<PlayerModel>
 
     public int Graze { get; set; }
 
-    public int Init_Point { get; set; }
+    public int MAX_GET_POINT { get; set; }
 
     public int MemoryFragment { get; set; }
 

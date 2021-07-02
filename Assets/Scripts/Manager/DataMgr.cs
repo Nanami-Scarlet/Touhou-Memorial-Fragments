@@ -182,7 +182,7 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
         JsonData json = JsonMapper.ToObject(config.text);
         JsonData bosses = json["boss"];
 
-        for(int i = 0; i < json.Count; ++i)
+        for(int i = 0; i < bosses.Count; ++i)
         {
             JsonData boss = bosses[i];
 
@@ -226,6 +226,19 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
                 float normalTime = GetValue<float>(card["normalTime"]);
                 float cardTime = GetValue<float>(card["cardTime"]);
                 Vector3 cardInitPos = GetVector3(GetValue<string>(card["cardInitPos"]).Trim('"'));
+
+                Vector3 normalInitPos = GetVector3(GetValue<string>(card["normalInitPos"]).Trim('"'));
+                int normalP = GetValue<int>(card["normalP"]);
+                int normalPoint = GetValue<int>(card["normalPoint"]);
+                int normalLife = GetValue<int>(card["normalLife"]);
+                int normalBomb = GetValue<int>(card["normalBomb"]);
+
+                int cardP = GetValue<int>(card["cardP"]);
+                int cardPoint = GetValue<int>(card["cardPoint"]);
+                int cardLife = GetValue<int>(card["cardLife"]);
+                int cardBomb = GetValue<int>(card["cardBomb"]);
+                int cardBonus = GetValue<int>(card["cardBonus"]);
+                int maxPoint = GetValue<int>(card["maxPoint"]);
 
                 List<List<List<Vector3>>> normalPath = new List<List<List<Vector3>>>(2);
                 JsonData normalPathJson = card["normalPath"];
@@ -321,9 +334,13 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
                     cardEmitter.Add(emitters);
                 }
 
-                CardData cardData = new CardData(curBoss, normalHP, cardHP, barIndex, cardName, 
-                    normalPath, normalDuration, normalDelay, normalEmitter, normalTime,
-                    cardInitPos, cardPath, cardDuration, cardDelay, cardEmitter, cardTime);
+                CardData cardData = new CardData(curBoss, normalHP, cardHP, barIndex, cardName,
+                    normalInitPos, normalPath, normalDuration, normalDelay, normalEmitter, normalTime,
+                    normalP, normalPoint, normalLife, normalBomb, 
+                    cardInitPos, cardPath, cardDuration, cardDelay, cardEmitter, cardTime,
+                    cardP, cardPoint, cardLife, cardBomb, cardBonus, 
+                    maxPoint);
+
                 cards.Add(cardData);
             }
 

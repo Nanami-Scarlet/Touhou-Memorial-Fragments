@@ -32,20 +32,21 @@ public class ChatController : ControllerBase
 
         MessageMgr.Single.RemoveListener(KeyCode.Z, PressZ);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_SHOW_DIALOG, ShowDialog);
+
+        _view.CurIndex = 0;
     }
 
     private void ShowDialog(object[] args)
     {
         string stageName = (string)args[0];
         DataMgr.Single.GetDialogData(out _listDialogs, stageName);
-        //GameStateModel.Single.IsChating = true;
 
+        _view.CurIndex = 0;
         _view.SetDialogData(_listDialogs);
         if (_listDialogs[_view.CurIndex].IsCallBack)
         {
             _view.ShowDialog();
             gameObject.SetActive(true);                     //显示对话框
-            //InputMgr.Single.AddListener(KeyCode.Z);
 
             GameStateModel.Single.IsChating = true;
         }
@@ -56,7 +57,6 @@ public class ChatController : ControllerBase
                 {
                     _view.ShowDialog();
                     gameObject.SetActive(true);             //显示对话框
-                    //InputMgr.Single.AddListener(KeyCode.Z);
                     _listDialogs[_view.CurIndex].IsCallBack = true;
 
                     GameStateModel.Single.IsChating = true;
@@ -75,14 +75,11 @@ public class ChatController : ControllerBase
             }
             else
             {
-                //InputMgr.Single.RemoveListener(KeyCode.Z);
-
                 MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CHAT_CALLBACK,
                     new ChatCallBack(_listDialogs[_view.CurIndex].CallBack, () =>
                     {
                         _view.PressZ();
 
-                        //InputMgr.Single.AddListener(KeyCode.Z);
                         _listDialogs[_view.CurIndex].IsCallBack = true;
                     }));
             }
@@ -92,7 +89,6 @@ public class ChatController : ControllerBase
             UIManager.Single.Hide(Paths.PREFAB_CHAT_VIEW);
             GameStateModel.Single.IsChating = false;
 
-            _view.CurIndex = 0;
             _view.IsComplete = false;
         }
     }

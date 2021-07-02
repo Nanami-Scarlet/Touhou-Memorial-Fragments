@@ -4,9 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ItemPoint
-  - ItemP
   - Enemy
+  - ItemPoint
+  - LifeItem
+  - BombItem
+  - PItem
+  - PointItem
+  - NormalItem
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,13 @@
       "picName": "2_0",
       "size": "370,540",
       "index": 0
+    },
+
+    {
+      "bossType": "B2",
+      "picName": "3_2",
+      "size": "370,540",
+      "index": 0
     }
   ]
 }

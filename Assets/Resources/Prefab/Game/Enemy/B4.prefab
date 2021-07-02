@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4331568846943100370}
   - component: {fileID: 8297626352092647644}
   - component: {fileID: -2191642554115035861}
+  - component: {fileID: -8564064611450469530}
   - component: {fileID: -1577022468777039657}
   - component: {fileID: 5533551746966107673}
   m_Layer: 0
@@ -245,7 +246,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf816d4bace44454eb298221e1d8acd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _centerPos: {x: -5.8, y: 3.6, z: 0}
+  _emitters: []
+--- !u!114 &-8564064611450469530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858691831130381852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b690fbc9f46ff64c8d36a4f4bdcc910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-1577022468777039657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +297,18 @@ MonoBehaviour:
   collisionTagsFoldout: 1
   OnHitByBullet:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8564064611450469530}
+        m_MethodName: Hurt
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHitByBulletEnter:
     m_PersistentCalls:
       m_Calls: []

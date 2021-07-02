@@ -5,7 +5,7 @@
       "DialogTxt": "稀客呢，今晚也要来赏月吗？",
       "picName": "2_0",
       "count": 13,
-      "callback": 0         //这里和MessageMgr类分开，机制不一样，但表面还是MessageMgr
+      "callback": 0 //这里和MessageMgr类分开，机制不一样，但表面还是MessageMgr
     },
 
     {
@@ -101,6 +101,64 @@
       "DialogTxt": "今天的满月可是格外的美哦~",
       "picName": "2_0",
       "count": 13,
+      "callback": -1
+    }
+  ],
+
+  "stage_B2": [
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "总算是到了，你们的公主太任性了，你得管管。",
+      "picName": "1_0",
+      "count": 21,
+      "callback": 1
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "我从阿求和慧音那边了解到「记忆光团」不可能溢出，并且「记忆沙漏」就在你这，是不是你在捣鬼？",
+      "picName": "1_2",
+      "count": 45,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "八意永琳",
+      "DialogTxt": "「记忆沙漏」里的「记忆光团」确实少了很多。",
+      "picName": "3_0",
+      "count": 41,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "八意永琳",
+      "DialogTxt": "但是我不知道这沙漏为何就漏了。大概是某只兔子？",
+      "picName": "3_1",
+      "count": 23,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "兔子？我看你是不想承认！如实招来！",
+      "picName": "1_2",
+      "count": 17,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "八意永琳",
+      "DialogTxt": "你还是请回吧，这些事我自会处理。",
+      "picName": "3_0",
+      "count": 16,
+      "callback": -1
+    },
+
+    {
+      "chaterName": "八意永琳",
+      "DialogTxt": "不过看你，我倒是愿意陪你玩玩。",
+      "picName": "3_0",
+      "count": 20,
       "callback": -1
     }
   ]

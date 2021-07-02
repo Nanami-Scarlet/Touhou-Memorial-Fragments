@@ -31,15 +31,16 @@ public class PlayerBehaviour : BehaviourBase
     public override void Dead()
     {
         AudioMgr.Single.PlayGameEff(AudioType.PlayerDead);
-        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ENEMY_BULLET);
+        //MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ENEMY_BULLET);
+
+        if (GameStateModel.Single.IsCard && GameModel.Single.CardBonus > 1000)
+        {
+            GameModel.Single.CardBonus -= 1000;
+        }
 
         if (GameStateModel.Single.GameDegree == Degree.LUNATIC)
         {
-            if(PlayerModel.Single.Life > 0)
-            {
-                --PlayerModel.Single.Life;
-                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_LIFT, PlayerModel.Single.Life);
-            }
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAYER_USE_LIFE);
 
             transform.position = Const.DEAD_POS;
             transform.DOLocalMoveY(Const.BORN_POS.y, 1f);
@@ -55,7 +56,7 @@ public class PlayerBehaviour : BehaviourBase
             AudioMgr.Single.PlayGameEff(AudioType.Graze);
 
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_POINT);
-            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_GRAZE, PlayerModel.Single.Graze);
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_GRAZE);
 
             bullet.IsGrazed = true;
         }

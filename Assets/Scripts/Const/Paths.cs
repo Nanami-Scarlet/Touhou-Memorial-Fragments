@@ -17,6 +17,7 @@ public class Paths
     public const string PREFAB_PAUSE_VIEW = PREFAB_UI_FOLDER + "PauseView";
     public const string PREFAB_DYNAMIC_VIEW = PREFAB_UI_FOLDER + "DynamicView";
     public const string PREFAB_CHAT_VIEW = PREFAB_UI_FOLDER + "ChatView";
+    public const string PREFAB_MANUAL_VIEW = PREFAB_UI_FOLDER + "ManualView";
     public const string PREFAB_STAGE_LABEL = PREFAB_UI_FOLDER + "Stage";
     public const string PREFAB_HPBAR = PREFAB_UI_FOLDER + "HPBar";
 

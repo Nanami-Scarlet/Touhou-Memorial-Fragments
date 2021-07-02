@@ -50,7 +50,7 @@ public enum Stage
 public enum BossStage
 {
     stage_B1,
-    //stage_B2,
+    stage_B2,
     //stage_B3,
     //stage_B4,
     COUNT
@@ -73,9 +73,9 @@ public enum AudioType
     Extend,
     TimeOut,
     Card,
-    GetCard,
     TimeUP,
     GetFinalCard,
+    Bonus,
     COUNT
 }
 

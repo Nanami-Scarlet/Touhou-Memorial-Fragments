@@ -273,4 +273,9 @@ public class DynamicView : ViewBase
         sequence1.PlayForward();
         sequence2.PlayForward();
     }
+
+    public void SetCardBonusValue()
+    {
+        _txtBonusDetail.text = GameModel.Single.CardBonus.ToString();
+    }
 }

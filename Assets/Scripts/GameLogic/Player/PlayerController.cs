@@ -1,4 +1,5 @@
 ﻿using BulletPro;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public float _inchSpeed = 1.5f;
     public float _normalSpeed = 6f;
-                                            //避免按键系统同时要监听两个按键
+    //避免按键系统同时要监听两个按键
     private bool _isPrssShift = false;      //慢速开火需要同时按下Z与Shift
 
     private MoveComponet _move;
@@ -15,14 +16,79 @@ public class PlayerController : MonoBehaviour
 
     public List<Transform> _listManaLevelTrans;
     public List<BulletEmitter> _listMainShot;
+    private Dictionary<string, Action<Collider2D>> _dicItemTagAction;
     private Dictionary<int, YinEmitter> _dicLevelYinEmitter = new Dictionary<int, YinEmitter>();
     public BulletEmitter _cardShot;
     public ParticleSystem _cardEff;
+
+    public BulletEmitter _wolfEmitter;
+    private bool _isWolfShoot = false;
+
+    public BulletEmitter _otterEmitter;
 
     public void Init()
     {
         PlayerModel.Single.Mana = 100;
         PlayerModel.Single.Graze = 0;
+
+        _dicItemTagAction = new Dictionary<string, Action<Collider2D>>()
+        {
+            { "PItem", (other) =>
+            {
+                if (PlayerModel.Single.Mana < 400)
+                {
+                    GameModel.Single.Score += Const.MANA_SCORE;
+                    ++PlayerModel.Single.Mana;
+                    //PlayerModel.Single.Mana += 30;
+
+                    MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MANA);
+                    MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CHECK_MANA);
+                }
+                else
+                {
+                    GameModel.Single.Score += Const.MAX_MANA_SCORE;
+                }
+
+                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE);
+
+                AudioMgr.Single.PlayGameEff(AudioType.Items);
+                other.gameObject.GetComponent<Item>().ResetItem();
+                PoolMgr.Single.Despawn(other.gameObject);
+            } },
+
+            { "PointItem", (other) =>
+            {
+                GameModel.Single.Score += Const.POINT_SCORE;
+
+                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE);
+
+                AudioMgr.Single.PlayGameEff(AudioType.Items);
+                other.gameObject.GetComponent<Item>().ResetItem();
+                PoolMgr.Single.Despawn(other.gameObject);
+            } },
+
+            { "LifeItem", (other) =>
+            {
+                GameModel.Single.Score += Const.LIFE_SCORE;
+
+                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_GET_LIFT);
+                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE);
+
+                other.gameObject.GetComponent<Item>().ResetItem();
+                PoolMgr.Single.Despawn(other.gameObject);
+            } },
+
+            { "BombItem", (other) =>
+            {
+                GameModel.Single.Score += Const.BOMB_SCORE;
+
+                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_GET_BOMB);
+                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE);
+
+                other.gameObject.GetComponent<Item>().ResetItem();
+                PoolMgr.Single.Despawn(other.gameObject);
+            } }
+        };
 
         _move = GetComponent<MoveComponet>();
         _anim = GetComponent<Animator>();
@@ -34,6 +100,10 @@ public class PlayerController : MonoBehaviour
         InputMgr.Single.AddGameListener(KeyCode.LeftShift);
         InputMgr.Single.AddGameListener(KeyCode.Z);
         InputMgr.Single.AddGameListener(KeyCode.X);
+        InputMgr.Single.AddGameListener(KeyCode.A);
+        InputMgr.Single.AddGameListener(KeyCode.S);
+        InputMgr.Single.AddGameListener(KeyCode.D);
+        InputMgr.Single.AddGameListener(KeyCode.F);
 
         MessageMgr.Single.AddListener(KeyCode.UpArrow, MoveUp, InputState.PRESS);
         MessageMgr.Single.AddListener(KeyCode.DownArrow, MoveDown, InputState.PRESS);
@@ -41,7 +111,12 @@ public class PlayerController : MonoBehaviour
         MessageMgr.Single.AddListener(KeyCode.LeftArrow, MoveLeft, InputState.PRESS);
         MessageMgr.Single.AddListener(KeyCode.LeftShift, Inch, InputState.PRESS);
         MessageMgr.Single.AddListener(KeyCode.Z, Fire, InputState.PRESS);
+
         MessageMgr.Single.AddListener(KeyCode.X, ReleaseCard, InputState.DOWN);
+        MessageMgr.Single.AddListener(KeyCode.A, OnWolfShot, InputState.DOWN);
+        MessageMgr.Single.AddListener(KeyCode.S, OnOtterShot, InputState.DOWN);
+        MessageMgr.Single.AddListener(KeyCode.D, SummonBomb, InputState.DOWN);
+        MessageMgr.Single.AddListener(KeyCode.F, SummonLife, InputState.DOWN);
 
         MessageMgr.Single.AddListener(KeyCode.UpArrow, OnDirKeyUp, InputState.UP);
         MessageMgr.Single.AddListener(KeyCode.DownArrow, OnDirKeyUp, InputState.UP);
@@ -52,54 +127,28 @@ public class PlayerController : MonoBehaviour
 
         _move.Speed = _normalSpeed;
 
-        for(int i = 0; i < 4; ++i)
+        for (int i = 0; i < 4; ++i)
         {
             _dicLevelYinEmitter[i] = new YinEmitter()
             {
                 NormalEmitters = new List<BulletEmitter>(),
                 FoucusEmitters = new List<BulletEmitter>()
             };
-            
-            for(int j = 0; j < i + 1; ++j)
+
+            for (int j = 0; j < i + 1; ++j)
             {
                 Transform shot = _listManaLevelTrans[i].GetChild(j).GetChild(1);
                 _dicLevelYinEmitter[i].NormalEmitters.Add(shot.GetChild(0).GetComponent<BulletEmitter>());
                 _dicLevelYinEmitter[i].FoucusEmitters.Add(shot.GetChild(1).GetComponent<BulletEmitter>());
             }
         }
+
+        _isWolfShoot = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("ItemPoint"))
-        {
-            GameModel.Single.Score += Const.POINT_SCORE;
-        }
-        else if (other.CompareTag("ItemP"))
-        {
-            if (PlayerModel.Single.Mana < 400)
-            {
-                GameModel.Single.Score += Const.MANA_SCORE;
-                ++PlayerModel.Single.Mana;
-                //PlayerModel.Single.Mana += 30;
-
-                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MANA, PlayerModel.Single.Mana);
-                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CHECK_MANA);
-            }
-            else
-            {
-                GameModel.Single.Score += Const.MAX_MANA_SCORE;
-            }
-        }
-
-        if (other.CompareTag("ItemPoint") || other.CompareTag("ItemP"))     //防止和妖精的可发送弹幕冲突
-        {
-            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE, GameModel.Single.Score);
-
-            AudioMgr.Single.PlayGameEff(AudioType.Items);
-            other.gameObject.GetComponent<Item>().ResetItem();
-            PoolMgr.Single.Despawn(other.gameObject);
-        }
+        _dicItemTagAction[other.tag](other);
     }
 
     private void OnDestroy()
@@ -111,6 +160,9 @@ public class PlayerController : MonoBehaviour
         InputMgr.Single.RemoveGameListener(KeyCode.LeftShift);
         InputMgr.Single.RemoveGameListener(KeyCode.Z);
         InputMgr.Single.RemoveGameListener(KeyCode.X);
+        InputMgr.Single.RemoveGameListener(KeyCode.A);
+        InputMgr.Single.RemoveGameListener(KeyCode.S);
+        InputMgr.Single.RemoveGameListener(KeyCode.F);
 
         MessageMgr.Single.RemoveListener(KeyCode.UpArrow, MoveUp, InputState.PRESS);
         MessageMgr.Single.RemoveListener(KeyCode.DownArrow, MoveDown, InputState.PRESS);
@@ -119,14 +171,18 @@ public class PlayerController : MonoBehaviour
         MessageMgr.Single.RemoveListener(KeyCode.LeftShift, Inch, InputState.PRESS);
         MessageMgr.Single.RemoveListener(KeyCode.Z, Fire, InputState.PRESS);
 
+        MessageMgr.Single.RemoveListener(KeyCode.X, ReleaseCard, InputState.DOWN);
+        MessageMgr.Single.RemoveListener(KeyCode.A, OnWolfShot, InputState.DOWN);
+        MessageMgr.Single.RemoveListener(KeyCode.S, OnOtterShot, InputState.DOWN);
+        MessageMgr.Single.RemoveListener(KeyCode.D, SummonBomb, InputState.DOWN);
+        MessageMgr.Single.RemoveListener(KeyCode.F, SummonLife, InputState.DOWN);
+
         MessageMgr.Single.RemoveListener(KeyCode.UpArrow, OnDirKeyUp, InputState.UP);
         MessageMgr.Single.RemoveListener(KeyCode.DownArrow, OnDirKeyUp, InputState.UP);
         MessageMgr.Single.RemoveListener(KeyCode.RightArrow, OnDirKeyUp, InputState.UP);
         MessageMgr.Single.RemoveListener(KeyCode.LeftArrow, OnDirKeyUp, InputState.UP);
         MessageMgr.Single.RemoveListener(KeyCode.LeftShift, OnShiftUp, InputState.UP);
         MessageMgr.Single.RemoveListener(KeyCode.Z, StopFire, InputState.UP);
-
-        MessageMgr.Single.RemoveListener(KeyCode.X, ReleaseCard, InputState.DOWN);
     }
 
     private void MoveUp(object[] args)
@@ -136,7 +192,7 @@ public class PlayerController : MonoBehaviour
             _move.Move(Vector3.up);
         }
 
-        if(transform.position.y > 1.8f)
+        if (transform.position.y > 1.8f)
         {
             PlayerModel.Single.IsGetItem = true;
         }
@@ -183,39 +239,53 @@ public class PlayerController : MonoBehaviour
     {
         int level = GameUtil.GetManaLevel();
 
-        foreach (var emitter in _listMainShot)
+        if (!_isWolfShoot)
         {
-            emitter.Play();
-        }
+            foreach (var emitter in _listMainShot)
+            {
+                emitter.Play();
+            }
 
-        foreach (var emitter in _dicLevelYinEmitter[level].NormalEmitters)
-        {
-            emitter.Stop();
-        }
+            foreach (var emitter in _dicLevelYinEmitter[level].NormalEmitters)
+            {
+                emitter.Stop();
+            }
 
-        foreach (var emitter in _dicLevelYinEmitter[level].FoucusEmitters)
+            foreach (var emitter in _dicLevelYinEmitter[level].FoucusEmitters)
+            {
+                emitter.Play();
+            }
+        }
+        else
         {
-            emitter.Play();
+            _wolfEmitter.Play();
         }
     }
-        
+
     private void NormalFire()
     {
         int level = GameUtil.GetManaLevel();
 
-        foreach (var emitter in _listMainShot)
+        if (!_isWolfShoot)
         {
-            emitter.Play();
-        }
+            foreach (var emitter in _listMainShot)
+            {
+                emitter.Play();
+            }
 
-        foreach (var emitter in _dicLevelYinEmitter[level].FoucusEmitters)
-        {
-            emitter.Stop();
-        }
+            foreach (var emitter in _dicLevelYinEmitter[level].FoucusEmitters)
+            {
+                emitter.Stop();
+            }
 
-        foreach (var emitter in _dicLevelYinEmitter[level].NormalEmitters)
+            foreach (var emitter in _dicLevelYinEmitter[level].NormalEmitters)
+            {
+                emitter.Play();
+            }
+        }
+        else
         {
-            emitter.Play();
+            _wolfEmitter.Play();
         }
     }
 
@@ -235,19 +305,26 @@ public class PlayerController : MonoBehaviour
     {
         int level = GameUtil.GetManaLevel();
 
-        foreach (var emitter in _listMainShot)
+        if (!_isWolfShoot)
         {
-            emitter.Stop();
-        }
+            foreach (var emitter in _listMainShot)
+            {
+                emitter.Stop();
+            }
 
-        foreach (var emitter in _dicLevelYinEmitter[level].NormalEmitters)
-        {
-            emitter.Stop();
-        }
+            foreach (var emitter in _dicLevelYinEmitter[level].NormalEmitters)
+            {
+                emitter.Stop();
+            }
 
-        foreach (var emitter in _dicLevelYinEmitter[level].FoucusEmitters)
+            foreach (var emitter in _dicLevelYinEmitter[level].FoucusEmitters)
+            {
+                emitter.Stop();
+            }
+        }
+        else
         {
-            emitter.Stop();
+            _wolfEmitter.Stop();
         }
     }
 
@@ -262,21 +339,76 @@ public class PlayerController : MonoBehaviour
         _move.Speed = _normalSpeed;
     }
 
+    private void OnWolfShot(object[] args)
+    {
+        _isWolfShoot = true;
+        --PlayerModel.Single.MemoryFragment;
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
+        RemoveFunctionListener();
+
+        TimeMgr.Single.AddTimeTask(() =>
+        {
+            AddFunctionListener();
+            InputMgr.Single.UpdateKeyState();
+            _isWolfShoot = false;
+        }, 6, TimeUnit.Second);
+    }
+
+    private void SummonBomb(object[] args)
+    {
+        --PlayerModel.Single.MemoryFragment;
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
+
+        int count = UnityEngine.Random.Range(1, 3);
+
+        for(int i = 0; i < count; ++i)
+        {
+            GameObject item = PoolMgr.Single.Spawn("BombFragment");
+
+            float posX = UnityEngine.Random.Range(-4.5f, 2.9f);
+            item.GetComponent<Item>().Summon(new Vector3(posX, 5.1f, 0));
+        }
+    }
+
+    private void SummonLife(object[] args)
+    {
+        --PlayerModel.Single.MemoryFragment;
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
+
+        GameObject item = PoolMgr.Single.Spawn("LifeFragment");
+
+        float posX = UnityEngine.Random.Range(-4.5f, 2.9f);
+        item.GetComponent<Item>().Summon(new Vector3(posX, 5.1f, 0));
+    }
+
+    private void OnOtterShot(object[] args)
+    {
+        --PlayerModel.Single.MemoryFragment;
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
+        RemoveFunctionListener();
+        _otterEmitter.Play();
+
+        TimeMgr.Single.AddTimeTask(() => 
+        {
+            AddFunctionListener();
+            _otterEmitter.Kill();
+        }, 6, TimeUnit.Second);
+    }
+
     private void ReleaseCard(object[] args)
     {
         if (PlayerModel.Single.Bomb > 0)
         {
             _cardShot.Boot();           //初始化状态然后重新播放
-            --PlayerModel.Single.Bomb;
             PlayerModel.Single.State = PlayerState.INVINCIBLE;
             _cardEff.Play();
 
             AudioMgr.Single.PlayGameEff(AudioType.ReleaseBomb);
-            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_BOMB);
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAYER_USE_BOMB);
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_TWINKLE_SELF);
             MessageMgr.Single.RemoveListener(KeyCode.X, ReleaseCard, InputState.DOWN);
 
-            TimeMgr.Single.AddTimeTask(() => 
+            TimeMgr.Single.AddTimeTask(() =>
             {
                 AudioMgr.Single.StopGameEff(AudioType.ReleaseBomb);
                 MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ENEMY_BULLET);
@@ -284,5 +416,17 @@ public class PlayerController : MonoBehaviour
                 MessageMgr.Single.AddListener(KeyCode.X, ReleaseCard, InputState.DOWN);
             }, 2f, TimeUnit.Second);
         }
+    }
+
+    private void AddFunctionListener()
+    {
+        MessageMgr.Single.AddListener(KeyCode.A, OnWolfShot, InputState.DOWN);
+        MessageMgr.Single.AddListener(KeyCode.S, OnOtterShot, InputState.DOWN);
+    }
+
+    private void RemoveFunctionListener()
+    {
+        MessageMgr.Single.RemoveListener(KeyCode.A, OnWolfShot, InputState.DOWN);
+        MessageMgr.Single.RemoveListener(KeyCode.S, OnOtterShot, InputState.DOWN);
     }
 }

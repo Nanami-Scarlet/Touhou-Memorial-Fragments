@@ -27,7 +27,7 @@ public class BossController : MonoBehaviour
         _receiver = GetComponent<BulletReceiver>();
         _receiver.enabled = false;
 
-        //MessageMgr.Single.AddListener(MsgEvent.EVENT_CLEAR_ENEMY_BULLET, KillBullet);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim);
     }
 
     private void Update()
@@ -41,10 +41,10 @@ public class BossController : MonoBehaviour
         //todo:如果Boss出界，应该setactive
     }
 
-    //private void OnDestroy()
-    //{
-    //    transform.DOKill();
-    //}
+    private void OnDestroy()
+    {
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim);
+    }
 
     private int GetOffsetX()
     {
@@ -99,39 +99,34 @@ public class BossController : MonoBehaviour
         for(int i = 0; i < path.Count; ++i)
         {
             tot += delay[i];
-            _sequence.Insert(tot, transform.DOPath(path[i].ToArray(), dur[i]));
+            _sequence.Insert(tot, transform.DOPath(path[i].ToArray(), dur[i]).SetEase(Ease.Linear)
+                .OnPlay(() => _anim.SetBool("Card", false)));
         }
 
         _sequence.PlayForward();
     }
 
-    private void KillBullet(object[] args)
+    private void PlayCardAnim(object[] args)
     {
-        StopCard(true);
+        _anim.SetBool("Card", true);
     }
 
-    public void StopCard(bool isPlayerDie = false)
+    public void StopCard()
     {
         for (int i = 0; i < _emitters.Count; ++i)
         {
             if (_emitters[i].emitterProfile != null)
             {
-                if (isPlayerDie)
-                {
-                    _emitters[i].Kill(KillOptions.AllBulletsButRoot);
-                }
-                else
-                {
-                    _emitters[i].Kill();
-                    _emitters[i].emitterProfile = null;
-                }
+                _emitters[i].Kill();
+                _emitters[i].emitterProfile = null;
             }
         }
     }
 
     public void Move(Vector3 pos)
     {
-        transform.DOLocalMove(pos, 1.5f).SetEase(Ease.Linear);
+        float offset = (transform.localPosition - pos).magnitude;
+        transform.DOLocalMove(pos, offset / 2).SetEase(Ease.Linear);
     }
 
     public void SetReceiver(bool pre)

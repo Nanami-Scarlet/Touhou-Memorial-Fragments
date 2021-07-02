@@ -19,7 +19,13 @@ public class StartController : ControllerBase
         { 1, () => Debug.LogWarning("功能正在开发中...") },
         { 2, () => Debug.LogWarning("功能正在开发中...") },
         { 3, () => Debug.LogWarning("功能正在开发中...") },
-        { 4, () => Debug.LogWarning("功能正在开发中...") },
+
+        { 4, () => 
+        {
+            UIManager.Single.Hide(Paths.PREFAB_START_VIEW);
+            UIManager.Single.Show(Paths.PREFAB_MANUAL_VIEW);
+        } },
+
         { 5, () => Application.Quit() },
     };
 
@@ -30,33 +36,29 @@ public class StartController : ControllerBase
 
     public override void Show()
     {
+        base.Show();
+
         InputMgr.Single.AddListener(KeyCode.UpArrow);
         InputMgr.Single.AddListener(KeyCode.DownArrow);
         InputMgr.Single.AddListener(KeyCode.X);
         InputMgr.Single.AddListener(KeyCode.Z);
 
-        //TimeMgr.Single.AddTimeTask(() => 
-        //{
-            MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
-            MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
-            MessageMgr.Single.AddListener(KeyCode.X, MoveFinalIndex);
-            MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
-        //}, 1, TimeUnit.Second);
-        
+        MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
+        MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
+        MessageMgr.Single.AddListener(KeyCode.X, MoveFinalIndex);
+        MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
+
         _view.UpdateFun();
     }
 
     public override void Hide()
     {
+        base.Hide();
+
         MessageMgr.Single.RemoveListener(KeyCode.UpArrow, DecIndex);
         MessageMgr.Single.RemoveListener(KeyCode.DownArrow, IncIndex);
         MessageMgr.Single.RemoveListener(KeyCode.X, MoveFinalIndex);
         MessageMgr.Single.RemoveListener(KeyCode.Z, OnSelect);
-
-        //InputMgr.Single.RemoveListener(KeyCode.UpArrow);
-        //InputMgr.Single.RemoveListener(KeyCode.DownArrow);
-        //InputMgr.Single.RemoveListener(KeyCode.X);
-        //InputMgr.Single.RemoveListener(KeyCode.Z);
     }
 
     private void IncIndex(object[] args)

@@ -12,8 +12,20 @@
   },
 
   {
+    "stageName": "stage2_1",
+    "trueName": "Good Old Memories",
+    "volume": 1
+  },
+
+  {
     "stageName": "stage_B1",
     "trueName": "Eientewi set 12 B~竹取飛翔",
+    "volume": 1
+  },
+
+  {
+    "stageName": "stage_B2",
+    "trueName": "想い巡らし 月仰ぎ",
     "volume": 1
   }
 ]

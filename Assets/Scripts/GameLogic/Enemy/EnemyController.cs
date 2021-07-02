@@ -114,7 +114,13 @@ public class EnemyController : MonoBehaviour
 
     private void KillBullet(object[] args)
     {
-        _emitter.Kill(KillOptions.AllBulletsButRoot);
+        //_emitter.Kill(KillOptions.AllBulletsButRoot);
+        List<Bullet> bullets = _emitter.bullets;
+
+        for(int i = 0; i < bullets.Count; ++i)
+        {
+            bullets[i].Die();
+        }
     }
 
     public void DieController()

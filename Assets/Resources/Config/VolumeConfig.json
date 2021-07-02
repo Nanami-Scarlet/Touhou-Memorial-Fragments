@@ -14,7 +14,7 @@
   {
     "type": "PlayerDead",
     "name": "Death_Eff",
-    "vol": 0.5
+    "vol": 0.3
   },
 
   {
@@ -54,12 +54,6 @@
   },
 
   {
-    "type": "GetCard",
-    "name": "GetCard_Eff",
-    "vol": 0.5
-  },
-
-  {
     "type": "TimeUP",
     "name": "TimeUP_Eff",
     "vol": 0.5
@@ -69,5 +63,11 @@
     "type": "GetFinalCard",
     "name": "GetFinalCard_Eff",
     "vol": 0.4
+  },
+
+  {
+    "type": "Bonus",
+    "name": "Bonus_Eff",
+    "vol": 0.8
   }
 ]

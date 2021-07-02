@@ -87,6 +87,17 @@ public class GameView : ViewBase
     private float _imgBarFgWidth;
     #endregion
 
+    #region GetCardInfo
+    public Text[] _txtCardInfoLabels;
+    public Text _txtScore;
+    public Text _txtTimeLabel;
+    public Text _txtTimeValue;
+    #endregion
+
+    public Text _txtClearLabel;
+    public Text _txtBonusLabel;
+    public Text _txtClearBonusValue;
+
     public Image _imgSacrifice;
 
     private GameObject _objStageLabel;
@@ -278,6 +289,7 @@ public class GameView : ViewBase
         int index = (int)GameStateModel.Single.GameDegree;
         _transRank.GetChild(index).GetComponent<Text>().color = new Color(1, 1, 1, 0);
         _transRank.localPosition = new Vector3(-60, 416, 0);
+        ResetGetCardInfoAnim();
 
         Color t = _txtHighLabel.color;
         _txtHighLabel.color = new Color(t.r, t.g, t.b, 0);
@@ -361,6 +373,13 @@ public class GameView : ViewBase
         t = _txtBarProcess.color;
         _txtBarProcess.color = new Color(t.r, t.g, t.b, 0);
 
+        t = _txtClearLabel.color;
+        _txtClearLabel.color = new Color(t.r, t.g, t.b, 0);
+        t = _txtBonusLabel.color;
+        _txtBonusLabel.color = new Color(t.r, t.g, t.b, 0);
+        t = _txtClearBonusValue.color;
+        _txtClearBonusValue.color = new Color(t.r, t.g, t.b, 0);
+
         _transBorderLine.gameObject.SetActive(true);
         _transBorderLine.rotation = new Quaternion(0.7071068f, 0, 0, 0.7071068f);
 
@@ -373,7 +392,7 @@ public class GameView : ViewBase
         _txtGrazeNum.text = "0";
 
         _txtCurScore.text = "0";
-        _txtPointNum.text = PlayerModel.Single.Init_Point.ToString();
+        _txtPointNum.text = PlayerModel.Single.MAX_GET_POINT.ToString();
         _txtBarProcess.text = "0%";
         _imgBarFg.fillAmount = 0;
         _imgBarPoint.transform.localPosition = new Vector3(-170, 0, 0);
@@ -444,44 +463,96 @@ public class GameView : ViewBase
         _txtManaNum.text = level + "." + string.Format("{0:D2}", process);
     }
 
+    //public void GetLife()
+    //{
+    //    if(GameStateModel.Single.GameDegree == Degree.LUNATIC)
+    //    {
+    //        if(PlayerModel.Single.Life < 8)
+    //        {
+    //            ++PlayerModel.Single.LifeFragment;
+
+    //            if (PlayerModel.Single.LifeFragment == Const.FULL_LIFE_FRAGMENT)
+    //            {
+    //                PlayerModel.Single.LifeFragment = 0;
+    //                _transLifeItems[PlayerModel.Single.Life].GetChild(1).GetComponent<Image>().fillAmount
+    //                    = (float)PlayerModel.Single.LifeFragment / Const.FULL_LIFE_FRAGMENT;
+    //                ++PlayerModel.Single.Life;
+    //                ResetItem(_transLifeItems, PlayerModel.Single.LifeFragment);
+
+    //                AudioMgr.Single.PlayGameEff(AudioType.Extend);
+    //            }
+    //            else
+    //            {
+    //                _transLifeItems[PlayerModel.Single.Life].GetChild(1).GetComponent<Image>().fillAmount
+    //                    = (float)PlayerModel.Single.LifeFragment / Const.FULL_LIFE_FRAGMENT;
+    //            }
+
+    //            _txtLifeNum.text = PlayerModel.Single.LifeFragment.ToString();
+    //        }
+    //    }
+    //}
+
+    public void UseLife()
+    {
+        if(PlayerModel.Single.Life > 0)
+        {
+            --PlayerModel.Single.Life;
+            ResetItem(_transLifeItems, PlayerModel.Single.LifeFragment);
+        }
+    }
+
     public void UpdateLife()
     {
-        if(GameStateModel.Single.GameDegree == Degree.LUNATIC)
-        {
-            int life = PlayerModel.Single.Life;
+        _transLifeItems[PlayerModel.Single.Life - 1].GetChild(1).GetComponent<Image>().fillAmount
+            = (float)PlayerModel.Single.LifeFragment / Const.FULL_LIFE_FRAGMENT;
+        ResetItem(_transLifeItems, PlayerModel.Single.Life);
 
-            ResetItem(_transLifeItems, life);
-            _transLifeItems[life].GetChild(1).GetComponent<Image>().fillAmount
-                = (float)PlayerModel.Single.LifeFragment / Const.FULL_FRAGMENT;
-
-            if (PlayerModel.Single.LifeFragment == Const.FULL_FRAGMENT)
-            {
-                PlayerModel.Single.LifeFragment = 0;
-                ++PlayerModel.Single.Life;
-
-                AudioMgr.Single.PlayGameEff(AudioType.Extend);
-            }
-            _txtLifeNum.text = PlayerModel.Single.LifeFragment.ToString();
-        }
+        _txtLifeNum.text = PlayerModel.Single.LifeFragment.ToString();
     }
 
     public void UpdateBomb()
     {
-        int bomb = PlayerModel.Single.Bomb;
+        _transBombItems[PlayerModel.Single.Bomb - 1].GetChild(1).GetComponent<Image>().fillAmount
+            = (float)PlayerModel.Single.BombFragment / Const.FULL_BOMB_FRAGMENT;
+        ResetItem(_transBombItems, PlayerModel.Single.Bomb);
 
-        ResetItem(_transBombItems, bomb);
-        _transBombItems[bomb].GetChild(1).GetComponent<Image>().fillAmount
-            = (float)PlayerModel.Single.BombFragment / Const.FULL_FRAGMENT;
-
-        if (PlayerModel.Single.BombFragment == Const.FULL_FRAGMENT)
-        {
-            PlayerModel.Single.BombFragment = 0;
-            ++PlayerModel.Single.Bomb;
-
-            AudioMgr.Single.PlayGameEff(AudioType.GetBomb);
-        }
         _txtBombNum.text = PlayerModel.Single.BombFragment.ToString();
     }
+
+    //public void GetBomb()
+    //{
+    //    if(PlayerModel.Single.Bomb < 8)
+    //    {
+    //        ++PlayerModel.Single.BombFragment;
+
+    //        if (PlayerModel.Single.BombFragment == Const.FULL_BOMB_FRAGMENT)
+    //        {
+    //            PlayerModel.Single.BombFragment = 0;
+    //            _transBombItems[PlayerModel.Single.Bomb].GetChild(1).GetComponent<Image>().fillAmount
+    //                = (float)PlayerModel.Single.BombFragment / Const.FULL_BOMB_FRAGMENT;
+    //            ++PlayerModel.Single.Bomb;
+    //            ResetItem(_transBombItems, PlayerModel.Single.Bomb);
+
+    //            AudioMgr.Single.PlayGameEff(AudioType.GetBomb);
+    //        }
+    //        else
+    //        {
+    //            _transBombItems[PlayerModel.Single.Bomb].GetChild(1).GetComponent<Image>().fillAmount
+    //                = (float)PlayerModel.Single.BombFragment / Const.FULL_BOMB_FRAGMENT;
+    //        }
+
+    //        _txtBombNum.text = PlayerModel.Single.BombFragment.ToString();
+    //    }
+    //}
+
+    //public void UseBomb()
+    //{
+    //    if(PlayerModel.Single.Bomb > 0)
+    //    {
+    //        --PlayerModel.Single.Bomb;
+    //        ResetItem(_transBombItems, PlayerModel.Single.Bomb);
+    //    }
+    //}
 
     public void UpdateGraze(int graze)
     {
@@ -491,14 +562,17 @@ public class GameView : ViewBase
     public void UpdatePoint()
     {
         //todo:最大得点要更新，不仅仅这么简单
-        int num = PlayerModel.Single.Init_Point + (PlayerModel.Single.Graze / 10) * 10;
-
-        _txtPointNum.text = num.ToString();
+        _txtPointNum.text = PlayerModel.Single.MAX_GET_POINT.ToString();
     }
 
     public void UpdateMemory()
     {
-        for(int i = 0; i < PlayerModel.Single.MemoryFragment; ++i)
+        for (int i = 0; i < _memoryYins.Length; ++i)
+        {
+            _memoryYins[i].GetComponent<Image>().enabled = false;
+        }
+
+        for (int i = 0; i < PlayerModel.Single.MemoryFragment; ++i)
         {
             _memoryYins[i].GetComponent<Image>().enabled = true;
         }
@@ -509,5 +583,67 @@ public class GameView : ViewBase
 
         float posX = (float)process / 100 * _imgBarFgWidth - 170;
         _imgBarPoint.transform.localPosition = new Vector3(posX, 0, 0);
+    }
+
+    public void PlayGetCardInfoAnim(GetCardInfo info)
+    {
+        for(int i = 0; i < _txtCardInfoLabels.Length; ++i)
+        {
+            _txtCardInfoLabels[i].enabled = info.LabelIndex == i;
+        }
+        _txtScore.text = string.Format("{0:N0}", info.Score);
+        _txtTimeValue.text = string.Format("{0:F2}", info.TimeValue) + 's';
+
+        Sequence sequence = DOTween.Sequence();
+        sequence.Insert(0, _txtScore.DOFade(1, 1));             //显示
+        sequence.Insert(0.5f, _txtTimeLabel.DOFade(1, 1));
+        sequence.Insert(0.5f, _txtTimeValue.DOFade(1, 1));
+
+        //隐藏
+        sequence.Insert(3.5f, _txtCardInfoLabels[0].transform.DOLocalRotate(Vector3.right * 90, 0.5f));
+        sequence.Insert(3.5f, _txtCardInfoLabels[1].transform.DOLocalRotate(Vector3.right * 90, 0.5f));
+        sequence.Insert(3.5f, _txtScore.transform.DOLocalRotate(Vector3.right * 90, 0.5f));
+
+        sequence.OnComplete(() => 
+        {
+            ResetGetCardInfoAnim();
+        });
+
+        sequence.PlayForward();
+    }
+
+    public void PlayStageClearAnim()
+    {
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Join(_txtClearLabel.DOFade(1, 0.8f));
+        sequence.Join(_txtBonusLabel.DOFade(1, 0.8f));
+        sequence.Join(_txtClearBonusValue.DOFade(1, 0.8f));
+
+        sequence.OnComplete(() => 
+        {
+            _txtClearLabel.DOFade(0, 0.5f);
+            _txtBonusLabel.DOFade(0, 0.5f);
+            _txtClearBonusValue.DOFade(0, 0.5f);
+        });
+
+        sequence.PlayForward();
+    }
+
+    private void ResetGetCardInfoAnim()
+    {
+        for (int i = 0; i < _txtCardInfoLabels.Length; ++i)
+        {
+            _txtCardInfoLabels[i].transform.localRotation = new Quaternion(0, 0, 0, 1);
+            _txtCardInfoLabels[i].enabled = false;
+        }
+        _txtScore.transform.localRotation = new Quaternion(0, 0, 0, 1);
+
+        Color t = _txtScore.color;
+        _txtScore.color = new Color(t.r, t.g, t.b, 0);
+        t = _txtTimeLabel.color;
+        _txtTimeLabel.color = new Color(t.r, t.g, t.b, 0);
+        t = _txtTimeValue.color;
+        _txtTimeValue.color = new Color(t.r, t.g, t.b, 0);
     }
 }

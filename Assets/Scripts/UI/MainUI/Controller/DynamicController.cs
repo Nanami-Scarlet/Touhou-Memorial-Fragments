@@ -65,6 +65,7 @@ public class DynamicController : ControllerBase
                 }
 
                 _view.SetTimeText(_sec, _mili, _isRed);
+                _view.SetCardBonusValue();
             }
         }
     }
