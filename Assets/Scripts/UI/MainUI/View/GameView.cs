@@ -102,7 +102,6 @@ public class GameView : ViewBase
 
     private GameObject _objStageLabel;
 
-
     public override void InitAndChild()
     {
         _txtHighLabel = _transHighScore.GetChild(1).GetComponent<Text>();
@@ -397,6 +396,7 @@ public class GameView : ViewBase
 
         _txtCurScore.text = "0";
         _txtPointNum.text = PlayerModel.Single.MAX_GET_POINT.ToString();
+
         _txtBarProcess.text = "0%";
         _imgBarFg.fillAmount = 0;
         _imgBarPoint.transform.localPosition = new Vector3(-170, 0, 0);
@@ -405,18 +405,11 @@ public class GameView : ViewBase
         ResetItem(_transBombItems, PlayerModel.Single.Bomb);
     }
 
-    private void ResetItem(Transform[] transItems, int num)
+    public void ResetItem(Transform[] transItems, int num)
     {
         for(int i = 0; i < 8; ++i)
         {
-            if (i < num)
-            {
-                transItems[i].GetChild(1).GetComponent<Image>().fillAmount = 1;
-            }
-            else
-            {
-                transItems[i].GetChild(1).GetComponent<Image>().fillAmount = 0;
-            }
+            transItems[i].GetChild(1).GetComponent<Image>().fillAmount = i < num ? 1 : 0;
         }
     }
 
@@ -467,35 +460,6 @@ public class GameView : ViewBase
         _txtManaNum.text = level + "." + string.Format("{0:D2}", process);
     }
 
-    //public void GetLife()
-    //{
-    //    if(GameStateModel.Single.GameDegree == Degree.LUNATIC)
-    //    {
-    //        if(PlayerModel.Single.Life < 8)
-    //        {
-    //            ++PlayerModel.Single.LifeFragment;
-
-    //            if (PlayerModel.Single.LifeFragment == Const.FULL_LIFE_FRAGMENT)
-    //            {
-    //                PlayerModel.Single.LifeFragment = 0;
-    //                _transLifeItems[PlayerModel.Single.Life].GetChild(1).GetComponent<Image>().fillAmount
-    //                    = (float)PlayerModel.Single.LifeFragment / Const.FULL_LIFE_FRAGMENT;
-    //                ++PlayerModel.Single.Life;
-    //                ResetItem(_transLifeItems, PlayerModel.Single.LifeFragment);
-
-    //                AudioMgr.Single.PlayGameEff(AudioType.Extend);
-    //            }
-    //            else
-    //            {
-    //                _transLifeItems[PlayerModel.Single.Life].GetChild(1).GetComponent<Image>().fillAmount
-    //                    = (float)PlayerModel.Single.LifeFragment / Const.FULL_LIFE_FRAGMENT;
-    //            }
-
-    //            _txtLifeNum.text = PlayerModel.Single.LifeFragment.ToString();
-    //        }
-    //    }
-    //}
-
     public void UseLife()
     {
         if(PlayerModel.Single.Life > 0)
@@ -507,7 +471,7 @@ public class GameView : ViewBase
 
     public void UpdateLife()
     {
-        _transLifeItems[PlayerModel.Single.Life - 1].GetChild(1).GetComponent<Image>().fillAmount
+        _transLifeItems[PlayerModel.Single.Life].GetChild(1).GetComponent<Image>().fillAmount
             = (float)PlayerModel.Single.LifeFragment / Const.FULL_LIFE_FRAGMENT;
         ResetItem(_transLifeItems, PlayerModel.Single.Life);
 
@@ -516,47 +480,13 @@ public class GameView : ViewBase
 
     public void UpdateBomb()
     {
-        _transBombItems[PlayerModel.Single.Bomb - 1].GetChild(1).GetComponent<Image>().fillAmount
-            = (float)PlayerModel.Single.BombFragment / Const.FULL_BOMB_FRAGMENT;
-        ResetItem(_transBombItems, PlayerModel.Single.Bomb);
+        _transBombItems[PlayerModel.Single.Bomb].GetChild(1).GetComponent<Image>().fillAmount
+           = (float)PlayerModel.Single.BombFragment / Const.FULL_BOMB_FRAGMENT;
+
+        //ResetItem(_transBombItems, PlayerModel.Single.Bomb - 1);
 
         _txtBombNum.text = PlayerModel.Single.BombFragment.ToString();
     }
-
-    //public void GetBomb()
-    //{
-    //    if(PlayerModel.Single.Bomb < 8)
-    //    {
-    //        ++PlayerModel.Single.BombFragment;
-
-    //        if (PlayerModel.Single.BombFragment == Const.FULL_BOMB_FRAGMENT)
-    //        {
-    //            PlayerModel.Single.BombFragment = 0;
-    //            _transBombItems[PlayerModel.Single.Bomb].GetChild(1).GetComponent<Image>().fillAmount
-    //                = (float)PlayerModel.Single.BombFragment / Const.FULL_BOMB_FRAGMENT;
-    //            ++PlayerModel.Single.Bomb;
-    //            ResetItem(_transBombItems, PlayerModel.Single.Bomb);
-
-    //            AudioMgr.Single.PlayGameEff(AudioType.GetBomb);
-    //        }
-    //        else
-    //        {
-    //            _transBombItems[PlayerModel.Single.Bomb].GetChild(1).GetComponent<Image>().fillAmount
-    //                = (float)PlayerModel.Single.BombFragment / Const.FULL_BOMB_FRAGMENT;
-    //        }
-
-    //        _txtBombNum.text = PlayerModel.Single.BombFragment.ToString();
-    //    }
-    //}
-
-    //public void UseBomb()
-    //{
-    //    if(PlayerModel.Single.Bomb > 0)
-    //    {
-    //        --PlayerModel.Single.Bomb;
-    //        ResetItem(_transBombItems, PlayerModel.Single.Bomb);
-    //    }
-    //}
 
     public void UpdateGraze(int graze)
     {
@@ -565,7 +495,6 @@ public class GameView : ViewBase
 
     public void UpdatePoint()
     {
-        //todo:最大得点要更新，不仅仅这么简单
         _txtPointNum.text = PlayerModel.Single.MAX_GET_POINT.ToString();
     }
 

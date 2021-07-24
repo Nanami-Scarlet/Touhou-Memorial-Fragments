@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 14585492
+  uniqueIndex: 7878838
   profile: {fileID: 11400000}
   parent: {fileID: 114190031269497074}
   children:
@@ -2517,7 +2517,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 12030901
+  uniqueIndex: 9356543
   profile: {fileID: 11400000}
   parent: {fileID: 114776344989347026}
   children:
@@ -5427,7 +5427,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 14398321
+  uniqueIndex: 10930805
   profile: {fileID: 11400000}
   parent: {fileID: 114179803937929816}
   children:
@@ -7916,7 +7916,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 1
   hideSpriteList: 0
-  currentlyDisplayedModule: 7
+  currentlyDisplayedModule: 1
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -13662,7 +13662,7 @@ MonoBehaviour:
   m_Name: Turn To Enemy
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 1817628
+  uniqueIndex: 3019596
   profile: {fileID: 11400000}
   parent: {fileID: 114300363739621142}
   children: []
@@ -27102,16 +27102,142 @@ MonoBehaviour:
             combinedInterpolationFactors: 0
             index: 1
             indexOfParent: 0
-            indexOfFrom: 0
-            indexOfTo: 0
+            indexOfFrom: 2
+            indexOfTo: 3
             indexOfBlendedChildren: 
             weight: 0
-            headerTitle: 
+            headerTitle: Turn Intensity
             blendColor: {r: 0, g: 0, b: 0, a: 0}
             parameterType: 0
             relativeTo: 0
             parameterName: 
-          defaultValue: 0.8
+          defaultValue: 1
+        - settings:
+            valueType: 0
+            interpolationValue:
+              interpolationFactor: 0
+              repartitionCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 1
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 1
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              shareValueBetweenInstances: 0
+              rerollFrequency: 0
+              interpolationFactorFromShot: 0
+              interpolationFactorFromPattern: 0
+              interpolationFactorFromBullet: 0
+              relativeTo: 0
+              parameterName: 
+              loopDepth: 0
+              useComplexRerollSequence: 0
+              checkEveryNLoops: 0
+              loopSequence: 0
+              period: 0
+              wrapMode: 0
+              sortMode: 0
+              sortDirection: 0
+              repartitionTexture: {fileID: 0}
+              centerX: 0
+              centerY: 0
+              radius: 0
+              wrapPoint: 0
+              countClockwise: 0
+              differentValuesPerShot: 0
+            combinedInterpolationFactors: 0
+            index: 2
+            indexOfParent: 1
+            indexOfFrom: 0
+            indexOfTo: 0
+            indexOfBlendedChildren: 
+            weight: 0
+            headerTitle: 'Turn Intensity : "From"'
+            blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
+          defaultValue: 0.6
+        - settings:
+            valueType: 0
+            interpolationValue:
+              interpolationFactor: 0
+              repartitionCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 1
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 1
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              shareValueBetweenInstances: 0
+              rerollFrequency: 0
+              interpolationFactorFromShot: 0
+              interpolationFactorFromPattern: 0
+              interpolationFactorFromBullet: 0
+              relativeTo: 0
+              parameterName: 
+              loopDepth: 0
+              useComplexRerollSequence: 0
+              checkEveryNLoops: 0
+              loopSequence: 0
+              period: 0
+              wrapMode: 0
+              sortMode: 0
+              sortDirection: 0
+              repartitionTexture: {fileID: 0}
+              centerX: 0
+              centerY: 0
+              radius: 0
+              wrapPoint: 0
+              countClockwise: 0
+              differentValuesPerShot: 0
+            combinedInterpolationFactors: 0
+            index: 3
+            indexOfParent: 1
+            indexOfFrom: 0
+            indexOfTo: 0
+            indexOfBlendedChildren: 
+            weight: 0
+            headerTitle: 'Turn Intensity : "To"'
+            blendColor: {r: 0, g: 0, b: 0, a: 0}
+            parameterType: 0
+            relativeTo: 0
+            parameterName: 
+          defaultValue: 1
         useSlider: 1
         sliderMin: -1
         sliderMax: 1
@@ -28495,7 +28621,7 @@ MonoBehaviour:
             m_NumAlphaKeys: 2
       curveAffected: 10
       canBeDoneOverTime: 1
-      instructionTiming: 0
+      instructionTiming: 1
       instructionDuration:
         valueTree:
         - settings:
@@ -28605,7 +28731,7 @@ MonoBehaviour:
             parameterType: 0
             relativeTo: 0
             parameterName: 
-          defaultValue: 1
+          defaultValue: 0.8
         useSlider: 0
         sliderMin: 0
         sliderMax: 0
@@ -31740,8 +31866,8 @@ MonoBehaviour:
         forceZeroToOne: 1
       displayName: Set Speed
   hasBeenSerializedOnce: 1
-  focusedInstruction: 0
-  safetyForPlaymode: 125
+  focusedInstruction: 4
+  safetyForPlaymode: 145
 --- !u!114 &114776344989347026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31755,7 +31881,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15062167
+  uniqueIndex: 1273320
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:

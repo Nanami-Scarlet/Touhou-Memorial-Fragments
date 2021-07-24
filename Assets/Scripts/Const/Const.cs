@@ -7,22 +7,6 @@ public class Const
     public static Vector3 BORN_POS = new Vector3(-0.7f, -3.5f, 0);
     public static Vector3 DEAD_POS = new Vector3(-0.7f, -5.5f, 0);
 
-    public static Color ColorSelect
-    {
-        get
-        {
-            return Color.white;
-        }
-    }
-
-    public static Color ColorUnSelect
-    {
-        get
-        {
-            return Color.black;
-        }
-    }
-
     public const int MANA_SCORE = 50;
     public const int MAX_MANA_SCORE = 500;
     public const int POINT_SCORE = 100;

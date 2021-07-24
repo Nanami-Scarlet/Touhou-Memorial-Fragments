@@ -37,20 +37,6 @@ public class PlayerView : MonoBehaviour
             }
         }
 
-        //_dicIndexYinRoate = new Dictionary<int, List<YinRoate>>();
-
-        //for (int i = 0; i < 4; ++i)
-        //{
-        //    _dicIndexYinRoate[i] = new List<YinRoate>();
-
-        //    for (int j = 0; j < i + 1; ++j)
-        //    {
-        //        YinRoate yin = _listTransYin[i].GetChild(j).GetChild(0).GetComponent<YinRoate>();
-
-        //        _dicIndexYinRoate[i].Add(yin);
-        //    }
-        //}
-
         transform.DOMoveY(Const.BORN_POS.y, 1);
 
         InputMgr.Single.AddGameListener(KeyCode.LeftShift);
@@ -70,14 +56,6 @@ public class PlayerView : MonoBehaviour
         MessageMgr.Single.RemoveListener(KeyCode.LeftShift, OnShift, InputState.PRESS);
         MessageMgr.Single.RemoveListener(KeyCode.LeftShift, OnNormal, InputState.UP);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CHECK_MANA, CheckMana);
-
-        //foreach (var pair in _dicIndexYinRoate)
-        //{
-        //    foreach (var yin in pair.Value)
-        //    {
-        //        yin.RemoveUpdate();
-        //    }
-        //}
     }
 
     private void OnShift(object[] args)

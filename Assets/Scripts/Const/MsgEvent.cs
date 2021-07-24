@@ -44,4 +44,6 @@
 
     public const int EVENT_ON_WOLF_SHOOT = 37;
     public const int EVENT_RESTART_GAME = 38;
+    public const int EVENT_SET_ENDING_PIC = 39;
+    public const int EVENT_SHOW_HP_VIEW = 40;
 }

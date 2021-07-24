@@ -61,10 +61,8 @@ public class DynamicView : ViewBase
         }
     }
 
-    public void BGMSetting(string stage)
+    public void BGMSetting(AudioData data)
     {
-        AudioData data = DataMgr.Single.GetBGMData(stage);
-        AudioMgr.Single.PlayBGM(stage + "_BGM", data.Volume);
         _textBGMInfo.text = "BGM:" + data.Name;
 
         _textBGMInfo.transform.DOLocalMoveX(-420f, 1).OnComplete(() =>
@@ -124,12 +122,20 @@ public class DynamicView : ViewBase
         }
     }
 
+    public void ShowHPView(GameObject go)
+    {
+        if (JudgeContainsKey(go))
+        {
+            _dicIDHPBar[go.name].IsFollow = true;
+        }
+    }
+
     public void HideHPView(GameObject go)
     {
         if (JudgeContainsKey(go))
         {
-            _dicIDHPBar[go.name].transform.localPosition = Vector3.left * 500;
             _dicIDHPBar[go.name].IsFollow = false;
+            _dicIDHPBar[go.name].transform.localPosition = Vector3.left * 500;
         }
     }
 

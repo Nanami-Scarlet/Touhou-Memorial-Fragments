@@ -7,14 +7,10 @@ public class GameRoot : MonoBehaviour
 {
     public void Init()      //加载场景进行必要的初始化
     {
-        GameStateModel.Single.GameMode = Mode.NORMAL;      //todo:这里不可能总是普通模式
+        GameStateModel.Single.GameMode = Mode.NORMAL;
         GameStateModel.Single.IsPause = false;
-        GameModel.Single.StageNum = 0;      //todo:不可能总是从一面进游戏
+        GameModel.Single.StageNum = 0;
         GameModel.Single.Score = 0;
-        PlayerModel.Single.Mana = 100;       //todo:这里也不是总是从100开始
-        PlayerModel.Single.State = PlayerState.NORMAL;
-        PlayerModel.Single.MemoryProcess = 0;
-        PlayerModel.Single.MemoryFragment = 0;
 
         if (GameStateModel.Single.GameDegree == Degree.NORMAL)
         {

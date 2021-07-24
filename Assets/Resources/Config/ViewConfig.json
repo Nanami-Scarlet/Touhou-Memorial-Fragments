@@ -38,6 +38,11 @@
     {
       "name": "ManualView",
       "layer": 1
+    },
+
+    {
+      "name": "ThanksView",
+      "layer": 1
     }
   ]
 }

@@ -5,11 +5,8 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
-public class BossController : MonoBehaviour
+public class BossController : EntityControllerBase
 {
-    private Animator _anim;
-    private Vector3 _lastPos;
-
     private SingleBossInitData _bossData;
 
     public List<BulletEmitter> _emitters;
@@ -17,43 +14,30 @@ public class BossController : MonoBehaviour
 
     private Sequence _sequence;
 
-    public void Init(SingleBossInitData data)
+    public override void Init(EntityData data)
     {
-        _bossData = data;
+        base.Init(data);
 
-        transform.localPosition = data.BornPos;
-
-        _anim = GetComponent<Animator>();
         _receiver = GetComponent<BulletReceiver>();
+
+        _bossData = (SingleBossInitData)data;
+
+        transform.localPosition = _bossData.BornPos;
         _receiver.enabled = false;
 
         MessageMgr.Single.AddListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim);
+        //MessageMgr.Single.AddListener(MsgEvent.EVENT_CANCEL_CARD_ANIM, CancelCardAnim);
     }
 
-    private void Update()
+    public override void Update()
     {
-        if (!GameStateModel.Single.IsPause)
-        {
-            _anim.SetInteger("Speed", GetOffsetX());
-            _lastPos = transform.position;
-        }
-
-        //todo:如果Boss出界，应该setactive
+        base.Update();
     }
 
     private void OnDestroy()
     {
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim);
-    }
-
-    private int GetOffsetX()
-    {
-        if (transform.position.x == _lastPos.x)
-        {
-            return 0;
-        }
-
-        return transform.position.x - _lastPos.x < 0 ? -1 : 1;
+        //MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CANCEL_CARD_ANIM, CancelCardAnim);
     }
 
     public void Appear(Action cb)
@@ -67,12 +51,45 @@ public class BossController : MonoBehaviour
         });
     }
 
+    public void Move()
+    {
+        _sequence.Kill();
+        Vector3 pos = _bossData.FinalMovePos;
+
+        float offset = (transform.localPosition - pos).magnitude;
+        transform.DOLocalMove(pos, offset / 4).SetEase(Ease.Linear)
+            .OnUpdate(() => 
+            {
+                _anim.SetBool("Card", false);
+                MessageMgr.Single.RemoveListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim);
+
+            })
+            .OnComplete(() => MessageMgr.Single.AddListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim));
+    }
+
+    public void Move(Vector3 pos)
+    {
+        _sequence.Kill();
+
+        float offset = (transform.localPosition - pos).magnitude;
+        transform.DOLocalMove(pos, offset / 4).SetEase(Ease.Linear)
+             .OnUpdate(() =>
+             {
+                 _anim.SetBool("Card", false);
+                 MessageMgr.Single.RemoveListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim);
+
+             })
+            .OnComplete(() => MessageMgr.Single.AddListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim));
+    }
+
     public void ResetCard(SingleBossCardData data)
     {
         List<List<Vector3>> path = data.Path;
         List<float> dur = data.Duration;
         List<float> delay = data.Delay;
         List<EmitterProfile> emitter = data.Emitters;
+        List<Vector3> emitterPos = data.EmittersPos;
+        float mt = data.MoveTime;
 
         for(int i = 0; i < _emitters.Count; ++i)
         {
@@ -83,24 +100,33 @@ public class BossController : MonoBehaviour
             }
         }
 
-        for(int i = 0; i < emitter.Count; ++i)
+        for(int i = 0; i < emitterPos.Count; ++i)
         {
+            _emitters[i].transform.localPosition = emitterPos[i];
             _emitters[i].emitterProfile = emitter[i];
 
             if(_emitters[i].emitterProfile != null)
             {
-                _emitters[i].Play();
+                BulletEmitter e = _emitters[i];
+
+                e.Play();
             }
         }
 
         _sequence.Kill();
         _sequence = DOTween.Sequence();
-        float tot = 0;
+        float tot = mt;
         for(int i = 0; i < path.Count; ++i)
         {
-            tot += delay[i];
             _sequence.Insert(tot, transform.DOPath(path[i].ToArray(), dur[i]).SetEase(Ease.Linear)
-                .OnPlay(() => _anim.SetBool("Card", false)));
+                 .OnUpdate(() =>
+                 {
+                     _anim.SetBool("Card", false);
+                     MessageMgr.Single.RemoveListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim);
+
+                 })
+                .OnComplete(() => MessageMgr.Single.AddListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim)));
+            tot += delay[i] + dur[i];
         }
 
         _sequence.PlayForward();
@@ -110,6 +136,11 @@ public class BossController : MonoBehaviour
     {
         _anim.SetBool("Card", true);
     }
+
+    //private void CancelCardAnim(object[] args)
+    //{
+    //    _anim.SetBool("Card", false);
+    //}
 
     public void StopCard()
     {
@@ -121,12 +152,6 @@ public class BossController : MonoBehaviour
                 _emitters[i].emitterProfile = null;
             }
         }
-    }
-
-    public void Move(Vector3 pos)
-    {
-        float offset = (transform.localPosition - pos).magnitude;
-        transform.DOLocalMove(pos, offset / 2).SetEase(Ease.Linear);
     }
 
     public void SetReceiver(bool pre)

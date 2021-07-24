@@ -9,6 +9,7 @@ public class Paths
     private const string PREFAB_UI_FOLDER = PREFAB_FOLDER + "UI/";
     private const string PREFAB_ITEM_FOLDER = PREFAB_FOLDER + "Item/";
     private const string PREFAB_BULLET_SETTING_FOLDER = PREFAB_FOLDER + "BulletSetting/";
+    public const string PREFAB_ENDING_PICS_FOLDER = PREFAB_FOLDER + "EndingPics/";
 
     public const string PREFAB_START_VIEW = PREFAB_UI_FOLDER + "StartView";
     public const string PREFAB_DEGREE_VIEW = PREFAB_UI_FOLDER + "DegreeView";
@@ -18,6 +19,7 @@ public class Paths
     public const string PREFAB_DYNAMIC_VIEW = PREFAB_UI_FOLDER + "DynamicView";
     public const string PREFAB_CHAT_VIEW = PREFAB_UI_FOLDER + "ChatView";
     public const string PREFAB_MANUAL_VIEW = PREFAB_UI_FOLDER + "ManualView";
+    public const string PREFAB_THANKS_VIEW = PREFAB_UI_FOLDER + "ThanksView";
     public const string PREFAB_STAGE_LABEL = PREFAB_UI_FOLDER + "Stage";
     public const string PREFAB_HPBAR = PREFAB_UI_FOLDER + "HPBar";
 
@@ -46,6 +48,7 @@ public class Paths
     public const string PREFAB_ENEMY9 = PREFAB_ENEMY_FOLDER + "9";
     public const string PREFAB_ENEMY10 = PREFAB_ENEMY_FOLDER + "10";
     public const string PREFAB_ENEMY11 = PREFAB_ENEMY_FOLDER + "11";
+    public const string PREFAB_ENEMY12 = PREFAB_ENEMY_FOLDER + "12";
     public const string PREFAB_BOSS1 = PREFAB_ENEMY_FOLDER + "B1";
     public const string PREFAB_BOSS2 = PREFAB_ENEMY_FOLDER + "B2";
     public const string PREFAB_BOSS3 = PREFAB_ENEMY_FOLDER + "B3";
@@ -81,11 +84,12 @@ public class Paths
     public static readonly string CONFIG_VIEW = CONFIG_FOLDER + "ViewConfig";
     public static readonly string CONFIG_ENEMY = CONFIG_FOLDER + "EnemyConfig";
     public static readonly string CONFIG_BOSS = CONFIG_FOLDER + "BossConfig";
+    public static readonly string CONFIG_ELITE = CONFIG_FOLDER + "EliteConfig";
     public static readonly string CONFIG_VOLUME = CONFIG_FOLDER + "VolumeConfig";
     public static readonly string CONFIG_BGM = CONFIG_FOLDER + "BGMConfig";
     public static readonly string CONFIG_CHAT = CONFIG_FOLDER + "ChatConfig";
     public static readonly string CONFIG_CHAT_PICTURE = CONFIG_FOLDER + "ChatPictureConfig";
     public static readonly string CONFIG_CARD_PICTURE = CONFIG_FOLDER + "CardPictureConfig";
 
-    public const string PICTURE_FOLDER = "Character/";
+    public const string PICTURE_FOLDER = "Picture/";
 }

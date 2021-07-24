@@ -64,7 +64,6 @@ public class Item : MonoBehaviour
 
         if(transform.position.y < -5f)
         {
-            //Destroy(gameObject);
             PoolMgr.Single.Despawn(gameObject);
         }
     }

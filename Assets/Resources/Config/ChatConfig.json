@@ -1,3 +1,9 @@
+/*
+    东方幻想祭剧情
+    made by 旋桜(Nanami)
+    注意：二次创作，玩梗、人物崩坏警告！
+*/
+
 {
   "stage_B1": [
     {
@@ -5,7 +11,8 @@
       "DialogTxt": "稀客呢，今晚也要来赏月吗？",
       "picName": "2_0",
       "count": 13,
-      "callback": 0 //这里和MessageMgr类分开，机制不一样，但表面还是MessageMgr
+      "callback": 0,
+      "strArg": "B1"
     },
 
     {
@@ -13,15 +20,17 @@
       "DialogTxt": "不了，我来找永琳。",
       "picName": "1_0",
       "count": 9,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
       "chaterName": "博丽灵梦",
-      "DialogTxt": "最近有很多「记忆光团」，不过还好破坏不了。",
+      "DialogTxt": "最近有很多「记忆碎片」，不过还好破坏不了。",
       "picName": "1_1",
       "count": 21,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -29,7 +38,8 @@
       "DialogTxt": "找她？她最近忙得厉害呢，我已经好一阵子没有看到她了。",
       "picName": "2_0",
       "count": 26,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -37,7 +47,8 @@
       "DialogTxt": "要不还是和我一起赏月吧~",
       "picName": "2_0",
       "count": 12,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -45,15 +56,17 @@
       "DialogTxt": "唉，我话还没说完呢！我要生气了哦！",
       "picName": "1_2",
       "count": 17,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
       "chaterName": "博丽灵梦",
-      "DialogTxt": "我说，「记忆光团」在外面那么多，你没感到？",
+      "DialogTxt": "我说，「记忆碎片」在外面那么多，你没感到？",
       "picName": "1_1",
       "count": 21,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -61,15 +74,17 @@
       "DialogTxt": "我是什么性格你不知道？",
       "picName": "2_0",
       "count": 13,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
       "chaterName": "蓬莱山辉夜",
-      "DialogTxt": "不过你说的「记忆光团」...嗯，我的确不知。",
+      "DialogTxt": "不过你说的「记忆碎片」...嗯，我的确不知。",
       "picName": "2_1",
       "count": 21,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -77,7 +92,8 @@
       "DialogTxt": "嗯？你看起来很闲的样子。就算这样那就改天吧。不过难怪你也经常见不到永琳呢。",
       "picName": "1_1",
       "count": 37,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -85,7 +101,8 @@
       "DialogTxt": "我先走一步，等有时间再来赏月。再见，月之公主。",
       "picName": "1_0",
       "count": 23,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -93,7 +110,8 @@
       "DialogTxt": "唉唉，你先打败我再去见她吧。",
       "picName": "2_1",
       "count": 14,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -101,7 +119,8 @@
       "DialogTxt": "今天的满月可是格外的美哦~",
       "picName": "2_0",
       "count": 13,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     }
   ],
 
@@ -111,23 +130,26 @@
       "DialogTxt": "总算是到了，你们的公主太任性了，你得管管。",
       "picName": "1_0",
       "count": 21,
-      "callback": 1
+      "callback": 0,
+      "strArg": "B2"
     },
 
     {
       "chaterName": "博丽灵梦",
-      "DialogTxt": "我从阿求和慧音那边了解到「记忆光团」不可能溢出，并且「记忆沙漏」就在你这，是不是你在捣鬼？",
+      "DialogTxt": "我从阿求和慧音那边了解到「记忆碎片」不可能溢出，并且「记忆沙漏」就在你这，是不是你在捣鬼？",
       "picName": "1_2",
       "count": 45,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
       "chaterName": "八意永琳",
-      "DialogTxt": "「记忆沙漏」里的「记忆光团」确实少了很多。",
+      "DialogTxt": "「记忆沙漏」里的「记忆碎片」确实少了很多。",
       "picName": "3_0",
       "count": 41,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -135,7 +157,8 @@
       "DialogTxt": "但是我不知道这沙漏为何就漏了。大概是某只兔子？",
       "picName": "3_1",
       "count": 23,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -143,7 +166,8 @@
       "DialogTxt": "兔子？我看你是不想承认！如实招来！",
       "picName": "1_2",
       "count": 17,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -151,7 +175,8 @@
       "DialogTxt": "你还是请回吧，这些事我自会处理。",
       "picName": "3_0",
       "count": 16,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
     },
 
     {
@@ -159,7 +184,309 @@
       "DialogTxt": "不过看你，我倒是愿意陪你玩玩。",
       "picName": "3_0",
       "count": 20,
-      "callback": -1
+      "callback": -1,
+      "strArg": ""
+    }
+  ],
+
+  "stage_B4": [
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "小石子你出来吧，你从永远亭跟到现在了，你都不觉得累吗？",
+      "picName": "1_1",
+      "count": 27,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "古明地恋",
+      "DialogTxt": "我貌似恰巧和你同路呢，幻想乡妖怪这么多，当然有巧合啦~",
+      "picName": "5_1",
+      "count": 27,
+      "callback": 0,
+      "strArg": "B4"
+    },
+
+    {
+      "chaterName": "古明地恋",
+      "DialogTxt": "怎么灵梦小姐说我一路尾随呢？真滑稽。",
+      "picName": "5_0",
+      "count": 18,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "古明地恋",
+      "DialogTxt": "不过今天幻想乡格外热闹呢，姐姐她们为了装饰家里都忙开了，要不灵梦小姐过来帮忙？",
+      "picName": "5_0",
+      "count": 39,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "芙兰朵露·斯卡蕾特",
+      "DialogTxt": "恋你怎么在这啊，我正要去神社找你呢。",
+      "picName": "6_0",
+      "count": 18,
+      "callback": 1,
+      "strArg": "B5"
+    },
+
+    {
+      "chaterName": "古明地恋",
+      "DialogTxt": "在这里你不就找到了我吗？嘿嘿。",
+      "picName": "5_0",
+      "count": 15,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "看你们这么欢，该不会...嗯...我一路走来都是这样。",
+      "picName": "1_1",
+      "count": 23,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "芙兰朵露·斯卡蕾特",
+      "DialogTxt": "是弹幕游戏哦~",
+      "picName": "6_0",
+      "count": 7,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "那我陪你们玩，不过要答应我：",
+      "picName": "1_0",
+      "count": 14,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "等回神社的时候要乖乖的，不要又“不小心”把我家拆了。",
+      "picName": "1_2",
+      "count": 25,
+      "callback": -1,
+      "strArg": ""
+    }
+  ],
+
+  "Ending": [
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "你们说今天的幻想乡很热闹，是怎么回事？",
+      "picName": "1_0",
+      "count": 19,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "古明地恋",
+      "DialogTxt": "我们一起回神社看看不就知道了嘛~",
+      "picName": "5_0",
+      "count": 16,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "",
+      "DialogTxt": "一会儿后，灵梦发现被装饰得富丽堂皇的神社，那是她从来没有见到过的景象。",
+      "picName": "",
+      "count": 35,
+      "callback": 3,
+      "strArg": "Ending"
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "这神社被你们布置得挺漂亮的。",
+      "picName": "1_0",
+      "count": 14,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "不过紫你们背着我办祭典，好过分。",
+      "picName": "1_2",
+      "count": 15,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "八云紫",
+      "DialogTxt": "这为你办的，不瞒你瞒谁呢？",
+      "picName": "7_1",
+      "count": 13,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "嗯...",
+      "picName": "1_3",
+      "count": 2,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "不...不过在神社阶梯那些妖精的弹幕我似曾相识。",
+      "picName": "1_0",
+      "count": 22,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "八云紫",
+      "DialogTxt": "那些妖精是由「记忆碎片」所化的灵体，它会根据你内心的记忆进行还原。",
+      "picName": "7_0",
+      "count": 33,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "八云紫",
+      "DialogTxt": "记忆反复轮回，会觉醒意想不到的力量。",
+      "picName": "7_0",
+      "count": 18,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "你的话还是一如既往的难懂呢...不过用这力量玩弹幕确实得心应手许多...",
+      "picName": "1_0",
+      "count": 32,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "八云紫",
+      "DialogTxt": "话说这...祭典...你喜欢吗？",
+      "picName": "7_1",
+      "count": 12,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "博丽灵梦",
+      "DialogTxt": "我从未见过规模如此大的祭典，我会尽情享受的。",
+      "picName": "1_0",
+      "count": 22,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "八云紫",
+      "DialogTxt": "我愿称之为「幻想祭」。以幻想为名，须举杯欢饮。",
+      "picName": "7_0",
+      "count": 23,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "",
+      "DialogTxt": "于是乎，幻想乡最大的祭典 --「幻想祭」开始了。",
+      "picName": "",
+      "count": 23,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "",
+      "DialogTxt": "几日后，永远亭。",
+      "picName": "",
+      "count": 7,
+      "callback": 2,
+      "strArg": "Ending_1"
+    },
+
+    {
+      "chaterName": "蓬莱山辉夜",
+      "DialogTxt": "「记忆光团」都重新放进「记忆沙漏」里了吧？",
+      "picName": "",
+      "count": 21,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "八意永琳",
+      "DialogTxt": "八云紫那家伙她没有亲自来，倒是她的式神倒是把所有的「记忆光团」都送来了。",
+      "picName": "",
+      "count": 36,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "八意永琳",
+      "DialogTxt": "前几天趁我制药，把「记忆沙漏」打开了。",
+      "picName": "",
+      "count": 19,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "八意永琳",
+      "DialogTxt": "并且还叫我拦住后面要来的人，事成之后她自会原物奉还。",
+      "picName": "",
+      "count": 26,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "蓬莱山辉夜",
+      "DialogTxt": "不过自从「记忆沙漏」被打开后，灵梦觉醒的能力和「那两位」其中一位很像，你是不是应该...",
+      "picName": "",
+      "count": 42,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "八意永琳",
+      "DialogTxt": "不必担心，我知道八云紫那家伙葫芦里卖的什么药。",
+      "picName": "",
+      "count": 23,
+      "callback": -1,
+      "strArg": ""
+    },
+
+    {
+      "chaterName": "",
+      "DialogTxt": "话音刚落，八意永琳撇了一眼「记忆沙漏」里的「记忆碎片」，发现「记忆碎片」多了许多...她似乎明白了另一种意思...",
+      "picName": "",
+      "count": 53,
+      "callback": 4,
+      "strArg": "Prefab/UI/ThanksView"
     }
   ]
 }

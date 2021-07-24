@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -19,7 +20,7 @@ MonoBehaviour:
     - Item
     - Obstacle
     - Helpers
-    - Tag 6
+    - MHPlayer
     - Tag 7
     - Tag 8
     - Tag 9
@@ -50,5 +51,5 @@ MonoBehaviour:
   collisionHandler: {fileID: 7200000, guid: 723032a6362955b478e26af3d2a97a9a, type: 3}
   computeShaders: 0
   maxAmountOfCollisionsPerFrame: 32
-  maxAmountOfBullets: 4000
+  maxAmountOfBullets: 8000
   maxAmountOfReceivers: 200

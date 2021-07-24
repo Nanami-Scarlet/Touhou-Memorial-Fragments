@@ -4,29 +4,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : EntityControllerBase
 {
-    private Animator _anim;
-    private Vector3 _lastPos;
     private BulletEmitter _emitter;
     private EnemyData _enemyData;
     private List<int> _listTimeID = new List<int>();
 
     private EnemyBehaviour _behaviour;
 
-    public void Init(EnemyData enemyData)
+    public override void Init(EntityData enemyData)
     {
-        _enemyData = enemyData;
-
-        _anim = GetComponent<Animator>();
-        _emitter = GetComponent<BulletEmitter>();
-
-        _emitter.emitterProfile = _enemyData.Emitter;
-
-        transform.localPosition = _enemyData.BornPos;
-        _lastPos = transform.position;
+        base.Init(enemyData);
 
         _behaviour = GetComponent<EnemyBehaviour>();
+        _emitter = GetComponent<BulletEmitter>();
+
+        _enemyData = (EnemyData)enemyData;
+
+        _emitter.emitterProfile = _enemyData.Emitter;
+        transform.localPosition = _enemyData.BornPos;
+        _lastPos = transform.position;
 
         List<List<Vector3>> path = _enemyData.Path;
 
@@ -42,15 +39,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Update()
+    public override void Update()
     {
-        if (!GameStateModel.Single.IsPause)
-        {
-            _anim.SetInteger("Speed", GetOffsetX());
-            _lastPos = transform.position;
-        }
+        base.Update();
 
-        if(!GameUtil.JudgeEnemyShot(_lastPos))
+        if (!GameUtil.JudgeEnemyShot(_lastPos))
         {
             _emitter.Pause();
         }
@@ -61,16 +54,6 @@ public class EnemyController : MonoBehaviour
         transform.DOKill();
 
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CLEAR_ENEMY_BULLET, KillBullet);
-    }
-
-    private int GetOffsetX()
-    {
-        if(transform.position.x == _lastPos.x)
-        {
-            return 0;
-        }
-
-        return transform.position.x - _lastPos.x < 0 ? -1 : 1;
     }
 
     private void DoPathA(List<List<Vector3>> path, EnemyData enemyData)
@@ -117,14 +100,14 @@ public class EnemyController : MonoBehaviour
         _emitter.Kill(KillOptions.AllBulletsButRoot);
     }
 
-    public IEnumerator DieController()
+    public void DieController()
     {
         foreach (int tid in _listTimeID)
         {
             TimeMgr.Single.RemoveTimeTask(tid);
         }
 
-        yield return new WaitForEndOfFrame();
+        enabled = false;
 
         _emitter.Stop();
     }

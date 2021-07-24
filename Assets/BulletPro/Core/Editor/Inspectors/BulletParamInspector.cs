@@ -1851,7 +1851,9 @@ namespace BulletPro.EditorScripts
 		{
 			bool canBeAnimated = DynamicParameterUtility.GetBool(animated);
 			Object defaultSprite = DynamicParameterUtility.GetFixedObject(sprite);
-			Object firstAnimSprite = DynamicParameterUtility.GetFixedObject(sprites.GetArrayElementAtIndex(0));
+			Object firstAnimSprite = null;
+			if (sprites.arraySize > 0)
+				firstAnimSprite = DynamicParameterUtility.GetFixedObject(sprites.GetArrayElementAtIndex(0));
 			Sprite spriteToUse = (canBeAnimated ? (firstAnimSprite ?? defaultSprite) : defaultSprite) as Sprite;
 			preview.FindPropertyRelative("sprite").objectReferenceValue = spriteToUse;
 		}

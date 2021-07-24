@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehaviour : BehaviourBase
+public class PlayerBehaviour : EntityBehaviourBase
 {
     public BulletReceiver _receiver;
 
@@ -31,7 +31,7 @@ public class PlayerBehaviour : BehaviourBase
     public override void Dead()
     {
         AudioMgr.Single.PlayGameEff(AudioType.PlayerDead);
-        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ENEMY_BULLET);
+        //MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ENEMY_BULLET);
 
         if (GameStateModel.Single.IsCard && GameModel.Single.CardBonus > 1000)
         {

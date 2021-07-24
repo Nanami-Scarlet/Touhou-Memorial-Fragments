@@ -900,6 +900,7 @@ MonoBehaviour:
   OnHitByBulletExit:
     m_PersistentCalls:
       m_Calls: []
+  advancedEventsFoldout: 0
   gizmoColor: {r: 1, g: 0.83297265, b: 0, a: 1}
 --- !u!1 &5098545777310189232
 GameObject:
@@ -1410,7 +1411,7 @@ MonoBehaviour:
   killBulletOnCollision: 1
   maxSimultaneousCollisionsPerFrame: 1
   collisionTags:
-    tagList: 1
+    tagList: 65
   collisionTagsFoldout: 1
   OnHitByBullet:
     m_PersistentCalls:
@@ -1435,6 +1436,7 @@ MonoBehaviour:
   OnHitByBulletExit:
     m_PersistentCalls:
       m_Calls: []
+  advancedEventsFoldout: 0
   gizmoColor: {r: 1, g: 0, b: 0.8616066, a: 1}
 --- !u!1 &5098545778931618243
 GameObject:

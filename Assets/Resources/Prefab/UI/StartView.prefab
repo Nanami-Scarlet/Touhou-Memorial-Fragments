@@ -631,7 +631,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: fragments
+  m_Text: Fragments
 --- !u!114 &8026609812282151171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,7 +769,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: memorial
+  m_Text: Memorial
 --- !u!114 &6062567936272973508
 MonoBehaviour:
   m_ObjectHideFlags: 0

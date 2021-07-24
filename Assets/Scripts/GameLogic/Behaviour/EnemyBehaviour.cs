@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : BehaviourBase
+public class EnemyBehaviour : EntityBehaviourBase
 {
     public EnemyView _view;
     public EnemyController _controller;
@@ -31,7 +31,6 @@ public class EnemyBehaviour : BehaviourBase
 
         if (HP <= 0 && !_isSpawnItem)
         {
-            //SpawnItems();
             Dead();
             _isSpawnItem = true;
         }
@@ -41,8 +40,9 @@ public class EnemyBehaviour : BehaviourBase
     {
         if (!_isDead)
         {
-            StartCoroutine(_controller.DieController());
+            _controller.DieController();
             _view.DieView();
+            AudioMgr.Single.PlayGameEff(AudioType.EnemyDead);
 
             SpawnItems();
 
@@ -59,8 +59,6 @@ public class EnemyBehaviour : BehaviourBase
                     _isDead = true;
                 }
             }, 0.7f, TimeUnit.Second);
-
-            //_isDead = true;
         }
     }
 

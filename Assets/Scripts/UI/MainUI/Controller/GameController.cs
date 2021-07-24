@@ -78,11 +78,6 @@ public class GameController : ControllerBase
         _view.UpdateMana(PlayerModel.Single.Mana);
     }
 
-    //private void GetLife(object[] args)
-    //{
-    //    _view.GetLife();
-    //}
-
     private void GetLife(object[] args)
     {
         if(PlayerModel.Single.Life < 8)
@@ -94,31 +89,24 @@ public class GameController : ControllerBase
                 PlayerModel.Single.LifeFragment = 0;
                 ++PlayerModel.Single.Life;
 
+                _view.ResetItem(_view._transLifeItems, PlayerModel.Single.Life);
                 AudioMgr.Single.PlayGameEff(AudioType.Extend);
+
+                return;
             }
 
             _view.UpdateLife();
         }
     }
 
-    //private void UseLife(object[] args)
-    //{
-    //    _view.UseLife();
-    //}
-
     private void UseLife(object[] args)
     {
         if (PlayerModel.Single.Life > 0)
         {
             --PlayerModel.Single.Life;
-            _view.UpdateLife();
+            _view.ResetItem(_view._transLifeItems, PlayerModel.Single.Life);
         }
     }
-
-    //private void GetBomb(object[] args)
-    //{
-    //    _view.GetBomb();
-    //}
 
     private void GetBomb(object[] args)
     {
@@ -129,26 +117,25 @@ public class GameController : ControllerBase
             if (PlayerModel.Single.BombFragment == Const.FULL_BOMB_FRAGMENT)
             {
                 PlayerModel.Single.BombFragment = 0;
+                _view.UpdateBomb();
                 ++PlayerModel.Single.Bomb;
 
+                _view.ResetItem(_view._transBombItems, PlayerModel.Single.Bomb);
                 AudioMgr.Single.PlayGameEff(AudioType.GetBomb);
+
+                return;
             }
 
             _view.UpdateBomb();
         }
     }
 
-    //private void UseBomb(object[] args)
-    //{
-    //    _view.UseBomb();
-    //}
-
     private void UseBomb(object[] args)
     {
         if (PlayerModel.Single.Bomb > 0)
         {
             --PlayerModel.Single.Bomb;
-            _view.UpdateBomb();
+            _view.ResetItem(_view._transBombItems, PlayerModel.Single.Bomb);
         }
     }
 
@@ -166,8 +153,6 @@ public class GameController : ControllerBase
 
     private void UpdateMemory(object[] args)
     {
-        //_view.UpdateMemory();
-
         if (PlayerModel.Single.MemoryFragment < 3)
         {
             if (PlayerModel.Single.MemoryProcess >= 100)

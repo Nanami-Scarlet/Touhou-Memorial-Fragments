@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -305,8 +305,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u25CB3.\u5173\u4E8E\r\n\r\n\u672C\u4F5C\u662F\u4E1C\u65B9\u4E8C\u6B21\u521B\u4F5C\r\n\u539F\u4F5C\uFF1A\u4E0A\u6D77\u7231\u4E3D\u4E1D\u5E7B\u4E50\u56E2\r\n\r\nQQ\u7FA4:xxxxxxxxxx\uFF087\u6708\u5E95\u66F4\u65B0\uFF09\r\n\u5982\u679C\u9047\u5230\u4EC0\u4E48bug\u6216\u8005\u5EFA\u8BAE\n\u6B22\u8FCE\u5404\u4F4D\u8F66\u4E07\u4EBA\u5165\u7FA4\u8BA8\u8BBA~\r\n\u5F53\u7136\u5B8C\u5168\u53EF\u4EE5\u5F53\u6210\u4E00\u4E2A\u95F2\u804A\u7FA4~\r\n\r\n\u4E3B\u50AC\uFF1A\u65CB\u685C\uFF08Nanami\uFF09\r\n\u7B56\u5212\uFF1A\u65CB\u685C\r\n\u7D20\u6750\uFF1ANalyne\u3001\u98CE\u94C3\u3001\u65CB\u685C\r\n\u5267\u60C5\uFF1A\u65CB\u685C\r\n\u7A0B\u5E8F\uFF1A\u65CB\u685C\r\n\u5F39\u8BBE\uFF1A\u65CB\u685C\r\n\r\n\u4E00\u9762\u80CC\u666F\uFF1A\u6C38\u9060\u4EAD\u306E\u5ECA\u4E0B
-    -- \u91CE\u725B\r\n\u98CE\u94C3\u8D1F\u8D23\u4E00\u9762MMD\u80CC\u666F\u5BFC\u51FA\u4EE5\u53CA\u4E8C\u9762\u5EFA\u6A21\r\n\u6807\u9898\u754C\u9762pid:80453394\n"
+  m_Text: "\u25CB3.\u5173\u4E8E\r\n\r\n\u672C\u4F5C\u662F\u4E1C\u65B9\u4E8C\u6B21\u521B\u4F5C\r\n\u539F\u4F5C\uFF1A\u4E0A\u6D77\u7231\u4E3D\u4E1D\u5E7B\u4E50\u56E2\r\n\r\nQQ\u7FA4:787761864\r 
+    -- \u540E\u6237\u7814(sheng)\u7A76(cao)\u6240\n\u5982\u679C\u9047\u5230\u4EC0\u4E48bug\u6216\u8005\u5EFA\u8BAE\n\u6B22\u8FCE\u5404\u4F4D\u8F66\u4E07\u4EBA\u5165\u7FA4\u8BA8\u8BBA~\r\n\u5F53\u7136\u5B8C\u5168\u53EF\u4EE5\u5F53\u6210\u4E00\u4E2A\u95F2\u804A\u7FA4~\r\n\r\n\u4E3B\u50AC\uFF1A\u65CB\u685C\uFF08Nanami\uFF09\r\n\u7B56\u5212\uFF1A\u65CB\u685C\r\n\u7D20\u6750\uFF1ANalyne\u3001\u98CE\u94C3\u3001\u65CB\u685C\r\n\u5267\u60C5\uFF1A\u65CB\u685C\r\n\u7A0B\u5E8F\uFF1A\u65CB\u685C\r\n\u5F39\u8BBE\uFF1A\u65CB\u685C\r\n\r\n\u4E00\u9762\u80CC\u666F\uFF1A\u6C38\u9060\u4EAD\u306E\u5ECA\u4E0B
+    -- \u91CE\u725B\r\n\u98CE\u94C3\u8D1F\u8D23\u4E00\u9762MMD\u80CC\u666F\u5BFC\u51FA\u4EE5\u53CA\u4E8C\u9762\u5EFA\u6A21\r\n\u4E00\u4E9B\u56FE\u7247pid:80453394\u30019446740\n"
 --- !u!1 &8269833314621936828
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29803923, g: 0.29803923, b: 0.29803923, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -610,7 +611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -684,7 +685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -758,7 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.29803923, g: 0.29803923, b: 0.29803923, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -872,7 +873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -890,7 +891,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u25CB0.\u5F00\u53D1\u65E5\u5FD7\r\n\r\n\n\u5F53\u524D\u7248\u672C\uFF1Av0.70b\r\n\r\n\u8FD9\u6B21\u66F4\u65B0\u4E86\u51E0\u4E2A\u6309\u952E\uFF0C\u4EE5\u53CA\u5E08\u5320\u7684\u7B26\u5361\uFF0C\r\n\u53E6\u5916\u8FD8\u6709Boss\u6218\u7684\u4E00\u4E9B\u7EC6\u8282\uFF0C\r\n\u4E00\u9762\u52C9\u5F3A\u7B97\u662F\u5B8C\u6210\u4E86\u5427\u3002\n\r\u4EE5\u53CA\u4F60\u6B63\u5728\u770B\u7684\u4E1C\u897F\u3002\n\u6CE8\u610F\uFF1A\u521A\u8FDB\u5165\u4E8C\u9762\u65F6\u7531\u4E8E\u6CA1\u505A\uFF0C\u4F1A\u6709\u4E00\u4E9B\u5361\u987F\n\n\u76EE\u524D\u8FD8\u6CA1\u6709\u505A\u7684\u4E1C\u897F\uFF1A\r\n\u4E8C\u9762\uFF08\u672CDemo\u53EA\u6709\u4E24\u9762\uFF09\r\n\u6682\u505C\u754C\u9762\u7684\u91CD\u65B0\u5F00\u59CB\uFF0C\u5982\u679C\u9009\u62E9\u90A3\u9879\u4F1A\u51FA\u73B0\u4E00\u4E9B\u95EE\u9898\u3002\r\n\u7B26\u5361\u3001\u7EC3\u4E60\u3001\u5206\u6570\u6392\u540D\u7CFB\u7EDF\u3002\nL\u96BE\u5EA6\uFF08\u8FD9\u4E0D\u662F\u4EBA\u73A9\u7684\u73A9\u610F\uFF09\u7684GameOver\u9762\u677F\n\n\n\u6700\u540E\u795D\u6E38\u620F\u6109\u5FEB\u3002\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t--\u4E03\u3064\u4E00\u65CB\u685C"
+  m_Text: "\u25CB0.\u5F00\u53D1\u65E5\u5FD7\r\n\r\n\r\n\u5F53\u524D\u7248\u672C\uFF1Av0.80b\r\n\r\n\r\n\u4E8C\u9762\u57FA\u672C\u5B8C\u6210\uFF0C\u4E5F\u5C31\u662F\u8BF4\u4E3B\u7EBF\u5DF2\u7ECF\u5B8C\u6210\r\n\u7ECF\u8FC7\u6211\u7CBE\u4FEE\u4E4B\u540E\u8FDD\u548C\u611F\u591A\u591A\u5C11\u5C11\u964D\u4E86\u4E9B\r\n\r\n\r\n\u76EE\u524D\u8FD8\u6CA1\u6709\u505A\u7684\u4E1C\u897F\uFF1A\r\n\u6682\u505C\u754C\u9762\u7684\u91CD\u65B0\u5F00\u59CB\r\n\u7B26\u5361\u3001\u7EC3\u4E60\u3001\u5206\u6570\u6392\u540D\u7CFB\u7EDF\u3002\r\nL\u96BE\u5EA6\uFF08\u8FD9\u4E0D\u662F\u4EBA\u73A9\u7684\u73A9\u610F\uFF09\u7684GameOver\u9762\u677F\r\n\r\n\r\n\r\n\u6700\u540E\u795D\u6E38\u620F\u6109\u5FEB\u3002\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t--\u4E03\u3064\u4E00\u65CB\u685C"
 --- !u!1 &8269833315360859501
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.94509804, g: 0.42352942, b: 0.42352942, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1038,7 +1039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1207,7 +1208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1281,7 +1282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1499,7 +1500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.3, g: 0.3, b: 0.3, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1624,7 +1625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.94509804, g: 0.42352942, b: 0.42352942, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1762,7 +1763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.3, b: 0.6, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1840,7 +1841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

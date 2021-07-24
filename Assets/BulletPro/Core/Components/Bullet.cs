@@ -19,6 +19,7 @@ namespace BulletPro
 		public int uniqueBulletID { get; private set; }
 
 		public bool IsGrazed { get; set; }
+		public bool IsBounce { get; set; }
 
 		// Bullet modules
 		public BulletModuleMovement moduleMovement;

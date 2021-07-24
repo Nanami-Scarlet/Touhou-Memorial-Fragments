@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     public void Init()
     {
         PlayerModel.Single.Mana = 100;
+        PlayerModel.Single.State = PlayerState.NORMAL;
+        PlayerModel.Single.MemoryProcess = 0;
+        PlayerModel.Single.MemoryFragment = 0;
         PlayerModel.Single.Graze = 0;
 
         _dicItemTagAction = new Dictionary<string, Action<Collider2D>>()
@@ -69,13 +72,17 @@ public class PlayerController : MonoBehaviour
 
             { "LifeItem", (other) =>
             {
-                GameModel.Single.Score += Const.LIFE_SCORE;
+                if(GameStateModel.Single.GameMode == Mode.LUNATIC)
+                {
+                    GameModel.Single.Score += Const.LIFE_SCORE;
 
-                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_GET_LIFT);
+                    MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_GET_LIFT);
+                }
+
                 MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE);
-
                 other.gameObject.GetComponent<Item>().ResetItem();
                 PoolMgr.Single.Despawn(other.gameObject);
+
             } },
 
             { "BombItem", (other) =>
@@ -144,6 +151,10 @@ public class PlayerController : MonoBehaviour
         }
 
         _isWolfShoot = false;
+
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MANA);
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CHECK_MANA);
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

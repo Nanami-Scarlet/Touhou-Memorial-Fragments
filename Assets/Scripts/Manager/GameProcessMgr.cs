@@ -3,20 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using BulletPro;
 
 public class GameProcessMgr : MonoBehaviour
 {
     private EnemySpawnMgr _enemyspawnMgr;
-    private BossSpawner _bossSpawner;
+    private BossSpawnMgr _bossSpawnMgr;
+    private EliteSpawnMgr _eliteSpawnMgr;
     private Coroutine _coroutine;
 
     private Animator _bgAnim;
 
+    private Dictionary<string, int> _dicBossTypeIndex = new Dictionary<string, int>();
     private Dictionary<string, GameObject> _dicTypeBoss = new Dictionary<string, GameObject>();
+    private Dictionary<string, BossView> _dicBossView = new Dictionary<string, BossView>();
     private Dictionary<string, BossController> _dicTypeBossCtl = new Dictionary<string, BossController>();
     private Dictionary<string, BossBehaviour> _dicTypeBossBH = new Dictionary<string, BossBehaviour>();
-    private Dictionary<int, Action<Action>> _dicIDAction;
+    private Dictionary<int, Action<Action, string>> _dicIDAction;
     private Queue<TimeTask> _queTimeTask = new Queue<TimeTask>();
 
     private bool _isTimeUP = false;
@@ -31,50 +33,75 @@ public class GameProcessMgr : MonoBehaviour
         MessageMgr.Single.AddListener(MsgEvent.EVENT_SET_TIMEUP, SetTimeUP);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_RESTART_GAME, RestartGame);
 
-        _dicIDAction = new Dictionary<int, Action<Action>>()
+        _dicIDAction = new Dictionary<int, Action<Action, string>>()
         {
             {
                 0,
-                (callBack) => {
-                    //代号B1（辉夜）Boss登场   下同
-                    _dicTypeBoss["B1"].GetComponent<BossController>().Appear(callBack);
+                (callBack, strArgs) =>
+                {
+                    _dicTypeBossCtl[strArgs].Appear(callBack);
                 }
             },
 
             {
                 1,
-                (callBack) => {
-                    _dicTypeBoss["B2"].GetComponent<BossController>().Appear(callBack);
+                (callBack, strArgs) =>
+                {
+                    _dicTypeBossCtl[strArgs].Appear(callBack);
+                    foreach(var pair in _dicTypeBossCtl)
+                    {
+                        if(pair.Key.Equals(strArgs))
+                        {
+                            continue;
+                        }
+
+                        pair.Value.Move();
+                    }
                 }
             },
 
             {
                 2,
-                (callBack) => {
-                    _dicTypeBoss["B3"].GetComponent<BossController>().Appear(callBack);
+                (callBack, strArgs) => 
+                {
+                    MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_ENDING_PIC, strArgs);
+                    callBack();
                 }
             },
 
             {
                 3,
-                (callBack) => {
-                    _dicTypeBoss["B4"].GetComponent<BossController>().Appear(callBack);
+                (callBack, strArgs) =>
+                {
+                    MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_BGM_SETTING, strArgs);
+                    callBack();
                 }
             },
+
+            {
+                4,
+                (callBack, strArgs) =>
+                {
+                    callBack();
+                    UIManager.Single.Show(strArgs);
+                }
+            }
         };
 
         _enemyspawnMgr = gameObject.AddComponent<EnemySpawnMgr>();
         _enemyspawnMgr.Init();
 
-        _bossSpawner = gameObject.AddComponent<BossSpawner>();
-        _bossSpawner.Init();
+        _bossSpawnMgr = gameObject.AddComponent<BossSpawnMgr>();
+        _bossSpawnMgr.Init();
+
+        _eliteSpawnMgr = gameObject.AddComponent<EliteSpawnMgr>();
+        _eliteSpawnMgr.Init();
 
         GameObject bg = GameObject.Find("BG");
         _bgAnim = bg.GetComponent<Animator>();
 
         _bgAnim.SetInteger("Stage", GameModel.Single.StageNum);
 
-        //CoroutineMgr.Single.Execute(OnState("stage1_1"));
         _coroutine = StartCoroutine(GameProcess());
     }
 
@@ -88,8 +115,6 @@ public class GameProcessMgr : MonoBehaviour
 
     private void OnDestroy()
     {
-        _queTimeTask.Clear();
-
         GameModel.Single.EnemyCount = 0;
 
         PoolMgr.Single.ClearPool();
@@ -105,15 +130,19 @@ public class GameProcessMgr : MonoBehaviour
         switch (GameStateModel.Single.GameMode)
         {
             case Mode.NORMAL:
+            case Mode.LUNATIC:
                 yield return OnStageUp("stage1_1");
                 yield return OnStageBoss("stage_B1");
                 yield return OnStageDown("stage1_2");
                 yield return OnStageBoss("stage_B2");
                 yield return PrepareNextStage();
-                yield return OnStageUp("stage2_1");
+                yield return OnStageElite("stage2_2", true);
+                yield return OnStageBoss("stage_B4");
+                yield return new WaitForSeconds(1);
+                yield return OnStageChat("Ending");
                 break;
 
-            //todo:要加上其他的模式
+           //todo:要加上其他的模式
         }
     }
 
@@ -133,8 +162,8 @@ public class GameProcessMgr : MonoBehaviour
                 EnemyData enemyData = waveData.ListEnemy[j];
 
                 int tid = TimeMgr.Single.GetTid();
-                TimeTask timeTask = new TimeTask(tid, Time.time + enemyData.Delay, () =>
-                {
+                TimeTask timeTask = new TimeTask(tid, 0, () =>
+                { 
                     _enemyspawnMgr.Spawn(enemyData);
                     ++GameModel.Single.EnemyCount;
 
@@ -145,12 +174,8 @@ public class GameProcessMgr : MonoBehaviour
 
                         _tid = TimeMgr.Single.AddTimeTask(() =>
                         {
-                            TimeMgr.Single.AddTimeTask(_curTimeTask);
+                            _tid = TimeMgr.Single.AddTimeTask(_curTimeTask);
                         }, enemyData.Delay, TimeUnit.Second);       //间隔之后才产生下一只妖精
-                    }
-                    else
-                    {
-                        CancelInvoke(nameof(CheckEnemyCount));
                     }
                 });
 
@@ -163,16 +188,23 @@ public class GameProcessMgr : MonoBehaviour
         _curTimeTask = _queTimeTask.Peek();
         TimeMgr.Single.AddTimeTask(_curTimeTask);
 
-        InvokeRepeating(nameof(CheckEnemyCount), 0.5f, 0.1f);
+        InvokeRepeating(nameof(CheckEnemyCount), 4f, 0.1f);
 
-        while (_queTimeTask.Count > 0 || GameModel.Single.EnemyCount > 0)
+        yield return new WaitUntil(() => 
         {
-            yield return new WaitForEndOfFrame();
-        }
+            if(_queTimeTask.Count == 0 && GameModel.Single.EnemyCount == 0)
+            {
+                CancelInvoke(nameof(CheckEnemyCount));
+
+                return true;
+            }
+
+            return false;
+        });
 
         _queTimeTask.Clear();
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
     }
 
     private IEnumerator OnStageDown(string stageName)
@@ -190,7 +222,7 @@ public class GameProcessMgr : MonoBehaviour
                 EnemyData enemyData = waveData.ListEnemy[j];
 
                 int tid = TimeMgr.Single.GetTid();
-                TimeTask timeTask = new TimeTask(tid, enemyData.Delay, () =>
+                TimeTask timeTask = new TimeTask(tid, 0, () =>
                 {
                     _enemyspawnMgr.Spawn(enemyData);
                     ++GameModel.Single.EnemyCount;
@@ -202,12 +234,8 @@ public class GameProcessMgr : MonoBehaviour
 
                         _tid = TimeMgr.Single.AddTimeTask(() =>
                         {
-                            TimeMgr.Single.AddTimeTask(_curTimeTask);
+                            _tid = TimeMgr.Single.AddTimeTask(_curTimeTask);
                         }, enemyData.Delay, TimeUnit.Second);       //间隔之后才产生下一只妖精
-                    }
-                    else
-                    {
-                        CancelInvoke(nameof(CheckEnemyCount));
                     }
                 });
 
@@ -220,38 +248,47 @@ public class GameProcessMgr : MonoBehaviour
 
         InvokeRepeating(nameof(CheckEnemyCount), 0.5f, 0.1f);
 
-        while (_queTimeTask.Count > 0 || GameModel.Single.EnemyCount > 0)
+        yield return new WaitUntil(() =>
         {
-            yield return new WaitForEndOfFrame();
-        }
+            if (_queTimeTask.Count == 0 && GameModel.Single.EnemyCount == 0)
+            {
+                CancelInvoke(nameof(CheckEnemyCount));
+
+                return true;
+            }
+
+            return false;
+        });
 
         _queTimeTask.Clear();
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
     }
 
     private IEnumerator OnStageBoss(string stageName)
     {
         BossData bossData = DataMgr.Single.GetBossData(stageName);
+
+        _dicBossTypeIndex.Clear();
         for(int i = 0; i < bossData.BossType.Count; ++i)
         {
             string bossType = bossData.BossType[i];
             Vector3 bornPos = bossData.BornPos[i];
             List<Vector3> appearPath = bossData.AppearPath[i];
+            Vector3 finalInitPos = bossData.FinalMovePath[i];
 
-            SingleBossInitData data = new SingleBossInitData(bossType, bornPos, appearPath);
-            GameObject bossGO = _bossSpawner.Spawn(data);
+            SingleBossInitData data = new SingleBossInitData(bossType, bornPos, appearPath, finalInitPos);
+            GameObject bossGO = _bossSpawnMgr.Spawn(data);
 
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_ADD_HPBAR, bossGO);
+            _dicBossTypeIndex.Add(bossType, i);
             _dicTypeBoss.Add(bossType, bossGO);
+            _dicBossView.Add(bossType, bossGO.GetComponent<BossView>());
             _dicTypeBossCtl.Add(bossType, bossGO.GetComponent<BossController>());
             _dicTypeBossBH.Add(bossType, bossGO.GetComponent<BossBehaviour>());
         }
-        OnStageChat(stageName);
 
-        yield return new WaitForSeconds(2f);       //预留一定的时间，防止对话没有开始，就开始战斗
-
-        yield return new WaitUntil(() => !GameStateModel.Single.IsChating);         //对话结束
+        yield return OnStageChat(stageName);
 
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_BGM_SETTING, stageName);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SHOW_BOSS_NAME_CARD, new BossNameCard(bossData.Name, bossData.Cards.Count));
@@ -268,27 +305,46 @@ public class GameProcessMgr : MonoBehaviour
         }
 
         yield return OnBossFinalCard(bossData, bossData.Cards[bossData.Cards.Count - 1]);
+
+        yield return new WaitForSeconds(2f);
     }
 
-    private void OnStageChat(string stageName)
+    private IEnumerator OnStageChat(string stageName)
     {
         UIManager.Single.Show(Paths.PREFAB_CHAT_VIEW, false);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SHOW_DIALOG, stageName);
+        //GameStateModel.Single.IsChating = true;
+
+        yield return new WaitForSeconds(2f);       //预留一定的时间，防止对话没有开始，就开始战斗
+
+        yield return new WaitUntil(() => !GameStateModel.Single.IsChating);         //对话结束
     }
 
     private IEnumerator OnBossNormalCard(BossData bossData, CardData cardData)
     {
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_TIMER, cardData.NormalTime);                           //非符
 
-        for (int j = 0; j < bossData.BossType.Count; ++j)
+        for (int i = 0; i < bossData.BossType.Count; ++i)
         {
-            string type = bossData.BossType[j];
+            string type = bossData.BossType[i];
 
-            _dicTypeBossCtl[type].Move(cardData.NormalInitPos);
+            _dicTypeBossCtl[type].Move(cardData.NormalInitPos[i]);
 
             BaseCardHPData baseCardHPData = new BaseCardHPData(cardData.NormalHP, cardData.CardHP, cardData.BarIndex,
                 _dicTypeBoss[type].transform);
-            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_HPBAR, baseCardHPData);
+
+            for(int j = 0; j < cardData.NormalBoss.Count; ++j)
+            {
+                string curType = cardData.NormalBoss[j];
+
+                if (curType.Equals(type))
+                {
+                    MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SHOW_HP_VIEW, _dicTypeBoss[type]);
+                    MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_HPBAR, baseCardHPData);
+
+                    _dicBossView[type].PlayMagicBGAnim();
+                }
+            }
 
             _dicTypeBossBH[type].SetBehaviour(cardData.NormalHP + cardData.CardHP,
                 cardData.NormalP, cardData.NormalPoint, cardData.NormalLife, cardData.NormalBomb);
@@ -296,20 +352,21 @@ public class GameProcessMgr : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        for (int j = 0; j < bossData.BossType.Count; ++j)
+        for (int i = 0; i < bossData.BossType.Count; ++i)
         {
-            string type = bossData.BossType[j];
+            string type = bossData.BossType[i];
 
             _dicTypeBossCtl[type].SetReceiver(true);
 
-            _dicTypeBossCtl[type].ResetCard(new SingleBossCardData(cardData.NormalPath[j], cardData.NormalDuration[j], cardData.NormalDelay[j], cardData.NormalEmitter[j]));
+            _dicTypeBossCtl[type].ResetCard(new SingleBossCardData(cardData.NormalPath[i], cardData.NormalMoveTime[i], cardData.NormalDuration[i], 
+                cardData.NormalDelay[i], cardData.NormalEmitter[i], cardData.NormalEmitterPos[i]));
         }
 
         yield return new WaitUntil(() =>
         {
-            for (int j = 0; j < bossData.BossType.Count; ++j)
+            for (int i = 0; i < bossData.BossType.Count; ++i)
             {
-                string type = bossData.BossType[j];
+                string type = bossData.BossType[i];
 
                 if (_dicTypeBossBH[type].HP <= cardData.CardHP)       //在规定时间内击破
                 {
@@ -320,9 +377,9 @@ public class GameProcessMgr : MonoBehaviour
             return _isTimeUP;                                       //是否超时
         });
 
-        for (int j = 0; j < cardData.CurBoss.Count; ++j)
+        for (int i = 0; i < cardData.NormalBoss.Count; ++i)
         {
-            string type = bossData.BossType[j];
+            string type = bossData.BossType[i];
 
             _dicTypeBossCtl[type].StopCard();
         }
@@ -330,11 +387,13 @@ public class GameProcessMgr : MonoBehaviour
         if (!_isTimeUP)                                             //如果是击破，会有掉落物
         {
             AudioMgr.Single.PlayGameEff(AudioType.Bonus);
-            for (int j = 0; j < bossData.BossType.Count; ++j)
+            for (int i = 0; i < bossData.BossType.Count; ++i)
             {
-                string type = bossData.BossType[j];
+                string type = bossData.BossType[i];
 
                 _dicTypeBossBH[type].SpawnItems();
+                _dicBossView[type].StopMagicBGAnim();
+                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_HIDE_HP_VIEW, _dicTypeBoss[type]);
             }
         }
 
@@ -343,44 +402,50 @@ public class GameProcessMgr : MonoBehaviour
 
     private IEnumerator OnBossCard(BossData bossData, CardData cardData)
     {
-        for (int j = 0; j < cardData.CurBoss.Count; ++j)
+        for (int i = 0; i < cardData.CardBoss.Count; ++i)
         {
-            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_CARD_PIC, cardData.CurBoss[j]);
+            string type = cardData.CardBoss[i];
+
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SHOW_HP_VIEW, _dicTypeBoss[type]);
+            _dicBossView[type].PlayMagicBGAnim();
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_CARD_PIC, type);
         }
+        AudioMgr.Single.PlayGameEff(AudioType.Card);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_MOVE_TIMER, -20);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_TIMER, cardData.CardTime);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAY_CARD_INFO_ANIM, cardData.CardName);
-        AudioMgr.Single.PlayGameEff(AudioType.Card);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAY_CARD_PIC_ANIM);
 
-        for (int j = 0; j < bossData.BossType.Count; ++j)
+        for (int i = 0; i < bossData.BossType.Count; ++i)
         {
-            string type = bossData.BossType[j];
-            
-            _dicTypeBossCtl[type].Move(cardData.CardInitPos);
+            string type = bossData.BossType[i];
+
+            _dicTypeBossCtl[type].Move(cardData.CardInitPos[i]);
             _dicTypeBossCtl[type].SetReceiver(false);
         }
 
         yield return new WaitForSeconds(2f);
+        GameModel.Single.CardBonus = cardData.CardBonus;
         GameStateModel.Single.IsCard = true;
         _cardTimeSpan = 0;
-        GameModel.Single.CardBonus = cardData.CardBonus;
 
-        for (int j = 0; j < cardData.CurBoss.Count; ++j)
+        for (int i = 0; i < cardData.CardBoss.Count; ++i)
         {
-            string type = cardData.CurBoss[j];
+            string type = cardData.CardBoss[i];
 
+            int index = _dicBossTypeIndex[type];
             _dicTypeBossBH[type].SetBehaviour(cardData.CardHP, cardData.CardP, cardData.CardPoint, cardData.CardLife, cardData.CardBomb);
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_HPBAR_VIEW, new HPData(_dicTypeBoss[type], cardData.CardHP));
-            _dicTypeBossCtl[type].ResetCard(new SingleBossCardData(cardData.CardPath[j], cardData.CardDuration[j], cardData.CardDelay[j], cardData.CardEmitter[j]));
+            _dicTypeBossCtl[type].ResetCard(new SingleBossCardData(cardData.CardPath[index], cardData.CardMoveTime[index], cardData.CardDuration[index],
+                cardData.CardDelay[index], cardData.CardEmitter[index], cardData.CardEmitterPos[index]));
             _dicTypeBossCtl[type].SetReceiver(true);
         }
 
         yield return new WaitUntil(() =>
         {
-            for (int j = 0; j < cardData.CurBoss.Count; ++j)
+            for (int i = 0; i < cardData.CardBoss.Count; ++i)
             {
-                string type = bossData.BossType[j];
+                string type = cardData.CardBoss[i];
 
                 if (_dicTypeBossBH[type].HP <= 0)
                 {
@@ -394,9 +459,9 @@ public class GameProcessMgr : MonoBehaviour
         GameStateModel.Single.IsCard = false;
         GetCardInfo getCardInfo = null;
 
-        for (int j = 0; j < cardData.CurBoss.Count; ++j)
+        for (int i = 0; i < cardData.CardBoss.Count; ++i)
         {
-            string type = bossData.BossType[j];
+            string type = cardData.CardBoss[i];
 
             _dicTypeBossCtl[type].StopCard();
         }
@@ -412,9 +477,9 @@ public class GameProcessMgr : MonoBehaviour
             PlayerModel.Single.MAX_GET_POINT += cardData.MaxPoint;
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_POINT);
 
-            for (int j = 0; j < cardData.CurBoss.Count; ++j)
+            for (int i = 0; i < cardData.CardBoss.Count; ++i)
             {
-                string type = bossData.BossType[j];
+                string type = cardData.CardBoss[i];
 
                 _dicTypeBossBH[type].SpawnItems();
             }
@@ -431,20 +496,26 @@ public class GameProcessMgr : MonoBehaviour
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAY_GET_CARD_INFO_ANIM, getCardInfo);
         _isTimeUP = false;
 
-        for (int j = 0; j < bossData.BossType.Count; ++j)
+        for (int i = 0; i < bossData.BossType.Count; ++i)
         {
-            string type = bossData.BossType[j];
+            string type = bossData.BossType[i];
 
             _dicTypeBossCtl[type].SetReceiver(false);
+            _dicBossView[type].StopMagicBGAnim();
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_HIDE_HP_VIEW, _dicTypeBoss[type]);
         }
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_MOVE_CARD_INFO_RIGHT);
     }
 
     private IEnumerator OnBossFinalCard(BossData bossData, CardData cardData)
     {
-        for (int j = 0; j < cardData.CurBoss.Count; ++j)
+        for (int i = 0; i < cardData.CardBoss.Count; ++i)
         {
-            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_CARD_PIC, cardData.CurBoss[j]);
+            string type = cardData.CardBoss[i];
+
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_CARD_PIC, type);
+            _dicBossView[type].PlayMagicBGAnim();
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SHOW_HP_VIEW, _dicTypeBoss[type]);
         }
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_MOVE_TIMER, -20);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_TIMER, cardData.CardTime);
@@ -452,18 +523,19 @@ public class GameProcessMgr : MonoBehaviour
         AudioMgr.Single.PlayGameEff(AudioType.Card);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAY_CARD_PIC_ANIM);
 
-        for (int j = 0; j < bossData.BossType.Count; ++j)
+        for (int i = 0; i < bossData.BossType.Count; ++i)
         {
-            string type = bossData.BossType[j];
+            string type = bossData.BossType[i];
 
-            _dicTypeBossCtl[type].Move(cardData.CardInitPos);
+            _dicTypeBossCtl[type].Move(cardData.CardInitPos[i]);
         }
 
-        for (int j = 0; j < cardData.CurBoss.Count; ++j)
-        {
-            string type = cardData.CurBoss[j];
+        GameStateModel.Single.IsFinalCard = true;
 
-            _dicTypeBossBH[type].IsFinalCard = true;
+        for (int i = 0; i < cardData.CardBoss.Count; ++i)
+        {
+            string type = cardData.CardBoss[i];
+
             _dicTypeBossBH[type].SetBehaviour(cardData.CardHP);         //符卡
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_SET_HPBAR, new BaseCardHPData(cardData.NormalHP, cardData.CardHP, cardData.BarIndex, _dicTypeBoss[type].transform));
         }
@@ -473,19 +545,21 @@ public class GameProcessMgr : MonoBehaviour
         _cardTimeSpan = 0;
         GameModel.Single.CardBonus = cardData.CardBonus;
 
-        for (int j = 0; j < cardData.CurBoss.Count; ++j)
+        for (int i = 0; i < cardData.CardBoss.Count; ++i)
         {
-            string type = cardData.CurBoss[j];
+            string type = cardData.CardBoss[i];
 
-            _dicTypeBossCtl[type].ResetCard(new SingleBossCardData(cardData.CardPath[j], cardData.CardDuration[j], cardData.CardDelay[j], cardData.CardEmitter[j]));
+            int index = _dicBossTypeIndex[type];
+            _dicTypeBossCtl[type].ResetCard(new SingleBossCardData(cardData.CardPath[index], cardData.CardMoveTime[index], cardData.CardDuration[index], 
+                cardData.CardDelay[index], cardData.CardEmitter[index], cardData.CardEmitterPos[index]));
             _dicTypeBossCtl[type].SetReceiver(true);
         }
 
         yield return new WaitUntil(() =>
         {
-            for (int j = 0; j < cardData.CurBoss.Count; ++j)
+            for (int i = 0; i < cardData.CardBoss.Count; ++i)
             {
-                string type = bossData.BossType[j];
+                string type = cardData.CardBoss[i];
 
                 if (_dicTypeBossBH[type].HP <= 0)
                 {
@@ -511,9 +585,9 @@ public class GameProcessMgr : MonoBehaviour
             PlayerModel.Single.MAX_GET_POINT += cardData.MaxPoint;
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_POINT);
 
-            for (int j = 0; j < cardData.CurBoss.Count; ++j)
+            for (int i = 0; i < cardData.CardBoss.Count; ++i)
             {
-                string type = bossData.BossType[j];
+                string type = cardData.CardBoss[i];
 
                 _dicTypeBossBH[type].SpawnItems();
             }
@@ -532,14 +606,17 @@ public class GameProcessMgr : MonoBehaviour
 
         Camera.main.DOShakePosition(2, 1);
         AudioMgr.Single.PlayGameEff(AudioType.GetFinalCard);
-        for (int j = 0; j < bossData.BossType.Count; ++j)
-        {
-            string type = bossData.BossType[j];
+        GameStateModel.Single.IsFinalCard = false;
 
-            _dicTypeBossBH[type].IsFinalCard = false;
+        for (int i = 0; i < bossData.BossType.Count; ++i)
+        {
+            string type = bossData.BossType[i];
+
+            //_dicTypeBossBH[type].IsFinalCard = false;
             _dicTypeBossCtl[type].SetReceiver(false);
             _dicTypeBossCtl[type].StopCard();
             _dicTypeBossBH[type].Dead();
+            _dicBossView[type].StopMagicBGAnim();
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_HIDE_HP_VIEW, _dicTypeBoss[type]);
         }
 
@@ -548,18 +625,46 @@ public class GameProcessMgr : MonoBehaviour
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_HIDE_BOSS_NAME_CARD);
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_COMPLETE_TIMER);
         AudioMgr.Single.StopBGM();
+
+        yield return new WaitForSeconds(2f);
+    }
+
+    private IEnumerator OnStageElite(string stageName, bool isUp)
+    {
+        List<ElitleData> elitles = DataMgr.Single.GetElitleData(stageName);
+
+        if (isUp)
+        {
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_STAGE_ANIM);
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_BGM_SETTING, stageName);
+
+            yield return new WaitForSeconds(4f);
+        }
+
+        for(int i = 0; i < elitles.Count; ++i)
+        {
+            ElitleData elitle = elitles[i];
+
+            _eliteSpawnMgr.Spawn(elitle);
+
+            yield return new WaitUntil(() => GameModel.Single.EnemyCount == 0);
+        }
+
+        yield return new WaitForSeconds(2);
     }
 
     private IEnumerator PrepareNextStage()
     {
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAY_STAGE_CLEAR_ANIM);
+
         yield return new WaitForSeconds(4.5f);
 
-        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PLAY_STAGE_CLEAR_ANIM);
         GameModel.Single.Score += Const.CLEAR_BOUNS;
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE);
 
         ++GameModel.Single.StageNum;
         _bgAnim.SetInteger("Stage", GameModel.Single.StageNum);
+        InputMgr.Single.UpdateFun();
     }
 
     private void OnChatCallBack(object[] args)
@@ -568,7 +673,7 @@ public class GameProcessMgr : MonoBehaviour
 
         if (callBack.ID != -1)
         {
-            _dicIDAction[callBack.ID](callBack.CallBack);
+            _dicIDAction[callBack.ID](callBack.CallBack, callBack.StrArg);
         }
     }
 
@@ -589,8 +694,7 @@ public class GameProcessMgr : MonoBehaviour
         if(GameModel.Single.EnemyCount <= 0)
         {
             _curTimeTask = _queTimeTask.Peek();
-            //TimeMgr.Single.AddTimeTask(_curTimeTask);
-            TimeMgr.Single.RemoveTimeTask(_tid);            //这里必须要去掉上次的tid，可以用多线程冲突来理解
+            TimeMgr.Single.RemoveTimeTask(_tid);            //这里必须要去掉上次的tid
             _curTimeTask.CallBack();
         }
     }

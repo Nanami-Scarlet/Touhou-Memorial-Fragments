@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ChatController : ControllerBase
 {
@@ -22,6 +23,7 @@ public class ChatController : ControllerBase
 
         MessageMgr.Single.AddListener(KeyCode.Z, PressZ);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_SHOW_DIALOG, ShowDialog);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_SET_ENDING_PIC, SetEndingPic);
     }
 
     public override void Hide()
@@ -32,6 +34,7 @@ public class ChatController : ControllerBase
 
         MessageMgr.Single.RemoveListener(KeyCode.Z, PressZ);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_SHOW_DIALOG, ShowDialog);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_SET_ENDING_PIC, SetEndingPic);
 
         _view.CurIndex = 0;
     }
@@ -42,6 +45,9 @@ public class ChatController : ControllerBase
         DataMgr.Single.GetDialogData(out _listDialogs, stageName);
 
         _view.CurIndex = 0;
+        _view.IsComplete = false;
+        _view._tween.Kill();
+        _view._txtdialog.text = "";
         _view.SetDialogData(_listDialogs);
         if (_listDialogs[_view.CurIndex].IsCallBack)
         {
@@ -52,12 +58,15 @@ public class ChatController : ControllerBase
         }
         else
         {
+            MessageMgr.Single.RemoveListener(KeyCode.Z, PressZ);
+            DialogData data = _listDialogs[_view.CurIndex];
             MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CHAT_CALLBACK,
-                new ChatCallBack(_listDialogs[_view.CurIndex].CallBack, () =>
+                new ChatCallBack(data.CallBack, data.StrArg, () =>
                 {
                     _view.ShowDialog();
                     gameObject.SetActive(true);             //显示对话框
-                    _listDialogs[_view.CurIndex].IsCallBack = true;
+                    data.IsCallBack = true;
+                    MessageMgr.Single.AddListener(KeyCode.Z, PressZ);
 
                     GameStateModel.Single.IsChating = true;
                 }));
@@ -66,42 +75,62 @@ public class ChatController : ControllerBase
 
     private void PressZ(object[] args)
     {
-        if (!_view.IsComplete)
+        if (_view.IsComplete)
         {
-            AudioMgr.Single.PlayUIEff(Paths.AUDIO_SHOOT_EFF);
+            UIManager.Single.Hide(Paths.PREFAB_CHAT_VIEW);
+            GameStateModel.Single.IsChating = false;
+
+            _view.IsComplete = false;
+
+            return;
+        }
+
+        AudioMgr.Single.PlayUIEff(Paths.AUDIO_SHOOT_EFF);
+
+        if (_view._tween.IsPlaying())
+        {
+            _view._tween.Complete();
+        }
+        else
+        {
             if (_listDialogs[_view.CurIndex].IsCallBack)
             {
                 _view.PressZ();
             }
             else
             {
+                MessageMgr.Single.RemoveListener(KeyCode.Z, PressZ);
+                DialogData data = _listDialogs[_view.CurIndex];
                 MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CHAT_CALLBACK,
-                    new ChatCallBack(_listDialogs[_view.CurIndex].CallBack, () =>
+                    new ChatCallBack(data.CallBack, data.StrArg, () =>
                     {
                         _view.PressZ();
+                        MessageMgr.Single.AddListener(KeyCode.Z, PressZ);
 
-                        _listDialogs[_view.CurIndex].IsCallBack = true;
+                        data.IsCallBack = true;
                     }));
             }
         }
-        else
-        {
-            UIManager.Single.Hide(Paths.PREFAB_CHAT_VIEW);
-            GameStateModel.Single.IsChating = false;
+    }
 
-            _view.IsComplete = false;
-        }
+    private void SetEndingPic(object[] args)
+    {
+        string name = (string)args[0];
+
+        _view.SetEndingPic(name);
     }
 }
 
 public class ChatCallBack
 {
     public int ID { get; set; }
+    public string StrArg { get; set; }
     public Action CallBack { get; set; }
 
-    public ChatCallBack(int id, Action cb)
+    public ChatCallBack(int id, string strArg, Action cb)
     {
         ID = id;
+        StrArg = strArg;
         CallBack = cb;
     }
 }

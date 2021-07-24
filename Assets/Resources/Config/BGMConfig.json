@@ -12,7 +12,7 @@
   },
 
   {
-    "stageName": "stage2_1",
+    "stageName": "stage2_2",
     "trueName": "Good Old Memories",
     "volume": 1
   },
@@ -26,6 +26,18 @@
   {
     "stageName": "stage_B2",
     "trueName": "想い巡らし 月仰ぎ",
+    "volume": 1
+  },
+
+  {
+    "stageName": "stage_B4",
+    "trueName": "深緑散歩 & 雅舞",
+    "volume": 1
+  },
+
+  {
+    "stageName": "Ending",
+    "trueName": "氷花妖精伝",
     "volume": 1
   }
 ]

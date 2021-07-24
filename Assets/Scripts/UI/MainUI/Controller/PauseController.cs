@@ -32,12 +32,7 @@ public class PauseController : ControllerBase
                 SceneMgr.Single.AsyncLoadScene(SceneName.Main);
             } },
 
-            //todo:所有组件都重新加载一遍(Show、 Controller)
             { 2, ()=> Debug.LogWarning("功能开发中") },
-            //{  2, () => 
-            //{
-            //    MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_RESTART_GAME);
-            //} }
         };
     }
 
@@ -66,7 +61,6 @@ public class PauseController : ControllerBase
 
             UIManager.Single.Hide(Paths.PREFAB_GAME_VIEW);
             UIManager.Single.Hide(Paths.PREFAB_DYNAMIC_VIEW);
-            //UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
 
             DOTween.CompleteAll();
 
@@ -119,7 +113,6 @@ public class PauseController : ControllerBase
     {
         Time.timeScale = 1;
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_SURE_EFF);
-        //UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
 
         int index = GameStateModel.Single.PauseOption;
         GameStateModel.Single.IsPause = false;

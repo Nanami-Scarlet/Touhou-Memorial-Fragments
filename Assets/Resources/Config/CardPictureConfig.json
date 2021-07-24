@@ -11,7 +11,21 @@
       "bossType": "B2",
       "picName": "3_2",
       "size": "370,540",
+      "index": 1
+    },
+
+    {
+      "bossType": "B4",
+      "picName": "5_2",
+      "size": "435,540",
       "index": 0
+    },
+
+    {
+      "bossType": "B5",
+      "picName": "6_2",
+      "size": "370,540",
+      "index": 1
     }
   ]
 }

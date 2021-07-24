@@ -16,6 +16,24 @@
       "character": 3,
       "size": "440,692",
       "index": 1
+    },
+
+    {
+      "character": 5,
+      "size": "395,605",
+      "index": 1
+    },
+
+    {
+      "character": 6,
+      "size": "380,630",
+      "index": 2
+    },
+
+    {
+      "character": 7,
+      "size": "500,680",
+      "index": 1
     }
   ]
 }

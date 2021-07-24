@@ -12,6 +12,8 @@ public class StartController : ControllerBase
     {
         { 0, () => 
         {
+            RemoveListener();
+
             UIManager.Single.Hide(Paths.PREFAB_START_VIEW);
             UIManager.Single.Show(Paths.PREFAB_DEGREE_VIEW);
         } },
@@ -22,6 +24,8 @@ public class StartController : ControllerBase
 
         { 4, () => 
         {
+            RemoveListener();
+
             UIManager.Single.Hide(Paths.PREFAB_START_VIEW);
             UIManager.Single.Show(Paths.PREFAB_MANUAL_VIEW);
         } },
@@ -68,6 +72,11 @@ public class StartController : ControllerBase
         if (GameStateModel.Single.SelectedOption < _view.MAX_INDEX - 1)
         {
             ++GameStateModel.Single.SelectedOption;
+
+            if(GameStateModel.Single.SelectedOption == 1)
+            {
+                GameStateModel.Single.SelectedOption = 4;
+            }
             _view.UpdateFun();
         }
     }
@@ -79,6 +88,11 @@ public class StartController : ControllerBase
         if (GameStateModel.Single.SelectedOption > 0)
         {
             --GameStateModel.Single.SelectedOption;
+            if (GameStateModel.Single.SelectedOption == 3)
+            {
+                GameStateModel.Single.SelectedOption = 0;
+            }
+
             _view.UpdateFun();
         }
     }
@@ -93,16 +107,19 @@ public class StartController : ControllerBase
 
     private void OnSelect(object[] args)
     {
-        InputMgr.Single.RemoveListener(KeyCode.UpArrow);
-        InputMgr.Single.RemoveListener(KeyCode.DownArrow);
-        InputMgr.Single.RemoveListener(KeyCode.X);
-        InputMgr.Single.RemoveListener(KeyCode.Z);
-
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_SURE_EFF);
 
         int index = GameStateModel.Single.SelectedOption;
 
         _view._options[index].DOFade(0, 0.07f).SetLoops(6, LoopType.Yoyo)
             .OnComplete(() => _dicIndexAction[index]());
+    }
+
+    private static void RemoveListener()
+    {
+        InputMgr.Single.RemoveListener(KeyCode.UpArrow);
+        InputMgr.Single.RemoveListener(KeyCode.DownArrow);
+        InputMgr.Single.RemoveListener(KeyCode.X);
+        InputMgr.Single.RemoveListener(KeyCode.Z);
     }
 }

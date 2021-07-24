@@ -38,12 +38,11 @@ public enum InputState
     NONE            //默认为UI按键
 }
 
-public enum Stage
+public enum NormalStage
 {
     stage1_1,
     stage1_2,
     //stage2_1,
-    //stage2_2,
     COUNT
 }
 
@@ -52,7 +51,19 @@ public enum BossStage
     stage_B1,
     stage_B2,
     //stage_B3,
-    //stage_B4,
+    stage_B4,
+    COUNT
+}
+
+public enum EliteStage
+{
+    stage2_2,
+    COUNT
+}
+
+public enum ChatStage
+{
+    Ending,
     COUNT
 }
 
@@ -82,6 +93,7 @@ public enum AudioType
 public enum Mode
 {
     NORMAL,
+    LUNATIC,
     PRACTICE,
     SPELL
 }

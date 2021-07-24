@@ -43,4 +43,5 @@ public class GameStateModel : NormalSingleton<GameStateModel>
     public SceneName TargetScene { get; set; }
     public Mode GameMode { get; set; }
     public bool IsCard { get; set; }            //当前是否是符卡状态
+    public bool IsFinalCard { get; set; }
 }

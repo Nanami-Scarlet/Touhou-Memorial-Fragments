@@ -9,6 +9,7 @@ public class ChatView : ViewBase
     public Transform _layerFG;
     public Transform _layerBG;
     public Image[] _imgPic;         //一般地 0--灵梦 2,3均为右边的角色
+    public Image _imgBg;
 
     public Text _txtdialog;
     public Text _txtChaterName;
@@ -21,7 +22,7 @@ public class ChatView : ViewBase
     private List<DialogData> _listDialogs;
     public int CurIndex { get; set; }
     public bool IsComplete { get; set; }
-    private Tween _tween;
+    public Tween _tween;
     private int _tid;
 
     public float _dialogSpeed = 0.2f;
@@ -33,12 +34,19 @@ public class ChatView : ViewBase
         _dicNameSprite = DataMgr.Single.GetNameSpriteData();
     }
 
+    public override void Hide()
+    {
+        base.Hide();
+
+        IsComplete = false;
+        _tween.Kill();
+
+        _imgBg.enabled = false;
+    }
+
     public void ShowDialog()
     {
-        for(int i = 0; i < _imgPic.Length; ++i)
-        {
-            _imgPic[i].enabled = false;
-        }
+        HideAllPic();
 
         SetDialog();
     }
@@ -48,22 +56,29 @@ public class ChatView : ViewBase
         DialogData dialogData = _listDialogs[CurIndex];
 
         string picName = dialogData.PicName;
-        int picType = int.Parse(picName.Split('_')[0]);
-        ChatPicData picData = GetPicData(picType);
-        int index = picData.Index;
-
-        _imgPic[index].enabled = true;
-        for(int i = 0; i < _imgPic.Length; ++i)
+        if (!picName.Equals(""))                //是否为旁白，如果是就清空对话栏图片
         {
-            _imgPic[i].color = i == index ? _clrChating : _clrUnChating;
-            _imgPic[i].rectTransform.SetParent(i == index ? _layerFG : _layerBG);
+            int picType = int.Parse(picName.Split('_')[0]);
+            ChatPicData picData = GetPicData(picType);
+            int index = picData.Index;
+
+            _imgPic[index].enabled = true;
+            for (int i = 0; i < _imgPic.Length; ++i)
+            {
+                _imgPic[i].color = i == index ? _clrChating : _clrUnChating;
+                _imgPic[i].rectTransform.SetParent(i == index ? _layerFG : _layerBG);
+            }
+            _imgPic[index].rectTransform.sizeDelta = picData.PicSize;
+            _imgPic[index].sprite = _dicNameSprite[picName];
         }
-        _imgPic[index].rectTransform.sizeDelta = picData.PicSize;
-        _imgPic[index].sprite = _dicNameSprite[picName];
+        else
+        {
+            HideAllPic();
+        }
         _txtChaterName.text = dialogData.ChaterName;
-        _txtdialog.text = "";
 
         TimeMgr.Single.RemoveTimeTask(_tid);
+        _txtdialog.text = "";
         _tween = _txtdialog.DOText(dialogData.DialogTxt, dialogData.Count * _dialogSpeed).SetEase(Ease.Linear).SetAutoKill(false).OnComplete(() =>
         {
             _tid = TimeMgr.Single.AddTimeTask(() =>
@@ -86,14 +101,7 @@ public class ChatView : ViewBase
 
     public void PressZ()
     {
-        if(_tween.IsPlaying())
-        {
-            _tween.Complete();
-        }
-        else
-        {
-            ShowNextDialog();
-        }
+        ShowNextDialog();
     }
 
     public void SetDialogData(List<DialogData> listDialogs)
@@ -112,6 +120,26 @@ public class ChatView : ViewBase
         else
         {
             IsComplete = true;
+        }
+    }
+
+    public void SetEndingPic(string spriteName)
+    {
+        if (!_dicNameSprite.ContainsKey(spriteName))
+        {
+            Debug.LogError("不存在该图片，图片名为：" + spriteName);
+            return;
+        }
+
+        _imgBg.enabled = true;
+        _imgBg.sprite = _dicNameSprite[spriteName];
+    }
+
+    private void HideAllPic()
+    {
+        for (int i = 0; i < _imgPic.Length; ++i)
+        {
+            _imgPic[i].enabled = false;
         }
     }
 }

@@ -12,9 +12,21 @@ public class StartView : ViewBase
     
     public int MAX_INDEX { get; private set; }
 
+    private Dictionary<Text, Color> _dicTextColor;
+
     public override void InitAndChild()
     {
         MAX_INDEX = _options.Length;
+
+        _dicTextColor = new Dictionary<Text, Color>()
+        {
+            { _options[0], Color.black },
+            { _options[1], new Color(0.3f, 0.3f, 0.2f) },
+            { _options[2], new Color(0.3f, 0.3f, 0.2f) },
+            { _options[3], new Color(0.3f, 0.3f, 0.2f) },
+            { _options[4], Color.black },
+            { _options[5], Color.black },
+        };
     }
 
     public override void Show()
@@ -48,13 +60,13 @@ public class StartView : ViewBase
 
     private void Selected(Text text)
     {
-        text.color = Const.ColorSelect;
+        text.color = Color.white;
         text.transform.DOShakePosition(1, 1);
     }
 
     private void UnSelected(Text text)
     {
-        text.color = Const.ColorUnSelect;
+        text.color = _dicTextColor[text];
     }
 
     private void ResetAnim()

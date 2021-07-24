@@ -35,6 +35,7 @@ public class DynamicController : ControllerBase
         MessageMgr.Single.AddListener(MsgEvent.EVENT_SET_CARD_PIC, SetCardPic);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_PLAY_CARD_PIC_ANIM, PlayCardPicAnim);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_MOVE_CARD_INFO_RIGHT, MoveCardInfoRight);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_SHOW_HP_VIEW, ShowHPView);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_HIDE_HP_VIEW, HideHPView);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_HIDE_BOSS_NAME_CARD, HideBossNameCard);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_COMPLETE_TIMER, CompleteTimer);
@@ -87,6 +88,7 @@ public class DynamicController : ControllerBase
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_SET_CARD_PIC, SetCardPic);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_PLAY_CARD_PIC_ANIM, PlayCardPicAnim);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_MOVE_CARD_INFO_RIGHT, MoveCardInfoRight);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_SHOW_HP_VIEW, ShowHPView);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_HIDE_HP_VIEW, HideHPView);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_HIDE_BOSS_NAME_CARD, HideBossNameCard);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_COMPLETE_TIMER, CompleteTimer);
@@ -99,7 +101,11 @@ public class DynamicController : ControllerBase
     {
         string stage = (string)args[0];
 
-        _view.BGMSetting(stage);
+        AudioData data = DataMgr.Single.GetBGMData(stage);
+        AudioMgr.Single.PlayBGM(stage + "_BGM", data.Volume, true);
+        
+
+        _view.BGMSetting(data);
     }
 
     private void AddHPBar(object[] args)
@@ -127,6 +133,13 @@ public class DynamicController : ControllerBase
         HPData hpData = (HPData)args[0];
 
         _view.SetHPView(hpData);
+    }
+
+    private void ShowHPView(object[] args)
+    {
+        GameObject go = (GameObject)args[0];
+
+        _view.ShowHPView(go);
     }
 
     private void HideHPView(object[] args)

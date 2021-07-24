@@ -11,7 +11,8 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
     private Dictionary<string, int> _dicViewData = new Dictionary<string, int>();
     private Dictionary<string, StageData> _dicStageData = new Dictionary<string, StageData>();
     private Dictionary<string, BossData> _dicBossData = new Dictionary<string, BossData>();
-    private Dictionary<string, Dictionary<string, EmitterProfile>> _dicStageBullet = new Dictionary<string, Dictionary<string, EmitterProfile>>();
+    private Dictionary<string, List<ElitleData>> _dicEliteData = new Dictionary<string, List<ElitleData>>();
+    private Dictionary<string, Dictionary<string, EmitterProfile>> _dicStageEmitter = new Dictionary<string, Dictionary<string, EmitterProfile>>();
     private Dictionary<AudioType, AudioData> _dicTypeAudio = new Dictionary<AudioType, AudioData>();
     private Dictionary<string, AudioData> _dicBGMName = new Dictionary<string, AudioData>();
     private Dictionary<string, List<DialogData>> _dicDialogData = new Dictionary<string, List<DialogData>>();
@@ -32,6 +33,7 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
 
         InitEnemyData();
         InitBossData();
+        InitEliteData();
     }
 
     #region ViewData
@@ -66,7 +68,7 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
 
         JsonData json = JsonMapper.ToObject(config.text);
 
-        for(Stage i = Stage.stage1_1; i < Stage.COUNT; ++i)
+        for(NormalStage i = NormalStage.stage1_1; i < NormalStage.COUNT; ++i)
         {
             JsonData stage = json[i.ToString()];
             StageData stageData = new StageData()
@@ -127,6 +129,30 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
     #endregion
 
     #region ChatData
+
+    private void ReadChatData(JsonData json, string stage)
+    {
+        JsonData stageChat = json[stage];
+        List<DialogData> dialogs = new List<DialogData>();
+
+        for (int j = 0; j < stageChat.Count; ++j)
+        {
+            JsonData chat = stageChat[j];
+
+            string chaterName = chat["chaterName"].ToString();
+            string DialogTxt = chat["DialogTxt"].ToString();
+            string picName = GetValue<string>(chat["picName"]).Trim('"');
+            int count = GetValue<int>(chat["count"]);
+            int callBack = GetValue<int>(chat["callback"]);
+            string strArg = GetValue<string>(chat["strArg"]).Trim('"');
+
+            DialogData dialogData = new DialogData(chaterName, DialogTxt, picName, count, callBack, strArg);
+            dialogs.Add(dialogData);
+        }
+
+        _dicDialogData.Add(stage, dialogs);
+    }
+
     private void InitChatData()
     {
         TextAsset config = LoadMgr.Single.LoadConfig(Paths.CONFIG_CHAT);
@@ -134,24 +160,12 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
         JsonData json = JsonMapper.ToObject(config.text);
         for(BossStage i = BossStage.stage_B1; i < BossStage.COUNT; ++i)
         {
-            JsonData stageChat = json[i.ToString()];
-            List<DialogData> dialogs = new List<DialogData>();
+            ReadChatData(json, i.ToString());
+        }
 
-            for(int j = 0; j < stageChat.Count; ++j)
-            {
-                JsonData chat = stageChat[j];
-
-                string chaterName = chat["chaterName"].ToString();
-                string DialogTxt = chat["DialogTxt"].ToString();
-                string picName = GetValue<string>(chat["picName"]).Trim('"');
-                int count = GetValue<int>(chat["count"]);
-                int callBack = GetValue<int>(chat["callback"]);
-
-                DialogData dialogData = new DialogData(chaterName, DialogTxt, picName, count, callBack);
-                dialogs.Add(dialogData);
-            }
-
-            _dicDialogData.Add(i.ToString(), dialogs);
+        for(ChatStage i = ChatStage.Ending; i < ChatStage.COUNT; ++i)
+        {
+            ReadChatData(json, i.ToString());
         }
     }
 
@@ -212,27 +226,54 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
                 appearPath.Add(temp);
             }
 
+            List<Vector3> finalInitPos = new List<Vector3>(2);
+            JsonData finalInitPosJson = boss["finalInitPos"];
+            for(int j = 0; j < finalInitPosJson.Count; ++j)
+            {
+                JsonData tempJson = finalInitPosJson[j];
+
+                Vector3 pos = GetVector3(GetValue<string>(tempJson["pos"]).Trim('"'));
+                finalInitPos.Add(pos);
+            }
+
             List<CardData> cards = new List<CardData>();
             JsonData cardJson = boss["cards"];
             for(int j = 0; j < cardJson.Count; ++j)
             {
                 JsonData card = cardJson[j];
 
-                List<string> curBoss = GetMulString(GetValue<string>(card["curBoss"]).Trim('"'));
+                List<string> normalBoss = GetMulString(GetValue<string>(card["normalBoss"]).Trim('"'));
                 int normalHP = GetValue<int>(card["normalHP"]);
                 int cardHP = GetValue<int>(card["cardHP"]);
                 int barIndex = GetValue<int>(card["barIndex"]);
                 string cardName = card["cardName"].ToString();
                 float normalTime = GetValue<float>(card["normalTime"]);
-                float cardTime = GetValue<float>(card["cardTime"]);
-                Vector3 cardInitPos = GetVector3(GetValue<string>(card["cardInitPos"]).Trim('"'));
-
-                Vector3 normalInitPos = GetVector3(GetValue<string>(card["normalInitPos"]).Trim('"'));
                 int normalP = GetValue<int>(card["normalP"]);
                 int normalPoint = GetValue<int>(card["normalPoint"]);
                 int normalLife = GetValue<int>(card["normalLife"]);
                 int normalBomb = GetValue<int>(card["normalBomb"]);
 
+                List<Vector3> normalInitPos = new List<Vector3>(2);
+                JsonData normalInitPosJson = card["normalInitPos"];
+                for (int k = 0; k < normalInitPosJson.Count; ++k)
+                {
+                    JsonData tempJson = normalInitPosJson[k];
+
+                    Vector3 pos = GetVector3(GetValue<string>(tempJson["pos"]).Trim('"'));
+                    normalInitPos.Add(pos);
+                }
+
+                List<string> cardBoss = GetMulString(GetValue<string>(card["normalBoss"]).Trim('"'));
+                List<Vector3> cardInitPos = new List<Vector3>(2);
+                JsonData cardInitPosJson = card["cardInitPos"];
+                for (int k = 0; k < cardInitPosJson.Count; ++k)
+                {
+                    JsonData tempJson = cardInitPosJson[k];
+
+                    Vector3 pos = GetVector3(GetValue<string>(tempJson["pos"]).Trim('"'));
+                    cardInitPos.Add(pos);
+                }
+                float cardTime = GetValue<float>(card["cardTime"]);
                 int cardP = GetValue<int>(card["cardP"]);
                 int cardPoint = GetValue<int>(card["cardPoint"]);
                 int cardLife = GetValue<int>(card["cardLife"]);
@@ -248,6 +289,16 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
 
                     List<List<Vector3>> tempPath = GetMulPath(GetValue<string>(tempJson["path"]).Trim('"'));
                     normalPath.Add(tempPath);
+                }
+
+                List<float> normalMoveTime = new List<float>(2);
+                JsonData normalMoveTimeJson = card["normalMoveTime"];
+                for(int k = 0; k < normalMoveTimeJson.Count; ++k)
+                {
+                    JsonData tempJson = normalMoveTimeJson[k];
+
+                    float t = GetValue<float>(tempJson["time"]);
+                    normalMoveTime.Add(t);
                 }
 
                 List<List<float>> normalDuration = new List<List<float>>(2);
@@ -287,6 +338,17 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
                     normalEmitter.Add(emitters);
                 }
 
+                List<List<Vector3>> normalEmitterPos = new List<List<Vector3>>(2);
+                JsonData normalEmitterPosJson = card["normalEmitterPos"];
+                for(int k = 0; k < normalEmitterPosJson.Count; ++k)
+                {
+                    JsonData tempJson = normalEmitterPosJson[k];
+                    string strPos = GetValue<string>(tempJson["pos"]).Trim('"');
+                    List<Vector3> poss = GetPath(strPos, '|');
+
+                    normalEmitterPos.Add(poss);
+                }
+
                 List<List<List<Vector3>>> cardPath = new List<List<List<Vector3>>>(2);
                 JsonData cardPathJson = card["cardPath"];
                 for (int k = 0; k < cardPathJson.Count; ++k)
@@ -295,6 +357,16 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
 
                     List<List<Vector3>> tempPath = GetMulPath(GetValue<string>(tempJson["path"]).Trim('"'));
                     cardPath.Add(tempPath);
+                }
+
+                List<float> cardMoveTime = new List<float>(2);
+                JsonData cardMoveTimeJson = card["cardMoveTime"];
+                for (int k = 0; k < cardMoveTimeJson.Count; ++k)
+                {
+                    JsonData tempJson = cardMoveTimeJson[k];
+
+                    float t = GetValue<float>(tempJson["time"]);
+                    cardMoveTime.Add(t);
                 }
 
                 List<List<float>> cardDuration = new List<List<float>>(2);
@@ -334,17 +406,30 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
                     cardEmitter.Add(emitters);
                 }
 
-                CardData cardData = new CardData(curBoss, normalHP, cardHP, barIndex, cardName,
-                    normalInitPos, normalPath, normalDuration, normalDelay, normalEmitter, normalTime,
+                List<List<Vector3>> cardEmitterPos = new List<List<Vector3>>(2);
+                JsonData cardEmitterPosJson = card["cardEmitterPos"];
+                for (int k = 0; k < cardEmitterPosJson.Count; ++k)
+                {
+                    JsonData tempJson = cardEmitterPosJson[k];
+                    string strPos = GetValue<string>(tempJson["pos"]).Trim('"');
+                    List<Vector3> poss = GetPath(strPos, '|');
+
+                    cardEmitterPos.Add(poss);
+                }
+
+                CardData cardData = new CardData(normalBoss, normalHP, cardHP, barIndex, cardName,
+                    normalInitPos, normalPath, normalMoveTime, normalDuration, normalDelay, 
+                    normalEmitter, normalEmitterPos, normalTime,
                     normalP, normalPoint, normalLife, normalBomb, 
-                    cardInitPos, cardPath, cardDuration, cardDelay, cardEmitter, cardTime,
+                    cardBoss, cardInitPos, cardPath, cardMoveTime, cardDuration, cardDelay, 
+                    cardEmitter, cardEmitterPos, cardTime,
                     cardP, cardPoint, cardLife, cardBomb, cardBonus, 
                     maxPoint);
 
                 cards.Add(cardData);
             }
 
-            BossData bossData = new BossData(name, bossType, bornPos, appearPath, cards);
+            BossData bossData = new BossData(name, bossType, bornPos, appearPath, finalInitPos, cards);
             _dicBossData.Add(stage, bossData);
         }
     }
@@ -358,6 +443,84 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
         }
 
         return _dicBossData[stageName];
+    }
+    #endregion
+
+    #region EliteData
+    private void InitEliteData()
+    {
+        TextAsset config = LoadMgr.Single.LoadConfig(Paths.CONFIG_ELITE);
+        JsonData json = JsonMapper.ToObject(config.text);
+
+        List<ElitleData> elitles = new List<ElitleData>();
+        for(EliteStage i = EliteStage.stage2_2; i < EliteStage.COUNT; ++i)
+        {
+            string stageName = i.ToString();
+
+            JsonData stageData = json[stageName];
+            for(int j = 0; j < stageData.Count; ++j)
+            {
+                JsonData data = stageData[j];
+
+                string enemyType = GetValue<string>(data["enemyType"]).Trim('"');
+                Vector3 bornPos = GetVector3(GetValue<string>(data["bornPos"]).Trim('"'));
+                Vector3 appearPath = GetVector3(GetValue<string>(data["appearPath"]).Trim('"'));
+
+                string strMovePath = GetValue<string>(data["movePath"]).Trim('"');
+                List<List<Vector3>> movePath = GetMulPath(strMovePath);
+
+                float moveTime = GetValue<float>(data["moveTime"]);
+                List<float> delay = GetMulFloat(GetValue<string>(data["delay"]).Trim('"'));
+                List<float> duration = GetMulFloat(GetValue<string>(data["duration"]).Trim('"'));
+                Vector3 exitPath = GetVector3(GetValue<string>(data["exitPath"]).Trim('"'));
+
+                float timeLimit = GetValue<float>(data["timeLimit"]);
+
+                string emitterNames = GetValue<string>(data["emitter"]).Trim('"');
+                List<EmitterProfile> emitters = new List<EmitterProfile>();
+                string[] tempEmitterName = emitterNames.Split('|');
+                for(int k = 0; k < tempEmitterName.Length; ++k)
+                {
+                    EmitterProfile profile = GetEmit(stageName, j + "_" + tempEmitterName[k]);
+                    emitters.Add(profile);
+                }
+
+                string strEmitterPos = GetValue<string>(data["emitterPos"]).Trim('"');
+                List<Vector3> emitterPos = new List<Vector3>();
+                string[] tempPos = strEmitterPos.Split('|');
+                for(int k = 0; k < tempPos.Length; ++k)
+                {
+                    Vector3 pos = GetVector3(tempPos[k]);
+
+                    emitterPos.Add(pos);
+                }
+
+                int hp = GetValue<int>(data["hp"]);
+                int pCount = GetValue<int>(data["pCount"]);
+                int pointCount = GetValue<int>(data["pointCount"]);
+                int lifeCount = GetValue<int>(data["lifeCount"]);
+                int BombCount = GetValue<int>(data["BombCount"]);
+
+                ElitleData elitleData = new ElitleData(enemyType, bornPos, appearPath, 
+                    movePath, moveTime, delay, duration, exitPath, timeLimit, 
+                    emitters, emitterPos, hp, pCount, pointCount, lifeCount, BombCount);
+
+                elitles.Add(elitleData);
+            }
+
+            _dicEliteData.Add(stageName, elitles);
+        }
+    }
+
+    public List<ElitleData> GetElitleData(string stageName)
+    {
+        if (!_dicEliteData.ContainsKey(stageName))
+        {
+            Debug.LogError("该场景不存在此精英怪序列，场景名为：" + stageName);
+            return null;
+        }
+
+        return _dicEliteData[stageName];
     }
     #endregion
 
@@ -420,38 +583,49 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
     #region EmitData
     private void InitEmitData()
     {
-        for (Stage i = Stage.stage1_1; i < Stage.COUNT; ++i)
+        for (NormalStage i = NormalStage.stage1_1; i < NormalStage.COUNT; ++i)
         {
-            _dicStageBullet[i.ToString()] = new Dictionary<string, EmitterProfile>();
+            _dicStageEmitter[i.ToString()] = new Dictionary<string, EmitterProfile>();
 
             EmitterProfile[] emitters = LoadMgr.Single.LoadAll<EmitterProfile>(Paths.ASSET_BULLET_FOLDER + i.ToString());
             for (int j = 0; j < emitters.Length; ++j)
             {
-                _dicStageBullet[i.ToString()].Add(emitters[j].name, emitters[j]);
+                _dicStageEmitter[i.ToString()].Add(emitters[j].name, emitters[j]);
             }
         }
 
         for(BossStage i = BossStage.stage_B1; i < BossStage.COUNT; ++i)
         {
-            _dicStageBullet[i.ToString()] = new Dictionary<string, EmitterProfile>();
+            _dicStageEmitter[i.ToString()] = new Dictionary<string, EmitterProfile>();
 
             EmitterProfile[] emitters = LoadMgr.Single.LoadAll<EmitterProfile>(Paths.ASSET_BULLET_FOLDER + i.ToString());
             for (int j = 0; j < emitters.Length; ++j)
             {
-                _dicStageBullet[i.ToString()].Add(emitters[j].name, emitters[j]);
+                _dicStageEmitter[i.ToString()].Add(emitters[j].name, emitters[j]);
+            }
+        }
+
+        for(EliteStage i = EliteStage.stage2_2; i < EliteStage.COUNT; ++i)
+        {
+            _dicStageEmitter[i.ToString()] = new Dictionary<string, EmitterProfile>();
+
+            EmitterProfile[] emitters = LoadMgr.Single.LoadAll<EmitterProfile>(Paths.ASSET_BULLET_FOLDER + i.ToString());
+            for (int j = 0; j < emitters.Length; ++j)
+            {
+                _dicStageEmitter[i.ToString()].Add(emitters[j].name, emitters[j]);
             }
         }
     }
 
     private EmitterProfile GetEmit(string stageName, string name)
     {
-        if (!_dicStageBullet[stageName].ContainsKey(name))
+        if (!_dicStageEmitter[stageName].ContainsKey(name))
         {
             Debug.LogError("在面" + stageName + "不存在该弹幕，弹幕名为：" + name);
             return null;
         }
 
-        return _dicStageBullet[stageName][name];
+        return _dicStageEmitter[stageName][name];
     }
     #endregion
 
@@ -575,11 +749,12 @@ public class DataMgr : NormalSingleton<DataMgr>, IInit
         return new Vector2(float.Parse(temp[0]), float.Parse(temp[1]));
     }
 
-    private List<Vector3> GetPath(string strPath)       //为路径动画做铺垫
+    //为路径动画做铺垫
+    private List<Vector3> GetPath(string strPath, char c = '#')
     {
         List<Vector3> ret = new List<Vector3>();
 
-        string[] temp = strPath.Split('#');
+        string[] temp = strPath.Split(c);
         for(int i = 0; i < temp.Length; ++i)
         {
             ret.Add(GetVector3(temp[i]));

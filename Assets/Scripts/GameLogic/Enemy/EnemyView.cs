@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyView : MonoBehaviour
+public class EnemyView : EntityViewBase
 {
     public ParticleSystem _deadParticle;
     public SpriteRenderer _selfSpriteRenderer;
@@ -11,7 +11,5 @@ public class EnemyView : MonoBehaviour
     {
         _selfSpriteRenderer.enabled = false;
         _deadParticle.Play();
-
-        AudioMgr.Single.PlayGameEff(AudioType.EnemyDead);
     }
 }

@@ -78,6 +78,12 @@ public class PoolConfig
 
             new PoolData
             {
+                 Path = Paths.PREFAB_ENEMY12,
+                 Count = 4
+            },
+
+            new PoolData
+            {
                  Path = Paths.PREFAB_BOSS1,
                  Count = 1
             },
@@ -103,7 +109,7 @@ public class PoolConfig
             new PoolData
             {
                  Path = Paths.PREFAB_BOSS5,
-                 Count = 4
+                 Count = 1
             },
 
             new PoolData
