@@ -26,18 +26,21 @@ public class BossController : EntityControllerBase
         _receiver.enabled = false;
 
         MessageMgr.Single.AddListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim);
-        //MessageMgr.Single.AddListener(MsgEvent.EVENT_CANCEL_CARD_ANIM, CancelCardAnim);
     }
 
     public override void Update()
     {
         base.Update();
+
+        if (!GameUtil.JudgeBoundary(transform.localPosition))
+        {
+            _receiver.enabled = false;
+        }
     }
 
     private void OnDestroy()
     {
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_PLAY_CARD_ANIM, PlayCardAnim);
-        //MessageMgr.Single.RemoveListener(MsgEvent.EVENT_CANCEL_CARD_ANIM, CancelCardAnim);
     }
 
     public void Appear(Action cb)
@@ -136,11 +139,6 @@ public class BossController : EntityControllerBase
     {
         _anim.SetBool("Card", true);
     }
-
-    //private void CancelCardAnim(object[] args)
-    //{
-    //    _anim.SetBool("Card", false);
-    //}
 
     public void StopCard()
     {

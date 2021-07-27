@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class BossBehaviour : EntityBehaviourBase
 {
-    //public bool IsFinalCard { get; set; }
-
     public override void Hurt(Bullet bullet, Vector3 hitPoint)
     {
         base.Hurt(bullet, hitPoint);

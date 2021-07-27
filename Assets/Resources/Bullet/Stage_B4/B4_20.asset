@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 11425823
+  uniqueIndex: 12221247
   profile: {fileID: 11400000}
   parent: {fileID: -2436170728230071275}
   children: []
@@ -1950,7 +1950,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 4
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -2412,7 +2412,7 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.04
+    size: 0.015
     offset: {x: 0, y: 0, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
@@ -6872,7 +6872,7 @@ MonoBehaviour:
       requiredComponentName: 
   preview:
     collidersTex: {fileID: 0}
-    sprite: {fileID: -6708340741585021779, guid: 257a066a9c5f84843b00796348628404,
+    sprite: {fileID: 9090763247254987088, guid: 257a066a9c5f84843b00796348628404,
       type: 3}
     gizmoColor: {r: 0, g: 0, b: 0.5, a: 1}
 --- !u!114 &-2436170728230071275
@@ -6888,7 +6888,7 @@ MonoBehaviour:
   m_Name: SlowShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 12288648
+  uniqueIndex: 10900913
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -9585,7 +9585,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 861045
+  uniqueIndex: 12626059
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -11522,7 +11522,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 4
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -11984,7 +11984,7 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.04
+    size: 0.015
     offset: {x: 0, y: 0, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
@@ -16460,7 +16460,7 @@ MonoBehaviour:
   m_Name: FastShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 10925256
+  uniqueIndex: 14899667
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -19124,7 +19124,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 11201699
+  uniqueIndex: 11563292
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -25623,7 +25623,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 16599200
+  uniqueIndex: 2418643
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:

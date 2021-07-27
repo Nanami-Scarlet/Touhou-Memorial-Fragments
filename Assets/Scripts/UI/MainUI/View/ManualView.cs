@@ -41,13 +41,13 @@ public class ManualView : ViewBase
         _txtOpation[GameStateModel.Single.ManualOPation].color = _selectedColor;
 
         int offset = pre ? 700 : -700; 
-        _transOptionsDetail.DOBlendableMoveBy(Vector3.up * offset, 0.5f);
+        _transOptionsDetail.DOBlendableMoveBy(Vector3.up * offset, 0.5f).SetUpdate(true);
     }
 
     private void PlayAnim()
     {
-        _transTitle.DOLocalMoveY(0, 0.8f);
-        _transOpation.DOLocalMoveX(0, 0.8f);
+        _transTitle.DOLocalMoveY(0, 0.8f).SetUpdate(true);
+        _transOpation.DOLocalMoveX(0, 0.8f).SetUpdate(true);
 
         for (int i = 0; i < _transOptionsDetail.childCount; ++i)
         {
@@ -60,13 +60,13 @@ public class ManualView : ViewBase
                 Image image = trans.GetComponent<Image>();
                 if (image != null)
                 {
-                    image.DOFade(1, 0.8f);
+                    image.DOFade(1, 0.8f).SetUpdate(true);
                 }
 
                 Text text = trans.GetComponent<Text>();
                 if (text != null)
                 {
-                    text.DOFade(1, 0.8f);
+                    text.DOFade(1, 0.8f).SetUpdate(true);
                 }
             }
         }

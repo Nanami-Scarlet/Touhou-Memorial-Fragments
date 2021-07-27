@@ -16,6 +16,8 @@ public class PauseController : ControllerBase
         {
             { 0, () =>
             {
+                Time.timeScale = 1;
+                GameStateModel.Single.IsPause = false;
                 UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
                 AudioMgr.Single.ContinueBGM();
                 UIManager.Single.ShowController(Paths.PREFAB_GAME_VIEW);
@@ -24,6 +26,8 @@ public class PauseController : ControllerBase
             { 1, ()=>
             {
                 RemoveKeyCode();
+                Time.timeScale = 1;
+                GameStateModel.Single.IsPause = false;
                 GameStateModel.Single.TargetScene = SceneName.Main;
                 GameStateModel.Single.IsChating = false;                            //这几行修改GameScene配置以至于在MainScene正常运行
                 MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ALL_HPBAR);
@@ -32,7 +36,13 @@ public class PauseController : ControllerBase
                 SceneMgr.Single.AsyncLoadScene(SceneName.Main);
             } },
 
-            { 2, ()=> Debug.LogWarning("功能开发中") },
+            { 2, ()=> 
+            {
+                UIManager.Single.Hide(Paths.PREFAB_PAUSE_VIEW);
+                UIManager.Single.Show(Paths.PREFAB_MANUAL_VIEW);
+            } },
+
+            { 3, ()=> Debug.LogWarning("功能开发中") },
         };
     }
 
@@ -44,10 +54,12 @@ public class PauseController : ControllerBase
 
         InputMgr.Single.AddListener(KeyCode.UpArrow);
         InputMgr.Single.AddListener(KeyCode.DownArrow);
+        InputMgr.Single.AddListener(KeyCode.Escape);
         InputMgr.Single.AddListener(KeyCode.Z);
 
         MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
         MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
+        MessageMgr.Single.AddListener(KeyCode.Escape, BackToGame);
         MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
     }
 
@@ -77,6 +89,7 @@ public class PauseController : ControllerBase
 
         MessageMgr.Single.RemoveListener(KeyCode.UpArrow, DecIndex);
         MessageMgr.Single.RemoveListener(KeyCode.DownArrow, IncIndex);
+        MessageMgr.Single.RemoveListener(KeyCode.Escape, BackToGame);
         MessageMgr.Single.RemoveListener(KeyCode.Z, OnSelect);
 
         //LifeCycleMgr.Single.Remove(LifeName.UPDATE, this);
@@ -91,7 +104,7 @@ public class PauseController : ControllerBase
     {
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_SELECT_EFF);
 
-        if (GameStateModel.Single.PauseOption < _view.MAX_INDEX - 1)
+        if (GameStateModel.Single.PauseOption < _view.MAX_INDEX)
         {
             ++GameStateModel.Single.PauseOption;
             _view.UpdateFun();
@@ -111,18 +124,24 @@ public class PauseController : ControllerBase
 
     private void OnSelect(object[] args)
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_SURE_EFF);
 
         int index = GameStateModel.Single.PauseOption;
-        GameStateModel.Single.IsPause = false;
+        //GameStateModel.Single.IsPause = false;
         _dicIndexAction[index]();
+    }
+
+    private void BackToGame(object[] args)
+    {
+        _dicIndexAction[0]();
     }
 
     private void RemoveKeyCode()
     {
         InputMgr.Single.RemoveListener(KeyCode.UpArrow);
         InputMgr.Single.RemoveListener(KeyCode.DownArrow);
+        InputMgr.Single.RemoveListener(KeyCode.Escape);
         InputMgr.Single.RemoveListener(KeyCode.Z);
     }
 }

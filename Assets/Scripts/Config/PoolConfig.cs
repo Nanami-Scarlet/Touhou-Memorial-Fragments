@@ -79,7 +79,7 @@ public class PoolConfig
             new PoolData
             {
                  Path = Paths.PREFAB_ENEMY12,
-                 Count = 4
+                 Count = 12
             },
 
             new PoolData

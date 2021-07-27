@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CircleBullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4278935
+  uniqueIndex: 10455827
   profile: {fileID: 11400000}
   parent: {fileID: 1358443498035621826}
   children: []
@@ -1950,7 +1950,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 4
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -2412,7 +2412,7 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.04
+    size: 0.015
     offset: {x: 0, y: 0, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
@@ -6542,7 +6542,7 @@ MonoBehaviour:
       requiredComponentName: 
   preview:
     collidersTex: {fileID: 0}
-    sprite: {fileID: -864681529406517991, guid: 257a066a9c5f84843b00796348628404,
+    sprite: {fileID: 9090763247254987088, guid: 257a066a9c5f84843b00796348628404,
       type: 3}
     gizmoColor: {r: 0, g: 0, b: 0.5, a: 1}
 --- !u!114 &11400000
@@ -6592,7 +6592,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 836617
+  uniqueIndex: 9149076
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -8529,7 +8529,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 6
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -8991,7 +8991,7 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 1.71
+    size: 1.25
     offset: {x: 0, y: 0, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
@@ -13575,7 +13575,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 897040
+  uniqueIndex: 11198843
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -15991,7 +15991,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 5506906
+  uniqueIndex: 11882290
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -22490,7 +22490,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 16654299
+  uniqueIndex: 5399829
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -40026,7 +40026,7 @@ MonoBehaviour:
   m_Name: CirclePattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 3354612
+  uniqueIndex: 2268789
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children:
@@ -52014,7 +52014,7 @@ MonoBehaviour:
   m_Name: CircleShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 13236750
+  uniqueIndex: 12596553
   profile: {fileID: 11400000}
   parent: {fileID: 747174750089316258}
   children:

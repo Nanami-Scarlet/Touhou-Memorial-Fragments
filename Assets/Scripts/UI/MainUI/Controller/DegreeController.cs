@@ -31,6 +31,7 @@ public class DegreeController : ControllerBase
         InputMgr.Single.AddListener(KeyCode.UpArrow);
         InputMgr.Single.AddListener(KeyCode.DownArrow);
         InputMgr.Single.AddListener(KeyCode.X);
+        InputMgr.Single.AddListener(KeyCode.Escape);
         InputMgr.Single.AddListener(KeyCode.Z);
 
         TimeMgr.Single.AddTimeTask(() =>
@@ -38,6 +39,7 @@ public class DegreeController : ControllerBase
             MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
             MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
             MessageMgr.Single.AddListener(KeyCode.X, Back);
+            MessageMgr.Single.AddListener(KeyCode.Escape, Back);
             MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
         }, 0.5f, TimeUnit.Second);
         
@@ -45,14 +47,10 @@ public class DegreeController : ControllerBase
 
     public override void Hide()
     {
-        //InputMgr.Single.RemoveListener(KeyCode.UpArrow);
-        //InputMgr.Single.RemoveListener(KeyCode.DownArrow);
-        //InputMgr.Single.RemoveListener(KeyCode.X);
-        //InputMgr.Single.RemoveListener(KeyCode.Z);
-
         MessageMgr.Single.RemoveListener(KeyCode.UpArrow, DecIndex);
         MessageMgr.Single.RemoveListener(KeyCode.DownArrow, IncIndex);
         MessageMgr.Single.RemoveListener(KeyCode.X, Back);
+        MessageMgr.Single.RemoveListener(KeyCode.Escape, Back);
         MessageMgr.Single.RemoveListener(KeyCode.Z, OnSelect);
     }
 
@@ -94,6 +92,7 @@ public class DegreeController : ControllerBase
         InputMgr.Single.RemoveListener(KeyCode.UpArrow);
         InputMgr.Single.RemoveListener(KeyCode.DownArrow);
         InputMgr.Single.RemoveListener(KeyCode.X);
+        InputMgr.Single.RemoveListener(KeyCode.Escape);
         InputMgr.Single.RemoveListener(KeyCode.Z);
 
         UIManager.Single.Hide(Paths.PREFAB_DEGREE_VIEW);

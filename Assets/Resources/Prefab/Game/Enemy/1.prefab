@@ -293,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 6146766911709735172}
   colliderType: 0
-  hitboxSize: 0.1
+  hitboxSize: 0.15
   hitboxOffset: {x: 0, y: 0}
   killBulletOnCollision: 1
   maxSimultaneousCollisionsPerFrame: 1
@@ -323,6 +323,7 @@ MonoBehaviour:
   OnHitByBulletExit:
     m_PersistentCalls:
       m_Calls: []
+  advancedEventsFoldout: 0
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &7689327116824477216
 PrefabInstance:

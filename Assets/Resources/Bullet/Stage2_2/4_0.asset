@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shoot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 8653272
+  uniqueIndex: 13458143
   profile: {fileID: 11400000}
   parent: {fileID: 7856779932266589707}
   children:
@@ -4836,7 +4836,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 1
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 5205789726207921879}
+  currentParamsSelected: {fileID: 6508094462407925134}
   numberOfSubAssets: 13
 --- !u!114 &112348603076686928
 MonoBehaviour:
@@ -4851,7 +4851,7 @@ MonoBehaviour:
   m_Name: Shoot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 1341070
+  uniqueIndex: 3103373
   profile: {fileID: 11400000}
   parent: {fileID: 755750307911221159}
   children:
@@ -5137,7 +5137,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 270439
+  uniqueIndex: 612401
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -11638,7 +11638,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 593027
+  uniqueIndex: 5596339
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -14180,7 +14180,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 16600649
+  uniqueIndex: 155657
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -20789,7 +20789,7 @@ MonoBehaviour:
   m_Name: Pattern1
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 10514518
+  uniqueIndex: 2198443
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -32345,7 +32345,7 @@ MonoBehaviour:
   m_Name: RandomHuge
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 9666851
+  uniqueIndex: 8176027
   profile: {fileID: 11400000}
   parent: {fileID: 6508094462407925134}
   children:
@@ -35363,7 +35363,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15743554
+  uniqueIndex: 1725829
   profile: {fileID: 11400000}
   parent: {fileID: 5170933917451548989}
   children: []
@@ -37300,7 +37300,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 1
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -37762,7 +37762,7 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.08
+    size: 0.05
     offset: {x: 0, y: 0, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
@@ -41908,7 +41908,7 @@ MonoBehaviour:
   m_Name: RandomCircle
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 11906696
+  uniqueIndex: 3242673
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children:
@@ -44926,7 +44926,7 @@ MonoBehaviour:
   m_Name: SubPattern
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 15289448
+  uniqueIndex: 3004975
   profile: {fileID: 11400000}
   parent: {fileID: 3825921873534510980}
   children:
@@ -47494,7 +47494,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 16409025
+  uniqueIndex: 16645973
   profile: {fileID: 11400000}
   parent: {fileID: 112348603076686928}
   children: []
@@ -49430,7 +49430,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 1
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -49892,7 +49892,7 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 2
+    size: 1.25
     offset: {x: 0, y: 0, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
@@ -54064,7 +54064,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3774668
+  uniqueIndex: 15627177
   profile: {fileID: 11400000}
   parent: {fileID: -7742972728391275852}
   children:
@@ -60563,7 +60563,7 @@ MonoBehaviour:
   m_Name: Pattern2
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 15410179
+  uniqueIndex: 14501479
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:

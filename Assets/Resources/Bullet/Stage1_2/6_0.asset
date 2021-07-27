@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SubShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 2746172
+  uniqueIndex: 12159040
   profile: {fileID: 11400000}
   parent: {fileID: 7701138208270605725}
   children:
@@ -2449,7 +2449,7 @@ MonoBehaviour:
   foldoutExport: 1
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114027673760526898}
+  currentParamsSelected: {fileID: 3831084762748452369}
   numberOfSubAssets: 0
 --- !u!114 &114027673760526898
 MonoBehaviour:
@@ -2464,7 +2464,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 2931246
+  uniqueIndex: 2428294
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -4402,7 +4402,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 4
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -4864,7 +4864,7 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.04
+    size: 0.015
     offset: {x: 0, y: 0, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
@@ -9541,7 +9541,7 @@ MonoBehaviour:
       requiredComponentName: 
   preview:
     collidersTex: {fileID: 0}
-    sprite: {fileID: -2202191795207485221, guid: 257a066a9c5f84843b00796348628404,
+    sprite: {fileID: 3655672934765722543, guid: 257a066a9c5f84843b00796348628404,
       type: 3}
     gizmoColor: {r: 0, g: 0, b: 0.5, a: 1}
 --- !u!114 &114201774248674550
@@ -9557,7 +9557,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 11214271
+  uniqueIndex: 4868787
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -12053,7 +12053,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 8340983
+  uniqueIndex: 14964557
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -18552,7 +18552,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 9244046
+  uniqueIndex: 14063008
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -44950,7 +44950,7 @@ MonoBehaviour:
   m_Name: SubBullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 14901027
+  uniqueIndex: 6117053
   profile: {fileID: 11400000}
   parent: {fileID: -5922254238779164712}
   children: []
@@ -46887,7 +46887,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 4
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -47349,7 +47349,7 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.04
+    size: 0.015
     offset: {x: 0, y: 0, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
@@ -51933,7 +51933,7 @@ MonoBehaviour:
   m_Name: SubPattern 0
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 7562174
+  uniqueIndex: 3815231
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children: []
@@ -66910,7 +66910,7 @@ MonoBehaviour:
   m_Name: SubPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 1211341
+  uniqueIndex: 3110384
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children:

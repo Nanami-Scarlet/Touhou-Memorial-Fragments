@@ -31,7 +31,7 @@ public class PlayerBehaviour : EntityBehaviourBase
     public override void Dead()
     {
         AudioMgr.Single.PlayGameEff(AudioType.PlayerDead);
-        //MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ENEMY_BULLET);
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ENEMY_BULLET);
 
         if (GameStateModel.Single.IsCard && GameModel.Single.CardBonus > 1000)
         {
@@ -67,15 +67,18 @@ public class PlayerBehaviour : EntityBehaviourBase
         _receiver.enabled = false;
         PlayerModel.Single.State = PlayerState.INVINCIBLE;
 
-        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_TWINKLE_SELF);
+        MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_TWINKLE_SELF, 20);
     }
 
     private void TwinkleSelf(object[] args)
     {
+        int times = (int)args[0];
+
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
 
         renderer.color = new Color(1, 1, 1, 0);
-        renderer.DOFade(1, 0.15f).SetLoops(20, LoopType.Restart).OnComplete(() =>
+        //无敌时间 = tims * 0.15
+        renderer.DOFade(1, 0.15f).SetLoops(times, LoopType.Restart).OnComplete(() =>
         {
             PlayerModel.Single.State = PlayerState.NORMAL;
             _receiver.enabled = true;

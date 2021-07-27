@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Control
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 5575535
+  uniqueIndex: 8762938
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children: []
@@ -12017,7 +12017,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114917193883442684}
+  currentParamsSelected: {fileID: 114027673760526898}
   numberOfSubAssets: 0
 --- !u!114 &114027673760526898
 MonoBehaviour:
@@ -12032,7 +12032,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 5858318
+  uniqueIndex: 1744320
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -13970,7 +13970,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 3
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -14432,17 +14432,12 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.05
-    offset: {x: 0, y: 0, z: 0}
-    lineStart: {x: 0, y: 0}
-    lineEnd: {x: 0, y: 0}
-  - colliderType: 0
-    size: 0.05
-    offset: {x: 0, y: -0.02, z: 0}
+    size: 0.025
+    offset: {x: 0, y: -0.05, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
   dieOnCollision: 1
-  shapeFoldout: 1
+  shapeFoldout: 0
   collisionTagsFoldout: 0
   homing: 1
   homingTags:
@@ -19022,7 +19017,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 14918024
+  uniqueIndex: 8158794
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -19308,7 +19303,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4003168
+  uniqueIndex: 16518698
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -25807,7 +25802,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 1745591
+  uniqueIndex: 16449786
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:

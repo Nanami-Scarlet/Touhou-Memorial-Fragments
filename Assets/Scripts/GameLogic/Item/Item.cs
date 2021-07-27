@@ -25,8 +25,8 @@ public class Item : MonoBehaviour
 
         transform.DOLocalMoveY(_shootHeight, 1 / _shootSpeed).OnComplete(() =>
         {
-            transform.localRotation = new Quaternion(0, 0, 0, 1);
             _isFall = true;
+            transform.localEulerAngles = Vector3.zero;
         });
     }
 
@@ -39,11 +39,6 @@ public class Item : MonoBehaviour
 
     private void Update()
     {
-        if(!_isMoveToPlayer && PlayerModel.Single.IsGetItem)
-        {
-            _isMoveToPlayer = true;
-        }
-
         if (_isFall)
         {
             transform.Translate(Vector2.down * Time.deltaTime * _speed);
@@ -53,9 +48,9 @@ public class Item : MonoBehaviour
             transform.Rotate(Vector3.forward * Time.deltaTime * 1800);
         }
 
-        if(_isMoveToPlayer)
+        if(_isMoveToPlayer || PlayerModel.Single.IsGetItem)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * 12f);
+            transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * 10f);
         }
         else if(GameUtil.GetDistance(transform, _player.transform) < 0.75f)
         {

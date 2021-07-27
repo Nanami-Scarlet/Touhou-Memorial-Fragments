@@ -16,10 +16,11 @@ public class EliteSpawnMgr : MonoBehaviour, ISpawn
         ElitleData e = (ElitleData)data;
 
         GameObject elite = PoolMgr.Single.Spawn(type);
+
         elite.GetComponent<EliteController>().Init(data);
-        elite.GetComponent<EliteBehaviour>().SetBehaviour(e.HP, e.PCount, e.PointCount, e.LifeCount, e.BombCount);
+        elite.GetComponent<EntityBehaviourBase>().SetBehaviour(e.HP, e.PCount, e.PointCount, e.LifeCount, e.BombCount);
         elite.GetComponent<EliteBehaviour>().ResetBehaiour();
-        //elite.GetComponent<SpriteRenderer>().enabled = true;
+        elite.GetComponent<SpriteRenderer>().enabled = true;
         elite.GetComponent<BulletReceiver>().enabled = true;
 
         ++GameModel.Single.EnemyCount;
@@ -31,6 +32,5 @@ public class EliteSpawnMgr : MonoBehaviour, ISpawn
     {
         PoolMgr.Single.Despawn(elite);
         --GameModel.Single.EnemyCount;
-        Debug.Log(GameModel.Single.EnemyCount);
     }
 }

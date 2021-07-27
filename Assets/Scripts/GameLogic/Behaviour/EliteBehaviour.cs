@@ -43,7 +43,7 @@ public class EliteBehaviour : EntityBehaviourBase
             {
                 if (!_isDead)
                 {
-                    EnemySpawnMgr.DeSpawn(gameObject);
+                    EliteSpawnMgr.DeSpawn(gameObject);
                     _isDead = true;
                 }
             }, 0.7f, TimeUnit.Second);

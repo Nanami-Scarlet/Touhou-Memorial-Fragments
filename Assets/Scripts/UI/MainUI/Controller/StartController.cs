@@ -45,11 +45,13 @@ public class StartController : ControllerBase
         InputMgr.Single.AddListener(KeyCode.UpArrow);
         InputMgr.Single.AddListener(KeyCode.DownArrow);
         InputMgr.Single.AddListener(KeyCode.X);
+        InputMgr.Single.AddListener(KeyCode.Escape);
         InputMgr.Single.AddListener(KeyCode.Z);
 
         MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
         MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
         MessageMgr.Single.AddListener(KeyCode.X, MoveFinalIndex);
+        MessageMgr.Single.AddListener(KeyCode.Escape, MoveFinalIndex);
         MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
 
         _view.UpdateFun();
@@ -62,6 +64,7 @@ public class StartController : ControllerBase
         MessageMgr.Single.RemoveListener(KeyCode.UpArrow, DecIndex);
         MessageMgr.Single.RemoveListener(KeyCode.DownArrow, IncIndex);
         MessageMgr.Single.RemoveListener(KeyCode.X, MoveFinalIndex);
+        MessageMgr.Single.RemoveListener(KeyCode.Escape, MoveFinalIndex);
         MessageMgr.Single.RemoveListener(KeyCode.Z, OnSelect);
     }
 
@@ -120,6 +123,7 @@ public class StartController : ControllerBase
         InputMgr.Single.RemoveListener(KeyCode.UpArrow);
         InputMgr.Single.RemoveListener(KeyCode.DownArrow);
         InputMgr.Single.RemoveListener(KeyCode.X);
+        InputMgr.Single.RemoveListener(KeyCode.Escape);
         InputMgr.Single.RemoveListener(KeyCode.Z);
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Control
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 8260285
+  uniqueIndex: 8821750
   profile: {fileID: 11400000}
   parent: {fileID: -781719685798017135}
   children: []
@@ -3030,7 +3030,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 13218995
+  uniqueIndex: 16045649
   profile: {fileID: 11400000}
   parent: {fileID: -519768121757853792}
   children:
@@ -3489,7 +3489,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: {fileID: 2100000, guid: 0324f7cbcf91f7240b7eebe176d410c6, type: 2}
+      defaultValue: {fileID: 2100000, guid: dedf0ed859edd7d44ae9eb78bf7a6b40, type: 2}
     narrowType: 1
     requireComponent: 0
     typeName: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
@@ -4967,7 +4967,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -9683,7 +9683,7 @@ MonoBehaviour:
   m_Name: LaserShootRight
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 4778509
+  uniqueIndex: 15154585
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -16397,7 +16397,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114917193883442684}
+  currentParamsSelected: {fileID: 6173365180634890638}
   numberOfSubAssets: 10
 --- !u!114 &114027673760526898
 MonoBehaviour:
@@ -16412,7 +16412,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 1062500
+  uniqueIndex: 2893331
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -18349,7 +18349,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 0
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -18811,7 +18811,7 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.04
+    size: 0.02
     offset: {x: 0, y: 0, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
@@ -23395,7 +23395,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 7516319
+  uniqueIndex: 6744730
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -28241,7 +28241,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 8668392
+  uniqueIndex: 757503
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -34740,7 +34740,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 11615270
+  uniqueIndex: 6114292
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -61248,7 +61248,7 @@ MonoBehaviour:
   m_Name: LaserShootLeft
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 367876
+  uniqueIndex: 8797521
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -67940,7 +67940,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3696911
+  uniqueIndex: 14469466
   profile: {fileID: 11400000}
   parent: {fileID: 597313563613899125}
   children:
@@ -68399,7 +68399,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: {fileID: 2100000, guid: 0324f7cbcf91f7240b7eebe176d410c6, type: 2}
+      defaultValue: {fileID: 2100000, guid: dedf0ed859edd7d44ae9eb78bf7a6b40, type: 2}
     narrowType: 1
     requireComponent: 0
     typeName: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
@@ -69877,7 +69877,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -74709,7 +74709,7 @@ MonoBehaviour:
   m_Name: Control
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 15779636
+  uniqueIndex: 1841691
   profile: {fileID: 11400000}
   parent: {fileID: 6173365180634890638}
   children: []

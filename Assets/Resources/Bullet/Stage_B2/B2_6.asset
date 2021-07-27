@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 11203873
+  uniqueIndex: 4076662
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -7013,7 +7013,7 @@ MonoBehaviour:
     collidersTex: {fileID: 0}
     sprite: {fileID: -4698068456907034228, guid: 53d163f0ae5c073488ab4a6112fa67b4,
       type: 3}
-    gizmoColor: {r: 0, g: 0, b: 0.5, a: 1}
+    gizmoColor: {r: 0, g: 0, b: 0.5, a: 0.7490196}
 --- !u!114 &114201774248674550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7027,7 +7027,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 2081338
+  uniqueIndex: 1002434
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -9483,7 +9483,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 2849864
+  uniqueIndex: 14552432
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -15982,7 +15982,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 6617351
+  uniqueIndex: 12689749
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:

@@ -27,7 +27,7 @@ public class EnemySpawnMgr : MonoBehaviour, ISpawn
 
         GameObject enemy = PoolMgr.Single.Spawn(type);
 
-        enemy.GetComponent<EnemyController>().enabled = true;
+        enemy.GetComponent<EntityControllerBase>().enabled = true;
         enemy.GetComponent<EnemyController>().Init(enemyData);
         enemy.GetComponent<EntityBehaviourBase>().SetBehaviour(enemyData.HP, enemyData.PCount, enemyData.PointCount);
         enemy.GetComponent<BulletReceiver>().enabled = true;

@@ -20,7 +20,8 @@ public class PauseView : ViewBase
         {
             { _options[0], Color.black },
             { _options[1], Color.black },
-            { _options[2], new Color(0.3f, 0.3f, 0.2f) },
+            { _options[2], Color.black },
+            { _options[3], new Color(0.3f, 0.3f, 0.2f) },
         };
     }
 
@@ -33,6 +34,7 @@ public class PauseView : ViewBase
                 Selected(_options[i]);
                 continue;
             }
+
             UnSelected(_options[i]);
         }
     }
@@ -50,7 +52,7 @@ public class PauseView : ViewBase
     private void Selected(Text text)
     {
         text.color = Color.white;
-        text.transform.DOShakePosition(1, 1);
+        text.transform.DOShakePosition(0.5f, 1).SetUpdate(true);
     }
 
     private void UnSelected(Text text)

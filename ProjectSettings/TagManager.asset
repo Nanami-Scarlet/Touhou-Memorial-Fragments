@@ -72,3 +72,6 @@ TagManager:
   - name: EnemyBullet
     uniqueID: 264633353
     locked: 0
+  - name: JudgePoint
+    uniqueID: 966100051
+    locked: 0

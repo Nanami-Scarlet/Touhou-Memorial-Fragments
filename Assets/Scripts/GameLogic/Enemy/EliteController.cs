@@ -9,7 +9,6 @@ public class EliteController : EntityControllerBase
 {
     private ElitleData _elitleData;
 
-    private EliteBehaviour _behaviour;
     public List<BulletEmitter> _emitters;
 
     public Sequence MovePath { get; set; }
@@ -17,8 +16,6 @@ public class EliteController : EntityControllerBase
     public override void Init(EntityData data)
     {
         base.Init(data);
-
-        _behaviour = GetComponent<EliteBehaviour>();
 
         _elitleData = (ElitleData)data;
         transform.localPosition = _elitleData.BornPos;

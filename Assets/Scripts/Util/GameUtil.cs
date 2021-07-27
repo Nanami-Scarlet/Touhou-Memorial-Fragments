@@ -86,4 +86,9 @@ public class GameUtil
     {
         return pos.x > -4.5f && pos.x < 2.7f && pos.y > -3.5f && pos.y < 4.5f;
     }
+
+    public static bool JudgeBoundary(Vector3 pos)
+    {
+        return pos.x > -5.1f && pos.x < 3.4f && pos.y > -4.7f && pos.y < 4.7f; 
+    }
 }

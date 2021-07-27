@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 8478061
+  uniqueIndex: 2950494
   profile: {fileID: 11400000}
   parent: {fileID: 90054355837758759}
   children: []
@@ -1950,7 +1950,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 4
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -2412,7 +2412,7 @@ MonoBehaviour:
     tagList: 5
   colliders:
   - colliderType: 0
-    size: 0.04
+    size: 0.015
     offset: {x: 0, y: 0, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
@@ -6674,7 +6674,7 @@ MonoBehaviour:
   m_Name: InvisableBullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 2855734
+  uniqueIndex: 6894214
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -13173,7 +13173,7 @@ MonoBehaviour:
   m_Name: CirclePattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 440755
+  uniqueIndex: 5144081
   profile: {fileID: 11400000}
   parent: {fileID: -1853269181103229955}
   children:
@@ -16226,7 +16226,7 @@ MonoBehaviour:
   m_Name: CircleShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 9103442
+  uniqueIndex: 5459385
   profile: {fileID: 11400000}
   parent: {fileID: -1017931910016680967}
   children:
@@ -19146,7 +19146,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4491275
+  uniqueIndex: 4413805
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children: []
@@ -26019,7 +26019,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 8462055
+  uniqueIndex: 733648
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -28561,7 +28561,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 10526650
+  uniqueIndex: 1485975
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -35060,7 +35060,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 16509313
+  uniqueIndex: 11448474
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:

@@ -343,7 +343,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2056880943
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7574722205383545943, guid: 83835a3adf03f5640971a04f5e035ea1,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -547,7 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 5945474202576197827}
   colliderType: 0
-  hitboxSize: 0.3
+  hitboxSize: 0.35
   hitboxOffset: {x: 0, y: 0}
   killBulletOnCollision: 1
   maxSimultaneousCollisionsPerFrame: 1

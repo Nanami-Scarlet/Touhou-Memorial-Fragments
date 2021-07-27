@@ -35,6 +35,7 @@ public class PlayerUController : ControllerBase
         InputMgr.Single.AddListener(KeyCode.LeftArrow);
         InputMgr.Single.AddListener(KeyCode.Z);
         InputMgr.Single.AddListener(KeyCode.X);
+        InputMgr.Single.AddListener(KeyCode.Escape);
 
         //等待动画加载完成才可以操作
         TimeMgr.Single.AddTimeTask(() => 
@@ -43,6 +44,7 @@ public class PlayerUController : ControllerBase
             MessageMgr.Single.AddListener(KeyCode.LeftArrow, DecIndex);
             MessageMgr.Single.AddListener(KeyCode.Z, OnSelect);
             MessageMgr.Single.AddListener(KeyCode.X, Back);
+            MessageMgr.Single.AddListener(KeyCode.Escape, Back);
         }, 0.9f, TimeUnit.Second);
     }
 
@@ -62,6 +64,7 @@ public class PlayerUController : ControllerBase
         MessageMgr.Single.RemoveListener(KeyCode.LeftArrow, DecIndex);
         MessageMgr.Single.RemoveListener(KeyCode.Z, OnSelect);
         MessageMgr.Single.RemoveListener(KeyCode.X, Back);
+        MessageMgr.Single.RemoveListener(KeyCode.Escape, Back);
 
         LifeCycleMgr.Single.Remove(LifeName.UPDATE, this);
     }
@@ -112,5 +115,6 @@ public class PlayerUController : ControllerBase
         InputMgr.Single.RemoveListener(KeyCode.LeftArrow);
         InputMgr.Single.RemoveListener(KeyCode.Z);
         InputMgr.Single.RemoveListener(KeyCode.X);
+        InputMgr.Single.RemoveListener(KeyCode.Escape);
     }
 }

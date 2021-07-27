@@ -83,7 +83,7 @@ public class ChatView : ViewBase
         {
             _tid = TimeMgr.Single.AddTimeTask(() =>
             {
-                ShowNextDialog();
+                MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_PRESSZ);
             }, 8, TimeUnit.Second);
         });
     }

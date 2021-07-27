@@ -32,11 +32,11 @@ public class EnemyController : EntityControllerBase
         if(path.Count > 1)                              //这么写为了能够提高代码的可读性
         {
             DoPathA(path, _enemyData);                  //A方法：动画会暂停一段时间并且发弹幕，暂停时间过后继续做路径动画且停止弹幕
+
+            return;
         }
-        else
-        {
-            DoPathB(path, _enemyData);                  //B方法：一遍做路径动画，且不会暂停，在动画开始的一定时间后发射弹幕
-        }
+
+        DoPathB(path, _enemyData);                  //B方法：一遍做路径动画，且不会暂停，在动画开始的一定时间后发射弹幕
     }
 
     public override void Update()

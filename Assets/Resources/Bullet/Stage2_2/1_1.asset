@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bullet 1
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 9981460
+  uniqueIndex: 4468663
   profile: {fileID: 11400000}
   parent: {fileID: -2818110268696803614}
   children:
@@ -1951,7 +1951,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 0
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -2413,8 +2413,8 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.06
-    offset: {x: 0, y: 0, z: 0}
+    size: 0.045
+    offset: {x: 0, y: -0.01, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
   dieOnCollision: 1
@@ -6652,7 +6652,7 @@ MonoBehaviour:
       requiredComponentName: 
   preview:
     collidersTex: {fileID: 0}
-    sprite: {fileID: 1603803441568175128, guid: 8716d92fb65018748a24af0d9b8d8f11,
+    sprite: {fileID: 5971040906134931838, guid: 8716d92fb65018748a24af0d9b8d8f11,
       type: 3}
     gizmoColor: {r: 0, g: 0, b: 0.5, a: 1}
 --- !u!114 &-2818110268696803614
@@ -6668,7 +6668,7 @@ MonoBehaviour:
   m_Name: Shot2
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 1783499
+  uniqueIndex: 7270386
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -11226,7 +11226,7 @@ MonoBehaviour:
   m_Name: Control 0
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 9336779
+  uniqueIndex: 9096419
   profile: {fileID: 11400000}
   parent: {fileID: -832058270126214546}
   children: []
@@ -17233,7 +17233,7 @@ MonoBehaviour:
   m_Name: Bullet 0
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 16472761
+  uniqueIndex: 10424531
   profile: {fileID: 11400000}
   parent: {fileID: 5574270650203073084}
   children:
@@ -19171,7 +19171,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 0
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -19633,8 +19633,8 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.06
-    offset: {x: 0, y: 0, z: 0}
+    size: 0.045
+    offset: {x: 0, y: -0.01, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
   dieOnCollision: 1
@@ -23888,7 +23888,7 @@ MonoBehaviour:
   m_Name: Control
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 5291779
+  uniqueIndex: 13040732
   profile: {fileID: 11400000}
   parent: {fileID: 107970899733589892}
   children: []
@@ -29895,7 +29895,7 @@ MonoBehaviour:
   m_Name: Control
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 7027241
+  uniqueIndex: 3093011
   profile: {fileID: 11400000}
   parent: {fileID: 2757592188816229078}
   children: []
@@ -35928,7 +35928,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 1
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: -2702922196449777925}
+  currentParamsSelected: {fileID: -4821188493356054246}
   numberOfSubAssets: 8
 --- !u!114 &107970899733589892
 MonoBehaviour:
@@ -35943,7 +35943,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 12006731
+  uniqueIndex: 8917657
   profile: {fileID: 11400000}
   parent: {fileID: 1237418067500723890}
   children:
@@ -37881,7 +37881,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 0
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -38343,8 +38343,8 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.06
-    offset: {x: 0, y: 0, z: 0}
+    size: 0.045
+    offset: {x: 0, y: -0.01, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
   dieOnCollision: 1
@@ -42582,7 +42582,7 @@ MonoBehaviour:
       requiredComponentName: 
   preview:
     collidersTex: {fileID: 0}
-    sprite: {fileID: 1603803441568175128, guid: 8716d92fb65018748a24af0d9b8d8f11,
+    sprite: {fileID: 5971040906134931838, guid: 8716d92fb65018748a24af0d9b8d8f11,
       type: 3}
     gizmoColor: {r: 0, g: 0, b: 0.5, a: 1}
 --- !u!114 &114201774248674550
@@ -42598,7 +42598,7 @@ MonoBehaviour:
   m_Name: Shot1
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 16392797
+  uniqueIndex: 9508665
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -47156,7 +47156,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 996141
+  uniqueIndex: 3855019
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -53655,7 +53655,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 14426360
+  uniqueIndex: 8417781
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -95114,7 +95114,7 @@ MonoBehaviour:
   m_Name: Shot2
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 464924
+  uniqueIndex: 2817306
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -99672,7 +99672,7 @@ MonoBehaviour:
   m_Name: Control 1
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 16116268
+  uniqueIndex: 2429348
   profile: {fileID: 11400000}
   parent: {fileID: -4821188493356054246}
   children: []
@@ -105679,7 +105679,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 716958
+  uniqueIndex: 9375715
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -107617,7 +107617,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 0
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -108079,8 +108079,8 @@ MonoBehaviour:
     tagList: 1
   colliders:
   - colliderType: 0
-    size: 0.06
-    offset: {x: 0, y: 0, z: 0}
+    size: 0.045
+    offset: {x: 0, y: -0.01, z: 0}
     lineStart: {x: 0, y: 0}
     lineEnd: {x: 0, y: 0}
   dieOnCollision: 1
@@ -112334,7 +112334,7 @@ MonoBehaviour:
   m_Name: Shot1
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 8027826
+  uniqueIndex: 13235997
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:

@@ -61,7 +61,7 @@ public class StartView : ViewBase
     private void Selected(Text text)
     {
         text.color = Color.white;
-        text.transform.DOShakePosition(1, 1);
+        text.transform.DOShakePosition(0.5f, 1);
     }
 
     private void UnSelected(Text text)
@@ -72,6 +72,6 @@ public class StartView : ViewBase
     private void ResetAnim()
     {
         _imgSacrifice.color = new Color(1, 1, 1, 0);
-        _imgSacrifice.transform.localRotation = new Quaternion(0, 0, 0.7071068f, 0.7071068f);
+        _imgSacrifice.transform.localEulerAngles = Vector3.forward * 90;
     }
 }

@@ -70,7 +70,7 @@ public class UIManager : NormalSingleton<UIManager>
         goBottom.SetActive(true);
 
         HideAll(goTop);
-        InitComponent(goBottom);
+        ShowAll(goBottom);
     }
 
     public void ShowController(string path)         //该方法在多个UI同时存在下使用

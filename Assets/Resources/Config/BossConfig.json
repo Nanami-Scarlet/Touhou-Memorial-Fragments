@@ -607,7 +607,7 @@
         {
           "normalBoss": "B2",
           "normalHP": 0,
-          "cardHP": 2700,
+          "cardHP": 2300,
           "barIndex": 1,
           "cardName": "秘术「天文密葬法」",
           "normalTime": 0,
@@ -657,7 +657,7 @@
               "pos": "-1,3"
             }
           ],
-          "cardTime": 80,
+          "cardTime": 90,
           "cardP": 10,
           "cardPoint": 10,
           "cardLife": 1,

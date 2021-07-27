@@ -22,6 +22,7 @@ public class ChatController : ControllerBase
         InputMgr.Single.AddListener(KeyCode.Z);
 
         MessageMgr.Single.AddListener(KeyCode.Z, PressZ);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_PRESSZ, PressZ);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_SHOW_DIALOG, ShowDialog);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_SET_ENDING_PIC, SetEndingPic);
     }
@@ -33,6 +34,7 @@ public class ChatController : ControllerBase
         InputMgr.Single.RemoveListener(KeyCode.Z);
 
         MessageMgr.Single.RemoveListener(KeyCode.Z, PressZ);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_PRESSZ, PressZ);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_SHOW_DIALOG, ShowDialog);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_SET_ENDING_PIC, SetEndingPic);
 

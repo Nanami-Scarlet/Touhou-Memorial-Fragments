@@ -18,10 +18,12 @@ public class ManualController : ControllerBase
         InputMgr.Single.AddListener(KeyCode.UpArrow);
         InputMgr.Single.AddListener(KeyCode.DownArrow);
         InputMgr.Single.AddListener(KeyCode.X);
+        InputMgr.Single.AddListener(KeyCode.Escape);
 
         MessageMgr.Single.AddListener(KeyCode.UpArrow, DecIndex);
         MessageMgr.Single.AddListener(KeyCode.DownArrow, IncIndex);
         MessageMgr.Single.AddListener(KeyCode.X, OnPressX);
+        MessageMgr.Single.AddListener(KeyCode.Escape, OnPressX);
     }
 
     public override void Hide()
@@ -31,10 +33,12 @@ public class ManualController : ControllerBase
         InputMgr.Single.RemoveListener(KeyCode.UpArrow);
         InputMgr.Single.RemoveListener(KeyCode.DownArrow);
         InputMgr.Single.RemoveListener(KeyCode.X);
+        InputMgr.Single.RemoveListener(KeyCode.Escape);
 
         MessageMgr.Single.RemoveListener(KeyCode.UpArrow, DecIndex);
         MessageMgr.Single.RemoveListener(KeyCode.DownArrow, IncIndex);
         MessageMgr.Single.RemoveListener(KeyCode.X, OnPressX);
+        MessageMgr.Single.RemoveListener(KeyCode.Escape, OnPressX);
     }
 
     private void DecIndex(object[] args)
@@ -65,7 +69,8 @@ public class ManualController : ControllerBase
     {
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_CANCAL_EFF);
 
-        UIManager.Single.Hide(Paths.PREFAB_MANUAL_VIEW);
-        UIManager.Single.Show(Paths.PREFAB_START_VIEW);
+        //UIManager.Single.Hide(Paths.PREFAB_MANUAL_VIEW);
+        //UIManager.Single.Show(Paths.PREFAB_START_VIEW);
+        UIManager.Single.Back();
     }
 }
