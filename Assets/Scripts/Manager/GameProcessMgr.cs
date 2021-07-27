@@ -131,12 +131,12 @@ public class GameProcessMgr : MonoBehaviour
         {
             case Mode.NORMAL:
             case Mode.LUNATIC:
-                //yield return OnStageUp("stage1_1");
-                //yield return OnStageBoss("stage_B1");
-                //yield return OnStageDown("stage1_2");
-                //yield return OnStageBoss("stage_B2");
-                //yield return PrepareNextStage();
-                //yield return OnStageElite("stage2_2", true);
+                yield return OnStageUp("stage1_1");
+                yield return OnStageBoss("stage_B1");
+                yield return OnStageDown("stage1_2");
+                yield return OnStageBoss("stage_B2");
+                yield return PrepareNextStage();
+                yield return OnStageElite("stage2_2", true);
                 yield return OnStageBoss("stage_B4");
                 yield return new WaitForSeconds(1);
                 yield return OnStageChat("Ending");

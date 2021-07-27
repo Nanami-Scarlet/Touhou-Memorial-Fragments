@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         PlayerModel.Single.IsGetItem = false;
         PlayerModel.Single.State = PlayerState.NORMAL;
         PlayerModel.Single.MemoryProcess = 0;
-        PlayerModel.Single.MemoryFragment = 2;
+        PlayerModel.Single.MemoryFragment = 0;
         PlayerModel.Single.Graze = 0;
 
         _dicItemTagAction = new Dictionary<string, Action<Collider2D>>()
