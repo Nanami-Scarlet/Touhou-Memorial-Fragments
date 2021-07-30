@@ -60,6 +60,11 @@ public class GameUtil
         return pos.x <= 3.2f;
     }
 
+    public static bool JudgePrecision(Vector3 pos)
+    {
+        return pos.y <= -4f;
+    }
+
     /// <summary>
     /// 仅供数组专用
     /// </summary>

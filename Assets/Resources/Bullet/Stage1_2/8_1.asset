@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RightShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 15469990
+  uniqueIndex: 7264536
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -6822,7 +6822,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 728887
+  uniqueIndex: 11803045
   profile: {fileID: 11400000}
   parent: {fileID: -6613719442475046879}
   children: []
@@ -13828,7 +13828,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 10206117
+  uniqueIndex: 12874869
   profile: {fileID: 11400000}
   parent: {fileID: -2901881117728394872}
   children: []
@@ -20834,7 +20834,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 2995305
+  uniqueIndex: 12559851
   profile: {fileID: 11400000}
   parent: {fileID: -2260963842612266394}
   children: []
@@ -21637,7 +21637,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -22771,7 +22771,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -27835,7 +27835,7 @@ MonoBehaviour:
   m_Name: LeftShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 11119829
+  uniqueIndex: 11493581
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -34639,7 +34639,7 @@ MonoBehaviour:
   m_Name: SubPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 12486049
+  uniqueIndex: 4062782
   profile: {fileID: 11400000}
   parent: {fileID: 1928517788477402875}
   children:
@@ -37657,7 +37657,7 @@ MonoBehaviour:
   m_Name: SubShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 12048071
+  uniqueIndex: 14137398
   profile: {fileID: 11400000}
   parent: {fileID: -2434484729608287232}
   children:
@@ -55725,7 +55725,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 6522860
+  uniqueIndex: 7044173
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -62224,7 +62224,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 15599859
+  uniqueIndex: 12985231
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -76770,7 +76770,7 @@ MonoBehaviour:
   m_Name: MainBullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 5978497
+  uniqueIndex: 10649235
   profile: {fileID: 11400000}
   parent: {fileID: 8042608655057018452}
   children:
@@ -83269,7 +83269,7 @@ MonoBehaviour:
   m_Name: MainShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 4225340
+  uniqueIndex: 16242877
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:

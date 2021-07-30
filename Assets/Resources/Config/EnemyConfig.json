@@ -1470,7 +1470,7 @@
         "pathDurUP": 1,
         "pathDurDown": 1.5,
         "emitterName": "2",
-        "hp": 350,
+        "hp": 250,
         "pCount": 4,
         "pointCount": 3
       },
@@ -1484,7 +1484,7 @@
         "pathDurUP": 1,
         "pathDurDown": 1.5,
         "emitterName": "2",
-        "hp": 350,
+        "hp": 250,
         "pCount": 4,
         "pointCount": 3
       },
@@ -1498,7 +1498,7 @@
         "pathDurUP": 1,
         "pathDurDown": 1,
         "emitterName": "2",
-        "hp": 350,
+        "hp": 250,
         "pCount": 4,
         "pointCount": 3
       },
@@ -1512,7 +1512,7 @@
         "pathDurUP": 1,
         "pathDurDown": 1,
         "emitterName": "2",
-        "hp": 350,
+        "hp": 250,
         "pCount": 4,
         "pointCount": 3
       },
@@ -1526,7 +1526,7 @@
         "pathDurUP": 1,
         "pathDurDown": 1,
         "emitterName": "2",
-        "hp": 350,
+        "hp": 250,
         "pCount": 4,
         "pointCount": 3
       },
@@ -1540,7 +1540,7 @@
         "pathDurUP": 1,
         "pathDurDown": 1,
         "emitterName": "2",
-        "hp": 350,
+        "hp": 250,
         "pCount": 4,
         "pointCount": 3
       },
@@ -1554,7 +1554,7 @@
         "pathDurUP": 1,
         "pathDurDown": 1.5,
         "emitterName": "2",
-        "hp": 350,
+        "hp": 250,
         "pCount": 4,
         "pointCount": 3
       },
@@ -1568,7 +1568,7 @@
         "pathDurUP": 1,
         "pathDurDown": 1.5,
         "emitterName": "2",
-        "hp": 350,
+        "hp": 250,
         "pCount": 4,
         "pointCount": 3
       }

@@ -19,5 +19,6 @@ public class BossBehaviour : EntityBehaviourBase
     public override void Dead()
     {
         BossSpawnMgr.DeSpawn(gameObject);
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }

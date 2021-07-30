@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Control
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 8762938
+  uniqueIndex: 11784769
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children: []
@@ -12032,7 +12032,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 1744320
+  uniqueIndex: 12425648
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -12836,7 +12836,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -13970,7 +13970,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -19017,7 +19017,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 8158794
+  uniqueIndex: 8169517
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -19303,7 +19303,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 16518698
+  uniqueIndex: 10643892
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -25802,7 +25802,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 16449786
+  uniqueIndex: 5061468
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:

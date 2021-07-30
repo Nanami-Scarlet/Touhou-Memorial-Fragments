@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 13832133
+  uniqueIndex: 15943541
   profile: {fileID: 11400000}
   parent: {fileID: 114190031269497074}
   children:
@@ -2517,7 +2517,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 15344442
+  uniqueIndex: 10194258
   profile: {fileID: 11400000}
   parent: {fileID: 114776344989347026}
   children:
@@ -5427,7 +5427,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15468946
+  uniqueIndex: 7555455
   profile: {fileID: 11400000}
   parent: {fileID: 114179803937929816}
   children:
@@ -7916,7 +7916,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 1
   hideSpriteList: 0
-  currentlyDisplayedModule: 1
+  currentlyDisplayedModule: 3
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -8776,7 +8776,7 @@ MonoBehaviour:
         parameterName: 
       defaultValue: 0
     - settings:
-        valueType: 0
+        valueType: 2
         interpolationValue:
           interpolationFactor: 0
           repartitionCurve:
@@ -8830,14 +8830,140 @@ MonoBehaviour:
         indexOfParent: 0
         indexOfFrom: 0
         indexOfTo: 0
-        indexOfBlendedChildren: 
+        indexOfBlendedChildren: 0200000003000000
         weight: 0
-        headerTitle: 
+        headerTitle: Preferred Target
         blendColor: {r: 0, g: 0, b: 0, a: 0}
         parameterType: 0
         relativeTo: 0
         parameterName: 
       defaultValue: 4
+    - settings:
+        valueType: 0
+        interpolationValue:
+          interpolationFactor: 0
+          repartitionCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          shareValueBetweenInstances: 0
+          rerollFrequency: 0
+          interpolationFactorFromShot: 0
+          interpolationFactorFromPattern: 0
+          interpolationFactorFromBullet: 0
+          relativeTo: 0
+          parameterName: 
+          loopDepth: 0
+          useComplexRerollSequence: 0
+          checkEveryNLoops: 0
+          loopSequence: 0
+          period: 0
+          wrapMode: 0
+          sortMode: 0
+          sortDirection: 0
+          repartitionTexture: {fileID: 0}
+          centerX: 0
+          centerY: 0
+          radius: 0
+          wrapPoint: 0
+          countClockwise: 0
+          differentValuesPerShot: 0
+        combinedInterpolationFactors: 0
+        index: 2
+        indexOfParent: 1
+        indexOfFrom: 0
+        indexOfTo: 0
+        indexOfBlendedChildren: 
+        weight: 2
+        headerTitle: 'Preferred Target : Value 0'
+        blendColor: {r: 0.2671748, g: 0.16599943, b: 0.98660916, a: 1}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
+      defaultValue: 4
+    - settings:
+        valueType: 0
+        interpolationValue:
+          interpolationFactor: 0
+          repartitionCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          shareValueBetweenInstances: 0
+          rerollFrequency: 0
+          interpolationFactorFromShot: 0
+          interpolationFactorFromPattern: 0
+          interpolationFactorFromBullet: 0
+          relativeTo: 0
+          parameterName: 
+          loopDepth: 0
+          useComplexRerollSequence: 0
+          checkEveryNLoops: 0
+          loopSequence: 0
+          period: 0
+          wrapMode: 0
+          sortMode: 0
+          sortDirection: 0
+          repartitionTexture: {fileID: 0}
+          centerX: 0
+          centerY: 0
+          radius: 0
+          wrapPoint: 0
+          countClockwise: 0
+          differentValuesPerShot: 0
+        combinedInterpolationFactors: 0
+        index: 3
+        indexOfParent: 1
+        indexOfFrom: 0
+        indexOfTo: 0
+        indexOfBlendedChildren: 
+        weight: 1
+        headerTitle: 'Preferred Target : Value 1'
+        blendColor: {r: 0.86762184, g: 0.67109203, b: 0.30361, a: 1}
+        parameterType: 0
+        relativeTo: 0
+        parameterName: 
+      defaultValue: 2
     enumTypeName: BulletPro.PreferredTarget, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
     enumOptions:
@@ -13662,7 +13788,7 @@ MonoBehaviour:
   m_Name: Turn To Enemy
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 16581092
+  uniqueIndex: 8043263
   profile: {fileID: 11400000}
   parent: {fileID: 114300363739621142}
   children: []
@@ -31881,7 +32007,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 9858140
+  uniqueIndex: 6180205
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:

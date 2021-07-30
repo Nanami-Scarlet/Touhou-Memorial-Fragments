@@ -25,6 +25,7 @@ public class GameController : ControllerBase
         MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_GRAZE, UpdateGraze);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_POINT, UpdatePoint);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_MEMORY, UpdateMemory);
+        MessageMgr.Single.AddListener(MsgEvent.EVENT_UPDATE_GOD, UpdateGod);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_PLAYER_USE_LIFE, UseLife);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_PLAYER_USE_BOMB, UseBomb);
         MessageMgr.Single.AddListener(MsgEvent.EVENT_PLAY_GET_CARD_INFO_ANIM, PlayGetCardInfoAnim);
@@ -47,6 +48,7 @@ public class GameController : ControllerBase
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_GRAZE, UpdateGraze);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_POINT, UpdatePoint);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_MEMORY, UpdateMemory);
+        MessageMgr.Single.RemoveListener(MsgEvent.EVENT_UPDATE_GOD, UpdateGod);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_PLAYER_USE_LIFE, UseLife);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_PLAYER_USE_BOMB, UseBomb);
         MessageMgr.Single.RemoveListener(MsgEvent.EVENT_PLAY_GET_CARD_INFO_ANIM, PlayGetCardInfoAnim);
@@ -163,6 +165,21 @@ public class GameController : ControllerBase
 
             _view.UpdateMemory();
         }
+    }
+
+    private void UpdateGod(object[] args)
+    {
+        if (PlayerModel.Single.GodProcess >= 100)
+        {
+            PlayerModel.Single.GodProcess = 100;
+        }
+
+        if (PlayerModel.Single.GodProcess <= 0)
+        {
+            PlayerModel.Single.GodProcess = 0;
+        }
+
+        _view.UpdateGod();
     }
 
     private void PlayGetCardInfoAnim(object[] args)

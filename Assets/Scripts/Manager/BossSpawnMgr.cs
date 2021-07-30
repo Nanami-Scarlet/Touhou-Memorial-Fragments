@@ -16,7 +16,8 @@ public class BossSpawnMgr : MonoBehaviour, ISpawn
 
         GameObject boss = PoolMgr.Single.Spawn(id);
         boss.GetComponent<BossView>().Init();
-        boss.GetComponent<BossController>().Init(singleBossInitData);
+        boss.GetComponent<SpriteRenderer>().enabled = true;
+        boss.GetComponent<EntityControllerBase>().Init(singleBossInitData);
 
         return boss;
     }

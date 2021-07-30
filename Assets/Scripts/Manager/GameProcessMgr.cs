@@ -652,7 +652,7 @@ public class GameProcessMgr : MonoBehaviour
             _eliteSpawnMgr.Spawn(elitle);
 
             yield return new WaitUntil(() => GameModel.Single.EnemyCount == 0);
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(1f);
         }
 
         yield return new WaitForSeconds(2);

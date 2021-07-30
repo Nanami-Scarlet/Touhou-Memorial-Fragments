@@ -80,11 +80,20 @@ public class GameView : ViewBase
     #region Memory
     public Transform _transMemory;
     public Transform[] _memoryYins;
-    private Image _imgBarBg;
-    private Image _imgBarFg;
-    private Image _imgBarPoint;
-    private Text _txtBarProcess;
-    private float _imgBarFgWidth;
+    private Image _imgMemoryBarBg;
+    private Image _imgMemoryBarFg;
+    private Image _imgMemoryBarPoint;
+    private Text _txtMemoryBarProcess;
+    private float _memoryBarFgWidth;
+    #endregion
+
+    #region God
+    public Transform _transGod;
+    private Image _imgGodBarFg;
+    private Image _imgGodBarBg;
+    private Image _imgGodBarPoint;
+    private Text _txtGodBarProcess;
+    private float _godBarFgWidth;
     #endregion
 
     #region GetCardInfo
@@ -93,6 +102,7 @@ public class GameView : ViewBase
     public Text _txtTimeLabel;
     public Text _txtTimeValue;
     #endregion
+
 
     public Text _txtClearLabel;
     public Text _txtBonusLabel;
@@ -142,11 +152,17 @@ public class GameView : ViewBase
         _txtGrazeLabel = _transGraze.GetChild(1).GetComponent<Text>();
         _txtGrazeNum = _transGraze.GetChild(2).GetComponent<Text>();
 
-        _imgBarBg = _transMemory.GetChild(1).GetComponent<Image>();
-        _imgBarFg = _transMemory.GetChild(2).GetComponent<Image>();
-        _imgBarPoint = _transMemory.GetChild(2).GetChild(0).GetComponent<Image>();
-        _txtBarProcess = _transMemory.GetChild(3).GetComponent<Text>();
-        _imgBarFgWidth = _imgBarFg.GetComponent<RectTransform>().sizeDelta.x;
+        _imgMemoryBarBg = _transMemory.GetChild(1).GetComponent<Image>();
+        _imgMemoryBarFg = _transMemory.GetChild(2).GetComponent<Image>();
+        _imgMemoryBarPoint = _transMemory.GetChild(2).GetChild(0).GetComponent<Image>();
+        _txtMemoryBarProcess = _transMemory.GetChild(3).GetComponent<Text>();
+        _memoryBarFgWidth = _imgMemoryBarFg.GetComponent<RectTransform>().sizeDelta.x;
+
+        _imgGodBarFg = _transGod.GetChild(0).GetComponent<Image>();
+        _imgGodBarBg = _transGod.GetComponent<Image>();
+        _imgGodBarPoint = _transGod.GetChild(1).GetComponent<Image>();
+        _txtGodBarProcess = _transGod.GetChild(2).GetComponent<Text>();
+        _godBarFgWidth = _imgGodBarFg.GetComponent<RectTransform>().sizeDelta.x;
 
         _imgBorderLine = _transBorderLine.GetChild(0).GetComponent<Image>();
         _txtBorderTitle = _transBorderLine.GetChild(1).GetComponent<Text>();
@@ -233,11 +249,20 @@ public class GameView : ViewBase
 
         #region Memory动画
         Sequence memory = DOTween.Sequence();
-        memory.Join(_imgBarBg.DOFade(1, 0.5f));
-        memory.Join(_imgBarFg.DOFade(1, 0.5f));
-        memory.Join(_imgBarPoint.DOFade(1, 0.5f));
-        memory.Join(_txtBarProcess.DOFade(1, 0.5f));
+        memory.Join(_imgMemoryBarBg.DOFade(1, 0.5f));
+        memory.Join(_imgMemoryBarFg.DOFade(1, 0.5f));
+        memory.Join(_imgMemoryBarPoint.DOFade(1, 0.5f));
+        memory.Join(_txtMemoryBarProcess.DOFade(1, 0.5f));
         memory.Pause();
+        #endregion
+
+        #region God动画
+        Sequence god = DOTween.Sequence();
+        god.Join(_imgGodBarFg.DOFade(1, 0.5f));
+        god.Join(_imgGodBarBg.DOFade(1, 0.5f));
+        god.Join(_imgGodBarPoint.DOFade(1, 0.5f));
+        god.Join(_txtGodBarProcess.DOFade(1, 0.5f));
+        god.Pause();
         #endregion
 
         #region Point动画
@@ -266,6 +291,7 @@ public class GameView : ViewBase
         mana.onComplete += () => point.Play();
         point.onComplete += () => graze.Play();
         graze.onComplete += () => memory.Play();
+        memory.onComplete += () => god.Play();
         if(GameStateModel.Single.GameDegree == Degree.NORMAL)
         {
             memory.onComplete += () => _transLifeDisable.gameObject.SetActive(true);
@@ -363,14 +389,23 @@ public class GameView : ViewBase
         {
             _memoryYins[i].GetComponent<Image>().enabled = false;
         }
-        t = _imgBarBg.color;
-        _imgBarBg.color = new Color(t.r, t.g, t.b, 0);
-        t = _imgBarFg.color;
-        _imgBarFg.color = new Color(t.r, t.g, t.b, 0);
-        t = _imgBarPoint.color;
-        _imgBarPoint.color = new Color(t.r, t.g, t.b, 0);
-        t = _txtBarProcess.color;
-        _txtBarProcess.color = new Color(t.r, t.g, t.b, 0);
+        t = _imgMemoryBarBg.color;
+        _imgMemoryBarBg.color = new Color(t.r, t.g, t.b, 0);
+        t = _imgMemoryBarFg.color;
+        _imgMemoryBarFg.color = new Color(t.r, t.g, t.b, 0);
+        t = _imgMemoryBarPoint.color;
+        _imgMemoryBarPoint.color = new Color(t.r, t.g, t.b, 0);
+        t = _txtMemoryBarProcess.color;
+        _txtMemoryBarProcess.color = new Color(t.r, t.g, t.b, 0);
+
+        t = _imgGodBarBg.color;
+        _imgGodBarBg.color = new Color(t.r, t.g, t.b, 0);
+        t = _imgGodBarFg.color;
+        _imgGodBarFg.color = new Color(t.r, t.g, t.b, 0);
+        t = _imgGodBarPoint.color;
+        _imgGodBarPoint.color = new Color(t.r, t.g, t.b, 0);
+        t = _txtGodBarProcess.color;
+        _txtGodBarProcess.color = new Color(t.r, t.g, t.b, 0);
 
         t = _txtClearLabel.color;
         _txtClearLabel.color = new Color(t.r, t.g, t.b, 0);
@@ -397,9 +432,13 @@ public class GameView : ViewBase
         _txtCurScore.text = "0";
         _txtPointNum.text = PlayerModel.Single.MAX_GET_POINT.ToString();
 
-        _txtBarProcess.text = "0%";
-        _imgBarFg.fillAmount = 0;
-        _imgBarPoint.transform.localPosition = new Vector3(-170, 0, 0);
+        _txtMemoryBarProcess.text = "0%";
+        _imgMemoryBarFg.fillAmount = 0;
+        _imgMemoryBarPoint.transform.localPosition = Vector3.left * 170;
+
+        _txtGodBarProcess.text = "0%";
+        _imgGodBarFg.fillAmount = 0;
+        _imgGodBarPoint.transform.localPosition = Vector3.left * 110;
 
         ResetItem(_transLifeItems, PlayerModel.Single.Life);
         ResetItem(_transBombItems, PlayerModel.Single.Bomb);
@@ -483,8 +522,6 @@ public class GameView : ViewBase
         _transBombItems[PlayerModel.Single.Bomb].GetChild(1).GetComponent<Image>().fillAmount
            = (float)PlayerModel.Single.BombFragment / Const.FULL_BOMB_FRAGMENT;
 
-        //ResetItem(_transBombItems, PlayerModel.Single.Bomb - 1);
-
         _txtBombNum.text = PlayerModel.Single.BombFragment.ToString();
     }
 
@@ -511,11 +548,22 @@ public class GameView : ViewBase
         }
 
         int process = PlayerModel.Single.MemoryProcess;
-        _txtBarProcess.text = process + "%";
-        _imgBarFg.fillAmount = (float)process / 100;
+        _txtMemoryBarProcess.text = process + "%";
+        _imgMemoryBarFg.fillAmount = (float)process / 100;
 
-        float posX = (float)process / 100 * _imgBarFgWidth - 170;
-        _imgBarPoint.transform.localPosition = new Vector3(posX, 0, 0);
+        float posX = (float)process / 100 * _memoryBarFgWidth - 170;
+        _imgMemoryBarPoint.transform.localPosition = Vector3.right * posX;
+    }
+
+    public void UpdateGod()
+    {
+        int process = PlayerModel.Single.GodProcess;
+        _txtGodBarProcess.text = process + "%";
+        _imgGodBarFg.fillAmount = (float)process / 100;
+
+        float posX = (float)process / 100 * _godBarFgWidth - 110;
+        _imgGodBarPoint.transform.localPosition = Vector3.right * posX;
+
     }
 
     public void PlayGetCardInfoAnim(GetCardInfo info)

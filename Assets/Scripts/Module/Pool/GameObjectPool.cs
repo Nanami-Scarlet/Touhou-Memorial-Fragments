@@ -28,6 +28,7 @@ public class GameObjectPool
         for (int i = 0; i < maxCount; ++i)
         {
             GameObject go = Object.Instantiate(_prefab, _selfGo.transform);
+            go.transform.localPosition = Vector3.zero;
             _listInactive.Add(go);
             go.SetActive(false);
             //await Task.Delay(10);
@@ -47,6 +48,7 @@ public class GameObjectPool
         else
         {
             go = Object.Instantiate(_prefab, _selfGo.transform);
+            Debug.LogWarning("对象池内存不足，其管理的对象为：" + go.name);
         }
 
         _listActive.Add(go);

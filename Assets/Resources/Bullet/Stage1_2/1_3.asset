@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SubBullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 7774826
+  uniqueIndex: 11397736
   profile: {fileID: 11400000}
   parent: {fileID: -5242916741411009120}
   children: []
@@ -816,7 +816,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -1950,7 +1950,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -6558,7 +6558,7 @@ MonoBehaviour:
   m_Name: SubShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 16754907
+  uniqueIndex: 13878625
   profile: {fileID: 11400000}
   parent: {fileID: 1633842477226702689}
   children:
@@ -9040,7 +9040,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3830994
+  uniqueIndex: 5164221
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -15539,7 +15539,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 8046398
+  uniqueIndex: 3193422
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -18011,7 +18011,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 6441964
+  uniqueIndex: 15321217
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -24510,7 +24510,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 13197239
+  uniqueIndex: 5569313
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -41939,7 +41939,7 @@ MonoBehaviour:
   m_Name: SubPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 13333554
+  uniqueIndex: 3256789
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children:

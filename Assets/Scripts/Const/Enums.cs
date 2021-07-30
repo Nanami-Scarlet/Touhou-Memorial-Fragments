@@ -87,6 +87,8 @@ public enum AudioType
     TimeUP,
     GetFinalCard,
     Bonus,
+    Hurt,
+    Dying,
     COUNT
 }
 

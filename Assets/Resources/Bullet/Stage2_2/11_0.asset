@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 5408858
+  uniqueIndex: 8975253
   profile: {fileID: 11400000}
   parent: {fileID: -5266746098669157916}
   children:
@@ -4685,7 +4685,7 @@ MonoBehaviour:
   m_Name: BigYinPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 118238
+  uniqueIndex: 1439043
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -16673,7 +16673,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3422384
+  uniqueIndex: 8305178
   profile: {fileID: 11400000}
   parent: {fileID: -8571418690226490679}
   children: []
@@ -18750,9 +18750,9 @@ MonoBehaviour:
     typeName: UnityEngine.ParticleSystem, UnityEngine.ParticleSystemModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     requiredComponentName: 
-  foldoutVFX: 1
+  foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -23841,7 +23841,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 8964487
+  uniqueIndex: 9866454
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -24901,7 +24901,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -26033,9 +26033,9 @@ MonoBehaviour:
     typeName: UnityEngine.ParticleSystem, UnityEngine.ParticleSystemModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     requiredComponentName: 
-  foldoutVFX: 1
+  foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 7
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -31198,7 +31198,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 2075447
+  uniqueIndex: 3620060
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -33894,7 +33894,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 13218099
+  uniqueIndex: 175447
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -40503,7 +40503,7 @@ MonoBehaviour:
   m_Name: CirclePattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 7210471
+  uniqueIndex: 2737691
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -52059,7 +52059,7 @@ MonoBehaviour:
   m_Name: Control
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 4497708
+  uniqueIndex: 15703564
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children: []

@@ -50,6 +50,18 @@ public class DynamicView : ViewBase
         ResetAnim();
     }
 
+    public override void Hide()
+    {
+        base.Hide();
+
+        foreach (var pair in _dicIDHPBar)
+        {
+            Destroy(pair.Value.gameObject);
+        }
+
+        _dicIDHPBar.Clear();
+    }
+
     private void ResetAnim()
     {
         _textBGMInfo.color = new Color(1, 1, 1, 1);

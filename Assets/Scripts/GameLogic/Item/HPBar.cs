@@ -61,7 +61,6 @@ public class HPBar : MonoBehaviour
         _imgBars[hpIndex].enabled = true;
 
         enabled = true;
-        //IsFollow = true;
         _imgBars[hpIndex].fillAmount = 0;
         _imgBars[hpIndex].DOFillAmount(1, 1.5f);
     }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bullet 0
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15790419
+  uniqueIndex: 10119341
   profile: {fileID: 11400000}
   parent: {fileID: 1796042180490404668}
   children: []
@@ -6888,7 +6888,7 @@ MonoBehaviour:
   m_Name: AimPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 14203294
+  uniqueIndex: 8120511
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -27846,7 +27846,7 @@ MonoBehaviour:
   m_Name: Control
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 3575102
+  uniqueIndex: 4665939
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children: []
@@ -42824,7 +42824,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15566576
+  uniqueIndex: 14261615
   profile: {fileID: 11400000}
   parent: {fileID: 6926334085740781486}
   children:
@@ -49364,7 +49364,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15525297
+  uniqueIndex: 13371017
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -50167,7 +50167,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -51301,7 +51301,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -56239,7 +56239,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 8975855
+  uniqueIndex: 833518
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -58903,7 +58903,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4848088
+  uniqueIndex: 8394552
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -65512,7 +65512,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 12237142
+  uniqueIndex: 5137156
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -77068,7 +77068,7 @@ MonoBehaviour:
   m_Name: SubShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 13025838
+  uniqueIndex: 14615975
   profile: {fileID: 11400000}
   parent: {fileID: 1330043545243150131}
   children:
@@ -79532,7 +79532,7 @@ MonoBehaviour:
   m_Name: SubPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 16239439
+  uniqueIndex: 3017172
   profile: {fileID: 11400000}
   parent: {fileID: -1029866103251653845}
   children:
@@ -85540,7 +85540,7 @@ MonoBehaviour:
   m_Name: Shot 0
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 15718553
+  uniqueIndex: 11251122
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -88204,7 +88204,7 @@ MonoBehaviour:
   m_Name: SubBullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 9359799
+  uniqueIndex: 10875170
   profile: {fileID: 11400000}
   parent: {fileID: 1245142797006859090}
   children:
@@ -89007,7 +89007,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -90141,7 +90141,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -94857,7 +94857,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 1491674
+  uniqueIndex: 8973559
   profile: {fileID: 11400000}
   parent: {fileID: -3675025009748259773}
   children:
@@ -97273,7 +97273,7 @@ MonoBehaviour:
   m_Name: Control
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 10023320
+  uniqueIndex: 4073096
   profile: {fileID: 11400000}
   parent: {fileID: 4958953061948162104}
   children: []

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3437421
+  uniqueIndex: 4347713
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -849,7 +849,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -6934,7 +6934,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 2054312
+  uniqueIndex: 4672603
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -7220,7 +7220,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3811794
+  uniqueIndex: 13393361
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -13829,7 +13829,7 @@ MonoBehaviour:
   m_Name: LaserPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 254430
+  uniqueIndex: 9855684
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -25385,7 +25385,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 5538002
+  uniqueIndex: 7444230
   profile: {fileID: 11400000}
   parent: {fileID: 4128704126897191256}
   children: []
@@ -26188,7 +26188,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -27322,7 +27322,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -31930,7 +31930,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 13833538
+  uniqueIndex: 9186161
   profile: {fileID: 11400000}
   parent: {fileID: 9053757955577398971}
   children:
@@ -38759,7 +38759,7 @@ MonoBehaviour:
   m_Name: CiclePattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 4985220
+  uniqueIndex: 4780830
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:

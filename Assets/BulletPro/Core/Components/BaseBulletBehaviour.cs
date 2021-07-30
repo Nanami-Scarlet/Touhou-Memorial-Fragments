@@ -45,6 +45,8 @@ namespace BulletPro
 			enabled = true;
 			bullet.additionalBehaviourScripts.Add(this);
 
+			bullet.IsGrazed = false;
+
 			if (self == null) self = transform; // just in case the serialization failed
 
 			self.SetParent(bullet.self);

@@ -6,34 +6,40 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float _inchSpeed = 1.5f;
-    private float _normalSpeed = 6f;
-    //private int _dirKeyDownCount = 0;
+    private float _inchSpeed = 2f;
+    private float _normalSpeed = 4.5f;
+    private float _preInchSpeed;
+    private float _preNormalSpeed;
+    private int _dirKeyDownCount = 0;
     //避免按键系统同时要监听两个按键
-    private bool _isPrssShift = false;      //慢速开火需要同时按下Z与Shift
+    private bool _isPressShift = false;      //慢速开火需要同时按下Z与Shift
 
     private MoveComponet _move;
     private Animator _anim;
+    public ParticleSystem _cardEff;
+    public BulletEmitter _wolfEmitter;
+    public BulletEmitter _otterEmitter;
 
     public List<Transform> _listManaLevelTrans;
     public List<BulletEmitter> _listMainShot;
     private Dictionary<string, Action<Collider2D>> _dicItemTagAction;
     private Dictionary<int, YinEmitter> _dicLevelYinEmitter = new Dictionary<int, YinEmitter>();
     public BulletEmitter _cardShot;
-    public ParticleSystem _cardEff;
 
-    public BulletEmitter _wolfEmitter;
     private bool _isWolfShoot = false;
-
-    public BulletEmitter _otterEmitter;
+    private bool _isPrecision = false;
 
     public void Init()
     {
+        _preInchSpeed = _inchSpeed - 0.5f;
+        _preNormalSpeed = _preInchSpeed * 2.25f;    //2.25为官作非魔机高速/低速模式比值
+
         PlayerModel.Single.Mana = 100;
         PlayerModel.Single.IsGetItem = false;
         PlayerModel.Single.State = PlayerState.NORMAL;
         PlayerModel.Single.MemoryProcess = 0;
         PlayerModel.Single.MemoryFragment = 0;
+        PlayerModel.Single.GodProcess = 0;
         PlayerModel.Single.Graze = 0;
 
         _dicItemTagAction = new Dictionary<string, Action<Collider2D>>()
@@ -120,16 +126,18 @@ public class PlayerController : MonoBehaviour
         MessageMgr.Single.AddListener(KeyCode.LeftArrow, MoveLeft, InputState.PRESS);
         MessageMgr.Single.AddListener(KeyCode.LeftShift, Inch, InputState.PRESS);
         MessageMgr.Single.AddListener(KeyCode.Z, Fire, InputState.PRESS);
+        MessageMgr.Single.AddListener(KeyCode.UpArrow, JudgePrecisionMode, InputState.PRESS);
+        MessageMgr.Single.AddListener(KeyCode.DownArrow, JudgePrecisionMode, InputState.PRESS);
 
         MessageMgr.Single.AddListener(KeyCode.X, ReleaseCard, InputState.DOWN);
         MessageMgr.Single.AddListener(KeyCode.A, OnWolfShot, InputState.DOWN);
         MessageMgr.Single.AddListener(KeyCode.S, OnOtterShot, InputState.DOWN);
         MessageMgr.Single.AddListener(KeyCode.D, SummonBomb, InputState.DOWN);
         MessageMgr.Single.AddListener(KeyCode.F, SummonLife, InputState.DOWN);
-        //MessageMgr.Single.AddListener(KeyCode.UpArrow, OnDirKeyDown, InputState.DOWN);
-        //MessageMgr.Single.AddListener(KeyCode.DownArrow, OnDirKeyDown, InputState.DOWN);
-        //MessageMgr.Single.AddListener(KeyCode.RightArrow, OnDirKeyDown, InputState.DOWN);
-        //MessageMgr.Single.AddListener(KeyCode.LeftArrow, OnDirKeyDown, InputState.DOWN);
+        MessageMgr.Single.AddListener(KeyCode.UpArrow, OnDirKeyDown, InputState.DOWN);
+        MessageMgr.Single.AddListener(KeyCode.DownArrow, OnDirKeyDown, InputState.DOWN);
+        MessageMgr.Single.AddListener(KeyCode.RightArrow, OnDirKeyDown, InputState.DOWN);
+        MessageMgr.Single.AddListener(KeyCode.LeftArrow, OnDirKeyDown, InputState.DOWN);
 
         MessageMgr.Single.AddListener(KeyCode.UpArrow, OnDirKeyUp, InputState.UP);
         MessageMgr.Single.AddListener(KeyCode.DownArrow, OnDirKeyUp, InputState.UP);
@@ -137,6 +145,7 @@ public class PlayerController : MonoBehaviour
         MessageMgr.Single.AddListener(KeyCode.LeftArrow, OnDirKeyUp, InputState.UP);
         MessageMgr.Single.AddListener(KeyCode.LeftShift, OnShiftUp, InputState.UP);
         MessageMgr.Single.AddListener(KeyCode.Z, StopFire, InputState.UP);
+        MessageMgr.Single.AddListener(KeyCode.DownArrow, JudgePrecisionMode, InputState.UP);
 
         _move.Speed = _normalSpeed;
 
@@ -163,16 +172,30 @@ public class PlayerController : MonoBehaviour
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_MEMORY);
     }
 
-    //private void Update()
-    //{
-    //    //_move.Speed = _normalSpeed;
-    //    //if (_dirKeyDownCount % 2 == 0)
-    //    //{
-    //    //    _move.Speed = Mathf.Sqrt(_move.Speed);
-    //    //}
+    private void Update()
+    {
+        _move.Speed = _normalSpeed;
 
-    //    Debug.Log(_move.Speed);
-    //}
+        if (_isPressShift)
+        {
+            _move.Speed = _inchSpeed;
+        }
+
+        if (_isPrecision)
+        {
+            _move.Speed = _preNormalSpeed;
+
+            if (_isPressShift)
+            {
+                _move.Speed = _preInchSpeed;
+            }
+        }
+
+        if (_dirKeyDownCount % 2 == 0 && !_isPrecision)
+        {
+            _move.Speed = _move.Speed / Mathf.Sqrt(2f);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -198,16 +221,18 @@ public class PlayerController : MonoBehaviour
         MessageMgr.Single.RemoveListener(KeyCode.LeftArrow, MoveLeft, InputState.PRESS);
         MessageMgr.Single.RemoveListener(KeyCode.LeftShift, Inch, InputState.PRESS);
         MessageMgr.Single.RemoveListener(KeyCode.Z, Fire, InputState.PRESS);
+        MessageMgr.Single.RemoveListener(KeyCode.UpArrow, JudgePrecisionMode, InputState.PRESS);
+        MessageMgr.Single.RemoveListener(KeyCode.DownArrow, JudgePrecisionMode, InputState.PRESS);
 
         MessageMgr.Single.RemoveListener(KeyCode.X, ReleaseCard, InputState.DOWN);
         MessageMgr.Single.RemoveListener(KeyCode.A, OnWolfShot, InputState.DOWN);
         MessageMgr.Single.RemoveListener(KeyCode.S, OnOtterShot, InputState.DOWN);
         MessageMgr.Single.RemoveListener(KeyCode.D, SummonBomb, InputState.DOWN);
         MessageMgr.Single.RemoveListener(KeyCode.F, SummonLife, InputState.DOWN);
-        //MessageMgr.Single.RemoveListener(KeyCode.UpArrow, OnDirKeyDown, InputState.DOWN);
-        //MessageMgr.Single.RemoveListener(KeyCode.DownArrow, OnDirKeyDown, InputState.DOWN);
-        //MessageMgr.Single.RemoveListener(KeyCode.RightArrow, OnDirKeyDown, InputState.DOWN);
-        //MessageMgr.Single.RemoveListener(KeyCode.LeftArrow, OnDirKeyDown, InputState.DOWN);
+        MessageMgr.Single.RemoveListener(KeyCode.UpArrow, OnDirKeyDown, InputState.DOWN);
+        MessageMgr.Single.RemoveListener(KeyCode.DownArrow, OnDirKeyDown, InputState.DOWN);
+        MessageMgr.Single.RemoveListener(KeyCode.RightArrow, OnDirKeyDown, InputState.DOWN);
+        MessageMgr.Single.RemoveListener(KeyCode.LeftArrow, OnDirKeyDown, InputState.DOWN);
 
         MessageMgr.Single.RemoveListener(KeyCode.UpArrow, OnDirKeyUp, InputState.UP);
         MessageMgr.Single.RemoveListener(KeyCode.DownArrow, OnDirKeyUp, InputState.UP);
@@ -215,6 +240,7 @@ public class PlayerController : MonoBehaviour
         MessageMgr.Single.RemoveListener(KeyCode.LeftArrow, OnDirKeyUp, InputState.UP);
         MessageMgr.Single.RemoveListener(KeyCode.LeftShift, OnShiftUp, InputState.UP);
         MessageMgr.Single.RemoveListener(KeyCode.Z, StopFire, InputState.UP);
+        MessageMgr.Single.RemoveListener(KeyCode.DownArrow, JudgePrecisionMode, InputState.UP);
     }
 
     private void MoveUp(object[] args)
@@ -227,6 +253,8 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y > 1.8f)
         {
             PlayerModel.Single.IsGetItem = true;
+            PlayerModel.Single.GodProcess = 100;
+            MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_GOD);
         }
     }
 
@@ -263,7 +291,7 @@ public class PlayerController : MonoBehaviour
 
     private void Inch(object[] args)
     {
-        _isPrssShift = true;
+        _isPressShift = true;
         _move.Speed = _inchSpeed;
     }
 
@@ -323,7 +351,7 @@ public class PlayerController : MonoBehaviour
 
     private void Fire(object[] args)
     {
-        if (!_isPrssShift)
+        if (!_isPressShift)
         {
             NormalFire();
 
@@ -360,23 +388,21 @@ public class PlayerController : MonoBehaviour
         _wolfEmitter.Stop();
     }
 
-    //private void OnDirKeyDown(object[] args)
-    //{
-    //    ++_dirKeyDownCount;
-    //}
-
     private void OnDirKeyUp(object[] args)
     {
         _anim.SetInteger("Speed", 0);
-        //if (_dirKeyDownCount > 0)
-        //{
-        //    --_dirKeyDownCount;
-        //}
+
+        --_dirKeyDownCount;
+    }
+
+    private void OnDirKeyDown(object[] args)
+    {
+        ++_dirKeyDownCount;
     }
 
     private void OnShiftUp(object[] args)
     {
-        _isPrssShift = false;
+        _isPressShift = false;
         _move.Speed = _normalSpeed;
     }
 
@@ -455,13 +481,9 @@ public class PlayerController : MonoBehaviour
                 AudioMgr.Single.StopGameEff(AudioType.ReleaseBomb);
                 MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_CLEAR_ENEMY_BULLET);
                 MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_RELEASE_CARD);
+                PlayerModel.Single.IsGetItem = false;
                 MessageMgr.Single.AddListener(KeyCode.X, ReleaseCard, InputState.DOWN);
             }, 3f, TimeUnit.Second);
-
-            TimeMgr.Single.AddTimeTask(() => 
-            {
-                PlayerModel.Single.IsGetItem = false;
-            }, 4f, TimeUnit.Second);
         }
     }
 
@@ -475,5 +497,17 @@ public class PlayerController : MonoBehaviour
     {
         MessageMgr.Single.RemoveListener(KeyCode.A, OnWolfShot, InputState.DOWN);
         MessageMgr.Single.RemoveListener(KeyCode.S, OnOtterShot, InputState.DOWN);
+    }
+
+    private void JudgePrecisionMode(object[] args)
+    {
+        if (GameUtil.JudgePrecision(transform.position))
+        {
+            _isPrecision = true;
+
+            return;
+        }
+
+        _isPrecision = false;
     }
 }

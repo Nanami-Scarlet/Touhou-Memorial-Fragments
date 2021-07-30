@@ -69,5 +69,17 @@
     "type": "Bonus",
     "name": "Bonus_Eff",
     "vol": 0.8
+  },
+
+  {
+    "type": "Hurt",
+    "name": "Hurt_Eff",
+    "vol": 0.6
+  },
+
+  {
+    "type": "Dying",
+    "name": "Dying_Eff",
+    "vol": 0.6
   }
 ]

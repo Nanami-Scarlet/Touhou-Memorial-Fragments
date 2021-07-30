@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 9934236
+  uniqueIndex: 8465599
   profile: {fileID: 11400000}
   parent: {fileID: -2319400954679521834}
   children: []
@@ -816,7 +816,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -1950,7 +1950,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -6558,7 +6558,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 3896058
+  uniqueIndex: 14293709
   profile: {fileID: 11400000}
   parent: {fileID: 2678315297502338266}
   children:
@@ -9010,7 +9010,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: -6289822831634210523}
+  currentParamsSelected: {fileID: 114027673760526898}
   numberOfSubAssets: 0
 --- !u!114 &114027673760526898
 MonoBehaviour:
@@ -9025,7 +9025,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4285160
+  uniqueIndex: 13676023
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -9943,7 +9943,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 2
+      defaultValue: 
   color:
     valueTree:
     - settings:
@@ -10963,7 +10963,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -16118,7 +16118,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 15449298
+  uniqueIndex: 4942304
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -18534,7 +18534,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 5589693
+  uniqueIndex: 3975794
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -25143,7 +25143,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 15794255
+  uniqueIndex: 3034977
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -57521,7 +57521,7 @@ MonoBehaviour:
   m_Name: HomingPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 9985143
+  uniqueIndex: 13789758
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -72499,7 +72499,7 @@ MonoBehaviour:
   m_Name: Set Speed
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 16567007
+  uniqueIndex: 16738919
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children: []

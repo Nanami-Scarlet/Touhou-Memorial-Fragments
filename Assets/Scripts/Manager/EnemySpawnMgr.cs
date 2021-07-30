@@ -28,11 +28,11 @@ public class EnemySpawnMgr : MonoBehaviour, ISpawn
         GameObject enemy = PoolMgr.Single.Spawn(type);
 
         enemy.GetComponent<EntityControllerBase>().enabled = true;
-        enemy.GetComponent<EnemyController>().Init(enemyData);
+        enemy.GetComponent<EntityControllerBase>().Init(enemyData);
         enemy.GetComponent<EntityBehaviourBase>().SetBehaviour(enemyData.HP, enemyData.PCount, enemyData.PointCount);
         enemy.GetComponent<BulletReceiver>().enabled = true;
         enemy.GetComponent<SpriteRenderer>().enabled = true;
-        enemy.GetComponent<EnemyBehaviour>().ResetBehaiour();
+        enemy.GetComponent<EntityBehaviourBase>().ResetBehaiour();
         YinEnemyView yin = enemy.GetComponent<YinEnemyView>();
         if(yin != null)
         {

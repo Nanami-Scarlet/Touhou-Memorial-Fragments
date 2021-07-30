@@ -17,11 +17,12 @@ public class EliteSpawnMgr : MonoBehaviour, ISpawn
 
         GameObject elite = PoolMgr.Single.Spawn(type);
 
-        elite.GetComponent<EliteController>().Init(data);
+        elite.GetComponent<EntityControllerBase>().enabled = true;
+        elite.GetComponent<EntityControllerBase>().Init(data);
         elite.GetComponent<EntityBehaviourBase>().SetBehaviour(e.HP, e.PCount, e.PointCount, e.LifeCount, e.BombCount);
-        elite.GetComponent<EliteBehaviour>().ResetBehaiour();
         elite.GetComponent<SpriteRenderer>().enabled = true;
         elite.GetComponent<BulletReceiver>().enabled = true;
+        elite.GetComponent<EntityBehaviourBase>().ResetBehaiour();
 
         ++GameModel.Single.EnemyCount;
 

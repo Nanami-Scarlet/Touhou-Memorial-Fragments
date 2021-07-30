@@ -20,7 +20,7 @@ public class ManualView : ViewBase
 
     public override void InitAndChild()
     {
-        MAX_INDEX = 3;
+        MAX_INDEX = 4;
     }
 
     public override void Show()

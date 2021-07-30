@@ -8,12 +8,12 @@ public class Item : MonoBehaviour
     private GameObject _player;
 
     private float _shootHeight;
-    private bool _isFall = false;
+    public bool _isFall = false;
 
     private float _shootSpeed = 2f;
     private float _speed = 3.5f;
 
-    private bool _isMoveToPlayer = false;           //以免出现掉落物移动到玩家然后不移动了
+    public bool _isMoveToPlayer = false;           //以免出现掉落物移动到玩家然后不移动了
 
     public void InitFall(Transform bornTrans)
     {
@@ -26,6 +26,7 @@ public class Item : MonoBehaviour
         transform.DOLocalMoveY(_shootHeight, 1 / _shootSpeed).OnComplete(() =>
         {
             _isFall = true;
+
             transform.localEulerAngles = Vector3.zero;
         });
     }
@@ -39,25 +40,34 @@ public class Item : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerModel.Single.IsGetItem)
+        {
+            _isMoveToPlayer = true;
+            _isFall = false;
+        }
+
+        if (_isMoveToPlayer)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * 10f);
+        }
+        else if (GameUtil.GetDistance(transform, _player.transform) < 0.75f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * 3f);
+        }
+
         if (_isFall)
         {
             transform.Translate(Vector2.down * Time.deltaTime * _speed);
         }
         else
         {
-            transform.Rotate(Vector3.forward * Time.deltaTime * 1800);
+            if (!PlayerModel.Single.IsGetItem)
+            {
+                transform.Rotate(Vector3.forward * Time.deltaTime * 1800);
+            }
         }
 
-        if(_isMoveToPlayer || PlayerModel.Single.IsGetItem)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * 10f);
-        }
-        else if(GameUtil.GetDistance(transform, _player.transform) < 0.75f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * 3f);
-        }
-
-        if(transform.position.y < -5f)
+        if (transform.position.y < -5f)
         {
             PoolMgr.Single.Despawn(gameObject);
         }

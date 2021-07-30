@@ -9,30 +9,28 @@ public class EliteBehaviour : EntityBehaviourBase
     public EnemyView _view;
     public EliteController _controller;
 
-    private bool _isSpawnItem = false;
-    public bool _isDead = false;
-
     public override void Hurt(Bullet bullet, Vector3 hitPoint)
     {
         base.Hurt(bullet, hitPoint);
         HP -= bullet.moduleParameters.GetInt("_CardPower");
 
-        if (HP <= 0 && !_isSpawnItem)
+        if (HP <= 0 && !IsSpawnItem)
         {
             Dead();
-            _isSpawnItem = true;
+            IsSpawnItem = true;
         }
     }
 
     public override void Dead()
     {
-        if (!_isDead)
+        if (!IsDead)
         {
             _view.DieView();
             AudioMgr.Single.PlayGameEff(AudioType.EnemyDead);
 
             _controller.KillFire();
             _controller.MovePath.Kill();
+            _controller.enabled = false;
             SpawnItems();
 
             PlayerModel.Single.MemoryProcess += Random.Range(10, 20);
@@ -41,18 +39,12 @@ public class EliteBehaviour : EntityBehaviourBase
             GetComponent<BulletReceiver>().enabled = false;
             TimeMgr.Single.AddTimeTask(() =>
             {
-                if (!_isDead)
+                if (!IsDead)
                 {
                     EliteSpawnMgr.DeSpawn(gameObject);
-                    _isDead = true;
+                    IsDead = true;
                 }
             }, 0.7f, TimeUnit.Second);
         }
-    }
-
-    public void ResetBehaiour()
-    {
-        _isSpawnItem = false;
-        _isDead = false;
     }
 }

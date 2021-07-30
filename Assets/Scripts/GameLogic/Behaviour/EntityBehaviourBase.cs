@@ -7,10 +7,13 @@ using UnityEngine;
 public abstract class EntityBehaviourBase : MonoBehaviour
 {
     private int _hp;
+    private bool _isDead;
     private int _pCount;
     private int _pointCount;
     private int _lifeFragmentCount;
     private int _bombFragmentCount;
+
+    private bool _isSpawnItem = false;
 
     public int HP 
     {
@@ -22,6 +25,19 @@ public abstract class EntityBehaviourBase : MonoBehaviour
         set
         {
             _hp = value;
+        }
+    }
+
+    public bool IsDead
+    {
+        get
+        {
+            return _isDead;
+        }
+
+        set
+        {
+            _isDead = value;
         }
     }
 
@@ -77,6 +93,19 @@ public abstract class EntityBehaviourBase : MonoBehaviour
         }
     }
 
+    public bool IsSpawnItem 
+    {
+        get
+        {
+            return _isSpawnItem;
+        }
+
+        set
+        {
+            _isSpawnItem = value;
+        }
+    }
+
     public void SetBehaviour(int hp = 1, int pCount = 0, int pointCount = 0, 
         int lifeFragmentCount = 0, int bombFragmentCount = 0)
     {
@@ -93,6 +122,17 @@ public abstract class EntityBehaviourBase : MonoBehaviour
 
         GameModel.Single.Score += Const.BULLET_SCORE;
         MessageMgr.Single.DispatchMsg(MsgEvent.EVENT_UPDATE_SCORE, GameModel.Single.Score);
+
+        if (HP >= 100)
+        {
+            AudioMgr.Single.PlayGameEff(AudioType.Hurt);
+            return;
+        }
+
+        if (HP < 100)
+        {
+            AudioMgr.Single.PlayGameEff(AudioType.Dying);
+        }
     }
 
     public abstract void Dead();
@@ -124,5 +164,11 @@ public abstract class EntityBehaviourBase : MonoBehaviour
         float newY = Random.Range(y - 0.1f, y + 0.1f);
 
         return new Vector2(newX, newY);
+    }
+
+    public void ResetBehaiour()
+    {
+        _isSpawnItem = false;
+        IsDead = false;
     }
 }

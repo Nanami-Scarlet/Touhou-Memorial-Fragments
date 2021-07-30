@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AimPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 4979879
+  uniqueIndex: 11419365
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -23999,7 +23999,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 13125230
+  uniqueIndex: 9944421
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -30498,7 +30498,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 1711161
+  uniqueIndex: 4457657
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -39702,7 +39702,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 7994070
+  uniqueIndex: 8321514
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -46311,7 +46311,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 13754112
+  uniqueIndex: 8913474
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -69953,7 +69953,7 @@ MonoBehaviour:
   m_Name: StarShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 15222120
+  uniqueIndex: 5474109
   profile: {fileID: 11400000}
   parent: {fileID: 5178287489832969929}
   children:
@@ -70239,7 +70239,7 @@ MonoBehaviour:
   m_Name: AimShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 2303267
+  uniqueIndex: 6977930
   profile: {fileID: 11400000}
   parent: {fileID: -1429042074700486022}
   children:
@@ -72655,7 +72655,7 @@ MonoBehaviour:
   m_Name: Control
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 2013373
+  uniqueIndex: 16198467
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children: []
@@ -75672,7 +75672,7 @@ MonoBehaviour:
   m_Name: StarPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 15051275
+  uniqueIndex: 14176577
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children:
@@ -78690,7 +78690,7 @@ MonoBehaviour:
   m_Name: AnimBullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 1459937
+  uniqueIndex: 3193708
   profile: {fileID: 11400000}
   parent: {fileID: 1398518268566195783}
   children: []
@@ -79493,7 +79493,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -80627,7 +80627,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -85235,7 +85235,7 @@ MonoBehaviour:
   m_Name: StarBullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15235000
+  uniqueIndex: 4503842
   profile: {fileID: 11400000}
   parent: {fileID: 1006130625337191038}
   children: []
@@ -86038,7 +86038,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -87172,7 +87172,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1

@@ -15,7 +15,8 @@ public class PlayerView : MonoBehaviour
 
     public List<Transform> _listTransYin;
     private Dictionary<int, List<YinMove>> _dicIndexYinMove;
-    //private Dictionary<int, List<YinRoate>> _dicIndexYinRoate;
+
+    public ParticleSystem _grazeEffect;
 
     public void Init()
     {
@@ -93,5 +94,10 @@ public class PlayerView : MonoBehaviour
         int index = GameUtil.GetManaLevel();
 
         GameUtil.SetSubActive(_listTransYin, index);
+    }
+
+    public void PlayGrazeEffect()
+    {
+        _grazeEffect.Play();
     }
 }

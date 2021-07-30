@@ -22,6 +22,8 @@ public class PlayerModel : NormalSingleton<PlayerModel>
 
     public int MemoryProcess { get; set; }
 
+    public int GodProcess { get; set; }
+
     public bool IsGetItem { get; set; }
 
     public PlayerState State { get; set; }

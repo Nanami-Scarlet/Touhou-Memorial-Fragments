@@ -10,7 +10,7 @@ public class EnemyController : EntityControllerBase
     private EnemyData _enemyData;
     private List<int> _listTimeID = new List<int>();
 
-    private EnemyBehaviour _behaviour;
+    private EntityBehaviourBase _behaviour;
 
     public override void Init(EntityData enemyData)
     {

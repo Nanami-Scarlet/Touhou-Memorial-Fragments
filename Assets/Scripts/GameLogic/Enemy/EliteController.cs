@@ -8,6 +8,7 @@ using BulletPro;
 public class EliteController : EntityControllerBase
 {
     private ElitleData _elitleData;
+    private EntityBehaviourBase _behaviour;
 
     public List<BulletEmitter> _emitters;
 
@@ -18,6 +19,7 @@ public class EliteController : EntityControllerBase
         base.Init(data);
 
         _elitleData = (ElitleData)data;
+        _behaviour = GetComponent<EliteBehaviour>();
         transform.localPosition = _elitleData.BornPos;
 
         for(int i = 0; i < _elitleData.EmitterPos.Count; ++i)
@@ -27,7 +29,6 @@ public class EliteController : EntityControllerBase
         }
 
         Move(_elitleData.AppearPath, Fire);
-        GetComponent<SpriteRenderer>().enabled = true;
         SetMovePath();
     }
 
@@ -55,8 +56,8 @@ public class EliteController : EntityControllerBase
         float offset = (transform.localPosition - pos).magnitude;
         transform.DOLocalMove(pos, offset / 4).SetEase(Ease.Linear).OnComplete(() =>
         {
-            PoolMgr.Single.Despawn(gameObject);
-            --GameModel.Single.EnemyCount;
+            EliteSpawnMgr.DeSpawn(gameObject);
+            _behaviour.IsDead = true;
         });
     }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SubShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 12464591
+  uniqueIndex: 27467
   profile: {fileID: 11400000}
   parent: {fileID: 2247009574454495470}
   children:
@@ -4971,7 +4971,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 16481210
+  uniqueIndex: 4445320
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -5775,7 +5775,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -6909,7 +6909,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -12072,7 +12072,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 11406691
+  uniqueIndex: 10243871
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -14488,7 +14488,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 14497388
+  uniqueIndex: 15718618
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -20987,7 +20987,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 8601782
+  uniqueIndex: 8372134
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -35425,7 +35425,7 @@ MonoBehaviour:
   m_Name: SubBullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 6584042
+  uniqueIndex: 14107906
   profile: {fileID: 11400000}
   parent: {fileID: -2587790395731320570}
   children: []
@@ -36227,7 +36227,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -37545,7 +37545,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -42152,7 +42152,7 @@ MonoBehaviour:
   m_Name: SubPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 11879839
+  uniqueIndex: 1014467
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children:

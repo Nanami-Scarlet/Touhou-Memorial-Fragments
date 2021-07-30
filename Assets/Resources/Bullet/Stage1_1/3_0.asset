@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SubPattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 2291854
+  uniqueIndex: 10959288
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children:
@@ -12001,7 +12001,7 @@ MonoBehaviour:
   m_Name: SubShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 10598020
+  uniqueIndex: 2263302
   profile: {fileID: 11400000}
   parent: {fileID: -2939843271726018056}
   children:
@@ -16593,7 +16593,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 7591025
+  uniqueIndex: 90786
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -17397,7 +17397,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -18531,7 +18531,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -23578,7 +23578,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 3109139
+  uniqueIndex: 8504347
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -26050,7 +26050,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 12310129
+  uniqueIndex: 13977276
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -32549,7 +32549,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 9663907
+  uniqueIndex: 4849533
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -49978,7 +49978,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 7121049
+  uniqueIndex: 8473723
   profile: {fileID: 11400000}
   parent: {fileID: -1965758690403806027}
   children: []
@@ -50781,7 +50781,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -51915,7 +51915,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -52383,7 +52383,7 @@ MonoBehaviour:
     lineEnd: {x: 0, y: 0}
   dieOnCollision: 1
   shapeFoldout: 0
-  collisionTagsFoldout: 0
+  collisionTagsFoldout: 1
   homing: 0
   homingTags:
     tagList: 1

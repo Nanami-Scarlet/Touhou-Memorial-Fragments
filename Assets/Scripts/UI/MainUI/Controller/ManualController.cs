@@ -69,8 +69,6 @@ public class ManualController : ControllerBase
     {
         AudioMgr.Single.PlayUIEff(Paths.AUDIO_CANCAL_EFF);
 
-        //UIManager.Single.Hide(Paths.PREFAB_MANUAL_VIEW);
-        //UIManager.Single.Show(Paths.PREFAB_START_VIEW);
         UIManager.Single.Back();
     }
 }

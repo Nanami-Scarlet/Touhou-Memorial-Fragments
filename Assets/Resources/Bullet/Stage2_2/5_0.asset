@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LaserShoot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 6087982
+  uniqueIndex: 16092541
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -2567,7 +2567,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114027673760526898}
+  currentParamsSelected: {fileID: 5019288215682252667}
   numberOfSubAssets: 6
 --- !u!114 &114027673760526898
 MonoBehaviour:
@@ -2582,7 +2582,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3685713
+  uniqueIndex: 10897573
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -3384,7 +3384,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -9455,7 +9455,7 @@ MonoBehaviour:
   m_Name: Shoot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 10181398
+  uniqueIndex: 6177682
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -11991,7 +11991,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 16157360
+  uniqueIndex: 4484009
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -18490,7 +18490,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 16367130
+  uniqueIndex: 4399165
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -42134,7 +42134,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15375057
+  uniqueIndex: 7890896
   profile: {fileID: 11400000}
   parent: {fileID: -5711974532586082460}
   children: []
@@ -42937,7 +42937,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -44071,7 +44071,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
