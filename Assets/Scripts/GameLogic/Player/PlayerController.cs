@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float _inchSpeed = 2f;
-    private float _normalSpeed = 4.5f;
+    private float _inchSpeed = 6f / 2.25f;
+    private float _normalSpeed = 6f;
     private float _preInchSpeed;
     private float _preNormalSpeed;
     private int _dirKeyDownCount = 0;
